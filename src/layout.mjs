@@ -51,7 +51,7 @@ export function layout({ path, title, description, body, crisis = false }) {
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to main content</a>
 ${crisis ? '<div class="crisis" role="note">If you are thinking about suicide or are in crisis, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>. You are not alone.</div>\n' : ''}<header class="site-header">
 <div class="wrap">
 <a class="brand" href="/">${site.name} <span>${site.tagline}</span></a>
@@ -78,6 +78,7 @@ ${body}
 <li><a href="/about/#editorial">Editorial and review policy</a></li>
 <li><a href="/about/#reviewers">Our reviewers</a></li>
 <li><a href="/privacy/">Privacy</a></li>
+<li><a href="/accessibility/">Accessibility</a></li>
 </ul>
 </div>
 <div>

@@ -20,7 +20,7 @@ const placeRows = (list) =>
     .join('\n');
 
 const placeTable = (list, caption) => `<div class="table-box"><table>
-<caption class="skip">${esc(caption)}</caption>
+<caption class="sr-only">${esc(caption)}</caption>
 <thead><tr><th scope="col">Place</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Open to non-residents?</th><th scope="col">Last verified</th></tr></thead>
 <tbody>
 ${placeRows(list)}
@@ -40,7 +40,7 @@ const signupForm = (name, fields, button, note) => {
     : `action="/thanks/" data-netlify="true" netlify-honeypot="company"`;
   return `<form class="form" name="${name}" method="POST" ${attrs}>
 <input type="hidden" name="form-name" value="${name}">
-<p class="skip"><label>Leave this empty <input name="company"></label></p>
+<p hidden><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
 ${fields}
 <button class="btn btn-dark" type="submit">${button}</button>
 ${note ? `<p class="form-note">${note}</p>` : ''}
@@ -293,10 +293,10 @@ export const guides = [
 <li>Ask about taxes in both countries before you assume anything.</li></ul>` },
       { id: 'why', h: "Why your home will may not be enough", html: `<p>To use a foreign will, heirs often have to settle the estate at home first, then have the documents certified with an apostille, translated and recognized by a local court or notary. That can take a long time and cost a lot. Local law may also decide who inherits land located there, and some countries reserve fixed shares for children (called forced heirship), whatever the will says.</p>` },
       { id: 'mexico', h: 'Mexico', html: `<ul>
-<li><strong>Trust property (fideicomiso).</strong> Foreigners usually hold property near the coast or borders (the "restricted zone") through a bank trust called a fideicomiso. You name substitute beneficiaries in the trust itself, and the trust, not your will, decides who receives that property. Keep those beneficiaries up to date.</li>
-<li><strong>A Mexican will.</strong> Expats are usually advised to make a Mexican will, a <em>testamento público abierto</em>, before a Mexican notary (notario público), in Spanish. It covers assets outside the trust, such as bank accounts and cars.</li>
+<li><strong>Trust property (<span lang="es">fideicomiso</span>).</strong> Foreigners usually hold property near the coast or borders (the "restricted zone") through a bank trust called a <span lang="es">fideicomiso</span>. You name substitute beneficiaries in the trust itself, and the trust, not your will, decides who receives that property. Keep those beneficiaries up to date.</li>
+<li><strong>A Mexican will.</strong> Expats are usually advised to make a Mexican will, a <em lang="es">testamento público abierto</em>, before a Mexican notary (<span lang="es">notario público</span>), in Spanish. It covers assets outside the trust, such as bank accounts and cars.</li>
 <li><strong>Using a US will.</strong> A US will can be valid in Mexico, but heirs usually have to settle it in the US first and then have it recognized in Mexico, which is slow and expensive.</li>
-<li><strong>Will Month.</strong> Every September is <em>Mes del Testamento</em> (Will Month). Notaries cut their fees for wills, often by up to half. Discounts and dates vary by state.</li></ul>` },
+<li><strong>Will Month.</strong> Every September is <em lang="es">Mes del Testamento</em> (Will Month). Notaries cut their fees for wills, often by up to half. Discounts and dates vary by state.</li></ul>` },
       { id: 'costa-rica', h: 'Costa Rica', html: `<ul>
 <li>Wills are made before a notary, in Spanish, and can be limited to your Costa Rica assets.</li>
 <li>Property in your own name normally goes through Costa Rican probate, even with a will. When the heirs agree and none of them is a minor, a notary can handle it instead of a court.</li>
@@ -323,7 +323,7 @@ export const guides = [
 <li>List every asset you own outside your home country, and how each is held.</li>
 <li>Ask a local notary or lawyer whether you need a local will.</li>
 <li>Make sure each will covers only its own country's assets and doesn't cancel the others.</li>
-<li>If you have a fideicomiso in Mexico, check the substitute beneficiaries.</li>
+<li>If you have a <span lang="es">fideicomiso</span> in Mexico, check the substitute beneficiaries.</li>
 <li>Keep copies, with translations, where your executor can find them.</li>
 <li>Review everything if you move country, marry, divorce or sell.</li></ul>` },
       { id: 'after', h: 'If someone dies owning property abroad', html: `<p>Contact a notary or lawyer in that country early. You'll usually need certified, apostilled and translated copies of the death certificate and the will. If the death happened abroad, the nearest embassy or consulate of the person's home country can help with the first steps.</p>` },
@@ -481,10 +481,10 @@ export const checklists = [
     description: 'A printable worksheet for your end-of-life wishes, your people, and where your documents are kept.',
     lead: 'Fill this in, then give a copy to your health care proxy and keep one with your important papers.',
     groups: [
-      { h: 'Medical wishes', items: ['I have an advance directive. It is kept: ______________', 'My health care proxy is: ______________ Phone: ______________', 'My backup proxy is: ______________', 'My doctor has a copy of my wishes.', 'What matters most to me at the end of life: ______________'] },
-      { h: 'My people', items: ['People to call first: ______________', 'Who looks after my children / pets: ______________', 'My executor is: ______________'] },
-      { h: 'Where things are', items: ['Will: ______________', 'Life insurance policies: ______________', 'Bank and retirement accounts: ______________', 'Deed, lease or mortgage: ______________', 'Property in another country, and how it is held: ______________', 'Local will for that country? Kept: ______________', 'Passwords and phone passcode: ______________'] },
-      { h: 'Afterward', items: ['Burial / cremation / green burial / body donation (circle one)', 'Service I would like: ______________', 'Music, readings or people I want included: ______________', 'Letters or messages to deliver: ______________'] },
+      { h: 'Medical wishes', items: ['I have an advance directive. It is kept: <span class="blank" aria-hidden="true"></span>', 'My health care proxy is: <span class="blank" aria-hidden="true"></span> Phone: <span class="blank" aria-hidden="true"></span>', 'My backup proxy is: <span class="blank" aria-hidden="true"></span>', 'My doctor has a copy of my wishes.', 'What matters most to me at the end of life: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'My people', items: ['People to call first: <span class="blank" aria-hidden="true"></span>', 'Who looks after my children / pets: <span class="blank" aria-hidden="true"></span>', 'My executor is: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Where things are', items: ['Will: <span class="blank" aria-hidden="true"></span>', 'Life insurance policies: <span class="blank" aria-hidden="true"></span>', 'Bank and retirement accounts: <span class="blank" aria-hidden="true"></span>', 'Deed, lease or mortgage: <span class="blank" aria-hidden="true"></span>', 'Property in another country, and how it is held: <span class="blank" aria-hidden="true"></span>', 'Local will for that country? Kept: <span class="blank" aria-hidden="true"></span>', 'Passwords and phone passcode: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Afterward', items: ['Burial / cremation / green burial / body donation (circle one)', 'Service I would like: <span class="blank" aria-hidden="true"></span>', 'Music, readings or people I want included: <span class="blank" aria-hidden="true"></span>', 'Letters or messages to deliver: <span class="blank" aria-hidden="true"></span>'] },
     ],
   }),
   checklist({
@@ -776,6 +776,34 @@ ${updatesForm('updates')}
 <li>Please don't send medical details through our forms.</li>
 </ul>
 <p>To see or delete your information, email privacy@eolatlas.com.</p>
+</div></section>`,
+  },
+  {
+    path: '/accessibility/',
+    title: 'Accessibility',
+    description: 'Accessibility statement for End of Life Atlas: our WCAG 2.2 AA and Section 508 goals, how we test, and how to report a problem.',
+    body: `
+<section class="section"><div class="wrap prose">
+<h1>Accessibility</h1>
+<p class="lead" style="margin:20px 0">End of Life Atlas should be usable by everyone, including people using screen readers, keyboards, magnification or voice control.</p>
+<h2>Our standard</h2>
+<p>We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA. That also covers the Section 508 standards, which adopt WCAG Level AA.</p>
+<h2>What we do</h2>
+<ul>
+<li>Every page can be used with a keyboard alone, with a visible focus outline and a "skip to main content" link.</li>
+<li>Pages use real headings, landmarks, labeled form fields and table headers, so screen readers can navigate them.</li>
+<li>Text and controls meet WCAG color-contrast ratios, and nothing relies on color alone.</li>
+<li>Pages work at 400% zoom and on screens 320 pixels wide without sideways scrolling.</li>
+<li>Words in other languages are marked, so screen readers pronounce them correctly.</li>
+<li>There are no videos, animations, time limits or pop-ups.</li>
+<li>Checklists print cleanly for people who prefer paper.</li>
+</ul>
+<h2>How we test</h2>
+<p>Before each update, every page is checked automatically against the WCAG 2.2 A and AA rules (using axe-core) at desktop and phone widths, and for keyboard focus. Automated tests can't catch everything, so we also check pages by hand. Last tested: ${fmtDate(site.lastVerified)}.</p>
+<h2>Known limitations</h2>
+<p>Some pages link to other organizations' websites and documents, which we can't make accessible ourselves.</p>
+<h2>Report a problem</h2>
+<p>If something on this site is hard to use, email accessibility@eolatlas.com and tell us the page and what happened. We'll reply within five business days and, where we can, give you the information in another way.</p>
 </div></section>`,
   },
   {
