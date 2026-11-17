@@ -274,7 +274,7 @@ export const guides = [
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
-      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica and Europe.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
       ['/serious-illness/', 'Serious illness', 'If a diagnosis has already come.'],
     ],
   }),
@@ -283,7 +283,7 @@ export const guides = [
     path: '/plan-ahead/property-abroad/',
     title: 'Wills when you own property abroad',
     eyebrow: 'Plan ahead',
-    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Costa Rica, Spain, Portugal, France and Italy.',
+    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Costa Rica, Canada, the UK, Spain, Portugal, France and Italy.',
     lead: "If you own a home in another country, your will at home may not be enough. Here's what to check, with notes on the countries where expats most often own property.",
     sections: [
       { id: 'short', h: 'The short version', html: `<ul>
@@ -301,13 +301,24 @@ export const guides = [
 <li>Wills are made before a notary, in Spanish, and can be limited to your Costa Rica assets.</li>
 <li>Property in your own name normally goes through Costa Rican probate, even with a will. When the heirs agree and none of them is a minor, a notary can handle it instead of a court.</li>
 <li>Some foreigners hold property through a Costa Rican company. That changes how it passes on, so get local advice before setting one up.</li></ul>` },
+      { id: 'canada', h: 'Canada', html: `<ul>
+<li><strong>No inheritance tax, but capital gains.</strong> Canada has no inheritance or estate tax. Instead, death counts as selling your property at its market value, so capital gains tax may be due on a Canadian cottage or rental property on your final tax return.</li>
+<li><strong>Clearance before heirs are paid.</strong> The executor of a non-resident's estate usually needs a clearance certificate from the Canada Revenue Agency before handing Canadian property to heirs. If the property is sold, the buyer holds back part of the price until a separate certificate is issued.</li>
+<li><strong>Probate in the province.</strong> A US court's grant usually isn't enough on its own. The province where the property is issues its own grant, often only after US probate is finished. Rules and fees differ by province: Ontario issues an ancillary grant and may require a bond, and Quebec has a different legal system with notarial wills.</li>
+<li><strong>A Canadian will.</strong> Ask a Canadian lawyer whether a separate will for your Canadian property would make things simpler for your executor.</li></ul>` },
+      { id: 'uk', h: 'United Kingdom', html: `<ul>
+<li><strong>UK inheritance tax applies to UK property,</strong> whatever your nationality or where you live. The standard rate is 40% on the value above the £325,000 threshold. Some gifts, such as to a spouse or a charity, can be exempt; ask how the rules apply to you.</li>
+<li><strong>If you live in the UK,</strong> since April 2025 your assets worldwide can be taxed once you have been UK resident for 10 of the last 20 tax years.</li>
+<li><strong>Probate.</strong> Executors need a UK grant of probate to sell or transfer UK property. A grant from some Commonwealth countries can be resealed; a US grant usually can't, so a new UK application is needed.</li>
+<li><strong>Wills.</strong> A will made abroad can be valid in England and Wales if it meets the formal rules of the place it was made, or of your residence or nationality. Many people still use a separate UK will covering only UK assets, to make probate simpler.</li>
+<li><strong>Scotland is different.</strong> It has its own probate process (called confirmation) and inheritance rules, so get Scottish advice for property there.</li></ul>` },
       { id: 'europe', h: 'Spain, Portugal, France and Italy', html: `<ul>
 <li><strong>Which country's law applies.</strong> Under the EU Succession Regulation, the law of the country where you usually live at your death applies to your whole estate, unless your will chooses the law of a country you are a citizen of.</li>
 <li><strong>Fixed shares for children.</strong> These countries all have forced-heirship rules that reserve part of an estate for children, and sometimes a spouse. If you live there and make no choice in your will, those rules can apply to you.</li>
 <li><strong>A local will.</strong> Many advisers recommend a local will for property there, made with a notary and stating your choice of law if you want one.</li>
 <li><strong>Proof for heirs.</strong> Heirs can use a European Certificate of Succession to prove their rights in other EU countries.</li>
 <li><strong>Taxes.</strong> Inheritance taxes vary by country and, in Spain, by region. Ask before you assume there is none.</li></ul>` },
-      { id: 'taxes', h: 'Taxes at home', html: `<p>If you are a US citizen, all your assets worldwide count for US estate tax, including a home abroad. The other country may tax the same property too. A cross-border tax adviser can tell you whether a tax treaty helps.</p>` },
+      { id: 'taxes', h: 'Taxes at home', html: `<p>If you are a US citizen, all your assets worldwide count for US estate tax, including a home abroad. For deaths in 2026, a federal estate tax return is only required when the gross estate is over $15 million, so most estates owe none. The other country may still tax the property. The US has tax treaties that cover estates with some countries, including Canada and the UK; a cross-border tax adviser can tell you whether one helps.</p>` },
       { id: 'checklist', h: 'What to do now', html: `<ul class="check">
 <li>List every asset you own outside your home country, and how each is held.</li>
 <li>Ask a local notary or lawyer whether you need a local will.</li>
@@ -321,6 +332,11 @@ export const guides = [
       ['American Bar Association: foreign ownership of property in Mexico’s restricted zone (2026)', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
       ['Vive USA: September 2026 Will Month in Mexico', 'https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/'],
       ['AG Legal: Costa Rica wills for foreign property owners', 'https://aglegal.com/costa-rica-wills-foreigners/'],
+      ['O’Sullivan Estate Lawyers: cross-border Canada–US estate administration (April 2026, PDF)', 'https://www.osullivanlaw.com/wp-content/uploads/2026/04/Advisory-11-Cross-border-Canada-U.S.-estate-administration-highlights.pdf'],
+      ['Mondaq: cross-border Canada–US estate administration', 'https://www.mondaq.com/canada/wills-intestacy-estate-planning/685076/cross-border-canada-us-estate-administration-highlights'],
+      ['GOV.UK: how Inheritance Tax works', 'https://www.gov.uk/inheritance-tax'],
+      ['GOV.UK: applying for probate', 'https://www.gov.uk/applying-for-probate'],
+      ['IRS: estate tax (filing thresholds)', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
       ['EU Succession Regulation (EU) No 650/2012', 'https://eur-lex.europa.eu/eli/reg/2012/650'],
       ['European Commission: successions and wills', 'https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/civil-justice/family-law/successions-and-wills_en'],
       ['Notaries of Europe: successions handbook (2025, PDF)', 'https://www.notariesofeurope.eu/wp-content/uploads/2025/05/CNUE_Handbook-Successions_2025_EN_0006-1.pdf'],
