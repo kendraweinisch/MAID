@@ -264,6 +264,7 @@ export const guides = [
 <li>Who do you want with you, and who do you want to make decisions?</li>
 <li>What do you want for your body and your funeral?</li></ul>` },
       { id: 'paperwork', h: 'Get your paperwork in order', html: `<p>Families lose weeks looking for things. Write down where to find your will, insurance policies, bank and retirement accounts, the deed or lease, passwords, and who should look after children and pets. Add a beneficiary to accounts where you can: those usually pass outside probate.</p>
+<p>Own a home in another country? You may need a will there too. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>
 <p><a href="/checklists/plan-ahead/">Use the printable plan-ahead worksheet</a>.</p>` },
       { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, or nothing at all. Music, readings, who should speak. Writing it down is a gift to whoever has to arrange it. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
       { id: 'review', h: 'Review it every few years', html: `<p>Look again after a new diagnosis, a divorce or a death in the family, or every few years anyway. Update the documents and tell your proxy what changed.</p>` },
@@ -273,10 +274,62 @@ export const guides = [
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica and Europe.'],
       ['/serious-illness/', 'Serious illness', 'If a diagnosis has already come.'],
     ],
   }),
 
+  guide({
+    path: '/plan-ahead/property-abroad/',
+    title: 'Wills when you own property abroad',
+    eyebrow: 'Plan ahead',
+    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Costa Rica, Spain, Portugal, France and Italy.',
+    lead: "If you own a home in another country, your will at home may not be enough. Here's what to check, with notes on the countries where expats most often own property.",
+    sections: [
+      { id: 'short', h: 'The short version', html: `<ul>
+<li>Many advisers recommend a separate local will for property abroad, made with a local notary and covering only the assets in that country.</li>
+<li>Make sure your wills work together. A new will can cancel an older one unless each is worded to cover only its own country's assets. Tell each lawyer about the other will.</li>
+<li>Check how the property is held. A trust, a company or a co-owner can change who inherits, whatever your will says.</li>
+<li>Ask about taxes in both countries before you assume anything.</li></ul>` },
+      { id: 'why', h: "Why your home will may not be enough", html: `<p>To use a foreign will, heirs often have to settle the estate at home first, then have the documents certified with an apostille, translated and recognized by a local court or notary. That can take a long time and cost a lot. Local law may also decide who inherits land located there, and some countries reserve fixed shares for children (called forced heirship), whatever the will says.</p>` },
+      { id: 'mexico', h: 'Mexico', html: `<ul>
+<li><strong>Trust property (fideicomiso).</strong> Foreigners usually hold property near the coast or borders (the "restricted zone") through a bank trust called a fideicomiso. You name substitute beneficiaries in the trust itself, and the trust, not your will, decides who receives that property. Keep those beneficiaries up to date.</li>
+<li><strong>A Mexican will.</strong> Expats are usually advised to make a Mexican will, a <em>testamento público abierto</em>, before a Mexican notary (notario público), in Spanish. It covers assets outside the trust, such as bank accounts and cars.</li>
+<li><strong>Using a US will.</strong> A US will can be valid in Mexico, but heirs usually have to settle it in the US first and then have it recognized in Mexico, which is slow and expensive.</li>
+<li><strong>Will Month.</strong> Every September is <em>Mes del Testamento</em> (Will Month). Notaries cut their fees for wills, often by up to half. Discounts and dates vary by state.</li></ul>` },
+      { id: 'costa-rica', h: 'Costa Rica', html: `<ul>
+<li>Wills are made before a notary, in Spanish, and can be limited to your Costa Rica assets.</li>
+<li>Property in your own name normally goes through Costa Rican probate, even with a will. When the heirs agree and none of them is a minor, a notary can handle it instead of a court.</li>
+<li>Some foreigners hold property through a Costa Rican company. That changes how it passes on, so get local advice before setting one up.</li></ul>` },
+      { id: 'europe', h: 'Spain, Portugal, France and Italy', html: `<ul>
+<li><strong>Which country's law applies.</strong> Under the EU Succession Regulation, the law of the country where you usually live at your death applies to your whole estate, unless your will chooses the law of a country you are a citizen of.</li>
+<li><strong>Fixed shares for children.</strong> These countries all have forced-heirship rules that reserve part of an estate for children, and sometimes a spouse. If you live there and make no choice in your will, those rules can apply to you.</li>
+<li><strong>A local will.</strong> Many advisers recommend a local will for property there, made with a notary and stating your choice of law if you want one.</li>
+<li><strong>Proof for heirs.</strong> Heirs can use a European Certificate of Succession to prove their rights in other EU countries.</li>
+<li><strong>Taxes.</strong> Inheritance taxes vary by country and, in Spain, by region. Ask before you assume there is none.</li></ul>` },
+      { id: 'taxes', h: 'Taxes at home', html: `<p>If you are a US citizen, all your assets worldwide count for US estate tax, including a home abroad. The other country may tax the same property too. A cross-border tax adviser can tell you whether a tax treaty helps.</p>` },
+      { id: 'checklist', h: 'What to do now', html: `<ul class="check">
+<li>List every asset you own outside your home country, and how each is held.</li>
+<li>Ask a local notary or lawyer whether you need a local will.</li>
+<li>Make sure each will covers only its own country's assets and doesn't cancel the others.</li>
+<li>If you have a fideicomiso in Mexico, check the substitute beneficiaries.</li>
+<li>Keep copies, with translations, where your executor can find them.</li>
+<li>Review everything if you move country, marry, divorce or sell.</li></ul>` },
+      { id: 'after', h: 'If someone dies owning property abroad', html: `<p>Contact a notary or lawyer in that country early. You'll usually need certified, apostilled and translated copies of the death certificate and the will. If the death happened abroad, the nearest embassy or consulate of the person's home country can help with the first steps.</p>` },
+    ],
+    sources: [
+      ['American Bar Association: foreign ownership of property in Mexico’s restricted zone (2026)', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
+      ['Vive USA: September 2026 Will Month in Mexico', 'https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/'],
+      ['AG Legal: Costa Rica wills for foreign property owners', 'https://aglegal.com/costa-rica-wills-foreigners/'],
+      ['EU Succession Regulation (EU) No 650/2012', 'https://eur-lex.europa.eu/eli/reg/2012/650'],
+      ['European Commission: successions and wills', 'https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/civil-justice/family-law/successions-and-wills_en'],
+      ['Notaries of Europe: successions handbook (2025, PDF)', 'https://www.notariesofeurope.eu/wp-content/uploads/2025/05/CNUE_Handbook-Successions_2025_EN_0006-1.pdf'],
+    ],
+    related: [
+      ['/plan-ahead/', 'Plan ahead', 'The rest of your planning.'],
+      ['/after-a-death/', 'After a death', 'Settling an estate at home.'],
+    ],
+  }),
   guide({
     path: '/serious-illness/',
     title: 'Serious illness',
@@ -360,7 +413,8 @@ export const guides = [
 <li>Claim life insurance and any benefits; ask about survivor benefits.</li>
 <li>Cancel or transfer utilities, subscriptions and accounts. Keep paying essential bills.</li>
 <li>Forward mail, secure the home and car, and look after pets.</li></ul>` },
-      { id: 'probate', h: 'Probate and the estate', html: `<p>Probate is the court process for settling an estate. Accounts with a named beneficiary and jointly owned property usually pass outside it, and every state has a simpler process for small estates. If the estate is large or complicated, talk to a probate lawyer.</p>` },
+      { id: 'probate', h: 'Probate and the estate', html: `<p>Probate is the court process for settling an estate. Accounts with a named beneficiary and jointly owned property usually pass outside it, and every state has a simpler process for small estates. If the estate is large or complicated, talk to a probate lawyer.</p>
+<p>If they owned property in another country, see <a href="/plan-ahead/property-abroad/#after">property abroad</a>.</p>` },
     ],
     sources: [
       ['FTC: the Funeral Rule', 'https://consumer.ftc.gov/articles/ftc-funeral-rule'],
@@ -413,7 +467,7 @@ export const checklists = [
     groups: [
       { h: 'Medical wishes', items: ['I have an advance directive. It is kept: ______________', 'My health care proxy is: ______________ Phone: ______________', 'My backup proxy is: ______________', 'My doctor has a copy of my wishes.', 'What matters most to me at the end of life: ______________'] },
       { h: 'My people', items: ['People to call first: ______________', 'Who looks after my children / pets: ______________', 'My executor is: ______________'] },
-      { h: 'Where things are', items: ['Will: ______________', 'Life insurance policies: ______________', 'Bank and retirement accounts: ______________', 'Deed, lease or mortgage: ______________', 'Passwords and phone passcode: ______________'] },
+      { h: 'Where things are', items: ['Will: ______________', 'Life insurance policies: ______________', 'Bank and retirement accounts: ______________', 'Deed, lease or mortgage: ______________', 'Property in another country, and how it is held: ______________', 'Local will for that country? Kept: ______________', 'Passwords and phone passcode: ______________'] },
       { h: 'Afterward', items: ['Burial / cremation / green burial / body donation (circle one)', 'Service I would like: ______________', 'Music, readings or people I want included: ______________', 'Letters or messages to deliver: ______________'] },
     ],
   }),
