@@ -1,2 +1,72 @@
-# MAID
-End of life options
+# End of Life Atlas (eolatlas.com)
+
+A neutral, current guide to medical aid in dying in the US and worldwide, with
+paid navigation help alongside it.
+
+## Run it
+
+Needs Node 20 or later. There are no dependencies to install.
+
+```bash
+npm test        # build into dist/ and check every page
+npm run serve   # preview at http://localhost:8080
+```
+
+## How it's built
+
+- `src/data/places.json`: every state and country. **Edit facts here.** Only
+  checked facts go in `summary`, `since` and `nonResidents`; anything unchecked
+  says "To be verified". Set `verified` to the date a reviewer last checked it.
+- `src/pages.mjs`: page content. `src/layout.mjs`: header, footer, crisis line.
+- `src/styles.css`: all styles. `public/`: files copied as-is (favicon).
+- `build.mjs`: writes the static site to `dist/`, plus `sitemap.xml` and `robots.txt`.
+- `scripts/check.mjs`: fails the build if any page lacks the crisis line, a
+  title or a description, or has a broken internal link.
+
+## Deploy on Netlify (current host)
+
+Netlify builds from `netlify.toml` (build `node build.mjs`, publish `dist`) and
+handles the sign-up forms itself; submissions appear under **Forms** in the
+Netlify dashboard. Search indexing stays off until `SITE_INDEXABLE` is set to
+`"true"` in `netlify.toml`.
+
+## Deploy on GitHub Pages (alternative, free for this public repo)
+
+`.github/workflows/pages.yml` builds, checks and publishes the site. It runs
+only when started by hand while Netlify is the host.
+
+1. Merge the site into `main`.
+2. In the repo: **Settings > Pages > Build and deployment > Source: GitHub Actions**.
+3. The site appears at https://kendraweinisch.github.io/maid/
+
+Settings live in **Settings > Secrets and variables > Actions > Variables**:
+
+| Variable | Default | What it does |
+|---|---|---|
+| `BASE_PATH` | `/maid` | Sub-folder the site is served from. Set to `/` once eolatlas.com is connected. |
+| `FORM_ENDPOINT` | empty | URL of a form service (for example Formspree). Empty = forms say "opening soon". |
+| `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
+
+### Connecting eolatlas.com
+
+1. Buy the domain.
+2. **Settings > Pages > Custom domain**: enter `eolatlas.com`, then tick **Enforce HTTPS** once it's offered.
+3. At your domain registrar, add the DNS records GitHub shows (four `A` records for the bare domain, and a `CNAME` for `www` pointing to `kendraweinisch.github.io`).
+4. Set the `BASE_PATH` variable to `/` and re-run the workflow.
+
+## Before launch
+
+- [ ] Register eolatlas.com (and eolatlas.org to redirect)
+- [ ] Connect a form service and set `FORM_ENDPOINT`
+- [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
+- [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
+- [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
+- [ ] Set navigation prices (`[PRICE]` on `/navigation/`)
+- [ ] Set up corrections@ and privacy@ email addresses
+- [ ] Lawyer review of the whole site, especially `/going-abroad/` and `/navigation/`
+- [ ] Turn on search indexing
+
+## Other files
+
+- `docs/`: name shortlist and competitor notes
+- `mockups/landing-page/`: the original design mockup
