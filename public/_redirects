@@ -1,0 +1,7 @@
+# Old addresses from the first version of the site
+/places/          /medical-aid-in-dying/                  301
+/places/*         /medical-aid-in-dying/places/:splat     301
+/timeline/        /medical-aid-in-dying/process/          301
+/going-abroad/    /medical-aid-in-dying/switzerland/      301
+/families/        /medical-aid-in-dying/families/         301
+/alerts/          /updates/                               301
