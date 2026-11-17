@@ -22,13 +22,26 @@ const placeTable = (list, caption) => `<div class="table-box"><table>
 ${placeRows(list)}
 </tbody></table></div>`;
 
-const netlifyForm = (name, fields, button, note) => `<form class="form" name="${name}" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company">
+// Forms post to FORM_ENDPOINT (for example a Formspree URL) when it is set,
+// use Netlify Forms when building on Netlify, and otherwise show as "opening soon".
+const formEndpoint = process.env.FORM_ENDPOINT || '';
+const onNetlify = process.env.NETLIFY === 'true';
+
+const netlifyForm = (name, fields, button, note) => {
+  if (!formEndpoint && !onNetlify) {
+    return `<div class="card"><p style="margin:0"><strong>Sign-up opens soon.</strong> <span class="muted">This form isn't connected yet.</span></p></div>`;
+  }
+  const attrs = formEndpoint
+    ? `action="${esc(formEndpoint)}"`
+    : `action="/thanks/" data-netlify="true" netlify-honeypot="company"`;
+  return `<form class="form" name="${name}" method="POST" ${attrs}>
 <input type="hidden" name="form-name" value="${name}">
 <p class="skip"><label>Leave this empty <input name="company"></label></p>
 ${fields}
 <button class="btn btn-dark" type="submit">${button}</button>
 ${note ? `<p class="form-note">${note}</p>` : ''}
 </form>`;
+};
 
 const emailField = (id) => `<div class="field"><label for="${id}">Email</label><input id="${id}" name="email" type="email" autocomplete="email" required></div>`;
 
@@ -38,8 +51,9 @@ const checkerScript = `<script>
   if (!f) return;
   f.addEventListener('submit', function (e) {
     var v = f.elements.place.value;
+    var base = document.documentElement.getAttribute('data-base') || '';
     e.preventDefault();
-    window.location.href = v === 'elsewhere' ? '/places/#elsewhere' : v ? '/places/' + v + '/' : '/places/';
+    window.location.href = base + (v === 'elsewhere' ? '/places/#elsewhere' : v ? '/places/' + v + '/' : '/places/');
   });
 })();
 </script>`;

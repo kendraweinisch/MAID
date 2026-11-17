@@ -4,6 +4,7 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const root = 'dist';
+const base = (process.env.BASE_PATH || '').replace(/\/$/, '');
 const files = [];
 async function walk(dir) {
   for (const e of await readdir(dir, { withFileTypes: true })) {
@@ -22,7 +23,11 @@ for (const f of files) {
   if (!/<title>[^<]+<\/title>/.test(html)) problems.push(`${f}: missing title`);
   if (!/<meta name="description" content="[^"]+"/.test(html)) problems.push(`${f}: missing description`);
   if (/undefined|\[object Object\]|NaN/.test(html)) problems.push(`${f}: template leftover`);
-  for (const [, href] of html.matchAll(/href="(\/[^"#?]*)/g)) {
+  for (let [, href] of html.matchAll(/href="(\/[^"#?]*)/g)) {
+    if (base) {
+      if (!href.startsWith(base + '/')) { problems.push(`${f}: link missing base path ${href}`); continue; }
+      href = href.slice(base.length);
+    }
     const target = href.endsWith('/') ? join(root, href, 'index.html') : join(root, href);
     if (!(await exists(target))) problems.push(`${f}: broken link ${href}`);
   }

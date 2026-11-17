@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Served at https://kendraweinisch.github.io/maid/ until eolatlas.com is connected.
+      # After connecting the domain, set the repository variable BASE_PATH to "/".
+      BASE_PATH: ${{ vars.BASE_PATH || '/maid' }}
+      # Optional: a form service URL (for example Formspree). Empty = forms show "opening soon".
+      FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT }}
+      # Set the repository variable SITE_INDEXABLE to "true" at launch.
+      SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node build.mjs
+      - run: node scripts/check.mjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

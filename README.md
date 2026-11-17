@@ -23,16 +23,38 @@ npm run serve   # preview at http://localhost:8080
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a
   title or a description, or has a broken internal link.
 
-## Deploy (Netlify)
+## Deploy on GitHub Pages (free for this public repo)
 
-`netlify.toml` is set up: build command `node build.mjs`, publish `dist`.
-Forms (alerts, navigation interest, professionals) use Netlify Forms.
-Search indexing is **off** until launch: set `SITE_INDEXABLE` to `"true"` in
-`netlify.toml` when you're ready.
+`.github/workflows/pages.yml` builds, checks and publishes the site on every
+push to `main`.
+
+1. Merge the site into `main`.
+2. In the repo: **Settings > Pages > Build and deployment > Source: GitHub Actions**.
+3. The site appears at https://kendraweinisch.github.io/maid/
+
+Settings live in **Settings > Secrets and variables > Actions > Variables**:
+
+| Variable | Default | What it does |
+|---|---|---|
+| `BASE_PATH` | `/maid` | Sub-folder the site is served from. Set to `/` once eolatlas.com is connected. |
+| `FORM_ENDPOINT` | empty | URL of a form service (for example Formspree). Empty = forms say "opening soon". |
+| `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
+
+### Connecting eolatlas.com
+
+1. Buy the domain.
+2. **Settings > Pages > Custom domain**: enter `eolatlas.com`, then tick **Enforce HTTPS** once it's offered.
+3. At your domain registrar, add the DNS records GitHub shows (four `A` records for the bare domain, and a `CNAME` for `www` pointing to `kendraweinisch.github.io`).
+4. Set the `BASE_PATH` variable to `/` and re-run the workflow.
+
+### Netlify (alternative)
+
+`netlify.toml` still works if you'd rather use Netlify; its forms then work without `FORM_ENDPOINT`.
 
 ## Before launch
 
 - [ ] Register eolatlas.com (and eolatlas.org to redirect)
+- [ ] Connect a form service and set `FORM_ENDPOINT`
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
