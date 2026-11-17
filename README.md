@@ -1,7 +1,8 @@
 # End of Life Atlas (eolatlas.com)
 
-A neutral, current guide to medical aid in dying in the US and worldwide, with
-paid navigation help alongside it.
+A plain, trustworthy guide to every part of the end of life: planning ahead,
+serious illness, the last weeks, after a death, and grief. Medical aid in dying
+is one section within it. Positioning: `docs/positioning.md`.
 
 ## Run it
 
@@ -14,11 +15,13 @@ npm run serve   # preview at http://localhost:8080
 
 ## How it's built
 
-- `src/data/places.json`: every state and country. **Edit facts here.** Only
+- `src/pages.mjs`: all page content. Stage guides use the `guide()` helper
+  (sections, sources, related links); printable checklists use `checklist()`.
+- `src/data/places.json`: medical aid in dying, by state and country. **Edit those facts here.** Only
   checked facts go in `summary`, `since` and `nonResidents`; anything unchecked
   says "To be verified". Set `verified` to the date a reviewer last checked it.
-- `src/pages.mjs`: page content. `src/layout.mjs`: header, footer, crisis line.
-- `src/styles.css`: all styles. `public/`: files copied as-is (favicon).
+- `src/layout.mjs`: header, navigation, footer, and the crisis bar (shown on aid-in-dying and grief pages; the footer crisis line is on every page).
+- `src/styles.css`: all styles. `public/`: files copied as-is (favicon, `_redirects` for old addresses).
 - `build.mjs`: writes the static site to `dist/`, plus `sitemap.xml` and `robots.txt`.
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a
   title or a description, or has a broken internal link.

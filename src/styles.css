@@ -147,3 +147,22 @@ tbody tr { border-top: 1px solid var(--line); }
 }
 
 @media print { .crisis, .site-header, .site-footer, .form-panel { display: none; } }
+
+/* Guides, stages, checklists */
+.page-hero { background: var(--surface); border-bottom: 1px solid var(--line); padding: 64px 0 40px; }
+.toc { margin-bottom: 8px; }
+.toc ul { margin: 8px 0 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+.toc li { break-inside: avoid; }
+@media (max-width: 560px) { .toc ul { columns: 1; } }
+.stage { position: relative; padding-top: 56px; }
+.stage-n { position: absolute; top: 18px; left: 24px; font-family: var(--serif); font-size: 26px; color: var(--link); }
+.btn-quiet { background: transparent; color: var(--link); border: 1px solid var(--accent); }
+.btn-quiet:hover { background: var(--tint); color: var(--link-hover); }
+.print-only { display: none; }
+@media print {
+  .no-print, .toc { display: none !important; }
+  .print-only { display: block; }
+  body { background: #FFF; font-size: 12pt; }
+  .section { padding: 0; }
+  .check li { margin-bottom: 18px; }
+}

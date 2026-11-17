@@ -1,6 +1,6 @@
 export const site = {
   name: 'End of Life Atlas',
-  tagline: 'End-of-life choices, explained',
+  tagline: 'Every part of the end of life, explained',
   url: 'https://eolatlas.com',
   lastVerified: '2026-11-17',
 };
@@ -18,15 +18,15 @@ export const fmtDate = (iso) =>
     : 'Not yet verified';
 
 const nav = [
-  ['/places/', 'Places'],
-  ['/timeline/', 'Timeline'],
-  ['/going-abroad/', 'Going abroad'],
-  ['/families/', 'For families'],
   ['/plan-ahead/', 'Plan ahead'],
-  ['/professionals/', 'For professionals'],
+  ['/serious-illness/', 'Serious illness'],
+  ['/last-weeks/', 'The last weeks'],
+  ['/after-a-death/', 'After a death'],
+  ['/grief/', 'Grief'],
+  ['/medical-aid-in-dying/', 'Medical aid in dying'],
 ];
 
-export function layout({ path, title, description, body }) {
+export function layout({ path, title, description, body, crisis = false }) {
   const fullTitle = path === '/' ? `${site.name}: ${site.tagline}` : `${title} | ${site.name}`;
   const links = nav
     .map(([href, label]) => `<a href="${href}"${path.startsWith(href) ? ' aria-current="page"' : ''}>${label}</a>`)
@@ -52,8 +52,7 @@ export function layout({ path, title, description, body }) {
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="crisis" role="note">If you are thinking about suicide or are in crisis, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>. You are not alone.</div>
-<header class="site-header">
+${crisis ? '<div class="crisis" role="note">If you are thinking about suicide or are in crisis, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>. You are not alone.</div>\n' : ''}<header class="site-header">
 <div class="wrap">
 <a class="brand" href="/">${site.name} <span>${site.tagline}</span></a>
 <nav class="nav" aria-label="Main">
@@ -82,19 +81,19 @@ ${body}
 </ul>
 </div>
 <div>
-<h2>Guides</h2>
+<h2>Checklists</h2>
 <ul>
-<li><a href="/places/">Where it's legal</a></li>
-<li><a href="/timeline/">How long it takes</a></li>
-<li><a href="/alerts/">Law-change alerts</a></li>
+<li><a href="/checklists/plan-ahead/">Plan-ahead worksheet</a></li>
+<li><a href="/checklists/questions-for-the-doctor/">Questions for the doctor</a></li>
+<li><a href="/checklists/after-a-death/">After a death: first 24 hours</a></li>
 </ul>
 </div>
 <div>
 <h2>In crisis?</h2>
-<p>US: call or text 988. Elsewhere: <a href="https://findahelpline.com">findahelpline.com</a></p>
+<p>If you are thinking about suicide, call or text 988 in the US. Elsewhere: <a href="https://findahelpline.com">findahelpline.com</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.com · We cover legal processes only.</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.com · Information, not medical or legal advice.</p>
 </div>
 </footer>
 </body>

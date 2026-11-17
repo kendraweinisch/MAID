@@ -2,7 +2,7 @@
 import { mkdir, readFile, writeFile, rm, cp } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { layout, site } from './src/layout.mjs';
-import { home, placesIndex, placePage, staticPages, notFound } from './src/pages.mjs';
+import { home, guides, checklists, checklistIndex, maidHub, placePage, maidPages, staticPages, notFound } from './src/pages.mjs';
 
 const out = 'dist';
 // BASE_PATH serves the site from a sub-folder, e.g. "/maid" on username.github.io/maid/.
@@ -16,7 +16,16 @@ const withBase = (html) =>
     : html;
 const data = JSON.parse(await readFile('src/data/places.json', 'utf8'));
 
-const pages = [home(data), placesIndex(data), ...data.places.map(placePage), ...staticPages];
+const pages = [
+  home(data),
+  ...guides,
+  checklistIndex,
+  ...checklists,
+  maidHub(data),
+  ...maidPages,
+  ...data.places.map(placePage),
+  ...staticPages,
+];
 
 await rm(out, { recursive: true, force: true });
 for (const page of [...pages, notFound]) {
