@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
+# Manual only: the site is hosted on Netlify. To use GitHub Pages instead,
+# add back:  push: { branches: [main] }
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

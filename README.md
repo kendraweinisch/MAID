@@ -23,10 +23,17 @@ npm run serve   # preview at http://localhost:8080
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a
   title or a description, or has a broken internal link.
 
-## Deploy on GitHub Pages (free for this public repo)
+## Deploy on Netlify (current host)
 
-`.github/workflows/pages.yml` builds, checks and publishes the site on every
-push to `main`.
+Netlify builds from `netlify.toml` (build `node build.mjs`, publish `dist`) and
+handles the sign-up forms itself; submissions appear under **Forms** in the
+Netlify dashboard. Search indexing stays off until `SITE_INDEXABLE` is set to
+`"true"` in `netlify.toml`.
+
+## Deploy on GitHub Pages (alternative, free for this public repo)
+
+`.github/workflows/pages.yml` builds, checks and publishes the site. It runs
+only when started by hand while Netlify is the host.
 
 1. Merge the site into `main`.
 2. In the repo: **Settings > Pages > Build and deployment > Source: GitHub Actions**.
@@ -46,10 +53,6 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 2. **Settings > Pages > Custom domain**: enter `eolatlas.com`, then tick **Enforce HTTPS** once it's offered.
 3. At your domain registrar, add the DNS records GitHub shows (four `A` records for the bare domain, and a `CNAME` for `www` pointing to `kendraweinisch.github.io`).
 4. Set the `BASE_PATH` variable to `/` and re-run the workflow.
-
-### Netlify (alternative)
-
-`netlify.toml` still works if you'd rather use Netlify; its forms then work without `FORM_ENDPOINT`.
 
 ## Before launch
 
