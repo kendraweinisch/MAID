@@ -158,7 +158,7 @@ export function home(data) {
 <div class="trust">
 <div><strong>Organized by what you're facing</strong><span class="muted">Not by what someone wants to sell you.</span></div>
 <div><strong>Checked and dated</strong><span class="muted">Every guide shows when it was last reviewed and links its sources.</span></div>
-<div><strong>Nothing to sell inside the guide</strong><span class="muted">No ads, no referral fees, no funeral-home leads. <a href="/about/#funding">How we're funded</a></span></div>
+<div><strong>Nothing to sell inside the guide</strong><span class="muted">No funding, no ads, no referral fees. <a href="/about/#funding">How we're funded</a></span></div>
 <div><strong>Every option, including the hard ones</strong><span class="muted">Hospice, home funerals, green burial and medical aid in dying, covered plainly.</span></div>
 </div>
 </aside>
@@ -675,8 +675,9 @@ ${updatesForm('updates')}
 <h1>About End of Life Atlas</h1>
 <p class="lead" style="margin:20px 0">A plain, trustworthy guide to every part of the end of life, from planning ahead to grief, with the rules for where you live.</p>
 <h2 id="funding">How we're funded</h2>
-<p>End of Life Atlas is run by an independent company. The guides and checklists are free. We earn money from paid navigation sessions, from licensing our guides to hospices, employers and insurers, and from professional training.</p>
+<p><strong>End of Life Atlas currently has no funding.</strong> It is built and maintained independently, and it earns no money. The guides and checklists are free.</p>
 <p>We take no advertising, no referral fees and no payments from hospices, funeral homes, clinicians, pharmacies or assisted-dying organizations.</p>
+<p>The navigation and organization services described on this site are not open yet. If we start charging for them, or take any other funding, we will say so on this page.</p>
 <h2 id="editorial">Editorial and review policy</h2>
 <ul>
 <li>Facts come from official sources or named reports, linked on the page.</li>
