@@ -39,13 +39,21 @@ and the Isle of Man, US state bills, and any new US states.
 | Every choice for the body | States allowing human composting and water cremation, EPA and UK burial-at-sea rules |
 | Going to Switzerland | Approximate fees |
 | Finding help | Directory links still live |
+| Advance directives by state (`src/data/advance-directives.json`) | Every official form link and CaringInfo link still live; new state forms (several states, such as Utah in 2026, are moving to the Uniform Health-Care Decisions Act). Update `verified` |
 
-## 4. Printables
+## 4. Spanish pages
+
+The Spanish pages in `src/es.mjs` translate the English pages listed in
+`ES_PAIRS` (`src/layout.mjs`). If one of those English pages changed this
+month, make the same change in Spanish. Spanish translations are marked as
+pending native-speaker review until a reviewer has read them.
+
+## 5. Printables
 
 If any printable's text changed, regenerate the PDFs and thumbnails:
-`npm run build && node scripts/make-printables.cjs`, and commit them.
+`npm run build && node scripts/make-printables.cjs && python3 scripts/make-binder.py` (the last step rebuilds the all-in-one binder; it needs the pypdf package), and commit them.
 
-## 5. Rules for any change
+## 6. Rules for any change
 
 - No invented facts. Every new or changed fact needs a source on the page.
 - Prefer official sources (governments, regulators, statutes), then
@@ -54,7 +62,7 @@ If any printable's text changed, regenerate the PDFs and thumbnails:
 - Update `src/data/review.json` `lastScan` to the date of the check, and a
   guide's `reviewed` date only when its text changed.
 
-## 6. Pull request
+## 7. Pull request
 
 Title: `Monthly accuracy check: <Month YYYY>`. In the description, list
 what changed (with sources), what was confirmed unchanged, blocked links

@@ -268,8 +268,63 @@ export function printablesIndex(existing) {
 <section class="section"><div class="wrap">
 <h1>Free printables</h1>
 <p class="lead" style="margin:20px 0 40px">Worksheets, checklists and remembering books. Free, no account, no email. Print them, fill them in by hand, and keep them where your family can find them.</p>
+<div class="card binder-promo"><p class="tag">Everything at once</p><h2 style="margin-top:4px"><a href="/checklists/binder/">The End of Life Atlas binder</a></h2><p class="muted">All eleven printables in one PDF, with a cover and contents page. Print it once and keep it in a binder.</p><p><a class="btn btn-small" href="/printables/binder.pdf" download>Download the binder (PDF)</a> <a class="small" href="/checklists/binder/">What's in it</a></p></div>
 ${groups.map(([h, list]) => `<h2>${h}</h2>${cards(list)}`).join('\n')}
 </div></section>`,
+  };
+}
+
+/* ---------- the whole binder ---------- */
+
+// Every printable in one PDF, in this order, after a cover and contents page.
+// scripts/make-binder.py joins the PDFs; page numbers come from printables-meta.json.
+export const BINDER = [
+  ['Planning ahead', [['plan-ahead', 'Plan-ahead worksheet'], ['funeral-planner', 'Funeral or celebration of life planner'], ['talking-with-a-parent', 'Talking with a parent about the end of life'], ['letters-to-leave', 'Letters to leave'], ['life-story', 'My life story']]],
+  ['Serious illness and after a death', [['questions-for-the-doctor', 'Questions for the doctor'], ['after-a-death', 'After a death: the first 24 hours'], ['eulogy', 'Writing a eulogy']]],
+  ['For children who are grieving', [['remembering-someone', 'Someone I love: a remembering book'], ['remembering-grandparent', 'My grandparent: a remembering book'], ['remembering-pet', 'My pet: a remembering book']]],
+];
+const BINDER_FRONT_PAGES = 2; // the cover and the contents page
+
+export function binderPage() {
+  let n = BINDER_FRONT_PAGES + 1;
+  const total = BINDER.flatMap(([, l]) => l).reduce((t, [slug]) => t + ((META[slug] || {}).pages || 1), 0) + BINDER_FRONT_PAGES;
+  const m = META.binder;
+  const rows = BINDER.map(([h, list]) => `<h3>${h}</h3><ul class="binder-toc">${list
+    .map(([slug, title]) => {
+      const row = `<li><a href="/checklists/${slug}/">${title}</a><span class="pg"><span class="sr-only">page </span>${n}</span></li>`;
+      n += (META[slug] || {}).pages || 1;
+      return row;
+    })
+    .join('')}</ul>`).join('\n');
+  return {
+    path: '/checklists/binder/',
+    title: 'The End of Life Atlas binder',
+    seoTitle: 'Free end-of-life planning binder: every worksheet in one printable PDF',
+    description: 'Every End of Life Atlas worksheet, checklist and remembering book in one free printable PDF, with a cover and contents page. No account, no email.',
+    body: `
+<section class="section">
+<div class="wrap prose">
+<p class="small no-print"><a href="/checklists/">All printables</a></p>
+<div class="binder-cover">
+<p class="eyebrow">Free printable binder</p>
+<h1>The End of Life Atlas binder</h1>
+<p class="lead" style="margin:20px 0">Every worksheet, checklist and remembering book in one PDF. Print it, put it in a binder, fill in what you can, and tell someone where it is.</p>
+<div class="binder-for print-only">
+<p>This binder belongs to: <span class="blank" aria-hidden="true"></span></p>
+<p>If you are reading this because I can't speak for myself or have died, start with the plan-ahead worksheet. My advance directive is kept: <span class="blank" aria-hidden="true"></span></p>
+<p>Started on: <span class="blank" aria-hidden="true"></span> Last updated: <span class="blank" aria-hidden="true"></span></p>
+</div>
+</div>
+${m ? `<div class="dl-panel no-print"><img src="/thumbs/binder.png" alt="" width="367" height="475"><div><p class="tag">Free printable · Everything</p><p class="dl-meta">${m.pages} pages · ${(m.kb / 1024).toFixed(1)} MB PDF · No sign-up</p><div class="actions"><a class="btn" href="/printables/binder.pdf" download>Download the binder (PDF)</a></div><p class="small muted" style="margin:12px 0 0">Or print only the parts you need from the <a href="/checklists/">printables page</a>.</p></div></div>` : ''}
+<div class="binder-contents">
+<h2>Contents</h2>
+<p class="muted small">${total} pages. Fill in by hand. Skip anything that doesn't fit.</p>
+${rows}
+<p class="muted small">Your state's advance directive form is not included, because each state has its own: find yours at eolatlas.com/plan-ahead/advance-directives/ and keep it in this binder.</p>
+</div>
+${footer}
+</div>
+</section>`,
   };
 }
 

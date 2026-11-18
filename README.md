@@ -26,7 +26,7 @@ npm run serve   # preview at http://localhost:8080
 - `src/journeys.mjs`: the two step-by-step journeys (for myself, for someone I love).
 - `public/printables/*.pdf`, `public/thumbs/*.png`: made by `scripts/make-printables.cjs`
   from the printable pages. After changing a printable, run
-  `npm run build && node scripts/make-printables.cjs` and commit the results.
+  `npm run build && node scripts/make-printables.cjs && python3 scripts/make-binder.py` and commit the results.
 - `src/styles.css`: all styles. `public/`: files copied as-is (favicon, `_redirects` for old addresses).
 - `build.mjs`: writes the static site to `dist/`, plus `sitemap.xml` and `robots.txt`.
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a
@@ -99,3 +99,22 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 
 - `docs/`: name shortlist and competitor notes
 - `mockups/landing-page/`: the original design mockup
+
+## Spanish
+
+Spanish pages live under `/es/` and are built from `src/es.mjs`. Each one is
+paired with its English page in `ES_PAIRS` (`src/layout.mjs`), which drives
+the hreflang tags and the English/Español switch in the header. The Ask
+assistant uses `search-index-es.json` on Spanish pages. Translations are
+flagged as pending review by a native speaker.
+
+## Advance directives by state
+
+`src/data/advance-directives.json` lists, for each state and DC, the official
+form or the law that sets it out, plus a free CaringInfo form. Pages are built
+by `src/advance-directives.mjs`.
+
+## The binder
+
+`/checklists/binder/` and `public/printables/binder.pdf`: every printable in
+one PDF. Rebuild with `node scripts/make-printables.cjs && python3 scripts/make-binder.py`.

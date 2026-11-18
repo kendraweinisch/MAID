@@ -18,7 +18,8 @@
       if (b.checked) done++;
       if (li) li.classList.toggle('is-done', b.checked);
     });
-    progress.textContent = done + ' of ' + total + ' stops done. Your ticks are saved only in this browser.';
+    var tpl = progress.getAttribute('data-template') || '{done} of {total} stops done. Your ticks are saved only in this browser.';
+    progress.textContent = tpl.replace('{done}', done).replace('{total}', total);
   }
 
   Array.prototype.forEach.call(boxes, function (b) {

@@ -25,7 +25,7 @@ const myself = {
     {
       h: 'Put it in writing',
       stops: [
-        { id: 'medical', t: 'Write down your medical wishes', d: "An advance directive and health care power of attorney, on your state's or country's form.", links: [['/plan-ahead/#directive', 'Advance directives']] },
+        { id: 'medical', t: 'Write down your medical wishes', d: "An advance directive and health care power of attorney, on your state's or country's form.", links: [['/plan-ahead/advance-directives/', 'Your state\'s form'], ['/plan-ahead/#directive', 'Advance directives']] },
         { id: 'will', t: 'Make a will and the money documents', d: 'A will, a financial power of attorney, and up-to-date beneficiaries. Rules differ by state and country.', links: [['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork'], ['/plan-ahead/property-abroad/', 'Property abroad']] },
         { id: 'words', t: 'Leave your words', d: 'Letters for the people you love, and your life story in your own words.', links: [['/checklists/letters-to-leave/', 'Letters to leave'], ['/checklists/life-story/', 'My life story']] },
         { id: 'one-place', t: 'Put everything in one place', d: 'Where your documents are, your accounts, your digital life, and who to call.', links: [['/checklists/plan-ahead/', 'Plan-ahead worksheet'], ['/plan-ahead/wills-and-trusts/#digital', 'Your digital life']] },
@@ -55,7 +55,7 @@ const lovedOne = {
       h: 'While they are well',
       stops: [
         { id: 'talk', t: 'Start the conversation', d: 'Gentle ways to ask what they want, with space to write down their answers.', links: [['/plan-ahead/talking-with-a-parent/', 'Talking with a parent'], ['/checklists/talking-with-a-parent/', 'Conversation sheet']] },
-        { id: 'documents', t: 'Help them get their documents in order', d: 'An advance directive, a will, powers of attorney, and a list of where everything is.', links: [['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork'], ['/checklists/plan-ahead/', 'Plan-ahead worksheet']] },
+        { id: 'documents', t: 'Help them get their documents in order', d: 'An advance directive, a will, powers of attorney, and a list of where everything is.', links: [['/plan-ahead/advance-directives/', 'Advance directive forms by state'], ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork'], ['/checklists/plan-ahead/', 'Plan-ahead worksheet']] },
         { id: 'far', t: 'If you live far away', d: 'Video calls, local helpers, copies of key papers, and being their proxy across time zones.', links: [['/plan-ahead/talking-with-a-parent/#far', 'When you live far away']] },
       ],
     },
@@ -96,7 +96,17 @@ const lovedOne = {
   ],
 };
 
-function journeyPage(j) {
+const EN = {
+  eyebrow: 'A step-by-step path',
+  start: (n) => `${n} stops. Your ticks are saved only in this browser.`,
+  progress: '{done} of {total} stops done. Your ticks are saved only in this browser.',
+  done: 'Done',
+  also: 'Also',
+  others: { myself: ['/for-someone-i-love/', "I'm planning for someone I love"], 'loved-one': ['/for-myself/', "I'm planning for myself"] },
+  extra: '<a href="/ask/">Ask a question</a> · <a href="/checklists/">All printables</a>',
+};
+
+export function journeyPage(j, t = EN) {
   let n = 0;
   const total = j.phases.reduce((s, p) => s + p.stops.length, 0);
   const phases = j.phases
@@ -106,14 +116,14 @@ function journeyPage(j) {
 ${ph.stops
   .map((st) => {
     n += 1;
-    const id = `${j.slug}-${st.id}`;
+    const id = `${j.slug}-${st.id}`; // the same key in every language, so ticks carry over
     return `<li class="stop" id="${st.id}">
 <span class="stop-n" aria-hidden="true">${n}</span>
 <div class="stop-card">
 <h3>${st.t}</h3>
 <p>${st.d}</p>
 <p class="stop-links">${st.links.map(([href, label]) => `<a class="chip-link" href="${href}">${label}</a>`).join(' ')}</p>
-<p class="stop-done"><input type="checkbox" id="done-${id}" data-step="${id}"> <label for="done-${id}">Done<span class="sr-only">: ${st.t}</span></label></p>
+<p class="stop-done"><input type="checkbox" id="done-${id}" data-step="${id}"> <label for="done-${id}">${t.done}<span class="sr-only">: ${st.t}</span></label></p>
 </div>
 </li>`;
   })
@@ -121,7 +131,7 @@ ${ph.stops
 </ol>`
     )
     .join('\n');
-  const other = j.slug === 'myself' ? ['/for-someone-i-love/', "I'm planning for someone I love"] : ['/for-myself/', "I'm planning for myself"];
+  const other = t.others[j.slug];
   return {
     path: j.path,
     title: j.title,
@@ -130,16 +140,16 @@ ${ph.stops
 <section class="page-hero">
 <div class="wrap prose">
 <div class="journey-icon">${j.icon}</div>
-<p class="eyebrow">A step-by-step path</p>
+<p class="eyebrow">${t.eyebrow}</p>
 <h1>${j.title}</h1>
 <p class="lead" style="margin-top:20px">${j.lead}</p>
-<p class="journey-progress small" data-journey="${j.slug}" data-total="${total}" aria-live="polite">${total} stops. Your ticks are saved only in this browser.</p>
+<p class="journey-progress small" data-journey="${j.slug}" data-total="${total}" data-template="${t.progress}" aria-live="polite">${t.start(total)}</p>
 </div>
 </section>
 <section class="section">
 <div class="wrap prose">
 ${phases}
-<div class="notice" style="margin-top:48px"><strong>Also:</strong> <a href="${other[0]}">${other[1]}</a> · <a href="/ask/">Ask a question</a> · <a href="/checklists/">All printables</a></div>
+<div class="notice" style="margin-top:48px"><strong>${t.also}:</strong> <a href="${other[0]}">${other[1]}</a> · ${t.extra}</div>
 </div>
 </section>
 <script src="/journey.js" defer></script>`,
