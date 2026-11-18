@@ -31,6 +31,21 @@ export function printCard(slug, title) {
 </article>`;
 }
 
+// The panel at the top of each printable: a picture of the page and download buttons.
+export function dlPanel(slug) {
+  const m = META[slug];
+  if (!m) return `<p class="no-print"><button class="btn" type="button" onclick="window.print()">Print this</button></p>`;
+  return `<div class="dl-panel no-print">
+<img src="/thumbs/${slug}.png" alt="" width="367" height="475">
+<div>
+<p class="tag">Free printable · ${(CARD[slug] || ['Printable'])[0]}</p>
+<p class="dl-meta">${m.pages} ${m.pages === 1 ? 'page' : 'pages'} · ${m.kb} KB PDF · No sign-up</p>
+<div class="actions"><a class="btn" href="/printables/${slug}.pdf" download>Download PDF</a><button class="btn btn-quiet" type="button" onclick="window.print()">Print this page</button></div>
+<p class="small muted" style="margin:12px 0 0">Fill it in by hand, and keep it where your family can find it.</p>
+</div>
+</div>`;
+}
+
 // Printable worksheets and workbooks: free, no account, made to be printed
 // and filled in by hand. All writing space is decorative (aria-hidden) so
 // screen readers hear only the prompts.
@@ -54,8 +69,8 @@ function page({ path, title, description, kind, lead, intro = '', body }) {
 <p class="eyebrow">${kind}</p>
 <h1>${title}</h1>
 <p class="lead" style="margin:20px 0">${lead}</p>
+${dlPanel(path.split('/')[2])}
 ${intro}
-${printButton}
 ${body}
 ${footer}
 </div>
