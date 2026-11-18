@@ -118,3 +118,11 @@ by `src/advance-directives.mjs`.
 
 `/checklists/binder/` and `public/printables/binder.pdf`: every printable in
 one PDF. Rebuild with `node scripts/make-printables.cjs && python3 scripts/make-binder.py`.
+
+## The cost database
+
+`/what-it-costs/database/`: what people actually paid, by hospital or provider
+and location. Reports come in through the Netlify form `cost-report`
+(anonymous, no comments), are reviewed by a person, and are added with
+`node scripts/import-costs.mjs <netlify-export.csv>` into
+`src/data/cost-reports.json`. See docs/monthly-review.md.

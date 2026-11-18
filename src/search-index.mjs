@@ -26,7 +26,7 @@ const toText = (html) =>
     .replace(/:\s*\./g, ':')
     .trim();
 
-const SKIP = new Set(['/', '/es/', '/es/preguntar/', '/ask/', '/suggestions/', '/suggestions/thanks/', '/404.html']);
+const SKIP = new Set(['/', '/es/', '/es/preguntar/', '/ask/', '/suggestions/', '/suggestions/thanks/', '/what-it-costs/database/thanks/', '/404.html']);
 
 export function buildSearchIndex(pages, renderBody) {
   const records = [];

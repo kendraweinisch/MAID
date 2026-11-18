@@ -41,7 +41,18 @@ and the Isle of Man, US state bills, and any new US states.
 | Finding help | Directory links still live |
 | Advance directives by state (`src/data/advance-directives.json`) | Every official form link and CaringInfo link still live; new state forms (several states, such as Utah in 2026, are moving to the Uniform Health-Care Decisions Act). Update `verified` |
 
-## 4. Spanish pages
+## 4. Cost database reports
+
+1. In Netlify, open Forms → cost-report and download the submissions as CSV.
+2. Delete any rows that shouldn't be published: spam, jokes, personal names,
+   medical details, or amounts that are clearly wrong.
+3. Run `node scripts/import-costs.mjs path/to/export.csv`. It skips rows
+   already imported and lists rows it rejected, and why.
+4. Check the diff of `src/data/cost-reports.json`, then build and commit.
+
+The table shows a median for a kind of care once it has 3 US-dollar reports.
+
+## 4b. Spanish pages
 
 The Spanish pages in `src/es.mjs` translate the English pages listed in
 `ES_PAIRS` (`src/layout.mjs`). If one of those English pages changed this

@@ -762,7 +762,8 @@ export const guides = [
 <li><strong>It depends most on where you live.</strong> In countries with public health systems, such as the UK and Canada, most medical and hospice care is free or largely covered. In the US, costs depend on insurance and on which kind of care is needed.</li>
 <li><strong>The biggest out-of-pocket costs are usually not medical.</strong> Paid care at home or in a care home, and the funeral, are what most families pay for themselves.</li>
 <li><strong>Prices vary widely,</strong> even between nearby hospitals and funeral homes. Asking for written, itemized prices is the single best way to save money.</li></ul>
-<p>Figures below are US national medians unless we say otherwise. Your area may be much higher or lower.</p>` },
+<p>Figures below are US national medians unless we say otherwise. Your area may be much higher or lower.</p>
+<div class="notice"><p style="margin:0"><strong>What did you pay?</strong> The <a href="/what-it-costs/database/">cost database</a> collects what families actually paid at named hospitals, hospices and funeral homes. Add yours anonymously.</p></div>` },
       { id: 'medical', h: 'Medical care in the last year of life', html: `<p>In the US, about a quarter of Medicare spending on people aged 65 and over goes to care in their last year of life, according to KFF's analysis of 2014 data, the most recent it has published. Much of that is hospital and intensive care.</p>
 <p>How much care people get near the end varies a great deal between hospitals. The <a href="https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/">Dartmouth Atlas</a> compares US hospitals on Medicare spending, hospital and intensive-care days and hospice use in patients' last two years of life. Its hospital data is from 2017, so use it to compare patterns, not today's prices.</p>` },
       { id: 'hospice', h: 'Hospice and palliative care', html: `<ul>
@@ -1424,7 +1425,7 @@ ${onNetlify ? `<form class="form suggest-form" name="suggestions" method="POST" 
   {
     path: '/privacy/',
     title: 'Privacy',
-    description: 'End of Life Atlas collects no personal information: no accounts, forms, email lists or tracking.',
+    description: 'End of Life Atlas collects no personal information: no accounts, email lists or tracking. The suggestion and cost forms are anonymous.',
     body: `
 <section class="section"><div class="wrap prose">
 <h1>Privacy</h1>
@@ -1433,6 +1434,7 @@ ${onNetlify ? `<form class="form suggest-form" name="suggestions" method="POST" 
 <li>There are no accounts and no email lists. We use no advertising or tracking cookies.</li>
 ${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views with <a href="https://www.goatcounter.com/">GoatCounter</a>, which uses no cookies, does not collect personal information and does not track you across other sites. It tells us things like which pages are read and roughly which countries visitors come from.</li>' : ''}
 <li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, what you write is stored by our host, Netlify, and sent privately to the person who runs the site. Your name and email are optional.</li>
+<li><strong>Cost reports:</strong> if you add what you paid to the <a href="/what-it-costs/database/">cost database</a>, the report is stored by Netlify and reviewed by a person. We don't ask for your name or email. Only the provider, location, kind of care, year, amounts and coverage are published.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
 <li>Like any website, the site's host (Netlify) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
 </ul>

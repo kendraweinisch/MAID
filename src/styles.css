@@ -127,7 +127,7 @@ a.card:hover strong { color: var(--accent-text); text-decoration: underline; tex
 .form { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; }
 .field { display: flex; flex-direction: column; gap: 6px; flex: 1 1 220px; }
 .field label { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
-select, input[type="email"], input[type="text"], input[type="search"], textarea { font: inherit; font-size: 17px; padding: 11px 12px; min-height: 48px; border: 1.5px solid var(--ink); border-radius: 0; background: #FFFDF8; color: var(--ink); width: 100%; }
+select, input[type="email"], input[type="text"], input[type="search"], input[type="number"], textarea { font: inherit; font-size: 17px; padding: 11px 12px; min-height: 48px; border: 1.5px solid var(--ink); border-radius: 0; background: #FFFDF8; color: var(--ink); width: 100%; }
 .form-note { flex-basis: 100%; margin: 0; font-size: 15px; color: var(--muted); }
 
 /* Tables and pills */
@@ -382,3 +382,14 @@ a.src-link { text-decoration-style: dotted; text-decoration-thickness: 1.5px; }
   .glance-card { background: #fff; color: #000; border: 1px solid #000; }
   .glance-card span { color: #000; }
 }
+
+/* Cost database */
+.db-filter { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 8px 0 4px; }
+.db-filter .field { flex: 1 1 260px; }
+.db-table td.num, .db-table th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.db-form fieldset { border: 1.5px solid var(--ink); background: #FFFDF8; padding: 16px 20px 6px; margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 0 20px; flex-basis: 100%; }
+.db-form legend { font-family: var(--mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 0 6px; }
+.db-form fieldset .field { flex: 1 1 200px; }
+.db-form .field-wide { flex-basis: 100% !important; }
+.check-line { display: flex; gap: 10px; align-items: flex-start; }
+.check-line input { width: 22px; height: 22px; flex: none; margin-top: 3px; }

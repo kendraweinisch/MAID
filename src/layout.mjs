@@ -60,7 +60,7 @@ const nav = [
   ['/after-a-death/', 'After a death'],
   ['/grief/', 'Grief'],
   ['/medical-aid-in-dying/', 'Medical aid in dying'],
-  ['/what-it-costs/', 'Costs'],
+  ['/what-it-costs/database/', 'Cost database'],
 ];
 
 // Structured data (schema.org) so search engines understand each page.
@@ -95,6 +95,7 @@ const SECTION_NAMES = {
   '/medical-aid-in-dying/': 'Medical aid in dying',
   '/medical-aid-in-dying/places/': 'Where it is legal',
   '/plan-ahead/advance-directives/': 'Advance directives by state',
+  '/what-it-costs/': 'What it costs',
   '/checklists/': 'Printables',
   '/es/': 'Español',
 };
@@ -149,7 +150,7 @@ const ES_FOOTER = `<footer class="site-footer">
 <p>Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español). En otros países: <a href="https://findahelpline.com">findahelpline.com</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.com · Información, no consejo médico ni legal. · Revisión de todo el sitio: ${fmtDateEs(site.lastScan)}</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.com · Información imparcial, no consejo médico ni legal. · Revisión de todo el sitio: ${fmtDateEs(site.lastScan)}</p>
 </div>
 </footer>`;
 
@@ -256,7 +257,7 @@ ${es ? ES_FOOTER : `<footer class="site-footer">
 <p>If you are thinking about suicide, call or text 988 in the US. Elsewhere: <a href="https://findahelpline.com">findahelpline.com</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.com · Information, not medical or legal advice. · Whole site last checked for accuracy and broken links: ${fmtDate(site.lastScan)} (<a href="/about/#editorial">how</a>)</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.com · Unbiased information, not medical or legal advice. · Whole site last checked for accuracy and broken links: ${fmtDate(site.lastScan)} (<a href="/about/#editorial">how</a>)</p>
 </div>
 </footer>`}
 </body>
