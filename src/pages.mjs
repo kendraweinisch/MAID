@@ -105,7 +105,7 @@ function checklist({ path, title, description, lead, groups, note }) {
     body: `
 <section class="section">
 <div class="wrap prose">
-<p class="small no-print"><a href="/checklists/">All checklists</a></p>
+<p class="small no-print"><a href="/checklists/">All printables</a></p>
 <p class="eyebrow">Printable checklist</p>
 <h1>${title}</h1>
 <p class="lead" style="margin:20px 0">${lead}</p>
@@ -192,13 +192,17 @@ export function home(data) {
 
 <section class="band" aria-labelledby="tools-h">
 <div class="wrap section">
-<h2 id="tools-h">Free printable checklists</h2>
-<p class="sub" style="margin-bottom:28px">No account, no email. Print them, fill them in, and keep them where your family can find them.</p>
+<h2 id="tools-h">Free printables</h2>
+<p class="sub" style="margin-bottom:28px">Worksheets, checklists and remembering books for children. No account, no email. Print them, fill them in, and keep them where your family can find them.</p>
 <div class="grid grid-wide">
 <a class="card" href="/checklists/plan-ahead/"><strong>Plan-ahead worksheet</strong><span class="muted small">Your wishes, your people and where everything is kept.</span></a>
-<a class="card" href="/checklists/questions-for-the-doctor/"><strong>Questions for the doctor</strong><span class="muted small">What to ask after a serious diagnosis, and about hospice.</span></a>
-<a class="card" href="/checklists/after-a-death/"><strong>After a death: the first 24 hours</strong><span class="muted small">Who to call first, and what can wait.</span></a>
+<a class="card" href="/checklists/funeral-planner/"><strong>Funeral or celebration of life planner</strong><span class="muted small">For your own, or for someone who has died.</span></a>
+<a class="card" href="/checklists/talking-with-a-parent/"><strong>Talking with a parent</strong><span class="muted small">Gentle questions, with space for the answers.</span></a>
+<a class="card" href="/checklists/letters-to-leave/"><strong>Letters to leave</strong><span class="muted small">Prompts, and how to make sure they arrive.</span></a>
+<a class="card" href="/checklists/eulogy/"><strong>Writing a eulogy</strong><span class="muted small">Prompts, a simple shape, and space to draft.</span></a>
+<a class="card" href="/checklists/remembering-someone/"><strong>Remembering books for children</strong><span class="muted small">For a person, a grandparent or a pet.</span></a>
 </div>
+<p style="margin-top:24px"><a href="/checklists/">See all printables</a></p>
 </div>
 </section>
 
@@ -262,6 +266,7 @@ export const guides = [
 <li><strong>A health care power of attorney:</strong> the person who decides for you (your health care proxy or agent).</li></ul>
 <p>The names, forms and rules differ by country. In the US, each state has its own form and rules about witnesses or notaries. In England and Wales, the equivalents are an advance decision and a lasting power of attorney for health and welfare. Forms are usually free, and you often don't need a lawyer. Give copies to your proxy and your doctor, and keep the original where it can be found.</p>` },
       { id: 'proxy', h: 'Choose your health care proxy', html: `<p>Pick someone who will follow your wishes even if they disagree, can stay calm under pressure, and can be reached quickly. Name a backup. Then tell them, in detail, what matters to you.</p>` },
+      { id: 'steward', h: 'Name one person who knows where everything is', html: `<p>Besides your health care proxy and executor, it helps to choose one trusted person (some call them a steward) who knows where your documents, passwords and wishes are kept, and whom to call. It can be the same person. Tell them, and write their name on your <a href="/checklists/plan-ahead/">plan-ahead worksheet</a>.</p>` },
       { id: 'talk', h: 'Have the conversation', html: `<p>The document matters less than the conversation behind it. Useful questions to talk through:</p>
 <ul><li>What would make life not worth living for you? What would you be willing to go through for more time?</li>
 <li>Where would you want to be at the end: at home, in a hospice, in a hospital?</li>
@@ -270,7 +275,7 @@ export const guides = [
       { id: 'paperwork', h: 'Get your paperwork in order', html: `<p>Families lose weeks looking for things. Write down where to find your will, insurance policies, bank and retirement accounts, the deed or lease, passwords, and who should look after children and pets. Add a beneficiary to accounts where you can: those usually pass outside probate.</p>
 <p>Own a home in another country? You may need a will there too. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>
 <p><a href="/checklists/plan-ahead/">Use the printable plan-ahead worksheet</a>.</p>` },
-      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, or nothing at all. Music, readings, who should speak. Writing it down is a gift to whoever has to arrange it. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
+      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, a party, or nothing at all. Music, readings, who should speak. Writing it down is a gift to whoever has to arrange it: use the <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a>. You can also write <a href="/checklists/letters-to-leave/">letters to leave</a> and your <a href="/checklists/life-story/">life story</a>, so your family can tell it your way. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
       { id: 'review', h: 'Review it every few years', html: `<p>Look again after a new diagnosis, a divorce or a death in the family, or every few years anyway. Update the documents and tell your proxy what changed.</p>` },
     ],
     sources: [
@@ -279,6 +284,7 @@ export const guides = [
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
       ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
+      ['/plan-ahead/talking-with-a-parent/', 'Talking with a parent', 'Near or far.'],
       ['/serious-illness/', 'Serious illness', 'If a diagnosis has already come.'],
     ],
   }),
@@ -348,6 +354,38 @@ export const guides = [
     related: [
       ['/plan-ahead/', 'Plan ahead', 'The rest of your planning.'],
       ['/after-a-death/', 'After a death', 'Settling an estate at home.'],
+    ],
+  }),
+  guide({
+    path: '/plan-ahead/talking-with-a-parent/',
+    title: 'Talking with a parent, near or far',
+    eyebrow: 'Plan ahead',
+    description: 'How to talk with an aging parent about their wishes for the end of life, including when you live in another city or country.',
+    lead: "It rarely feels like the right time. Starting while your parent is well means they get to decide, and you won't have to guess later.",
+    sections: [
+      { id: 'start', h: 'Getting started', html: `<ul>
+<li><strong>Start small.</strong> One question is enough for a first conversation.</li>
+<li><strong>Use an opening.</strong> A friend's illness, a news story, or your own planning: "I've been writing down my own wishes, and it made me wonder about yours."</li>
+<li><strong>Listen more than you talk.</strong> The goal is to learn what they want, not to persuade them.</li>
+<li><strong>Write down what they say,</strong> and read it back so they can correct it.</li></ul>
+<p><a href="/checklists/talking-with-a-parent/">Print the conversation sheet</a> for questions and space to write.</p>` },
+      { id: 'what', h: 'What to talk about', html: `<ul>
+<li>What matters most to them if they became very ill, and what they would not want.</li>
+<li>Who should make decisions if they can't, and whether that's written down.</li>
+<li>Where their will, insurance, accounts and important papers are.</li>
+<li>What they want for their body and for a funeral or gathering.</li></ul>` },
+      { id: 'resist', h: "If they don't want to talk", html: `<p>That's their right. Say why it matters to you, leave the door open, and try again another time. Some people find it easier to fill in a form alone, or to talk with their doctor, a faith leader or a friend instead of their child.</p>` },
+      { id: 'far', h: 'When you live far away', html: `<ul>
+<li><strong>Talk by video,</strong> and plan the bigger conversations for when you visit.</li>
+<li><strong>Use their local rules.</strong> Their advance directive should be on the form for the state or country where they live, not where you live.</li>
+<li><strong>Distance and time zones matter.</strong> You can still be their health care proxy from abroad, but name a backup who lives nearby, and make sure their doctors have your number and know your time zone.</li>
+<li><strong>Build a local circle:</strong> a neighbor, a friend or a relative who can check in, with your contact details and theirs written down.</li>
+<li><strong>Keep copies</strong> of their key documents and contacts where you can reach them, such as scanned copies in a secure shared folder.</li>
+<li><strong>Know what you'd do</strong> if you needed to travel at short notice: passport valid, and who covers for you at home.</li></ul>` },
+    ],
+    related: [
+      ['/checklists/talking-with-a-parent/', 'Conversation sheet', 'Printable questions with space for answers.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'If either of you owns a home in another country.'],
     ],
   }),
   guide({
@@ -430,7 +468,7 @@ export const guides = [
 <li><strong>Cremation:</strong> with or without a service. Direct cremation, with no service beforehand, usually costs least.</li>
 <li><strong>Body donation:</strong> usually arranged in advance with a program.</li>
 <li><strong>Home funeral:</strong> most states allow families to care for their own dead; some require a funeral director for certain steps.</li></ul>
-<p>A service can happen weeks later, in any form you like.</p>` },
+<p>A service can happen weeks later, in any form you like. The <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a> and <a href="/checklists/eulogy/">eulogy guide</a> can help. To find independent help nearby, see <a href="/finding-help/">finding help</a>.</p>` },
       { id: 'rights', h: 'Your rights with funeral homes', html: `<p>Wherever you are, ask for written, itemized prices before you agree to anything. In the US, the FTC Funeral Rule gives you the right to:</p>
 <ul><li>Get an itemized price list, in person, and prices by phone.</li>
 <li>Buy only the goods and services you want.</li>
@@ -471,7 +509,8 @@ export const guides = [
 <li>Answer questions honestly and simply; it's fine to say you don't know.</li>
 <li>Let children choose whether to take part in goodbyes and funerals.</li>
 <li>Expect grief to come and go in play and questions over months and years.</li>
-<li>Tell their school and their other caregivers.</li></ul>` },
+<li>Tell their school and their other caregivers.</li></ul>
+<p>Free printable remembering books: <a href="/checklists/remembering-someone/">someone I love</a>, <a href="/checklists/remembering-grandparent/">my grandparent</a> and <a href="/checklists/remembering-pet/">my pet</a>.</p>` },
       { id: 'pets', h: 'When a pet dies', html: `<p>Losing a pet is a real loss, and grief for an animal can be as strong as for a person. For children, it's often their first experience of death; the same honest language helps.</p>` },
       { id: 'support', h: 'Where to find support', html: `<p>Hospices offer bereavement support to families, usually for about a year after a death, often for free. Grief groups, counselors and faith communities help too.</p>` },
       { id: 'more-help', h: 'When to get more help', html: `<p>Talk to a doctor or counselor if grief stays so intense that you can't manage daily life for many months, or if you are drinking or using drugs to cope. If you are thinking about suicide, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>` },
@@ -497,7 +536,7 @@ export const checklists = [
     lead: 'Fill this in, then give a copy to your health care proxy and keep one with your important papers.',
     groups: [
       { h: 'Medical wishes', items: ['I have an advance directive. It is kept: <span class="blank" aria-hidden="true"></span>', 'My health care proxy is: <span class="blank" aria-hidden="true"></span> Phone: <span class="blank" aria-hidden="true"></span>', 'My backup proxy is: <span class="blank" aria-hidden="true"></span>', 'My doctor has a copy of my wishes.', 'What matters most to me at the end of life: <span class="blank" aria-hidden="true"></span>'] },
-      { h: 'My people', items: ['People to call first: <span class="blank" aria-hidden="true"></span>', 'Who looks after my children / pets: <span class="blank" aria-hidden="true"></span>', 'My executor is: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'My people', items: ['People to call first: <span class="blank" aria-hidden="true"></span>', 'Who looks after my children / pets: <span class="blank" aria-hidden="true"></span>', 'The one person who knows where everything is: <span class="blank" aria-hidden="true"></span>', 'My executor is: <span class="blank" aria-hidden="true"></span>'] },
       { h: 'Where things are', items: ['Will: <span class="blank" aria-hidden="true"></span>', 'Life insurance policies: <span class="blank" aria-hidden="true"></span>', 'Bank and retirement accounts: <span class="blank" aria-hidden="true"></span>', 'Deed, lease or mortgage: <span class="blank" aria-hidden="true"></span>', 'Property in another country, and how it is held: <span class="blank" aria-hidden="true"></span>', 'Local will for that country? Kept: <span class="blank" aria-hidden="true"></span>', 'Passwords and phone passcode: <span class="blank" aria-hidden="true"></span>'] },
       { h: 'Afterward', items: ['Burial / cremation / green burial / body donation (circle one)', 'Service I would like: <span class="blank" aria-hidden="true"></span>', 'Music, readings or people I want included: <span class="blank" aria-hidden="true"></span>', 'Letters or messages to deliver: <span class="blank" aria-hidden="true"></span>'] },
     ],
@@ -528,17 +567,6 @@ export const checklists = [
   }),
 ];
 
-export const checklistIndex = {
-  path: '/checklists/',
-  title: 'Printable checklists',
-  description: 'Free printable end-of-life checklists: a plan-ahead worksheet, questions for the doctor, and the first 24 hours after a death.',
-  body: `
-<section class="section"><div class="wrap">
-<h1>Printable checklists</h1>
-<p class="lead" style="margin:20px 0 32px">Free, no account, no email. Print them and keep them where your family can find them.</p>
-${relatedCards(checklists.map((c) => [c.path, c.title, c.description]))}
-</div></section>`,
-};
 
 /* ---------- medical aid in dying section ---------- */
 
@@ -708,6 +736,46 @@ export const maidPages = [
 /* ---------- service and policy pages ---------- */
 
 export const staticPages = [
+  {
+    path: '/finding-help/',
+    title: 'Finding help near you',
+    description: 'Independent directories for finding hospice, palliative care, funeral consumer groups, green burial, end-of-life doulas and grief support, in the US and other countries.',
+    body: `
+<section class="section"><div class="wrap prose">
+<h1>Finding help near you</h1>
+<p class="lead" style="margin:20px 0">Independent directories, mostly run by nonprofits and governments. We don't list businesses, take payment for listings, or vet the providers in these directories, so ask questions before you choose.</p>
+<h2>Hospice and palliative care</h2>
+<ul>
+<li><a href="https://www.medicare.gov/care-compare/?providerType=Hospice">Medicare Care Compare: hospices</a> (US), with quality ratings</li>
+<li><a href="https://www.hospiceuk.org/">Hospice UK</a> (UK)</li>
+<li><a href="https://www.virtualhospice.ca/">Canadian Virtual Hospice</a> (Canada)</li>
+<li><a href="https://www.ehospice.com/">ehospice</a> (international news and services)</li>
+</ul>
+<h2>Funerals and burial</h2>
+<ul>
+<li><a href="https://www.funerals.org/">Funeral Consumers Alliance</a> (US): nonprofit consumer groups, some of which survey local funeral prices</li>
+<li><a href="https://www.greenburialcouncil.org/">Green Burial Council</a>: certified green burial providers</li>
+</ul>
+<h2>End-of-life doulas</h2>
+<ul>
+<li><a href="https://www.nedalliance.org/">National End-of-Life Doula Alliance</a> (US)</li>
+<li><a href="https://www.inelda.org/">INELDA</a> (international directory)</li>
+</ul>
+<h2>Grief support</h2>
+<ul>
+<li><a href="https://www.dougy.org/">The Dougy Center</a>: support for grieving children, with a program directory</li>
+<li><a href="https://www.compassionatefriends.org/">The Compassionate Friends</a>: for families after the death of a child</li>
+<li>Your local hospice: most offer free bereavement support, even if the person who died wasn't in their care.</li>
+</ul>
+<h2>Medical aid in dying</h2>
+<ul>
+<li><a href="/medical-aid-in-dying/">Our medical aid in dying section</a>, with official sources for each place</li>
+<li><a href="https://wfrtds.org/">World Federation of Right to Die Societies</a>: member organizations by country</li>
+</ul>
+<h2>In a crisis</h2>
+<p>If you are thinking about suicide, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>
+</div></section>`,
+  },
   {
     path: '/professionals/',
     title: 'For organizations',

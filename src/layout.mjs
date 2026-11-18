@@ -76,16 +76,18 @@ ${body}
 <li><a href="/about/#funding">How we're funded</a></li>
 <li><a href="/about/#editorial">Editorial and review policy</a></li>
 <li><a href="/about/#reviewers">Our reviewers</a></li>
+<li><a href="/finding-help/">Finding help near you</a></li>
 <li><a href="/privacy/">Privacy</a></li>
 <li><a href="/accessibility/">Accessibility</a></li>
 </ul>
 </div>
 <div>
-<h2>Checklists</h2>
+<h2>Printables</h2>
 <ul>
 <li><a href="/checklists/plan-ahead/">Plan-ahead worksheet</a></li>
 <li><a href="/checklists/questions-for-the-doctor/">Questions for the doctor</a></li>
 <li><a href="/checklists/after-a-death/">After a death: first 24 hours</a></li>
+<li><a href="/checklists/">All printables</a></li>
 </ul>
 </div>
 <div>
