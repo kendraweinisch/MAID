@@ -169,7 +169,7 @@ export function home(data) {
 <div><strong>One place for all of it</strong><span class="muted">Planning, illness, dying, grief and the paperwork in between, including the hard topics.</span></div>
 <div><strong>Without judgment</strong><span class="muted">Every legal option, from full treatment to medical aid in dying, explained plainly. The choice is always yours.</span></div>
 <div><strong>Wherever you live</strong><span class="muted">The rules differ by country. We say where each one applies, and we keep adding places.</span></div>
-<div><strong>Checked, dated, nothing to sell</strong><span class="muted">Every guide shows its sources and review date. No funding, no ads. <a href="/about/#funding">How we're funded</a></span></div>
+<div><strong>Checked, dated, nothing to sell</strong><span class="muted">Every guide shows its sources and review date. A voluntary site with no business model, so no bias. <a href="/about/#funding">How we're funded</a></span></div>
 </div>
 </div>
 </div>
@@ -1069,9 +1069,8 @@ ${updatesForm('updates')}
 <li><strong>Dignity.</strong> Every person deserves to die on their own terms, with their wishes respected, and every family deserves clear, honest information.</li>
 </ul>
 <h2 id="funding">How we're funded</h2>
-<p><strong>End of Life Atlas currently has no funding.</strong> It is built and maintained independently, and it earns no money. The guides and checklists are free.</p>
-<p>We take no advertising, no referral fees and no payments from hospices, funeral homes, clinicians, pharmacies or assisted-dying organizations.</p>
-<p>The organization services described on this site are not open yet. If we start charging for anything, or take any other funding, we will say so on this page.</p>
+<p><strong>End of Life Atlas is a voluntary site, made only to share information.</strong> It has no business model and needs no funding, so there is no one to please except the people reading it, and no reason to favor any option, provider or point of view.</p>
+<p>There is no advertising, no sponsorship, no referral fees and nothing for sale. The guides and checklists are free.</p>
 <h2 id="editorial">Editorial and review policy</h2>
 <ul>
 <li>Facts come from official sources or named reports, linked on the page.</li>
