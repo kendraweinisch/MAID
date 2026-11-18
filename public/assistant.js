@@ -9,6 +9,20 @@
 (function () {
   'use strict';
   var base = document.documentElement.getAttribute('data-base') || '';
+  var ES = document.documentElement.lang === 'es';
+  var T = ES ? {
+    you: 'Usted preguntó', atlas: 'Del Atlas', here: 'Esto dice el sitio:',
+    none: 'No encontré eso en las páginas en español. Pruebe otras palabras, vea <a href="' + base + '/es/">las guías en español</a> o <a href="' + base + '/ask/" hreflang="en">pregunte en inglés</a>.',
+    support: 'También puede leer sobre <a href="' + base + '/es/duelo/#mas-ayuda">cuándo pedir más ayuda</a>.',
+    crisis: '<p><strong>Si está pensando en quitarse la vida, merece apoyo ahora mismo.</strong> En EE. UU., llame o envíe un mensaje de texto al <strong>988</strong> (hay atención en español). En otros países, <a href="https://findahelpline.com">busque una línea de ayuda</a>. Si tiene una enfermedad terminal y quiere entender sus opciones legales, la información de abajo puede ayudar, y hablarlo antes con alguien nunca está de más.</p>',
+    failed: 'Lo siento, el asistente no pudo cargarse. Puede ver las guías.'
+  } : {
+    you: 'You asked', atlas: 'From the Atlas', here: 'Here is what this site says:',
+    none: 'I couldn’t find that on this site. Try different words, browse <a href="' + base + '/#where">where to start</a>, or see <a href="' + base + '/finding-help/">finding help near you</a>.',
+    support: 'You can also read about <a href="' + base + '/grief/#more-help">when to get more help</a>, or find <a href="' + base + '/finding-help/">support near you</a>.',
+    crisis: '<p><strong>If you are thinking about ending your life, you deserve support right now.</strong> In the US, call or text <strong>988</strong>. Elsewhere, <a href="https://findahelpline.com">find a helpline in your country</a>. If you are facing a terminal illness and want to understand your legal options, the information below may help, and talking it through with someone first is never a bad step.</p>',
+    failed: 'Sorry, the assistant could not load. Please browse the guides instead.'
+  };
   var form = document.getElementById('ask-form');
   var input = document.getElementById('ask-input');
   var log = document.getElementById('ask-log');
@@ -18,6 +32,10 @@
     'i me my we our you your he she they them their what which who whom how when where why do does did can could should would ' +
     'will shall may might must have has had not no so than too very just about into over after before there here any all some ' +
     'get got tell know want need please much many more most').split(' ');
+  if (ES) STOP = ('el la los las un una unos unas y o pero si de del al a en por para con sin sobre como que cual cuales quien quienes ' +
+    'cuando donde porque es son era ser estar esta este esto estos estas eso esa ese lo le les se me mi mis mio nos nuestro su sus tu ' +
+    'yo usted ustedes hay ha he han hace hacer hago puedo puede pueden debo debe tengo tiene tienen mas muy ya no ni tambien que como ' +
+    'quiero necesito saber').split(' ');
   var STOPSET = {};
   STOP.forEach(function (w) { STOPSET[w] = 1; });
 
@@ -42,9 +60,26 @@
     pain: 'pain comfort suffering', grief: 'grief grieving', grieving: 'grief grieving', funeral: 'funeral burial cremation'
   };
 
+  var SYNONYMS_ES = {
+    'testamento vital': 'directiva anticipada testamento vital', 'voluntades anticipadas': 'directiva anticipada', 'instrucciones previas': 'directiva anticipada',
+    poder: 'poder representante', representante: 'representante poder', apoderado: 'representante poder',
+    hospicio: 'hospicio paliativos', paliativos: 'paliativos hospicio', murio: 'muerte murio', fallecio: 'muerte murio', muerto: 'muerte',
+    funeraria: 'funeraria funeral', velorio: 'funeral', entierro: 'entierro funeral', cremacion: 'cremacion funeral', certificado: 'certificados defuncion',
+    nino: 'ninos', hijo: 'ninos', hija: 'ninos', perro: 'mascota', gato: 'mascota', mama: 'padre', papa: 'padre', madre: 'padre',
+    duelo: 'duelo', luto: 'duelo', eutanasia: 'muerte asistida', 'suicidio asistido': 'muerte asistida', dolor: 'dolor alivio'
+  };
+  if (ES) SYNONYMS = SYNONYMS_ES;
+  var CRISIS_ES = /\b(matarme|suicidarme|quitarme la vida|quiero morir(me)?|no quiero vivir|hacerme da(n|ñ)o|suicid(io|a))\b/i;
   var CRISIS = /\b(kill(ing)? myself|end(ing)? (it all|my life)|take my (own )?life|want(ed)? to die|wish i (was|were) dead|don'?t want to (live|be here)|hurt(ing)? myself|self[- ]?harm|(?<!assisted )suicid(e|al))\b/i;
 
+  function fold(t) { return t.toLowerCase().normalize ? t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') : t.toLowerCase(); }
   function stem(w) {
+    if (ES) {
+      if (w.length > 5 && /ces$/.test(w)) return w.slice(0, -3) + 'z';
+      if (w.length > 4 && /es$/.test(w) && !/[aeiou]es$/.test(w)) return w.slice(0, -2);
+      if (w.length > 3 && /s$/.test(w)) return w.slice(0, -1);
+      return w;
+    }
     if (w.length > 5 && /ies$/.test(w)) return w.slice(0, -3) + 'y';
     if (w.length > 5 && /ing$/.test(w)) return w.slice(0, -3);
     if (w.length > 4 && /ed$/.test(w)) return w.slice(0, -2);
@@ -52,17 +87,17 @@
     return w;
   }
   function tokens(text) {
-    return (text.toLowerCase().match(/[a-z0-9£$]+/g) || []).filter(function (w) { return !STOPSET[w] && w.length > 1; }).map(stem);
+    return (fold(text).match(/[a-z0-9£$]+/g) || []).filter(function (w) { return !STOPSET[w] && w.length > 1; }).map(stem);
   }
   function expand(q) {
-    var lower = ' ' + q.toLowerCase() + ' ';
+    var lower = ' ' + fold(q).replace(/[¿?¡!.,]/g, ' ') + ' ';
     var extra = [];
     Object.keys(SYNONYMS).forEach(function (k) { if (lower.indexOf(' ' + k + ' ') !== -1 || lower.indexOf(' ' + k + '?') !== -1) extra.push(SYNONYMS[k]); });
     return tokens(q + ' ' + extra.join(' '));
   }
 
   var docs = null, df = {}, titleDf = {}, avgLen = 0;
-  var ready = fetch(base + '/search-index.json').then(function (r) { return r.json(); }).then(function (data) {
+  var ready = fetch(base + (ES ? '/search-index-es.json' : '/search-index.json')).then(function (r) { return r.json(); }).then(function (data) {
     docs = data.map(function (d) {
       var body = tokens(d.x), head = tokens(d.h), title = tokens(d.t), tf = {};
       body.forEach(function (w) { tf[w] = (tf[w] || 0) + 1; });
@@ -90,6 +125,8 @@
         // A specific place or topic named in a page title (e.g. "Canada") is a strong signal.
         if (titleDf[w] && titleDf[w] <= 3 && doc.title.indexOf(w) !== -1) boost *= 2.5;
       });
+      // State form pages only rank high when the question names the state.
+      if (doc.d.s && boost === 1) s *= 0.2;
       return { doc: doc, score: s * boost * (1 + hits / Math.max(uniq.length, 1)) };
     }).filter(function (r) { return r.score > 0; });
     scored.sort(function (a, b) { return b.score - a.score; });
@@ -123,7 +160,7 @@
 
   function addMessage(who, nodes) {
     var li = el('li', 'msg msg-' + who);
-    var label = el('p', 'msg-who', who === 'you' ? 'You asked' : 'From the Atlas');
+    var label = el('p', 'msg-who', who === 'you' ? T.you : T.atlas);
     li.appendChild(label);
     nodes.forEach(function (n) { li.appendChild(n); });
     log.appendChild(li);
@@ -134,22 +171,22 @@
   function answer(q) {
     addMessage('you', [el('p', 'msg-text', q)]);
     var nodes = [];
-    if (CRISIS.test(q)) {
+    if (CRISIS.test(q) || (ES && CRISIS_ES.test(fold(q)) && !/suicidio asistido/.test(fold(q)))) {
       var c = el('div', 'msg-crisis');
-      c.innerHTML = '<p><strong>If you are thinking about ending your life, you deserve support right now.</strong> In the US, call or text <strong>988</strong>. Elsewhere, <a href="https://findahelpline.com">find a helpline in your country</a>. If you are facing a terminal illness and want to understand your legal options, the information below may help, and talking it through with someone first is never a bad step.</p>';
+      c.innerHTML = T.crisis;
       nodes.push(c);
     }
     var found = search(q);
     if (!found.results.length && nodes.length) {
       var support = el('p', 'msg-text');
-      support.innerHTML = 'You can also read about <a href="' + base + '/grief/#more-help">when to get more help</a>, or find <a href="' + base + '/finding-help/">support near you</a>.';
+      support.innerHTML = T.support;
       nodes.push(support);
     } else if (!found.results.length) {
       var none = el('p', 'msg-text');
-      none.innerHTML = 'I couldn’t find that on this site. Try different words, browse <a href="' + base + '/#where">where to start</a>, or see <a href="' + base + '/finding-help/">finding help near you</a>.';
+      none.innerHTML = T.none;
       nodes.push(none);
     } else {
-      nodes.push(el('p', 'msg-text', 'Here is what this site says:'));
+      nodes.push(el('p', 'msg-text', T.here));
       var list = el('ol', 'msg-results');
       found.results.forEach(function (r) {
         var d = r.doc.d;
@@ -173,7 +210,7 @@
     if (!q) return;
     input.value = '';
     ready.then(function () { answer(q); }).catch(function () {
-      addMessage('atlas', [el('p', 'msg-text', 'Sorry, the assistant could not load. Please browse the guides instead.')]);
+      addMessage('atlas', [el('p', 'msg-text', T.failed)]);
     });
   });
 

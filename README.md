@@ -99,3 +99,22 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 
 - `docs/`: name shortlist and competitor notes
 - `mockups/landing-page/`: the original design mockup
+
+## Spanish
+
+Spanish pages live under `/es/` and are built from `src/es.mjs`. Each one is
+paired with its English page in `ES_PAIRS` (`src/layout.mjs`), which drives
+the hreflang tags and the English/Español switch in the header. The Ask
+assistant uses `search-index-es.json` on Spanish pages. Translations are
+flagged as pending review by a native speaker.
+
+## Advance directives by state
+
+`src/data/advance-directives.json` lists, for each state and DC, the official
+form or the law that sets it out, plus a free CaringInfo form. Pages are built
+by `src/advance-directives.mjs`.
+
+## The binder
+
+`/checklists/binder/` and `public/printables/binder.pdf`: every printable in
+one PDF. Rebuild with `node scripts/make-printables.cjs && python3 scripts/make-binder.py`.

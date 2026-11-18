@@ -25,7 +25,7 @@ const toText = (html) =>
     .replace(/:\s*\./g, ':')
     .trim();
 
-const SKIP = new Set(['/', '/ask/', '/suggestions/', '/suggestions/thanks/', '/404.html']);
+const SKIP = new Set(['/', '/es/', '/es/preguntar/', '/ask/', '/suggestions/', '/suggestions/thanks/', '/404.html']);
 
 export function buildSearchIndex(pages, renderBody) {
   const records = [];
@@ -39,7 +39,7 @@ export function buildSearchIndex(pages, renderBody) {
       const idMatch = m && m[1].match(/id="([^"]+)"/);
       const body = toText(m ? part.slice(m[0].length) : part.replace(/<h1[\s\S]*?<\/h1>/, ''));
       if (body.length < 40) continue;
-      if (/^(Sources|Related|On this page|Next steps)$/i.test(heading)) continue;
+      if (/^(Sources|Related|On this page|Next steps|Fuentes|Relacionado|En esta página)$/i.test(heading)) continue;
       // State advance directive pages share most of their text: index only what is unique to each state.
       if (page.stateForm && !(idMatch && ['forms', 'registry'].includes(idMatch[1]))) continue;
       records.push({
@@ -47,6 +47,7 @@ export function buildSearchIndex(pages, renderBody) {
         t: page.title,
         h: heading,
         x: body.slice(0, 6000),
+        ...(page.stateForm ? { s: 1 } : {}),
       });
     }
   }

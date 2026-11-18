@@ -96,7 +96,17 @@ const lovedOne = {
   ],
 };
 
-function journeyPage(j) {
+const EN = {
+  eyebrow: 'A step-by-step path',
+  start: (n) => `${n} stops. Your ticks are saved only in this browser.`,
+  progress: '{done} of {total} stops done. Your ticks are saved only in this browser.',
+  done: 'Done',
+  also: 'Also',
+  others: { myself: ['/for-someone-i-love/', "I'm planning for someone I love"], 'loved-one': ['/for-myself/', "I'm planning for myself"] },
+  extra: '<a href="/ask/">Ask a question</a> · <a href="/checklists/">All printables</a>',
+};
+
+export function journeyPage(j, t = EN) {
   let n = 0;
   const total = j.phases.reduce((s, p) => s + p.stops.length, 0);
   const phases = j.phases
@@ -106,14 +116,14 @@ function journeyPage(j) {
 ${ph.stops
   .map((st) => {
     n += 1;
-    const id = `${j.slug}-${st.id}`;
+    const id = `${j.slug}-${st.id}`; // the same key in every language, so ticks carry over
     return `<li class="stop" id="${st.id}">
 <span class="stop-n" aria-hidden="true">${n}</span>
 <div class="stop-card">
 <h3>${st.t}</h3>
 <p>${st.d}</p>
 <p class="stop-links">${st.links.map(([href, label]) => `<a class="chip-link" href="${href}">${label}</a>`).join(' ')}</p>
-<p class="stop-done"><input type="checkbox" id="done-${id}" data-step="${id}"> <label for="done-${id}">Done<span class="sr-only">: ${st.t}</span></label></p>
+<p class="stop-done"><input type="checkbox" id="done-${id}" data-step="${id}"> <label for="done-${id}">${t.done}<span class="sr-only">: ${st.t}</span></label></p>
 </div>
 </li>`;
   })
@@ -121,7 +131,7 @@ ${ph.stops
 </ol>`
     )
     .join('\n');
-  const other = j.slug === 'myself' ? ['/for-someone-i-love/', "I'm planning for someone I love"] : ['/for-myself/', "I'm planning for myself"];
+  const other = t.others[j.slug];
   return {
     path: j.path,
     title: j.title,
@@ -130,16 +140,16 @@ ${ph.stops
 <section class="page-hero">
 <div class="wrap prose">
 <div class="journey-icon">${j.icon}</div>
-<p class="eyebrow">A step-by-step path</p>
+<p class="eyebrow">${t.eyebrow}</p>
 <h1>${j.title}</h1>
 <p class="lead" style="margin-top:20px">${j.lead}</p>
-<p class="journey-progress small" data-journey="${j.slug}" data-total="${total}" aria-live="polite">${total} stops. Your ticks are saved only in this browser.</p>
+<p class="journey-progress small" data-journey="${j.slug}" data-total="${total}" data-template="${t.progress}" aria-live="polite">${t.start(total)}</p>
 </div>
 </section>
 <section class="section">
 <div class="wrap prose">
 ${phases}
-<div class="notice" style="margin-top:48px"><strong>Also:</strong> <a href="${other[0]}">${other[1]}</a> · <a href="/ask/">Ask a question</a> · <a href="/checklists/">All printables</a></div>
+<div class="notice" style="margin-top:48px"><strong>${t.also}:</strong> <a href="${other[0]}">${other[1]}</a> · ${t.extra}</div>
 </div>
 </section>
 <script src="/journey.js" defer></script>`,

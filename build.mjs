@@ -7,6 +7,7 @@ import { printables, printablesIndex, binderPage } from './src/printables.mjs';
 import { buildSearchIndex } from './src/search-index.mjs';
 import { journeys } from './src/journeys.mjs';
 import { adPages } from './src/advance-directives.mjs';
+import { esPages } from './src/es.mjs';
 
 const out = 'dist';
 // BASE_PATH serves the site from a sub-folder, e.g. "/maid" on username.github.io/maid/.
@@ -15,7 +16,7 @@ const base = (process.env.BASE_PATH || '').replace(/\/$/, '');
 const withBase = (html) =>
   base
     ? html
-        .replace('<html lang="en">', `<html lang="en" data-base="${base}">`)
+        .replace(/<html lang="(en|es)">/, `<html lang="$1" data-base="${base}">`)
         .replace(/(href|action|src)="\/(?!\/)/g, `$1="${base}/`)
     : html;
 const data = JSON.parse(await readFile('src/data/places.json', 'utf8'));
@@ -33,6 +34,7 @@ const pages = [
   ...maidPages,
   ...data.places.map(placePage),
   ...staticPages,
+  ...esPages,
 ];
 
 await rm(out, { recursive: true, force: true });
@@ -45,8 +47,9 @@ for (const page of [...pages, notFound]) {
 await cp('src/styles.css', join(out, 'styles.css'));
 
 // Knowledge base for the Ask assistant: the site's own text, by section.
-const index = buildSearchIndex(pages, (p) => p.body);
-await writeFile(join(out, 'search-index.json'), JSON.stringify(index));
+const isEs = (p) => p.path.startsWith('/es/');
+await writeFile(join(out, 'search-index.json'), JSON.stringify(buildSearchIndex(pages.filter((p) => !isEs(p)), (p) => p.body)));
+await writeFile(join(out, 'search-index-es.json'), JSON.stringify(buildSearchIndex(pages.filter(isEs), (p) => p.body)));
 await cp('public', out, { recursive: true });
 
 const urls = pages.filter((p) => p.path !== '/thanks/').map((p) => `<url><loc>${site.url}${p.path}</loc></url>`).join('\n');
