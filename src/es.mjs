@@ -5,7 +5,7 @@
 import { readFileSync } from 'node:fs';
 import { esc, fmtDateEs, site } from './layout.mjs';
 import { icons } from './icons.mjs';
-import { linkCards } from './ui.mjs';
+import { linkCards, cardifyLists } from './ui.mjs';
 import { journeyPage } from './journeys.mjs';
 
 const ad = JSON.parse(readFileSync(new URL('./data/advance-directives.json', import.meta.url), 'utf8'));
@@ -43,7 +43,9 @@ function esGuide({ path, title, description, eyebrow, lead, icon = 'plan', revie
     article: { modified: reviewed || site.lastVerified },
     body: `
 <section class="page-hero">
-<div class="wrap prose">
+<div class="wrap guide-layout">
+<div aria-hidden="true"></div>
+<div class="prose">
 <div class="hero-icon">${icons[icon]}</div>
 <p class="eyebrow">${eyebrow}</p>
 <h1>${title}</h1>
@@ -51,13 +53,16 @@ function esGuide({ path, title, description, eyebrow, lead, icon = 'plan', revie
 <p class="small muted" style="margin:0">Revisión de exactitud: ${fmtDateEs(site.lastScan)} · <a href="/about/#editorial" hreflang="en">Cómo verificamos</a>${EN}</p>
 ${reviewNote}
 </div>
+</div>
 </section>
 <section class="section">
-<div class="wrap prose">
+<div class="wrap guide-layout">
 <nav class="toc card" aria-label="En esta página"><strong>En esta página</strong><ul>${toc}</ul></nav>
-${sections.map((s) => `<h2 id="${s.id}">${s.h}</h2>\n${s.html}`).join('\n')}
+<div class="prose guide-body">
+${sections.map((s, i) => `<h2 id="${s.id}" class="num-h"><span class="h-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>${s.h}</h2>\n${cardifyLists(s.html)}`).join('\n')}
 ${related.length ? `<h2 id="relacionado">Relacionado</h2>${linkCards(related)}` : ''}
 ${sources.length ? `<h2 id="fuentes">Fuentes</h2><ul>${sources.map(([l, u]) => `<li><a href="${esc(u)}">${esc(l)}</a></li>`).join('')}</ul>` : ''}
+</div>
 </div>
 </section>`,
   };
@@ -165,7 +170,7 @@ const paliativos = esGuide({
 <tr><th scope="row">Tratamiento para curar</th><td>Puede continuar al mismo tiempo</td><td>Normalmente se deja para la enfermedad terminal; el resto de la atención continúa</td></tr>
 <tr><th scope="row">Enfoque</th><td>Alivio del dolor, los síntomas y el estrés</td><td>Comodidad, dignidad y apoyo para toda la familia</td></tr>
 <tr><th scope="row">Dónde</th><td>Hospital, clínica o en casa</td><td>Sobre todo en casa; también en residencias y centros de hospicio</td></tr>
-<tr><th scope="row">Quién paga (EE. UU.)</th><td>Normalmente se cubre como otra atención médica, con los costos habituales</td><td>El beneficio de hospicio de Medicare cubre la mayoría de los costos</td></tr>
+<tr><th scope="row">Quién paga (EE. UU.)</th><td>Normalmente se cubre como otra atención médica, con los costos habituales</td><td>El <a class="src-link" href="https://www.medicare.gov/coverage/hospice-care">beneficio de hospicio de Medicare</a> cubre la mayoría de los costos</td></tr>
 </tbody></table></div>
 <p>Fuera de EE. UU., los dos suelen ofrecerse a través del sistema público de salud o de organizaciones benéficas, a menudo gratis para el paciente.</p>` },
     { id: 'cuando', h: 'Cuándo pedirlos', html: `<p>Pida cuidados paliativos en cuanto una enfermedad cause dolor, angustia o decisiones difíciles. Pregunte por el hospicio cuando el tratamiento ya no ayude, o ya no sea lo que la persona quiere. Se puede dejar el hospicio y volver al tratamiento si cambia de opinión. Muchas familias dicen que les habría gustado saber antes del hospicio.</p>` },
@@ -229,7 +234,7 @@ const despues = esGuide({
 <li><strong>Donación del cuerpo:</strong> normalmente se arregla con antelación con un programa.</li>
 <li><strong>Funeral en casa:</strong> la mayoría de los estados permiten a las familias cuidar de sus propios muertos; algunos exigen un director de funeraria para ciertos pasos.</li></ul>
 <p>Hay muchas más opciones, como la cremación con agua, el compostaje humano, el entierro en el mar o ser plantado bajo un árbol: vea ${enLink('/plan-ahead/choices-for-the-body/', 'todas las opciones para el cuerpo')}. La ceremonia puede hacerse semanas después, de la forma que usted quiera.</p>` },
-    { id: 'derechos', h: 'Sus derechos con las funerarias', html: `<p>Esté donde esté, pida precios por escrito y detallados antes de aceptar nada. En EE. UU., la Regla sobre Funerales de la FTC le da derecho a:</p>
+    { id: 'derechos', h: 'Sus derechos con las funerarias', html: `<p>Esté donde esté, pida precios por escrito y detallados antes de aceptar nada. En EE. UU., la <a class="src-link" href="https://consumidor.ftc.gov/articulos/la-regla-sobre-funerales">Regla sobre Funerales de la FTC</a> le da derecho a:</p>
 <ul><li>Recibir una lista de precios detallada en persona, y precios por teléfono.</li>
 <li>Comprar solo los productos y servicios que quiera.</li>
 <li>Usar un ataúd o una urna comprados en otro lugar, sin cargo por manejo.</li>
@@ -273,7 +278,7 @@ const duelo = esGuide({
 <li>Avise a su escuela y a las demás personas que los cuidan.</li></ul>` },
     { id: 'mascota', h: 'Cuando muere una mascota', html: `<p>Perder una mascota es una pérdida real, y el duelo por un animal puede ser tan fuerte como por una persona. Para los niños, a menudo es su primera experiencia con la muerte; ayuda el mismo lenguaje honesto.</p>` },
     { id: 'apoyo', h: 'Dónde encontrar apoyo', html: `<p>Los hospicios ofrecen apoyo en el duelo a las familias, normalmente durante cerca de un año después de una muerte, muchas veces gratis. También ayudan los grupos de duelo, los consejeros y las comunidades de fe.</p>` },
-    { id: 'mas-ayuda', h: 'Cuándo pedir más ayuda', html: `<p>Hable con un médico o un consejero si el duelo sigue siendo tan intenso que no puede con la vida diaria durante muchos meses, o si está bebiendo o usando drogas para sobrellevarlo. Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://findahelpline.com">busque una línea de ayuda en su país</a>.</p>` },
+    { id: 'mas-ayuda', h: 'Cuándo pedir más ayuda', html: `<p>Hable con un médico o un consejero si el duelo sigue siendo tan intenso que no puede con la vida diaria durante muchos meses, o si está bebiendo o usando drogas para sobrellevarlo. Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (<a class="src-link" href="https://988lifeline.org/es/home/">hay atención en español</a>), o <a href="https://findahelpline.com">busque una línea de ayuda en su país</a>.</p>` },
   ],
   related: [
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Lo urgente y lo que puede esperar.', 'afterdeath'],

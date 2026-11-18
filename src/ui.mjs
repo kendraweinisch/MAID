@@ -45,3 +45,15 @@ export const dirCard = (url, name, region, text) =>
 // A card that isn't a link (for principles and facts).
 export const infoCard = (icon, title, text) =>
   `<div class="ocard ocard-static">${icons[icon] || ''}<strong>${title}</strong><span class="muted small">${text}</span></div>`;
+
+// Lists where every item starts with a bold term ("<strong>Burial:</strong> ...")
+// read better as a grid of small cards.
+export function cardifyLists(html) {
+  return html.replace(/<ul>([\s\S]*?)<\/ul>/g, (whole, inner) => {
+    const items = inner.match(/<li>[\s\S]*?<\/li>/g) || [];
+    const strongFirst = items.length >= 2 && items.every((li) => /^<li><strong>/.test(li.trim()));
+    if (!strongFirst || /<ul/.test(inner)) return whole;
+    return `<ul class="point-grid${items.length % 2 ? ' point-grid-odd' : ''}">${inner}</ul>`;
+  });
+}
+
