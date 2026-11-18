@@ -7,7 +7,7 @@
   SITE_INDEXABLE = "false"
   # GoatCounter analytics: put your GoatCounter code here (the part before
   # .goatcounter.com). Empty = no analytics script.
-  GOATCOUNTER_CODE = ""
+  GOATCOUNTER_CODE = "eolatlas"
 
 [[headers]]
   for = "/*"
