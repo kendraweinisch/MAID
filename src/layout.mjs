@@ -34,8 +34,43 @@ const nav = [
   ['/ask/', 'Ask'],
 ];
 
-export function layout({ path, title, description, body, crisis = false }) {
-  const fullTitle = path === '/' ? `${site.name}: ${site.tagline}` : `${title} | ${site.name}`;
+// Structured data (schema.org) so search engines understand each page.
+function jsonLd(page, fullTitle) {
+  const url = site.url + page.path;
+  const org = { '@type': 'Organization', name: site.name, url: site.url };
+  const items = [];
+  if (page.path === '/') {
+    items.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url, description: page.description, inLanguage: 'en', publisher: org });
+  } else {
+    const parts = page.path.split('/').filter(Boolean);
+    const crumbs = [{ name: site.name, item: site.url + '/' }];
+    let acc = '';
+    parts.forEach((seg, i) => {
+      acc += '/' + seg;
+      const last = i === parts.length - 1;
+      crumbs.push({ name: last ? page.title : (SECTION_NAMES[acc + '/'] || seg.replace(/-/g, ' ')), item: site.url + acc + '/' });
+    });
+    items.push({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.item })) });
+    if (page.article) items.push({ '@context': 'https://schema.org', '@type': 'Article', headline: page.title, description: page.description, url, inLanguage: 'en', dateModified: page.article.modified, author: org, publisher: org });
+  }
+  if (page.faq && page.faq.length) items.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: page.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
+  return items.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`).join('\n');
+}
+
+const SECTION_NAMES = {
+  '/plan-ahead/': 'Plan ahead',
+  '/serious-illness/': 'Serious illness',
+  '/last-weeks/': 'The last weeks',
+  '/after-a-death/': 'After a death',
+  '/grief/': 'Grief',
+  '/medical-aid-in-dying/': 'Medical aid in dying',
+  '/medical-aid-in-dying/places/': 'Where it is legal',
+  '/checklists/': 'Printables',
+};
+
+export function layout(page) {
+  const { path, title, description, body, crisis = false, seoTitle } = page;
+  const fullTitle = path === '/' ? `${site.name}: ${site.tagline}` : `${seoTitle || title} | ${site.name}`;
   const links = nav
     .map(([href, label]) => `<a href="${href}"${path.startsWith(href) ? ' aria-current="page"' : ''}>${label}</a>`)
     .join('\n');
@@ -58,6 +93,7 @@ export function layout({ path, title, description, body, crisis = false }) {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap">
 <link rel="stylesheet" href="/styles.css">
 ${process.env.GOATCOUNTER_CODE ? `<script data-goatcounter="https://${process.env.GOATCOUNTER_CODE}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>` : ''}
+${jsonLd(page, fullTitle)}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
