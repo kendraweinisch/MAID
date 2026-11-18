@@ -34,7 +34,7 @@ and the Isle of Man, US state bills, and any new US states.
 | Page | What to re-check |
 |---|---|
 | What it costs | CareScout cost of care (new survey usually each spring), NFDA funeral medians and cremation rate, KFF and Dartmouth data years, Medicare hospice cost-sharing |
-| Wills, trusts and the paperwork | Federal estate tax threshold (IRS), state estate and inheritance tax lists (Tax Foundation), Canada (Ontario estate administration tax, provincial rule changes), UK (inheritance tax threshold, pensions from April 2027, lasting power of attorney fee) |
+| Wills, trusts and the paperwork | Federal estate tax threshold (IRS), state estate and inheritance tax lists (Tax Foundation), Canada (Ontario estate administration tax, provincial rule changes), UK (inheritance tax threshold, pensions from April 2027, lasting power of attorney fee), Australia (super death benefit tax, state rule changes) |
 | Property abroad | Mexico Will Month, EU succession rules, Canada and UK points |
 | Every choice for the body | States allowing human composting and water cremation, EPA and UK burial-at-sea rules |
 | Going to Switzerland | Approximate fees |
