@@ -19,7 +19,7 @@ const placeRows = (list) =>
     )
     .join('\n');
 
-const placeTable = (list, caption) => `<div class="table-box"><table>
+const placeTable = (list, caption) => `<div class="table-box" tabindex="0" role="region" aria-label="${esc(caption)}"><table>
 <caption class="sr-only">${esc(caption)}</caption>
 <thead><tr><th scope="col">Place</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Open to non-residents?</th><th scope="col">Last verified</th></tr></thead>
 <tbody>
@@ -105,7 +105,7 @@ function checklist({ path, title, description, lead, groups, note }) {
     body: `
 <section class="section">
 <div class="wrap prose">
-<p class="small no-print"><a href="/checklists/">All checklists</a></p>
+<p class="small no-print"><a href="/checklists/">All printables</a></p>
 <p class="eyebrow">Printable checklist</p>
 <h1>${title}</h1>
 <p class="lead" style="margin:20px 0">${lead}</p>
@@ -192,13 +192,17 @@ export function home(data) {
 
 <section class="band" aria-labelledby="tools-h">
 <div class="wrap section">
-<h2 id="tools-h">Free printable checklists</h2>
-<p class="sub" style="margin-bottom:28px">No account, no email. Print them, fill them in, and keep them where your family can find them.</p>
+<h2 id="tools-h">Free printables</h2>
+<p class="sub" style="margin-bottom:28px">Worksheets, checklists and remembering books for children. No account, no email. Print them, fill them in, and keep them where your family can find them.</p>
 <div class="grid grid-wide">
 <a class="card" href="/checklists/plan-ahead/"><strong>Plan-ahead worksheet</strong><span class="muted small">Your wishes, your people and where everything is kept.</span></a>
-<a class="card" href="/checklists/questions-for-the-doctor/"><strong>Questions for the doctor</strong><span class="muted small">What to ask after a serious diagnosis, and about hospice.</span></a>
-<a class="card" href="/checklists/after-a-death/"><strong>After a death: the first 24 hours</strong><span class="muted small">Who to call first, and what can wait.</span></a>
+<a class="card" href="/checklists/funeral-planner/"><strong>Funeral or celebration of life planner</strong><span class="muted small">For your own, or for someone who has died.</span></a>
+<a class="card" href="/checklists/talking-with-a-parent/"><strong>Talking with a parent</strong><span class="muted small">Gentle questions, with space for the answers.</span></a>
+<a class="card" href="/checklists/letters-to-leave/"><strong>Letters to leave</strong><span class="muted small">Prompts, and how to make sure they arrive.</span></a>
+<a class="card" href="/checklists/eulogy/"><strong>Writing a eulogy</strong><span class="muted small">Prompts, a simple shape, and space to draft.</span></a>
+<a class="card" href="/checklists/remembering-someone/"><strong>Remembering books for children</strong><span class="muted small">For a person, a grandparent or a pet.</span></a>
 </div>
+<p style="margin-top:24px"><a href="/checklists/">See all printables</a></p>
 </div>
 </section>
 
@@ -235,13 +239,7 @@ ${placeOptions(data.places)}
 
 <section class="section" aria-label="Services">
 <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px">
-<div class="card" style="flex:999 1 560px;min-width:0">
-<p class="eyebrow">Paid service</p>
-<h2>Want a person to help you through it?</h2>
-<p class="sub">A navigator helps you or your family make sense of the options: planning documents, choosing hospice, arranging a funeral, handling paperwork after a death, or medical aid in dying.</p>
-<a class="btn" href="/navigation/">About navigation sessions</a>
-</div>
-<div class="card" style="flex:1 1 300px;min-width:0">
+<div class="card" style="flex:1 1 300px;min-width:0;max-width:760px">
 <p class="eyebrow">For organizations</p>
 <h2 style="font-size:30px">Hospices, employers and insurers</h2>
 <p class="muted">License our guides and checklists for your patients, employees or members, or train your staff.</p>
@@ -268,15 +266,17 @@ export const guides = [
 <li><strong>A health care power of attorney:</strong> the person who decides for you (your health care proxy or agent).</li></ul>
 <p>The names, forms and rules differ by country. In the US, each state has its own form and rules about witnesses or notaries. In England and Wales, the equivalents are an advance decision and a lasting power of attorney for health and welfare. Forms are usually free, and you often don't need a lawyer. Give copies to your proxy and your doctor, and keep the original where it can be found.</p>` },
       { id: 'proxy', h: 'Choose your health care proxy', html: `<p>Pick someone who will follow your wishes even if they disagree, can stay calm under pressure, and can be reached quickly. Name a backup. Then tell them, in detail, what matters to you.</p>` },
+      { id: 'steward', h: 'Name one person who knows where everything is', html: `<p>Besides your health care proxy and executor, it helps to choose one trusted person (some call them a steward) who knows where your documents, passwords and wishes are kept, and whom to call. It can be the same person. Tell them, and write their name on your <a href="/checklists/plan-ahead/">plan-ahead worksheet</a>.</p>` },
       { id: 'talk', h: 'Have the conversation', html: `<p>The document matters less than the conversation behind it. Useful questions to talk through:</p>
 <ul><li>What would make life not worth living for you? What would you be willing to go through for more time?</li>
 <li>Where would you want to be at the end: at home, in a hospice, in a hospital?</li>
 <li>Who do you want with you, and who do you want to make decisions?</li>
 <li>What do you want for your body and your funeral?</li></ul>` },
       { id: 'paperwork', h: 'Get your paperwork in order', html: `<p>Families lose weeks looking for things. Write down where to find your will, insurance policies, bank and retirement accounts, the deed or lease, passwords, and who should look after children and pets. Add a beneficiary to accounts where you can: those usually pass outside probate.</p>
+<p>For what each document does and how the rules differ by state, see <a href="/plan-ahead/wills-and-trusts/">wills, trusts and the paperwork</a>.</p>
 <p>Own a home in another country? You may need a will there too. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>
 <p><a href="/checklists/plan-ahead/">Use the printable plan-ahead worksheet</a>.</p>` },
-      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, or nothing at all. Music, readings, who should speak. Writing it down is a gift to whoever has to arrange it. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
+      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, a party, or nothing at all. Music, readings, who should speak. Writing it down is a gift to whoever has to arrange it: use the <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a>. You can also write <a href="/checklists/letters-to-leave/">letters to leave</a> and your <a href="/checklists/life-story/">life story</a>, so your family can tell it your way. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
       { id: 'review', h: 'Review it every few years', html: `<p>Look again after a new diagnosis, a divorce or a death in the family, or every few years anyway. Update the documents and tell your proxy what changed.</p>` },
     ],
     sources: [
@@ -284,11 +284,81 @@ export const guides = [
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
+      ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork', 'What each document does, state by state.'],
       ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
+      ['/plan-ahead/talking-with-a-parent/', 'Talking with a parent', 'Near or far.'],
       ['/serious-illness/', 'Serious illness', 'If a diagnosis has already come.'],
     ],
   }),
 
+  guide({
+    path: '/plan-ahead/wills-and-trusts/',
+    title: 'Wills, trusts and the paperwork',
+    eyebrow: 'Plan ahead',
+    reviewed: '2026-11-18',
+    description: 'The documents everyone needs, what a will does and does not cover, living trusts, avoiding probate, powers of attorney, and how the rules differ by US state.',
+    lead: "A few documents spare your family months of work and expense. Here is what each one does, and which rules change depending on where you live.",
+    sections: [
+      { id: 'set', h: 'The basic set of documents', html: `<ul>
+<li><strong>A will:</strong> who gets what, who handles it (your executor), and who would raise your children.</li>
+<li><strong>A durable financial power of attorney:</strong> who manages your money if you can't.</li>
+<li><strong>An advance directive and health care power of attorney:</strong> your medical wishes and who speaks for you. See <a href="/plan-ahead/">plan ahead</a>.</li>
+<li><strong>Up-to-date beneficiary designations</strong> on retirement accounts, life insurance and bank accounts.</li>
+<li><strong>A list of where everything is:</strong> use the <a href="/checklists/plan-ahead/">plan-ahead worksheet</a>.</li>
+<li><strong>Sometimes, a trust</strong> (see below).</li></ul>` },
+      { id: 'will', h: 'What a will does, and what it doesn’t', html: `<p>A will covers what you own in your name alone. It does <strong>not</strong> control:</p>
+<ul>
+<li>Accounts and policies with a named beneficiary, such as retirement accounts and life insurance. The beneficiary form wins, even if your will says something different.</li>
+<li>Property you own jointly with a right of survivorship, which passes to the other owner.</li>
+<li>Anything held in a trust.</li></ul>
+<p>So check your beneficiary forms whenever you update your will. Out-of-date forms, naming an ex-spouse for example, are one of the most common and painful mistakes.</p>` },
+      { id: 'valid', h: 'Making a will valid: what differs by state', html: `<ul>
+<li><strong>Everywhere in the US:</strong> you must be an adult of sound mind, and the will must be in writing and signed.</li>
+<li><strong>Witnesses:</strong> most states require two adult witnesses, ideally people who inherit nothing under the will.</li>
+<li><strong>Handwritten wills:</strong> about half of states accept a will written entirely in your own handwriting and signed, even without witnesses. The rest do not.</li>
+<li><strong>Notarized "self-proving" statement:</strong> most states let you add one, so witnesses don't have to be found later. It's worth doing.</li>
+<li><strong>Electronic wills</strong> are allowed in only a small number of states so far.</li>
+<li><strong>Louisiana is different.</strong> It follows a civil-law system with its own will formats and limited forced-heirship rules for young or disabled children.</li>
+<li><strong>If you move,</strong> a will made validly in one state is generally accepted in another, but have it reviewed, because property and spousal rules change.</li></ul>
+<p>Outside the US, the rules are different again. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>` },
+      { id: 'spouses', h: 'Married couples: community property and spousal rights', html: `<ul>
+<li><strong>Nine community property states</strong> (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington and Wisconsin) generally treat property earned during marriage as owned half by each spouse. You can only leave your own half by will.</li>
+<li><strong>In most other states,</strong> a surviving spouse can claim a share of the estate (an "elective share") even if the will leaves them less.</li></ul>` },
+      { id: 'trusts', h: 'Trusts', html: `<p>A <strong>revocable living trust</strong> holds your property while you're alive, with you in control, and passes it to your beneficiaries without probate.</p>
+<ul>
+<li><strong>Pros:</strong> avoids probate for what's in the trust, keeps details private, and can be easier to manage if you become unable to.</li>
+<li><strong>Cons:</strong> costs more to set up, and it only works for property you actually move into it (called "funding" the trust). It doesn't by itself reduce taxes or protect against creditors.</li>
+<li><strong>Useful when:</strong> you own property in more than one state, want privacy, have a blended family, or live in a state where probate is slow or costly.</li></ul>
+<p>Other trusts, such as special needs trusts for a disabled beneficiary, trusts for minor children, irrevocable trusts for tax or Medicaid planning, and pet trusts, need a lawyer.</p>` },
+      { id: 'probate', h: 'Passing things on without probate', html: `<ul>
+<li><strong>Payable-on-death and transfer-on-death designations</strong> on bank and investment accounts.</li>
+<li><strong>Transfer-on-death deeds</strong> for a home, allowed in many but not all states.</li>
+<li><strong>Joint ownership with right of survivorship.</strong> Be careful: adding a child to your account or deed can expose it to their debts or divorce, and can have tax effects.</li>
+<li><strong>Small-estate procedures:</strong> every state has a simpler process for smaller estates, but the limits vary widely.</li></ul>` },
+      { id: 'poa', h: 'Powers of attorney', html: `<p>A <strong>durable financial power of attorney</strong> lets someone manage your money and property if you can't. Without one, your family may have to go to court for guardianship or conservatorship, which is slow, costly and public. Forms and signing rules vary by state, and some banks have their own forms, so ask yours.</p>` },
+      { id: 'taxes', h: 'Estate and inheritance taxes', html: `<ul>
+<li><strong>Federal estate tax</strong> only applies to estates over $15 million in 2026, so most families owe none.</li>
+<li><strong>State estate tax:</strong> 12 states and the District of Columbia have one, some starting at much lower amounts; Oregon's starts at $1 million.</li>
+<li><strong>State inheritance tax</strong> (paid by the person who inherits): Kentucky, Maryland, Nebraska, New Jersey and Pennsylvania. Spouses are usually exempt, and often children too. Maryland has both taxes.</li></ul>` },
+      { id: 'digital', h: 'Your digital life', html: `<p>Many accounts let you name someone now: <a href="https://support.apple.com/en-us/102631">Apple Legacy Contact</a>, <a href="https://support.google.com/accounts/answer/3036546">Google Inactive Account Manager</a> and <a href="https://www.facebook.com/help/1568013990080948">Facebook legacy contact</a>. A password manager with emergency access helps too. Never write passwords in your will, which can become a public record.</p>` },
+      { id: 'lawyer', h: 'Do it yourself, or see a lawyer?', html: `<p>A simple estate can often be handled with your state's standard forms or reputable will software. See a lawyer if you have a blended family, minor children, a business, property in more than one state or country, a beneficiary with a disability, a large estate, or someone likely to contest the will. If money is tight, legal aid organizations and bar association referral services can help.</p>` },
+      { id: 'keep', h: 'Keeping and updating it', html: `<ul>
+<li>Keep the original will somewhere safe that your executor can get to. A safe deposit box only in your name can be hard to open after you die.</li>
+<li>Tell your executor and your one trusted person where everything is.</li>
+<li>Review after a marriage, divorce, birth, death, move or big change in money, and every few years anyway.</li></ul>` },
+    ],
+    sources: [
+      ['Tax Foundation: state estate and inheritance taxes', 'https://taxfoundation.org/data/all/state/estate-inheritance-taxes/'],
+      ['AARP: states with estate and inheritance taxes', 'https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/'],
+      ['IRS: estate tax', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
+      ['Nolo: are handwritten wills valid?', 'https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html'],
+      ['NerdWallet: community property states', 'https://www.nerdwallet.com/estate-planning/learn/community-property'],
+    ],
+    related: [
+      ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Where everything is, all in one place.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills in other countries.'],
+    ],
+  }),
   guide({
     path: '/plan-ahead/property-abroad/',
     title: 'Wills when you own property abroad',
@@ -357,6 +427,109 @@ export const guides = [
     ],
   }),
   guide({
+    path: '/plan-ahead/talking-with-a-parent/',
+    title: 'Talking with a parent, near or far',
+    eyebrow: 'Plan ahead',
+    description: 'How to talk with an aging parent about their wishes for the end of life, including when you live in another city or country.',
+    lead: "It rarely feels like the right time. Starting while your parent is well means they get to decide, and you won't have to guess later.",
+    sections: [
+      { id: 'start', h: 'Getting started', html: `<ul>
+<li><strong>Start small.</strong> One question is enough for a first conversation.</li>
+<li><strong>Use an opening.</strong> A friend's illness, a news story, or your own planning: "I've been writing down my own wishes, and it made me wonder about yours."</li>
+<li><strong>Listen more than you talk.</strong> The goal is to learn what they want, not to persuade them.</li>
+<li><strong>Write down what they say,</strong> and read it back so they can correct it.</li></ul>
+<p><a href="/checklists/talking-with-a-parent/">Print the conversation sheet</a> for questions and space to write.</p>` },
+      { id: 'what', h: 'What to talk about', html: `<ul>
+<li>What matters most to them if they became very ill, and what they would not want.</li>
+<li>Who should make decisions if they can't, and whether that's written down.</li>
+<li>Where their will, insurance, accounts and important papers are.</li>
+<li>What they want for their body and for a funeral or gathering.</li></ul>` },
+      { id: 'resist', h: "If they don't want to talk", html: `<p>That's their right. Say why it matters to you, leave the door open, and try again another time. Some people find it easier to fill in a form alone, or to talk with their doctor, a faith leader or a friend instead of their child.</p>` },
+      { id: 'far', h: 'When you live far away', html: `<ul>
+<li><strong>Talk by video,</strong> and plan the bigger conversations for when you visit.</li>
+<li><strong>Use their local rules.</strong> Their advance directive should be on the form for the state or country where they live, not where you live.</li>
+<li><strong>Distance and time zones matter.</strong> You can still be their health care proxy from abroad, but name a backup who lives nearby, and make sure their doctors have your number and know your time zone.</li>
+<li><strong>Build a local circle:</strong> a neighbor, a friend or a relative who can check in, with your contact details and theirs written down.</li>
+<li><strong>Keep copies</strong> of their key documents and contacts where you can reach them, such as scanned copies in a secure shared folder.</li>
+<li><strong>Know what you'd do</strong> if you needed to travel at short notice: passport valid, and who covers for you at home.</li></ul>` },
+    ],
+    related: [
+      ['/checklists/talking-with-a-parent/', 'Conversation sheet', 'Printable questions with space for answers.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'If either of you owns a home in another country.'],
+    ],
+  }),
+  guide({
+    path: '/what-it-costs/',
+    title: 'What it costs',
+    eyebrow: 'Costs',
+    reviewed: '2026-11-18',
+    description: 'What the end of life costs: medical care, hospice, care at home and in care homes, funerals and medical aid in dying, with sourced figures and where to look up prices.',
+    lead: 'Almost no one tells you plainly what dying costs. Here is what we could confirm, with the source and date for every figure, and where to look up prices yourself.',
+    sections: [
+      { id: 'short', h: 'The short version', html: `<ul>
+<li><strong>It depends most on where you live.</strong> In countries with public health systems, such as the UK and Canada, most medical and hospice care is free or largely covered. In the US, costs depend on insurance and on which kind of care is needed.</li>
+<li><strong>The biggest out-of-pocket costs are usually not medical.</strong> Paid care at home or in a care home, and the funeral, are what most families pay for themselves.</li>
+<li><strong>Prices vary widely,</strong> even between nearby hospitals and funeral homes. Asking for written, itemized prices is the single best way to save money.</li></ul>
+<p>Figures below are US national medians unless we say otherwise. Your area may be much higher or lower.</p>` },
+      { id: 'medical', h: 'Medical care in the last year of life', html: `<p>In the US, about a quarter of Medicare spending on people aged 65 and over goes to care in their last year of life, according to KFF's analysis of 2014 data, the most recent it has published. Much of that is hospital and intensive care.</p>
+<p>How much care people get near the end varies a great deal between hospitals. The <a href="https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/">Dartmouth Atlas</a> compares US hospitals on Medicare spending, hospital and intensive-care days and hospice use in patients' last two years of life. Its hospital data is from 2017, so use it to compare patterns, not today's prices.</p>` },
+      { id: 'hospice', h: 'Hospice and palliative care', html: `<ul>
+<li><strong>US, Medicare:</strong> hospice care is covered. You may pay up to $5 for each prescription for pain and symptom relief, and 5% of the Medicare-approved amount for inpatient respite care. Medicare doesn't pay room and board if you live in a nursing home or other facility.</li>
+<li><strong>UK:</strong> hospice care is free to patients. Most hospices are charities.</li>
+<li><strong>Canada:</strong> palliative care is covered by provincial health plans, though some care at home may cost extra.</li></ul>` },
+      { id: 'care', h: 'Care at home and in care homes', html: `<p>This is often the largest cost, and in the US, Medicare doesn't pay for long-term personal care. Medicaid may, for people with low income and savings. National median costs in 2025:</p>
+<div class="table-box" tabindex="0" role="region" aria-label="Long-term care costs"><table style="min-width:520px">
+<caption class="sr-only">US national median long-term care costs, 2025</caption>
+<thead><tr><th scope="col">Type of care</th><th scope="col">Median cost</th><th scope="col">Per year</th></tr></thead>
+<tbody>
+<tr><td>Nursing home, private room</td><td>$355 a day</td><td>$129,575</td></tr>
+<tr><td>Nursing home, shared room</td><td>$315 a day</td><td>$114,975</td></tr>
+<tr><td>Assisted living</td><td>$6,200 a month</td><td>$74,400</td></tr>
+<tr><td>Paid caregiver at home (44 hours a week)</td><td>$35 an hour</td><td>$80,080</td></tr>
+<tr><td>Adult day care (5 days a week)</td><td>$95 a day</td><td>$24,700</td></tr>
+</tbody></table></div>
+<p class="small muted">Source: CareScout 2025 Cost of Care Survey, released March 2, 2026. Look up your area with the <a href="https://www.carescout.com/cost-of-care">CareScout cost calculator</a>.</p>` },
+      { id: 'funeral', h: 'Funerals, burial and cremation', html: `<ul>
+<li><strong>Funeral with viewing and burial:</strong> about $8,300 median, or about $9,995 with a burial vault.</li>
+<li><strong>Funeral with viewing and cremation:</strong> about $6,280 median.</li></ul>
+<p class="small muted">Source: National Funeral Directors Association 2023 General Price List Study, as reported by <a href="https://www.kiplinger.com/retirement/estate-planning/the-cost-of-dying-burial-and-cremation-prices-by-state">Kiplinger</a>. These cover the funeral home only, not the cemetery plot, headstone, flowers or obituary.</p>
+<p><strong>Direct cremation</strong> or <strong>direct burial</strong> (no viewing or service beforehand) usually costs far less, and a gathering can be held later anywhere. Cremation is now the most common choice in the US; the NFDA projected a 63.4% cremation rate for 2025. In the US, you have the right to itemized prices under the FTC Funeral Rule; see <a href="/after-a-death/#rights">your rights with funeral homes</a>.</p>` },
+      { id: 'maid', h: 'Medical aid in dying', html: `<ul>
+<li><strong>US federal programs don't pay.</strong> A 1997 federal law bars federal funds from paying for it, so Medicare, the VA and the federal share of Medicaid don't cover the medication or the related doctor visits.</li>
+<li><strong>Private insurance varies.</strong> Some plans in some states cover it; many don't. Ask the insurer in writing.</li>
+<li><strong>Ask for the full cost up front:</strong> the clinician visits, the medication, and any support at the bedside. Reported costs vary from a few hundred dollars for the medication alone to several thousand with clinicians' time included.</li>
+<li><strong>Switzerland</strong> is far more expensive; see <a href="/medical-aid-in-dying/switzerland/#costs">going to Switzerland</a>.</li></ul>` },
+      { id: 'lookup', h: 'Where to look up prices', html: `<ul>
+<li><a href="https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/">Dartmouth Atlas</a>: end-of-life care patterns by US hospital (2017 data).</li>
+<li><a href="https://www.medicare.gov/care-compare/?providerType=Hospice">Medicare Care Compare</a>: hospice quality ratings in the US.</li>
+<li><a href="https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency">Hospital price transparency</a>: every US hospital must post its prices, though the files are hard to use and not all hospitals comply. <a href="https://turquoise.health/">Turquoise Health</a> makes them searchable.</li>
+<li><a href="https://www.fairhealthconsumer.org/">FAIR Health Consumer</a>: typical costs of medical procedures in your area.</li>
+<li><a href="https://www.carescout.com/cost-of-care">CareScout</a>: care-home and home-care costs by area.</li>
+<li><a href="https://www.funerals.org/">Funeral Consumers Alliance</a>: local groups, some of which survey funeral prices.</li></ul>` },
+      { id: 'save', h: 'Ways to lower costs', html: `<ul>
+<li>Ask about hospice early. It is covered by Medicare in the US, and free in many other countries.</li>
+<li>Get written, itemized prices from two or three funeral homes before you choose.</li>
+<li>Consider direct cremation or direct burial, with a gathering afterward.</li>
+<li>Look into body donation: some programs cover the cost of cremation afterward.</li>
+<li>In the US, eligible veterans can be buried in a VA national cemetery and may qualify for other burial benefits; <a href="https://www.va.gov/burials-memorials/eligibility/">check eligibility</a>.</li>
+<li>Check what insurance, Medicaid or employer benefits cover before paying privately for care.</li></ul>` },
+    ],
+    sources: [
+      ['KFF: Medicare spending at the end of life (2014 data)', 'https://www.kff.org/medicare/medicare-spending-at-the-end-of-life/'],
+      ['Dartmouth Atlas: end-of-life care by hospital', 'https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/'],
+      ['Medicare: hospice care coverage', 'https://www.medicare.gov/coverage/hospice-care'],
+      ['CareScout 2025 Cost of Care Survey (Genworth press release, March 2026)', 'https://investor.genworth.com/news-events/press-releases/detail/1054'],
+      ['Kiplinger: the cost of dying (citing the NFDA 2023 General Price List Study)', 'https://www.kiplinger.com/retirement/estate-planning/the-cost-of-dying-burial-and-cremation-prices-by-state'],
+      ['NFDA statistics (cremation rate)', 'https://nfda.org/news/statistics'],
+      ['US Code, 42 U.S.C. chapter 138: restriction on assisted suicide funding', 'https://www.law.cornell.edu/uscode/text/42/chapter-138'],
+      ['CMS: hospital price transparency', 'https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency'],
+    ],
+    related: [
+      ['/after-a-death/', 'After a death', 'Funeral options and your rights.'],
+      ['/finding-help/', 'Finding help near you', 'Independent directories.'],
+    ],
+  }),
+  guide({
     path: '/serious-illness/',
     title: 'Serious illness',
     eyebrow: 'Stage 2',
@@ -369,7 +542,7 @@ export const guides = [
 <li>You can leave hospice and go back to curative treatment if you change your mind.</li>
 <li>Many families say they wish they had known about hospice sooner.</li></ul>` },
       { id: 'polst', h: 'Medical orders for now (POLST)', html: `<p>An advance directive covers the future. In the US, a POLST form (also called MOLST, POST or MOST, depending on the state) is a medical order signed by a clinician for someone who is seriously ill now. It tells emergency crews and hospitals what treatment you want, such as whether to attempt CPR. Other countries use similar forms, such as ReSPECT in the UK; ask the care team what is used where you live.</p>` },
-      { id: 'where', h: 'Where care happens', html: `<p>Care can happen at home with help from family, aides and a hospice team; in assisted living or a nursing home; or in an inpatient hospice. Ask what each option costs and what insurance or public programs cover before you decide.</p>` },
+      { id: 'where', h: 'Where care happens', html: `<p>Care can happen at home with help from family, aides and a hospice team; in assisted living or a nursing home; or in an inpatient hospice. Ask what each option costs and what insurance or public programs cover before you decide. See <a href="/what-it-costs/#care">what it costs</a>.</p>` },
       { id: 'ask', h: 'Questions to ask the doctor', html: `<p>What is likely to happen next? What are the treatment options, and what would each one mean for my daily life? What would you do in my place? Bring someone to take notes.</p>
 <p><a href="/checklists/questions-for-the-doctor/">Print the full list of questions</a>.</p>` },
       { id: 'caregivers', h: 'If you are the caregiver', html: `<p>Caregiving is work. Ask for help with specific tasks, accept it when it's offered, and ask the care team about respite care, which gives family caregivers a break.</p>` },
@@ -436,19 +609,20 @@ export const guides = [
 <li><strong>Cremation:</strong> with or without a service. Direct cremation, with no service beforehand, usually costs least.</li>
 <li><strong>Body donation:</strong> usually arranged in advance with a program.</li>
 <li><strong>Home funeral:</strong> most states allow families to care for their own dead; some require a funeral director for certain steps.</li></ul>
-<p>A service can happen weeks later, in any form you like.</p>` },
+<p>A service can happen weeks later, in any form you like. The <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a> and <a href="/checklists/eulogy/">eulogy guide</a> can help. To find independent help nearby, see <a href="/finding-help/">finding help</a>.</p>` },
       { id: 'rights', h: 'Your rights with funeral homes', html: `<p>Wherever you are, ask for written, itemized prices before you agree to anything. In the US, the FTC Funeral Rule gives you the right to:</p>
 <ul><li>Get an itemized price list, in person, and prices by phone.</li>
 <li>Buy only the goods and services you want.</li>
 <li>Use a casket or urn bought elsewhere, without a handling fee.</li>
 <li>Refuse embalming in most cases. Ask what the law actually requires.</li></ul>
-<p>Prices vary widely. Calling two or three funeral homes can save thousands of dollars.</p>` },
+<p>Prices vary widely. Calling two or three funeral homes can save thousands of dollars. See <a href="/what-it-costs/#funeral">what it costs</a>.</p>` },
       { id: 'first-month', h: 'The first month', html: `<ul><li>Find the will, and contact the executor named in it.</li>
 <li>Notify the government pension or social security agency (in the US, Social Security; the funeral home often does this), other pension plans, insurers and banks.</li>
 <li>Claim life insurance and any benefits; ask about survivor benefits.</li>
 <li>Cancel or transfer utilities, subscriptions and accounts. Keep paying essential bills.</li>
 <li>Forward mail, secure the home and car, and look after pets.</li></ul>` },
       { id: 'probate', h: 'Probate and the estate', html: `<p>Probate is the legal process for settling an estate; its name and steps differ by country. Accounts with a named beneficiary and jointly owned property often pass outside it, and many places, including every US state, have a simpler process for small estates. If the estate is large or complicated, talk to a probate lawyer.</p>
+<p>To make things easier for your own family, see <a href="/plan-ahead/wills-and-trusts/#probate">passing things on without probate</a>.</p>
 <p>If they owned property in another country, see <a href="/plan-ahead/property-abroad/#after">property abroad</a>.</p>` },
     ],
     sources: [
@@ -477,7 +651,8 @@ export const guides = [
 <li>Answer questions honestly and simply; it's fine to say you don't know.</li>
 <li>Let children choose whether to take part in goodbyes and funerals.</li>
 <li>Expect grief to come and go in play and questions over months and years.</li>
-<li>Tell their school and their other caregivers.</li></ul>` },
+<li>Tell their school and their other caregivers.</li></ul>
+<p>Free printable remembering books: <a href="/checklists/remembering-someone/">someone I love</a>, <a href="/checklists/remembering-grandparent/">my grandparent</a> and <a href="/checklists/remembering-pet/">my pet</a>.</p>` },
       { id: 'pets', h: 'When a pet dies', html: `<p>Losing a pet is a real loss, and grief for an animal can be as strong as for a person. For children, it's often their first experience of death; the same honest language helps.</p>` },
       { id: 'support', h: 'Where to find support', html: `<p>Hospices offer bereavement support to families, usually for about a year after a death, often for free. Grief groups, counselors and faith communities help too.</p>` },
       { id: 'more-help', h: 'When to get more help', html: `<p>Talk to a doctor or counselor if grief stays so intense that you can't manage daily life for many months, or if you are drinking or using drugs to cope. If you are thinking about suicide, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>` },
@@ -488,7 +663,7 @@ export const guides = [
     ],
     related: [
       ['/after-a-death/', 'After a death', 'The practical steps.'],
-      ['/navigation/', 'Talk to a navigator', 'Help with the paperwork, so you have room to grieve.'],
+      ['/checklists/after-a-death/', 'First-24-hours checklist', 'Printable, for the practical steps.'],
     ],
   }),
 ];
@@ -499,13 +674,19 @@ export const checklists = [
   checklist({
     path: '/checklists/plan-ahead/',
     title: 'Plan-ahead worksheet',
-    description: 'A printable worksheet for your end-of-life wishes, your people, and where your documents are kept.',
-    lead: 'Fill this in, then give a copy to your health care proxy and keep one with your important papers.',
+    description: 'A thorough printable worksheet: your people, professionals, health and legal documents, money, property, digital life and wishes, and where everything is kept.',
+    lead: 'Fill in what applies and skip the rest. Give a copy to your health care proxy or executor, and keep one with your important papers. Never write full passwords here; say where to find them.',
     groups: [
-      { h: 'Medical wishes', items: ['I have an advance directive. It is kept: <span class="blank" aria-hidden="true"></span>', 'My health care proxy is: <span class="blank" aria-hidden="true"></span> Phone: <span class="blank" aria-hidden="true"></span>', 'My backup proxy is: <span class="blank" aria-hidden="true"></span>', 'My doctor has a copy of my wishes.', 'What matters most to me at the end of life: <span class="blank" aria-hidden="true"></span>'] },
-      { h: 'My people', items: ['People to call first: <span class="blank" aria-hidden="true"></span>', 'Who looks after my children / pets: <span class="blank" aria-hidden="true"></span>', 'My executor is: <span class="blank" aria-hidden="true"></span>'] },
-      { h: 'Where things are', items: ['Will: <span class="blank" aria-hidden="true"></span>', 'Life insurance policies: <span class="blank" aria-hidden="true"></span>', 'Bank and retirement accounts: <span class="blank" aria-hidden="true"></span>', 'Deed, lease or mortgage: <span class="blank" aria-hidden="true"></span>', 'Property in another country, and how it is held: <span class="blank" aria-hidden="true"></span>', 'Local will for that country? Kept: <span class="blank" aria-hidden="true"></span>', 'Passwords and phone passcode: <span class="blank" aria-hidden="true"></span>'] },
-      { h: 'Afterward', items: ['Burial / cremation / green burial / body donation (circle one)', 'Service I would like: <span class="blank" aria-hidden="true"></span>', 'Music, readings or people I want included: <span class="blank" aria-hidden="true"></span>', 'Letters or messages to deliver: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'About me', items: ['Full legal name: <span class="blank" aria-hidden="true"></span>', 'Date of birth: <span class="blank" aria-hidden="true"></span>', 'Where my ID, passport and birth certificate are: <span class="blank" aria-hidden="true"></span>', 'Marriage, divorce or partnership papers: <span class="blank" aria-hidden="true"></span>', 'Military service papers (if any): <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'My people', items: ['My health care proxy: <span class="blank" aria-hidden="true"></span> Phone: <span class="blank" aria-hidden="true"></span>', 'Backup proxy: <span class="blank" aria-hidden="true"></span>', 'Executor named in my will: <span class="blank" aria-hidden="true"></span>', 'Financial power of attorney: <span class="blank" aria-hidden="true"></span>', 'The one person who knows where everything is: <span class="blank" aria-hidden="true"></span>', 'People to call first: <span class="blank" aria-hidden="true"></span>', 'Guardian for my children: <span class="blank" aria-hidden="true"></span>', 'Who cares for my pets: <span class="blank" aria-hidden="true"></span>', 'People who depend on me, and how: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'My professionals', items: ['Doctor(s): <span class="blank" aria-hidden="true"></span>', 'Lawyer: <span class="blank" aria-hidden="true"></span>', 'Accountant or tax preparer: <span class="blank" aria-hidden="true"></span>', 'Financial adviser or bank contact: <span class="blank" aria-hidden="true"></span>', 'Insurance agent: <span class="blank" aria-hidden="true"></span>', 'Faith leader or other support: <span class="blank" aria-hidden="true"></span>', 'Employer or HR contact (for benefits): <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Health care documents', items: ['Advance directive (living will). Kept: <span class="blank" aria-hidden="true"></span>', 'Health care power of attorney. Kept: <span class="blank" aria-hidden="true"></span>', 'POLST or similar medical order (if seriously ill). Kept: <span class="blank" aria-hidden="true"></span>', 'Organ and tissue donation: yes / no / registered with: <span class="blank" aria-hidden="true"></span>', 'My doctor and my proxy have copies.'] },
+      { h: 'Legal documents', items: ['Will. Original kept: <span class="blank" aria-hidden="true"></span>', 'Trust (if any). Trustee: <span class="blank" aria-hidden="true"></span> Kept: <span class="blank" aria-hidden="true"></span>', 'Durable financial power of attorney. Kept: <span class="blank" aria-hidden="true"></span>', 'Wills or documents for property in another state or country: <span class="blank" aria-hidden="true"></span>', 'Prepaid funeral or burial plot papers: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Money and accounts', items: ['Bank and credit union accounts: <span class="blank" aria-hidden="true"></span>', 'Retirement and pension accounts: <span class="blank" aria-hidden="true"></span>', 'Investments: <span class="blank" aria-hidden="true"></span>', 'Life insurance policies: <span class="blank" aria-hidden="true"></span>', 'Accounts with a named beneficiary, and who it is: <span class="blank" aria-hidden="true"></span>', 'Debts, loans and credit cards: <span class="blank" aria-hidden="true"></span>', 'Regular bills and automatic payments: <span class="blank" aria-hidden="true"></span>', 'Where my recent tax returns are: <span class="blank" aria-hidden="true"></span>', 'Safe deposit box, and where the key is: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Property', items: ['Home: deed, lease or mortgage. Kept: <span class="blank" aria-hidden="true"></span>', 'Vehicles and titles: <span class="blank" aria-hidden="true"></span>', 'Property in another state or country, and how it is held: <span class="blank" aria-hidden="true"></span>', 'Valuables, and who should have them: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Digital life', items: ['Phone and computer passcodes, or where to find them: <span class="blank" aria-hidden="true"></span>', 'Password manager and its emergency access: <span class="blank" aria-hidden="true"></span>', 'Email accounts: <span class="blank" aria-hidden="true"></span>', 'Apple, Google or Facebook legacy contact set up: <span class="blank" aria-hidden="true"></span>', 'Subscriptions to cancel: <span class="blank" aria-hidden="true"></span>', 'Photos and files to keep: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'My wishes', items: ['What matters most to me at the end of life: <span class="blank" aria-hidden="true"></span>', 'Where I would like to be: <span class="blank" aria-hidden="true"></span>', 'Burial / cremation / green burial / body donation / other: <span class="blank" aria-hidden="true"></span>', 'Service or gathering I would like (see the funeral planner): <span class="blank" aria-hidden="true"></span>', 'Letters or messages to deliver (see letters to leave): <span class="blank" aria-hidden="true"></span>', 'My life story or obituary notes (see my life story): <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Review', items: ['Date I filled this in: <span class="blank" aria-hidden="true"></span>', 'Next review (every 2–3 years, or after a big change): <span class="blank" aria-hidden="true"></span>', 'Copies given to: <span class="blank" aria-hidden="true"></span>'] },
     ],
   }),
   checklist({
@@ -530,21 +711,10 @@ export const checklists = [
       { h: 'Within the day', items: ['Tell close family and friends, or ask someone to do it.', 'Choose a funeral home or cremation provider. Ask for the itemized price list.', 'Look for written wishes about the body and the funeral.', 'Arrange care for children and pets, and secure the home.'] },
       { h: 'This can wait a few days', items: ['Order certified copies of the death certificate.', 'Find the will and contact the executor.', 'Notify the social security or pension agency, employers, banks and insurers.', 'Plan the service. It can happen weeks later.'] },
     ],
-    note: 'If you are struggling, you do not have to do this alone. Ask a friend, the hospice team or a navigator for help.',
+    note: 'If you are struggling, you do not have to do this alone. Ask a friend, a family member or the hospice team for help.',
   }),
 ];
 
-export const checklistIndex = {
-  path: '/checklists/',
-  title: 'Printable checklists',
-  description: 'Free printable end-of-life checklists: a plan-ahead worksheet, questions for the doctor, and the first 24 hours after a death.',
-  body: `
-<section class="section"><div class="wrap">
-<h1>Printable checklists</h1>
-<p class="lead" style="margin:20px 0 32px">Free, no account, no email. Print them and keep them where your family can find them.</p>
-${relatedCards(checklists.map((c) => [c.path, c.title, c.description]))}
-</div></section>`,
-};
 
 /* ---------- medical aid in dying section ---------- */
 
@@ -633,7 +803,6 @@ ${sources}
 <li><a href="${MAID}/process/">How the process works</a></li>
 <li><a href="/serious-illness/">Hospice and palliative care</a></li>
 <li><a href="${MAID}/families/">A guide for families</a></li>
-<li><a href="/navigation/">Talk to a navigator</a></li>
 <li><a href="/updates/">Get updates when ${esc(p.name)}'s law changes</a></li>
 </ul>
 </div>
@@ -657,7 +826,7 @@ export const maidPages = [
 <li><strong>Written request.</strong> A signed form, usually with witnesses, then the prescription.</li>
 <li><strong>Decide if and when.</strong> Having the prescription doesn't mean you must use it.</li></ol>` },
       { id: 'early', h: 'Why starting early matters', html: `<p>Everyone who asks must be able to make and communicate their own decision at every step. If illness takes that ability away, the process stops. Starting the conversation early keeps the option open, even if you never use it.</p>` },
-      { id: 'decline', h: "If your doctor won't take part", html: `<p>Doctors and hospices can decline. Ask for a referral, or <a href="/navigation/">talk to a navigator</a> about clinicians who do take part where you live.</p>` },
+      { id: 'decline', h: "If your doctor won't take part", html: `<p>Doctors and hospices can decline. Ask for a referral to one who does. Hospice teams and local aid-in-dying advocacy groups often know which clinicians take part where you live.</p>` },
       { id: 'hospice', h: 'Alongside hospice', html: `<p>Many people who ask for medical aid in dying are also in hospice. <a href="/serious-illness/">Hospice and palliative care</a> remain available whatever you decide.</p>` },
     ],
     related: [
@@ -706,7 +875,7 @@ export const maidPages = [
       ['Swissinfo: Pegasos', 'https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578'],
     ],
     related: [
-      ['/navigation/', 'Talk to a navigator', 'Help preparing an application.'],
+      [`${MAID}/process/`, 'How the process works', 'The usual steps.'],
       [`${MAID}/`, 'Where it is legal', 'Every place we cover.'],
     ],
   }),
@@ -716,30 +885,43 @@ export const maidPages = [
 
 export const staticPages = [
   {
-    path: '/navigation/',
-    title: 'Navigation sessions',
-    description: 'Paid, one-to-one help with any end-of-life question: planning documents, hospice, funerals, paperwork after a death, or medical aid in dying.',
+    path: '/finding-help/',
+    title: 'Finding help near you',
+    description: 'Independent directories for finding hospice, palliative care, funeral consumer groups, green burial, end-of-life doulas and grief support, in the US and other countries.',
     body: `
 <section class="section"><div class="wrap prose">
-<p class="eyebrow">Paid service</p>
-<h1>Talk to a navigator</h1>
-<p class="lead" style="margin:20px 0">One-to-one help for you or your family, at any stage: making a plan, choosing hospice, arranging a funeral, sorting out paperwork after a death, or understanding medical aid in dying.</p>
-<h2>What navigators do and don't do</h2>
+<h1>Finding help near you</h1>
+<p class="lead" style="margin:20px 0">Independent directories, mostly run by nonprofits and governments. We don't list businesses, take payment for listings, or vet the providers in these directories, so ask questions before you choose.</p>
+<h2>Hospice and palliative care</h2>
 <ul>
-<li>They explain the options and the process, and help you prepare.</li>
-<li>They never give medical or legal advice, and never decide whether you qualify for anything. Doctors and lawyers do.</li>
-<li>They never help with anything outside the law.</li>
-<li>If you're in crisis, they'll connect you with crisis support first.</li>
+<li><a href="https://www.medicare.gov/care-compare/?providerType=Hospice">Medicare Care Compare: hospices</a> (US), with quality ratings</li>
+<li><a href="https://www.hospiceuk.org/">Hospice UK</a> (UK)</li>
+<li><a href="https://www.virtualhospice.ca/">Canadian Virtual Hospice</a> (Canada)</li>
+<li><a href="https://www.ehospice.com/">ehospice</a> (international news and services)</li>
 </ul>
-<h2>Prices</h2>
+<h2>Funerals and burial</h2>
 <ul>
-<li>One session: [PRICE]</li>
-<li>Ongoing support: [PRICE]</li>
-<li>Reduced fees available on request</li>
+<li><a href="https://www.funerals.org/">Funeral Consumers Alliance</a> (US): nonprofit consumer groups, some of which survey local funeral prices</li>
+<li><a href="https://www.greenburialcouncil.org/">Green Burial Council</a>: certified green burial providers</li>
 </ul>
-<p>We are never paid by hospices, funeral homes, clinicians or assisted-dying organizations, so our guidance doesn't depend on where you go.</p>
-<h2>Booking opens soon</h2>
-${signupForm('navigation-interest', emailField('nav-email') + '<div class="field"><label for="nav-topic">What would you like help with?</label><input id="nav-topic" name="topic" type="text"></div>', 'Tell me when booking opens', "Please don't include medical details here. <a href=\"/privacy/\">Privacy</a>")}
+<h2>End-of-life doulas</h2>
+<ul>
+<li><a href="https://www.nedalliance.org/">National End-of-Life Doula Alliance</a> (US)</li>
+<li><a href="https://www.inelda.org/">INELDA</a> (international directory)</li>
+</ul>
+<h2>Grief support</h2>
+<ul>
+<li><a href="https://www.dougy.org/">The Dougy Center</a>: support for grieving children, with a program directory</li>
+<li><a href="https://www.compassionatefriends.org/">The Compassionate Friends</a>: for families after the death of a child</li>
+<li>Your local hospice: most offer free bereavement support, even if the person who died wasn't in their care.</li>
+</ul>
+<h2>Medical aid in dying</h2>
+<ul>
+<li><a href="/medical-aid-in-dying/">Our medical aid in dying section</a>, with official sources for each place</li>
+<li><a href="https://wfrtds.org/">World Federation of Right to Die Societies</a>: member organizations by country</li>
+</ul>
+<h2>In a crisis</h2>
+<p>If you are thinking about suicide, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>
 </div></section>`,
   },
   {
@@ -799,7 +981,7 @@ ${updatesForm('updates')}
 <h2 id="funding">How we're funded</h2>
 <p><strong>End of Life Atlas currently has no funding.</strong> It is built and maintained independently, and it earns no money. The guides and checklists are free.</p>
 <p>We take no advertising, no referral fees and no payments from hospices, funeral homes, clinicians, pharmacies or assisted-dying organizations.</p>
-<p>The navigation and organization services described on this site are not open yet. If we start charging for them, or take any other funding, we will say so on this page.</p>
+<p>The organization services described on this site are not open yet. If we start charging for anything, or take any other funding, we will say so on this page.</p>
 <h2 id="editorial">Editorial and review policy</h2>
 <ul>
 <li>Facts come from official sources or named reports, linked on the page.</li>

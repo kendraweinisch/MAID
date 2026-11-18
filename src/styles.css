@@ -1,5 +1,5 @@
 /* End of Life Atlas: printed field-guide style.
-   Paper and ink, one sage-green accent, ruled lines instead of cards.
+   Paper and ink, one slate-blue accent, ruled lines instead of cards.
    Type: Source Serif 4 for reading, IBM Plex Mono for map-legend labels. */
 :root {
   --paper: #F5F0E6;
@@ -8,8 +8,8 @@
   --muted: #53565A;
   --rule: #D9D0BF;
   --rule-strong: #8C8273;
-  --accent: #56705C;
-  --accent-text: #4E6B55;
+  --accent: #3A6690;
+  --accent-text: #2F5D8A;
   --on-ink-muted: #B9B2A6;
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
@@ -154,7 +154,7 @@ tbody tr + tr { border-top: 1px solid var(--rule); }
 .facts dt:first-of-type, .facts dt:first-of-type + dd { border-top: 0; }
 @media (max-width: 560px) { .facts { grid-template-columns: 1fr; } .facts dd { border-top: 0; padding-top: 0; } }
 
-.notice { border: 1.5px solid var(--accent); padding: 16px 20px; margin: 28px 0; background: #EEF2EA; }
+.notice { border: 1.5px solid var(--accent); padding: 16px 20px; margin: 28px 0; background: #EAF0F6; }
 .notice strong { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-text); }
 
 .check { list-style: none; padding: 0 !important; }
@@ -199,3 +199,11 @@ tbody tr + tr { border-top: 1px solid var(--rule); }
 .signature { font-family: var(--mono); font-size: 15px !important; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 8px; }
 .signature::before { content: "— "; }
 @media (max-width: 720px) { .founder-note { padding: 4px 18px 18px; } .founder-note p { font-size: 18px; } }
+
+/* Workbooks: writing lines and drawing boxes */
+.prompt { margin: 0 0 22px; }
+.prompt p { margin-bottom: 6px; }
+.write-lines { height: calc(var(--lines, 3) * 34px); background: repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule-strong) 33px 34px); }
+.draw-box { border: 1.5px dashed var(--rule-strong); background: #FFFDF8; }
+.wb-page { break-inside: avoid-page; }
+@media print { .wb-page { break-before: page; } .wb-page:first-of-type { break-before: auto; } .write-lines { background: repeating-linear-gradient(to bottom, transparent 0 33px, #999 33px 34px); } }

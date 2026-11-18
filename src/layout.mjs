@@ -24,6 +24,7 @@ const nav = [
   ['/after-a-death/', 'After a death'],
   ['/grief/', 'Grief'],
   ['/medical-aid-in-dying/', 'Medical aid in dying'],
+  ['/what-it-costs/', 'Costs'],
 ];
 
 export function layout({ path, title, description, body, crisis = false }) {
@@ -57,7 +58,6 @@ ${crisis ? '<div class="crisis" role="note">If you are thinking about suicide or
 <a class="brand" href="/">${site.name} <span>${site.tagline}</span></a>
 <nav class="nav" aria-label="Main">
 ${links}
-<a class="btn" href="/navigation/">Talk to a navigator</a>
 </nav>
 </div>
 </header>
@@ -77,16 +77,19 @@ ${body}
 <li><a href="/about/#funding">How we're funded</a></li>
 <li><a href="/about/#editorial">Editorial and review policy</a></li>
 <li><a href="/about/#reviewers">Our reviewers</a></li>
+<li><a href="/finding-help/">Finding help near you</a></li>
+<li><a href="/what-it-costs/">What it costs</a></li>
 <li><a href="/privacy/">Privacy</a></li>
 <li><a href="/accessibility/">Accessibility</a></li>
 </ul>
 </div>
 <div>
-<h2>Checklists</h2>
+<h2>Printables</h2>
 <ul>
 <li><a href="/checklists/plan-ahead/">Plan-ahead worksheet</a></li>
 <li><a href="/checklists/questions-for-the-doctor/">Questions for the doctor</a></li>
 <li><a href="/checklists/after-a-death/">After a death: first 24 hours</a></li>
+<li><a href="/checklists/">All printables</a></li>
 </ul>
 </div>
 <div>
