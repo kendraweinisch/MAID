@@ -20,7 +20,7 @@ const placeRows = (list) =>
     .join('\n');
 
 const placeTable = (list, caption) => `<div class="table-box"><table>
-<caption class="skip">${esc(caption)}</caption>
+<caption class="sr-only">${esc(caption)}</caption>
 <thead><tr><th scope="col">Place</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Open to non-residents?</th><th scope="col">Last verified</th></tr></thead>
 <tbody>
 ${placeRows(list)}
@@ -40,7 +40,7 @@ const signupForm = (name, fields, button, note) => {
     : `action="/thanks/" data-netlify="true" netlify-honeypot="company"`;
   return `<form class="form" name="${name}" method="POST" ${attrs}>
 <input type="hidden" name="form-name" value="${name}">
-<p class="skip"><label>Leave this empty <input name="company"></label></p>
+<p hidden><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
 ${fields}
 <button class="btn btn-dark" type="submit">${button}</button>
 ${note ? `<p class="form-note">${note}</p>` : ''}
@@ -274,7 +274,7 @@ export const guides = [
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
-      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica and Europe.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
       ['/serious-illness/', 'Serious illness', 'If a diagnosis has already come.'],
     ],
   }),
@@ -283,7 +283,7 @@ export const guides = [
     path: '/plan-ahead/property-abroad/',
     title: 'Wills when you own property abroad',
     eyebrow: 'Plan ahead',
-    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Costa Rica, Spain, Portugal, France and Italy.',
+    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Costa Rica, Canada, the UK, Spain, Portugal, France and Italy.',
     lead: "If you own a home in another country, your will at home may not be enough. Here's what to check, with notes on the countries where expats most often own property.",
     sections: [
       { id: 'short', h: 'The short version', html: `<ul>
@@ -293,26 +293,37 @@ export const guides = [
 <li>Ask about taxes in both countries before you assume anything.</li></ul>` },
       { id: 'why', h: "Why your home will may not be enough", html: `<p>To use a foreign will, heirs often have to settle the estate at home first, then have the documents certified with an apostille, translated and recognized by a local court or notary. That can take a long time and cost a lot. Local law may also decide who inherits land located there, and some countries reserve fixed shares for children (called forced heirship), whatever the will says.</p>` },
       { id: 'mexico', h: 'Mexico', html: `<ul>
-<li><strong>Trust property (fideicomiso).</strong> Foreigners usually hold property near the coast or borders (the "restricted zone") through a bank trust called a fideicomiso. You name substitute beneficiaries in the trust itself, and the trust, not your will, decides who receives that property. Keep those beneficiaries up to date.</li>
-<li><strong>A Mexican will.</strong> Expats are usually advised to make a Mexican will, a <em>testamento público abierto</em>, before a Mexican notary (notario público), in Spanish. It covers assets outside the trust, such as bank accounts and cars.</li>
+<li><strong>Trust property (<span lang="es">fideicomiso</span>).</strong> Foreigners usually hold property near the coast or borders (the "restricted zone") through a bank trust called a <span lang="es">fideicomiso</span>. You name substitute beneficiaries in the trust itself, and the trust, not your will, decides who receives that property. Keep those beneficiaries up to date.</li>
+<li><strong>A Mexican will.</strong> Expats are usually advised to make a Mexican will, a <em lang="es">testamento público abierto</em>, before a Mexican notary (<span lang="es">notario público</span>), in Spanish. It covers assets outside the trust, such as bank accounts and cars.</li>
 <li><strong>Using a US will.</strong> A US will can be valid in Mexico, but heirs usually have to settle it in the US first and then have it recognized in Mexico, which is slow and expensive.</li>
-<li><strong>Will Month.</strong> Every September is <em>Mes del Testamento</em> (Will Month). Notaries cut their fees for wills, often by up to half. Discounts and dates vary by state.</li></ul>` },
+<li><strong>Will Month.</strong> Every September is <em lang="es">Mes del Testamento</em> (Will Month). Notaries cut their fees for wills, often by up to half. Discounts and dates vary by state.</li></ul>` },
       { id: 'costa-rica', h: 'Costa Rica', html: `<ul>
 <li>Wills are made before a notary, in Spanish, and can be limited to your Costa Rica assets.</li>
 <li>Property in your own name normally goes through Costa Rican probate, even with a will. When the heirs agree and none of them is a minor, a notary can handle it instead of a court.</li>
 <li>Some foreigners hold property through a Costa Rican company. That changes how it passes on, so get local advice before setting one up.</li></ul>` },
+      { id: 'canada', h: 'Canada', html: `<ul>
+<li><strong>No inheritance tax, but capital gains.</strong> Canada has no inheritance or estate tax. Instead, death counts as selling your property at its market value, so capital gains tax may be due on a Canadian cottage or rental property on your final tax return.</li>
+<li><strong>Clearance before heirs are paid.</strong> The executor of a non-resident's estate usually needs a clearance certificate from the Canada Revenue Agency before handing Canadian property to heirs. If the property is sold, the buyer holds back part of the price until a separate certificate is issued.</li>
+<li><strong>Probate in the province.</strong> A US court's grant usually isn't enough on its own. The province where the property is issues its own grant, often only after US probate is finished. Rules and fees differ by province: Ontario issues an ancillary grant and may require a bond, and Quebec has a different legal system with notarial wills.</li>
+<li><strong>A Canadian will.</strong> Ask a Canadian lawyer whether a separate will for your Canadian property would make things simpler for your executor.</li></ul>` },
+      { id: 'uk', h: 'United Kingdom', html: `<ul>
+<li><strong>UK inheritance tax applies to UK property,</strong> whatever your nationality or where you live. The standard rate is 40% on the value above the £325,000 threshold. Some gifts, such as to a spouse or a charity, can be exempt; ask how the rules apply to you.</li>
+<li><strong>If you live in the UK,</strong> since April 2025 your assets worldwide can be taxed once you have been UK resident for 10 of the last 20 tax years.</li>
+<li><strong>Probate.</strong> Executors need a UK grant of probate to sell or transfer UK property. A grant from some Commonwealth countries can be resealed; a US grant usually can't, so a new UK application is needed.</li>
+<li><strong>Wills.</strong> A will made abroad can be valid in England and Wales if it meets the formal rules of the place it was made, or of your residence or nationality. Many people still use a separate UK will covering only UK assets, to make probate simpler.</li>
+<li><strong>Scotland is different.</strong> It has its own probate process (called confirmation) and inheritance rules, so get Scottish advice for property there.</li></ul>` },
       { id: 'europe', h: 'Spain, Portugal, France and Italy', html: `<ul>
 <li><strong>Which country's law applies.</strong> Under the EU Succession Regulation, the law of the country where you usually live at your death applies to your whole estate, unless your will chooses the law of a country you are a citizen of.</li>
 <li><strong>Fixed shares for children.</strong> These countries all have forced-heirship rules that reserve part of an estate for children, and sometimes a spouse. If you live there and make no choice in your will, those rules can apply to you.</li>
 <li><strong>A local will.</strong> Many advisers recommend a local will for property there, made with a notary and stating your choice of law if you want one.</li>
 <li><strong>Proof for heirs.</strong> Heirs can use a European Certificate of Succession to prove their rights in other EU countries.</li>
 <li><strong>Taxes.</strong> Inheritance taxes vary by country and, in Spain, by region. Ask before you assume there is none.</li></ul>` },
-      { id: 'taxes', h: 'Taxes at home', html: `<p>If you are a US citizen, all your assets worldwide count for US estate tax, including a home abroad. The other country may tax the same property too. A cross-border tax adviser can tell you whether a tax treaty helps.</p>` },
+      { id: 'taxes', h: 'Taxes at home', html: `<p>If you are a US citizen, all your assets worldwide count for US estate tax, including a home abroad. For deaths in 2026, a federal estate tax return is only required when the gross estate is over $15 million, so most estates owe none. The other country may still tax the property. The US has tax treaties that cover estates with some countries, including Canada and the UK; a cross-border tax adviser can tell you whether one helps.</p>` },
       { id: 'checklist', h: 'What to do now', html: `<ul class="check">
 <li>List every asset you own outside your home country, and how each is held.</li>
 <li>Ask a local notary or lawyer whether you need a local will.</li>
 <li>Make sure each will covers only its own country's assets and doesn't cancel the others.</li>
-<li>If you have a fideicomiso in Mexico, check the substitute beneficiaries.</li>
+<li>If you have a <span lang="es">fideicomiso</span> in Mexico, check the substitute beneficiaries.</li>
 <li>Keep copies, with translations, where your executor can find them.</li>
 <li>Review everything if you move country, marry, divorce or sell.</li></ul>` },
       { id: 'after', h: 'If someone dies owning property abroad', html: `<p>Contact a notary or lawyer in that country early. You'll usually need certified, apostilled and translated copies of the death certificate and the will. If the death happened abroad, the nearest embassy or consulate of the person's home country can help with the first steps.</p>` },
@@ -321,6 +332,11 @@ export const guides = [
       ['American Bar Association: foreign ownership of property in Mexico’s restricted zone (2026)', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
       ['Vive USA: September 2026 Will Month in Mexico', 'https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/'],
       ['AG Legal: Costa Rica wills for foreign property owners', 'https://aglegal.com/costa-rica-wills-foreigners/'],
+      ['O’Sullivan Estate Lawyers: cross-border Canada–US estate administration (April 2026, PDF)', 'https://www.osullivanlaw.com/wp-content/uploads/2026/04/Advisory-11-Cross-border-Canada-U.S.-estate-administration-highlights.pdf'],
+      ['Mondaq: cross-border Canada–US estate administration', 'https://www.mondaq.com/canada/wills-intestacy-estate-planning/685076/cross-border-canada-us-estate-administration-highlights'],
+      ['GOV.UK: how Inheritance Tax works', 'https://www.gov.uk/inheritance-tax'],
+      ['GOV.UK: applying for probate', 'https://www.gov.uk/applying-for-probate'],
+      ['IRS: estate tax (filing thresholds)', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
       ['EU Succession Regulation (EU) No 650/2012', 'https://eur-lex.europa.eu/eli/reg/2012/650'],
       ['European Commission: successions and wills', 'https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/civil-justice/family-law/successions-and-wills_en'],
       ['Notaries of Europe: successions handbook (2025, PDF)', 'https://www.notariesofeurope.eu/wp-content/uploads/2025/05/CNUE_Handbook-Successions_2025_EN_0006-1.pdf'],
@@ -465,10 +481,10 @@ export const checklists = [
     description: 'A printable worksheet for your end-of-life wishes, your people, and where your documents are kept.',
     lead: 'Fill this in, then give a copy to your health care proxy and keep one with your important papers.',
     groups: [
-      { h: 'Medical wishes', items: ['I have an advance directive. It is kept: ______________', 'My health care proxy is: ______________ Phone: ______________', 'My backup proxy is: ______________', 'My doctor has a copy of my wishes.', 'What matters most to me at the end of life: ______________'] },
-      { h: 'My people', items: ['People to call first: ______________', 'Who looks after my children / pets: ______________', 'My executor is: ______________'] },
-      { h: 'Where things are', items: ['Will: ______________', 'Life insurance policies: ______________', 'Bank and retirement accounts: ______________', 'Deed, lease or mortgage: ______________', 'Property in another country, and how it is held: ______________', 'Local will for that country? Kept: ______________', 'Passwords and phone passcode: ______________'] },
-      { h: 'Afterward', items: ['Burial / cremation / green burial / body donation (circle one)', 'Service I would like: ______________', 'Music, readings or people I want included: ______________', 'Letters or messages to deliver: ______________'] },
+      { h: 'Medical wishes', items: ['I have an advance directive. It is kept: <span class="blank" aria-hidden="true"></span>', 'My health care proxy is: <span class="blank" aria-hidden="true"></span> Phone: <span class="blank" aria-hidden="true"></span>', 'My backup proxy is: <span class="blank" aria-hidden="true"></span>', 'My doctor has a copy of my wishes.', 'What matters most to me at the end of life: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'My people', items: ['People to call first: <span class="blank" aria-hidden="true"></span>', 'Who looks after my children / pets: <span class="blank" aria-hidden="true"></span>', 'My executor is: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Where things are', items: ['Will: <span class="blank" aria-hidden="true"></span>', 'Life insurance policies: <span class="blank" aria-hidden="true"></span>', 'Bank and retirement accounts: <span class="blank" aria-hidden="true"></span>', 'Deed, lease or mortgage: <span class="blank" aria-hidden="true"></span>', 'Property in another country, and how it is held: <span class="blank" aria-hidden="true"></span>', 'Local will for that country? Kept: <span class="blank" aria-hidden="true"></span>', 'Passwords and phone passcode: <span class="blank" aria-hidden="true"></span>'] },
+      { h: 'Afterward', items: ['Burial / cremation / green burial / body donation (circle one)', 'Service I would like: <span class="blank" aria-hidden="true"></span>', 'Music, readings or people I want included: <span class="blank" aria-hidden="true"></span>', 'Letters or messages to deliver: <span class="blank" aria-hidden="true"></span>'] },
     ],
   }),
   checklist({
@@ -760,6 +776,34 @@ ${updatesForm('updates')}
 <li>Please don't send medical details through our forms.</li>
 </ul>
 <p>To see or delete your information, email privacy@eolatlas.com.</p>
+</div></section>`,
+  },
+  {
+    path: '/accessibility/',
+    title: 'Accessibility',
+    description: 'Accessibility statement for End of Life Atlas: our WCAG 2.2 AA and Section 508 goals, how we test, and how to report a problem.',
+    body: `
+<section class="section"><div class="wrap prose">
+<h1>Accessibility</h1>
+<p class="lead" style="margin:20px 0">End of Life Atlas should be usable by everyone, including people using screen readers, keyboards, magnification or voice control.</p>
+<h2>Our standard</h2>
+<p>We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA. That also covers the Section 508 standards, which adopt WCAG Level AA.</p>
+<h2>What we do</h2>
+<ul>
+<li>Every page can be used with a keyboard alone, with a visible focus outline and a "skip to main content" link.</li>
+<li>Pages use real headings, landmarks, labeled form fields and table headers, so screen readers can navigate them.</li>
+<li>Text and controls meet WCAG color-contrast ratios, and nothing relies on color alone.</li>
+<li>Pages work at 400% zoom and on screens 320 pixels wide without sideways scrolling.</li>
+<li>Words in other languages are marked, so screen readers pronounce them correctly.</li>
+<li>There are no videos, animations, time limits or pop-ups.</li>
+<li>Checklists print cleanly for people who prefer paper.</li>
+</ul>
+<h2>How we test</h2>
+<p>Before each update, every page is checked automatically against the WCAG 2.2 A and AA rules (using axe-core) at desktop and phone widths, and for keyboard focus. Automated tests can't catch everything, so we also check pages by hand. Last tested: ${fmtDate(site.lastVerified)}.</p>
+<h2>Known limitations</h2>
+<p>Some pages link to other organizations' websites and documents, which we can't make accessible ourselves.</p>
+<h2>Report a problem</h2>
+<p>If something on this site is hard to use, email accessibility@eolatlas.com and tell us the page and what happened. We'll reply within five business days and, where we can, give you the information in another way.</p>
 </div></section>`,
   },
   {

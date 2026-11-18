@@ -26,6 +26,22 @@ npm run serve   # preview at http://localhost:8080
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a
   title or a description, or has a broken internal link.
 
+## Accessibility (WCAG 2.2 AA / Section 508)
+
+`npm run a11y` audits every built page with axe-core against the WCAG 2.0, 2.1
+and 2.2 A/AA rules, at 1280px and 320px wide, and checks keyboard focus is
+visible and no hidden control can be reached by keyboard. Playwright and
+axe-core are not site dependencies, so install them first:
+
+```bash
+npm i --no-save playwright axe-core && npx playwright install chromium
+npm run build && npm run a11y
+```
+
+Run it before merging changes. Rules to keep: real headings and labels, the
+focus outline in `styles.css`, `lang="es"` (or other) on foreign words, and no
+information carried by color alone. The public statement is `/accessibility/`.
+
 ## Deploy on Netlify (current host)
 
 Netlify builds from `netlify.toml` (build `node build.mjs`, publish `dist`) and
@@ -65,7 +81,7 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
 - [ ] Set navigation prices (`[PRICE]` on `/navigation/`)
-- [ ] Set up corrections@ and privacy@ email addresses
+- [ ] Set up corrections@, privacy@ and accessibility@ email addresses
 - [ ] Lawyer review of the whole site, especially `/going-abroad/` and `/navigation/`
 - [ ] Turn on search indexing
 
