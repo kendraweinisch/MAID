@@ -40,13 +40,12 @@ among many, with the same care as the rest.
 4. **Nothing to sell you inside the guide.** No ads, no referral fees, no funeral-home leads.
 5. **Covers the hard topics plainly,** including medical aid in dying, which planning apps avoid.
 
-## How it makes money (updated)
+## Funding
 
-- Navigation sessions for any end-of-life question (paused: removed from the site for now)
-- Licensing guides and checklists to hospices, employers' benefits programs and insurers (Empathy's model)
-- Professional training
-- Paid print packs (bound worksheets) once the free versions prove useful
-- No ads, no referral fees, no paid placement
+None. End of Life Atlas is a voluntary, information-only site with no business
+model, no advertising, no sponsorship, no referral fees and nothing for sale.
+That independence is part of why readers can trust it. Earlier ideas for paid
+navigation, licensing and training have been dropped.
 
 ## Content roadmap
 

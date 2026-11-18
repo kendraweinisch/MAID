@@ -238,16 +238,6 @@ ${placeOptions(data.places)}
 </div>
 </section>
 
-<section class="section" aria-label="Services">
-<div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px">
-<div class="card" style="flex:1 1 300px;min-width:0;max-width:760px">
-<p class="eyebrow">For organizations</p>
-<h2 style="font-size:30px">Hospices, employers and insurers</h2>
-<p class="muted">License our guides and checklists for your patients, employees or members, or train your staff.</p>
-<a href="/professionals/">Work with us</a>
-</div>
-</div>
-</section>
 ${checkerScript}`,
   };
 }
@@ -1015,24 +1005,6 @@ export const staticPages = [
 </div></section>`,
   },
   {
-    path: '/professionals/',
-    title: 'For organizations',
-    description: 'License End of Life Atlas guides and checklists for patients, employees or members, and train your staff.',
-    body: `
-<section class="section"><div class="wrap prose">
-<h1>For organizations</h1>
-<p class="lead" style="margin:20px 0">For hospices, health systems, employers, insurers, and the professionals who support families at the end of life.</p>
-<h2>Licensed guides and checklists</h2>
-<p>Give patients, employees or members our plain-language guides and printable checklists, under your name or ours.</p>
-<h2>Benefits programs</h2>
-<p>Support for employees who are caring for a dying parent or have lost someone, from planning through bereavement.</p>
-<h2>Training</h2>
-<p>Short courses for doulas, social workers, chaplains and nurses, including how medical aid in dying works in practice.</p>
-<h2>Get in touch</h2>
-${signupForm('professionals-interest', emailField('pro-email') + '<div class="field"><label for="pro-role">Your organization and role</label><input id="pro-role" name="role" type="text"></div>', 'Contact me', '')}
-</div></section>`,
-  },
-  {
     path: '/updates/',
     title: 'Updates by email',
     description: 'Occasional email updates: new guides and law changes for your state or country.',
@@ -1094,7 +1066,7 @@ ${updatesForm('updates')}
 <ul>
 <li>We use no advertising or tracking cookies.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
-<li>If you sign up for updates or services, we store your email and what you told us, and use them only for what you asked for.</li>
+<li>If you sign up for email updates, we store your email and the place you chose, and use them only to send those updates.</li>
 <li>We never sell or share your information with advertisers or providers.</li>
 <li>Please don't send medical details through our forms.</li>
 </ul>
