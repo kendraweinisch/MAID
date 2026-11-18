@@ -2,56 +2,61 @@
   "plan-ahead": {
     "pages": 5,
     "kb": 124,
-    "title": "Plan-ahead worksheet | End of Life Atlas"
+    "title": "End-of-life planning worksheet (free printable) | End of Life Atlas"
   },
   "funeral-planner": {
     "pages": 3,
     "kb": 101,
-    "title": "Funeral or celebration of life planner | End of Life Atlas"
+    "title": "Funeral and celebration of life planning checklist (free printable) | End of Life Atlas"
   },
   "talking-with-a-parent": {
-    "pages": 5,
+    "pages": 6,
     "kb": 135,
-    "title": "Talking with a parent about the end of life | End of Life Atlas"
+    "title": "Questions to ask aging parents about end-of-life wishes (free printable) | End of Life Atlas"
   },
   "letters-to-leave": {
-    "pages": 3,
-    "kb": 116,
-    "title": "Letters to leave | End of Life Atlas"
+    "pages": 4,
+    "kb": 117,
+    "title": "Letters to leave for loved ones: prompts (free printable) | End of Life Atlas"
   },
   "life-story": {
-    "pages": 3,
-    "kb": 109,
-    "title": "My life story | End of Life Atlas"
+    "pages": 4,
+    "kb": 110,
+    "title": "Write your own obituary and life story (free printable) | End of Life Atlas"
   },
   "questions-for-the-doctor": {
     "pages": 2,
     "kb": 87,
-    "title": "Questions for the doctor | End of Life Atlas"
+    "title": "Questions to ask the doctor after a serious diagnosis (free printable) | End of Life Atlas"
   },
   "after-a-death": {
     "pages": 2,
     "kb": 86,
-    "title": "After a death: the first 24 hours | End of Life Atlas"
+    "title": "What to do when someone dies: first 24 hours checklist (free printable) | End of Life Atlas"
   },
   "eulogy": {
     "pages": 4,
-    "kb": 128,
-    "title": "Writing a eulogy | End of Life Atlas"
+    "kb": 132,
+    "title": "How to write a eulogy: prompts and template (free printable) | End of Life Atlas"
   },
   "remembering-someone": {
     "pages": 6,
     "kb": 154,
-    "title": "Someone I love: a remembering book | End of Life Atlas"
+    "title": "Children's grief workbook: a remembering book (free printable) | End of Life Atlas"
   },
   "remembering-grandparent": {
     "pages": 5,
     "kb": 153,
-    "title": "My grandparent: a remembering book | End of Life Atlas"
+    "title": "Children's grief workbook for the death of a grandparent (free printable) | End of Life Atlas"
   },
   "remembering-pet": {
     "pages": 4,
     "kb": 136,
-    "title": "My pet: a remembering book | End of Life Atlas"
+    "title": "Children's pet loss workbook (free printable) | End of Life Atlas"
+  },
+  "binder": {
+    "pages": 47,
+    "kb": 586,
+    "title": "The End of Life Atlas binder | End of Life Atlas"
   }
 }

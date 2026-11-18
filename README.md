@@ -26,7 +26,7 @@ npm run serve   # preview at http://localhost:8080
 - `src/journeys.mjs`: the two step-by-step journeys (for myself, for someone I love).
 - `public/printables/*.pdf`, `public/thumbs/*.png`: made by `scripts/make-printables.cjs`
   from the printable pages. After changing a printable, run
-  `npm run build && node scripts/make-printables.cjs` and commit the results.
+  `npm run build && node scripts/make-printables.cjs && python3 scripts/make-binder.py` and commit the results.
 - `src/styles.css`: all styles. `public/`: files copied as-is (favicon, `_redirects` for old addresses).
 - `build.mjs`: writes the static site to `dist/`, plus `sitemap.xml` and `robots.txt`.
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a

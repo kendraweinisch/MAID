@@ -39,11 +39,12 @@ and the Isle of Man, US state bills, and any new US states.
 | Every choice for the body | States allowing human composting and water cremation, EPA and UK burial-at-sea rules |
 | Going to Switzerland | Approximate fees |
 | Finding help | Directory links still live |
+| Advance directives by state (`src/data/advance-directives.json`) | Every official form link and CaringInfo link still live; new state forms (several states, such as Utah in 2026, are moving to the Uniform Health-Care Decisions Act). Update `verified` |
 
 ## 4. Printables
 
 If any printable's text changed, regenerate the PDFs and thumbnails:
-`npm run build && node scripts/make-printables.cjs`, and commit them.
+`npm run build && node scripts/make-printables.cjs && python3 scripts/make-binder.py` (the last step rebuilds the all-in-one binder; it needs the pypdf package), and commit them.
 
 ## 5. Rules for any change
 

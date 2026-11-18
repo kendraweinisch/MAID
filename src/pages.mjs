@@ -252,7 +252,7 @@ ${printCard('plan-ahead', 'Plan-ahead worksheet')}
 ${printCard('funeral-planner', 'Funeral or celebration of life planner')}
 ${printCard('remembering-someone', 'Someone I love: a remembering book')}
 </div>
-<p style="margin-top:24px"><a class="btn btn-quiet" href="/checklists/">See all 11 printables</a></p>
+<p style="margin-top:24px"><a class="btn btn-quiet" href="/checklists/">See all 11 printables</a> <a class="btn btn-quiet" href="/checklists/binder/">Get them all in one binder (PDF)</a></p>
 </div>
 </section>
 

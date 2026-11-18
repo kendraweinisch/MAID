@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile, rm, cp } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { layout, site } from './src/layout.mjs';
 import { home, guides, checklists, maidHub, placePage, maidPages, staticPages, notFound } from './src/pages.mjs';
-import { printables, printablesIndex } from './src/printables.mjs';
+import { printables, printablesIndex, binderPage } from './src/printables.mjs';
 import { buildSearchIndex } from './src/search-index.mjs';
 import { journeys } from './src/journeys.mjs';
 import { adPages } from './src/advance-directives.mjs';
@@ -28,6 +28,7 @@ const pages = [
   printablesIndex({ planAhead: checklists[0], doctor: checklists[1], afterDeath: checklists[2] }),
   ...checklists,
   ...printables,
+  binderPage(),
   maidHub(data),
   ...maidPages,
   ...data.places.map(placePage),

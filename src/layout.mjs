@@ -149,6 +149,7 @@ ${body}
 <li><a href="/checklists/plan-ahead/">Plan-ahead worksheet</a></li>
 <li><a href="/checklists/questions-for-the-doctor/">Questions for the doctor</a></li>
 <li><a href="/checklists/after-a-death/">After a death: first 24 hours</a></li>
+<li><a href="/checklists/binder/">The whole binder (PDF)</a></li>
 <li><a href="/checklists/">All printables</a></li>
 </ul>
 </div>
