@@ -296,8 +296,8 @@ export const guides = [
     title: 'Wills, trusts and the paperwork',
     eyebrow: 'Plan ahead',
     reviewed: '2026-11-18',
-    description: 'The documents everyone needs, what a will does and does not cover, living trusts, avoiding probate, powers of attorney, and how the rules differ by US state.',
-    lead: "A few documents spare your family months of work and expense. Here is what each one does, and which rules change depending on where you live.",
+    description: 'The documents everyone needs, what a will does and does not cover, living trusts, avoiding probate, powers of attorney, and how the rules differ by US state, in Canada and in the UK.',
+    lead: "A few documents spare your family months of work and expense. Here is what each one does, and how the rules change across US states, Canada and the UK.",
     sections: [
       { id: 'set', h: 'The basic set of documents', html: `<ul>
 <li><strong>A will:</strong> who gets what, who handles it (your executor), and who would raise your children.</li>
@@ -320,7 +320,7 @@ export const guides = [
 <li><strong>Electronic wills</strong> are allowed in only a small number of states so far.</li>
 <li><strong>Louisiana is different.</strong> It follows a civil-law system with its own will formats and limited forced-heirship rules for young or disabled children.</li>
 <li><strong>If you move,</strong> a will made validly in one state is generally accepted in another, but have it reviewed, because property and spousal rules change.</li></ul>
-<p>Outside the US, the rules are different again. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>` },
+<p>Outside the US, the rules are different again: see <a href="#canada">Canada</a> and <a href="#uk">the UK</a> below, and <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>` },
       { id: 'spouses', h: 'Married couples: community property and spousal rights', html: `<ul>
 <li><strong>Nine community property states</strong> (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington and Wisconsin) generally treat property earned during marriage as owned half by each spouse. You can only leave your own half by will.</li>
 <li><strong>In most other states,</strong> a surviving spouse can claim a share of the estate (an "elective share") even if the will leaves them less.</li></ul>` },
@@ -341,6 +341,25 @@ export const guides = [
 <li><strong>State estate tax:</strong> 12 states and the District of Columbia have one, some starting at much lower amounts; Oregon's starts at $1 million.</li>
 <li><strong>State inheritance tax</strong> (paid by the person who inherits): Kentucky, Maryland, Nebraska, New Jersey and Pennsylvania. Spouses are usually exempt, and often children too. Maryland has both taxes.</li></ul>` },
       { id: 'digital', h: 'Your digital life', html: `<p>Many accounts let you name someone now: <a href="https://support.apple.com/en-us/102631">Apple Legacy Contact</a>, <a href="https://support.google.com/accounts/answer/3036546">Google Inactive Account Manager</a> and <a href="https://www.facebook.com/help/1568013990080948">Facebook legacy contact</a>. A password manager with emergency access helps too. Never write passwords in your will, which can become a public record.</p>` },
+      { id: 'canada', h: 'In Canada', html: `<p>Wills and estates are governed by each province and territory, so the rules depend on where you live.</p>
+<ul>
+<li><strong>Making a valid will:</strong> a typed will must be signed in front of two witnesses who are present together. Most provinces also accept a will written entirely in your own handwriting and signed, without witnesses; British Columbia and Prince Edward Island generally do not, though a BC court can sometimes accept one.</li>
+<li><strong>Quebec is different.</strong> It follows a civil-law system. A will made before a notary (a notarial will) doesn't need probate; handwritten and witnessed wills do need to be verified by a court or notary.</li>
+<li><strong>Marriage:</strong> in some provinces getting married cancels an earlier will. In others, including Ontario (since 2022) and British Columbia, it doesn't. Check yours, and review your will when you marry or separate.</li>
+<li><strong>Probate fees vary a lot.</strong> Ontario charges $15 for every $1,000 of an estate's value above $50,000 (1.5%). Some provinces charge much less, and a Quebec notarial will avoids probate.</li>
+<li><strong>Beneficiary designations:</strong> in most provinces you can name a beneficiary on an RRSP, RRIF or TFSA so it passes outside the will; Quebec allows this mainly through insurance products.</li>
+<li><strong>Powers of attorney</strong> are provincial too. In Ontario, for example, there are separate documents for property (a continuing power of attorney) and for personal care. Other provinces use different names and forms.</li>
+<li><strong>Taxes:</strong> there's no inheritance or estate tax. Instead, death counts as selling your property at market value, so capital gains tax can be due on the final tax return. A principal residence is usually exempt, and RRSPs and RRIFs are fully taxable unless they pass to a spouse or certain dependants.</li></ul>` },
+      { id: 'uk', h: 'In the United Kingdom', html: `<p>England and Wales, Scotland and Northern Ireland each have their own rules. This covers England and Wales, with notes on Scotland.</p>
+<ul>
+<li><strong>Making a valid will (England and Wales):</strong> it must be in writing and signed in front of two witnesses, who must each clearly see you sign. You can't leave anything to a witness or their spouse or civil partner. A handwritten will without witnesses isn't valid.</li>
+<li><strong>Marriage cancels a will</strong> in England and Wales, unless the will was made with that marriage in mind. Divorce doesn't cancel the whole will, but gifts to the former spouse fail.</li>
+<li><strong>Unmarried partners inherit nothing automatically</strong> if there is no will. This is one of the most important reasons to make one.</li>
+<li><strong>No fixed shares for children,</strong> but family members and dependants can ask a court for provision if the will leaves them without reasonable support.</li>
+<li><strong>Lasting powers of attorney:</strong> there are two kinds, one for property and financial affairs and one for health and welfare. Each must be registered with the Office of the Public Guardian, which costs £92 per document (reduced fees for low incomes).</li>
+<li><strong>Trusts</strong> are used mainly for tax planning, children or vulnerable beneficiaries, rather than to avoid probate.</li>
+<li><strong>Inheritance tax:</strong> 40% on the value above £325,000, with an extra allowance when a home goes to children or grandchildren. Gifts to a spouse, civil partner or charity are usually exempt. From April 2027, most unused pension funds are set to count toward inheritance tax; check the current rules.</li>
+<li><strong>Scotland is different:</strong> a will needs only one witness, and a spouse and children have "legal rights" to a share of the moveable estate (money and possessions, not land or buildings), whatever the will says.</li></ul>` },
       { id: 'lawyer', h: 'Do it yourself, or see a lawyer?', html: `<p>A simple estate can often be handled with your state's standard forms or reputable will software. See a lawyer if you have a blended family, minor children, a business, property in more than one state or country, a beneficiary with a disability, a large estate, or someone likely to contest the will. If money is tight, legal aid organizations and bar association referral services can help.</p>` },
       { id: 'keep', h: 'Keeping and updating it', html: `<ul>
 <li>Keep the original will somewhere safe that your executor can get to. A safe deposit box only in your name can be hard to open after you die.</li>
@@ -353,6 +372,13 @@ export const guides = [
       ['IRS: estate tax', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
       ['Nolo: are handwritten wills valid?', 'https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html'],
       ['NerdWallet: community property states', 'https://www.nerdwallet.com/estate-planning/learn/community-property'],
+      ['Canadian Lawyer: what makes a will valid in Canada', 'https://www.canadianlawyermag.com/practice-areas/trusts-and-estates/how-to-craft-valid-wills-in-canada/381456'],
+      ['Canada Life: types of wills, including Quebec', 'https://canadalife.com/investing-saving/estate-planning/wills-101-what-is-will/types-of-wills.html'],
+      ['Ontario: Estate Administration Tax', 'https://www.ontario.ca/page/estate-administration-tax'],
+      ['GOV.UK: making a will', 'https://www.gov.uk/make-will'],
+      ['GOV.UK: lasting power of attorney', 'https://www.gov.uk/power-of-attorney'],
+      ['GOV.UK: Inheritance Tax', 'https://www.gov.uk/inheritance-tax'],
+      ['mygov.scot: making a will', 'https://www.mygov.scot/making-a-will'],
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Where everything is, all in one place.'],
