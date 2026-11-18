@@ -51,6 +51,7 @@ export function layout({ path, title, description, body, crisis = false }) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap">
 <link rel="stylesheet" href="/styles.css">
+${process.env.GOATCOUNTER_CODE ? `<script data-goatcounter="https://${process.env.GOATCOUNTER_CODE}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>` : ''}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -82,6 +83,7 @@ ${body}
 <li><a href="/what-it-costs/">What it costs</a></li>
 <li><a href="/privacy/">Privacy</a></li>
 <li><a href="/accessibility/">Accessibility</a></li>
+<li><a href="/suggestions/">Send a suggestion</a></li>
 </ul>
 </div>
 <div>

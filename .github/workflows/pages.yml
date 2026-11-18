@@ -21,8 +21,6 @@ jobs:
       # Served at https://kendraweinisch.github.io/maid/ until eolatlas.com is connected.
       # After connecting the domain, set the repository variable BASE_PATH to "/".
       BASE_PATH: ${{ vars.BASE_PATH || '/maid' }}
-      # Optional: a form service URL (for example Formspree). Empty = forms show "opening soon".
-      FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT }}
       # Set the repository variable SITE_INDEXABLE to "true" at launch.
       SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
     steps:

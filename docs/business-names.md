@@ -9,16 +9,13 @@ pick soon. Run a USPTO trademark search before committing to any name.
 | 1 | **End of Life Atlas** | free | free | Plain words people search; "atlas" says place by place; works beyond MAID (hospice, advance directives) | Long-ish; fine as `endoflifeatlas.org` |
 | 2 | **MAID Atlas** | free | free | Exact clinical term people search; short | Readers who don't know the acronym may read "maid" |
 | 3 | **Atlas of Choice** | free | free | Warmer, more brandable | Less obvious in search; needs a subtitle |
-| 4 | **MAID Navigator** | free | free | Best fit for the paid navigation service | Sounds like a service, not a neutral guide |
+| 4 | **MAID Navigator** | free | free | Short, clear | Sounds like a service, not a neutral guide |
 | 5 | Clear Passage | free | taken | Calm and evocative | Euphemistic; someone holds the .com |
 
-## Recommended setup
+## Chosen name
 
-- **End of Life Atlas** (`endoflifeatlas.org`) for the free guide, which can sit
-  under a fiscal sponsor later.
-- **MAID Navigator** or "Atlas Navigators" for the paid LLC service, linked from
-  the guide with a clear note that it is a separate business.
-- Register both the .org and .com of the guide name and point the .com to the .org.
+**End of Life Atlas**, a voluntary, information-only site. (An earlier idea of a
+separate paid service under another name has been dropped.)
 
 ## Names to avoid
 

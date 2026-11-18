@@ -5,6 +5,9 @@
 # Search indexing stays off until launch. Set SITE_INDEXABLE = "true" to turn it on.
 [build.environment]
   SITE_INDEXABLE = "false"
+  # GoatCounter analytics: put your GoatCounter code here (the part before
+  # .goatcounter.com). Empty = no analytics script.
+  GOATCOUNTER_CODE = "eolatlas"
 
 [[headers]]
   for = "/*"

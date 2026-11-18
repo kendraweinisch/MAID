@@ -2,6 +2,11 @@ import { esc, fmtDate, site } from './layout.mjs';
 
 const MAID = '/medical-aid-in-dying';
 
+// Privacy-friendly analytics: on only when GOATCOUNTER_CODE is set at build time.
+const analyticsOn = Boolean(process.env.GOATCOUNTER_CODE);
+// The suggestions form works through Netlify Forms on the live site.
+const onNetlify = process.env.NETLIFY === 'true';
+
 /* ---------- shared pieces ---------- */
 
 const pill = (p) => `<span class="pill pill-${p.status}">${esc(p.statusLabel)}</span>`;
@@ -25,38 +30,6 @@ const placeTable = (list, caption) => `<div class="table-box" tabindex="0" role=
 <tbody>
 ${placeRows(list)}
 </tbody></table></div>`;
-
-// Forms post to FORM_ENDPOINT (for example a Formspree URL) when it is set,
-// use Netlify Forms when building on Netlify, and otherwise show as "opening soon".
-const formEndpoint = process.env.FORM_ENDPOINT || '';
-const onNetlify = process.env.NETLIFY === 'true';
-
-const signupForm = (name, fields, button, note) => {
-  if (!formEndpoint && !onNetlify) {
-    return `<div class="card"><p style="margin:0"><strong>Sign-up opens soon.</strong> <span class="muted">This form isn't connected yet.</span></p></div>`;
-  }
-  const attrs = formEndpoint
-    ? `action="${esc(formEndpoint)}"`
-    : `action="/thanks/" data-netlify="true" netlify-honeypot="company"`;
-  return `<form class="form" name="${name}" method="POST" ${attrs}>
-<input type="hidden" name="form-name" value="${name}">
-<p hidden><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
-${fields}
-<button class="btn btn-dark" type="submit">${button}</button>
-${note ? `<p class="form-note">${note}</p>` : ''}
-</form>`;
-};
-
-const emailField = (id) => `<div class="field"><label for="${id}">Email</label><input id="${id}" name="email" type="email" autocomplete="email" required></div>`;
-
-const updatesForm = (id) =>
-  signupForm(
-    'updates',
-    emailField(`${id}-email`) +
-      `<div class="field"><label for="${id}-place">State or country (optional)</label><input id="${id}-place" name="place" type="text"></div>`,
-    'Get updates',
-    'New guides and law changes for your area. Unsubscribe any time. <a href="/privacy/">Privacy</a>'
-  );
 
 const sourceList = (sources) =>
   sources.length
@@ -169,7 +142,7 @@ export function home(data) {
 <div><strong>One place for all of it</strong><span class="muted">Planning, illness, dying, grief and the paperwork in between, including the hard topics.</span></div>
 <div><strong>Without judgment</strong><span class="muted">Every legal option, from full treatment to medical aid in dying, explained plainly. The choice is always yours.</span></div>
 <div><strong>Wherever you live</strong><span class="muted">The rules differ by country. We say where each one applies, and we keep adding places.</span></div>
-<div><strong>Checked, dated, nothing to sell</strong><span class="muted">Every guide shows its sources and review date. No funding, no ads. <a href="/about/#funding">How we're funded</a></span></div>
+<div><strong>Checked, dated, nothing to sell</strong><span class="muted">Every guide shows its sources and review date. A voluntary site with no business model, so no bias. <a href="/about/#funding">How we're funded</a></span></div>
 </div>
 </div>
 </div>
@@ -228,26 +201,7 @@ ${placeOptions(data.places)}
 </div>
 </section>
 
-<section class="band-tint" aria-labelledby="updates-h">
-<div class="wrap section" style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
-<div style="flex:1 1 420px;min-width:0">
-<h2 id="updates-h">New guides and law changes, by email</h2>
-<p style="margin:0">Occasional, plain updates. Tell us your state or country to hear when its rules change.</p>
-</div>
-<div style="flex:1 1 420px;min-width:0">${updatesForm('home')}</div>
-</div>
-</section>
 
-<section class="section" aria-label="Services">
-<div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px">
-<div class="card" style="flex:1 1 300px;min-width:0;max-width:760px">
-<p class="eyebrow">For organizations</p>
-<h2 style="font-size:30px">Hospices, employers and insurers</h2>
-<p class="muted">License our guides and checklists for your patients, employees or members, or train your staff.</p>
-<a href="/professionals/">Work with us</a>
-</div>
-</div>
-</section>
 ${checkerScript}`,
   };
 }
@@ -852,7 +806,7 @@ ${placeTable(us, 'United States')}
 ${placeTable(world, 'Around the world')}
 <div id="elsewhere" class="card" style="margin-top:40px">
 <h3>Don't see your country?</h3>
-<p>We're researching: ${data.researching.map(esc).join(', ')}. <a href="/updates/">Get updates</a> when we add it.</p>
+<p>We're researching: ${data.researching.map(esc).join(', ')}.</p>
 <p class="muted" style="margin:0">Whatever the law where you live, <a href="/serious-illness/">hospice and palliative care</a> are available, and they can make a great difference.</p>
 </div>
 </div></section>`,
@@ -893,7 +847,6 @@ ${sources}
 <li><a href="${MAID}/process/">How the process works</a></li>
 <li><a href="/serious-illness/">Hospice and palliative care</a></li>
 <li><a href="${MAID}/families/">A guide for families</a></li>
-<li><a href="/updates/">Get updates when ${esc(p.name)}'s law changes</a></li>
 </ul>
 </div>
 </section>`,
@@ -1015,35 +968,6 @@ export const staticPages = [
 </div></section>`,
   },
   {
-    path: '/professionals/',
-    title: 'For organizations',
-    description: 'License End of Life Atlas guides and checklists for patients, employees or members, and train your staff.',
-    body: `
-<section class="section"><div class="wrap prose">
-<h1>For organizations</h1>
-<p class="lead" style="margin:20px 0">For hospices, health systems, employers, insurers, and the professionals who support families at the end of life.</p>
-<h2>Licensed guides and checklists</h2>
-<p>Give patients, employees or members our plain-language guides and printable checklists, under your name or ours.</p>
-<h2>Benefits programs</h2>
-<p>Support for employees who are caring for a dying parent or have lost someone, from planning through bereavement.</p>
-<h2>Training</h2>
-<p>Short courses for doulas, social workers, chaplains and nurses, including how medical aid in dying works in practice.</p>
-<h2>Get in touch</h2>
-${signupForm('professionals-interest', emailField('pro-email') + '<div class="field"><label for="pro-role">Your organization and role</label><input id="pro-role" name="role" type="text"></div>', 'Contact me', '')}
-</div></section>`,
-  },
-  {
-    path: '/updates/',
-    title: 'Updates by email',
-    description: 'Occasional email updates: new guides and law changes for your state or country.',
-    body: `
-<section class="section"><div class="wrap prose">
-<h1>Updates by email</h1>
-<p class="lead" style="margin:20px 0">Occasional, plain updates: new guides, and changes to the rules where you live.</p>
-${updatesForm('updates')}
-</div></section>`,
-  },
-  {
     path: '/about/',
     title: 'About End of Life Atlas',
     description: 'How End of Life Atlas is funded, how we check facts, and who reviews our guides.',
@@ -1069,9 +993,8 @@ ${updatesForm('updates')}
 <li><strong>Dignity.</strong> Every person deserves to die on their own terms, with their wishes respected, and every family deserves clear, honest information.</li>
 </ul>
 <h2 id="funding">How we're funded</h2>
-<p><strong>End of Life Atlas currently has no funding.</strong> It is built and maintained independently, and it earns no money. The guides and checklists are free.</p>
-<p>We take no advertising, no referral fees and no payments from hospices, funeral homes, clinicians, pharmacies or assisted-dying organizations.</p>
-<p>The organization services described on this site are not open yet. If we start charging for anything, or take any other funding, we will say so on this page.</p>
+<p><strong>End of Life Atlas is a voluntary site, made only to share information.</strong> It has no business model and needs no funding, so there is no one to please except the people reading it, and no reason to favor any option, provider or point of view.</p>
+<p>There is no advertising, no sponsorship, no referral fees and nothing for sale. The guides and checklists are free.</p>
 <h2 id="editorial">Editorial and review policy</h2>
 <ul>
 <li>Facts come from official sources or named reports, linked on the page.</li>
@@ -1079,27 +1002,66 @@ ${updatesForm('updates')}
 <li>Every guide shows the date it was last reviewed. We re-check law pages every quarter and whenever a law changes.</li>
 <li>We cover legal options only.</li>
 </ul>
-<p>Spotted an error? Email corrections@eolatlas.com.</p>
+<p>Spotted an error or something out of date? <a href="/suggestions/">Send a suggestion</a>; you can stay anonymous.</p>
 <h2 id="reviewers">Our reviewers</h2>
 <p>We're appointing a physician experienced in end-of-life care and an attorney to review our guides. Their names will appear here and on each page they review.</p>
 </div></section>`,
   },
   {
+    path: '/suggestions/',
+    title: 'Send a suggestion',
+    description: 'Send a suggestion, correction or question to the person who runs End of Life Atlas. Anonymous if you like: your name and email are optional.',
+    body: `
+<section class="section"><div class="wrap prose">
+<h1>Send a suggestion</h1>
+<p class="lead" style="margin:20px 0">Spotted an error, missing something, or have an idea? Tell us here. You can stay anonymous: only the message is required.</p>
+<p class="small muted">Your message goes privately to the person who runs this site. Add your email only if you would like a reply. Please don't include medical details or anything you wouldn't want stored. This form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline</a>.</p>
+${onNetlify ? `<form class="form suggest-form" name="suggestions" method="POST" action="/suggestions/thanks/" data-netlify="true" netlify-honeypot="company">
+<input type="hidden" name="form-name" value="suggestions">
+<p hidden><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+<div class="field" style="flex-basis:100%"><label for="s-topic">What is it about?</label>
+<select id="s-topic" name="topic">
+<option>A suggestion or idea</option>
+<option>A correction or out-of-date information</option>
+<option>Something hard to use (accessibility)</option>
+<option>A privacy question</option>
+<option>Something else</option>
+</select></div>
+<div class="field" style="flex-basis:100%"><label for="s-message">Your message (required)</label><textarea id="s-message" name="message" rows="7" required></textarea></div>
+<div class="field" style="flex-basis:100%"><label for="s-page">Which page? (optional)</label><input id="s-page" name="page" type="text"></div>
+<div class="field"><label for="s-name">Your name (optional)</label><input id="s-name" name="name" type="text" autocomplete="name"></div>
+<div class="field"><label for="s-email">Your email (optional, only if you want a reply)</label><input id="s-email" name="email" type="email" autocomplete="email"></div>
+<button class="btn" type="submit">Send</button>
+</form>` : `<div class="notice"><strong>Note:</strong> the suggestions form works on the live site.</div>`}
+</div></section>`,
+  },
+  {
+    path: '/suggestions/thanks/',
+    title: 'Thank you',
+    description: 'Your suggestion was sent.',
+    body: `
+<section class="section"><div class="wrap prose">
+<h1>Thank you</h1>
+<p class="lead" style="margin:20px 0">Your message was sent. Every suggestion is read.</p>
+<p><a href="/">Back to the home page</a></p>
+</div></section>`,
+  },
+  {
     path: '/privacy/',
     title: 'Privacy',
-    description: 'What End of Life Atlas collects and what we never do with it.',
+    description: 'End of Life Atlas collects no personal information: no accounts, forms, email lists or tracking.',
     body: `
 <section class="section"><div class="wrap prose">
 <h1>Privacy</h1>
-<p class="lead" style="margin:20px 0">This is a sensitive subject, so we collect as little as we can.</p>
+<p class="lead" style="margin:20px 0">This is a sensitive subject, so we don't collect anything about you.</p>
 <ul>
-<li>We use no advertising or tracking cookies.</li>
+<li>There are no accounts and no email lists. We use no advertising or tracking cookies.</li>
+${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views with <a href="https://www.goatcounter.com/">GoatCounter</a>, which uses no cookies, does not collect personal information and does not track you across other sites. It tells us things like which pages are read and roughly which countries visitors come from.</li>' : ''}
+<li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, what you write is stored by our host, Netlify, and sent privately to the person who runs the site. Your name and email are optional.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
-<li>If you sign up for updates or services, we store your email and what you told us, and use them only for what you asked for.</li>
-<li>We never sell or share your information with advertisers or providers.</li>
-<li>Please don't send medical details through our forms.</li>
+<li>Like any website, the site's host (Netlify) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
 </ul>
-<p>To see or delete your information, email privacy@eolatlas.com.</p>
+<p>Questions about privacy? <a href="/suggestions/">Send us a message</a>.</p>
 </div></section>`,
   },
   {
@@ -1127,7 +1089,7 @@ ${updatesForm('updates')}
 <h2>Known limitations</h2>
 <p>Some pages link to other organizations' websites and documents, which we can't make accessible ourselves.</p>
 <h2>Report a problem</h2>
-<p>If something on this site is hard to use, email accessibility@eolatlas.com and tell us the page and what happened. We'll reply within five business days and, where we can, give you the information in another way.</p>
+<p>If something on this site is hard to use, <a href="/suggestions/">send a message</a> and tell us the page and what happened. Where we can, we'll give you the information in another way.</p>
 </div></section>`,
   },
   {
@@ -1156,17 +1118,6 @@ ${updatesForm('updates')}
 <noscript><p>The assistant needs JavaScript. You can still browse <a href="/#where">where to start</a>.</p></noscript>
 </div></section>
 <script src="/assistant.js" defer></script>`,
-  },
-  {
-    path: '/thanks/',
-    title: 'Thank you',
-    description: 'Your request was received.',
-    body: `
-<section class="section"><div class="wrap prose">
-<h1>Thank you</h1>
-<p class="lead" style="margin:20px 0">We've received your request. We'll only email you about what you asked for.</p>
-<p><a href="/">Back to the home page</a></p>
-</div></section>`,
   },
 ];
 

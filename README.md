@@ -47,8 +47,7 @@ information carried by color alone. The public statement is `/accessibility/`.
 ## Deploy on Netlify (current host)
 
 Netlify builds from `netlify.toml` (build `node build.mjs`, publish `dist`) and
-handles the sign-up forms itself; submissions appear under **Forms** in the
-Netlify dashboard. Search indexing stays off until `SITE_INDEXABLE` is set to
+ Search indexing stays off until `SITE_INDEXABLE` is set to
 `"true"` in `netlify.toml`.
 
 ## Deploy on GitHub Pages (alternative, free for this public repo)
@@ -65,7 +64,6 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 | Variable | Default | What it does |
 |---|---|---|
 | `BASE_PATH` | `/maid` | Sub-folder the site is served from. Set to `/` once eolatlas.com is connected. |
-| `FORM_ENDPOINT` | empty | URL of a form service (for example Formspree). Empty = forms say "opening soon". |
 | `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
 
 ### Connecting eolatlas.com
@@ -78,11 +76,11 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 ## Before launch
 
 - [ ] Register eolatlas.com (and eolatlas.org to redirect)
-- [ ] Connect a form service and set `FORM_ENDPOINT`
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
-- [ ] Set up corrections@, privacy@ and accessibility@ email addresses
+- [ ] Netlify: Forms > form notifications > add an email notification for the "suggestions" form
+- [ ] Analytics: create a free GoatCounter account and put its code in `GOATCOUNTER_CODE` in `netlify.toml`
 - [ ] Lawyer review of the whole site, especially the Switzerland and property-abroad pages
 - [ ] Turn on search indexing
 
