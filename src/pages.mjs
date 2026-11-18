@@ -779,6 +779,14 @@ ${updatesForm('updates')}
 <section class="section"><div class="wrap prose">
 <h1>About End of Life Atlas</h1>
 <p class="lead" style="margin:20px 0">A single place for everything about the end of life: plain, international, without judgment, and respectful of each person's right to die with dignity.</p>
+<section class="founder-note" aria-labelledby="founder-h">
+<h2 id="founder-h">A note from the founder</h2>
+<p>I built End of Life Atlas because I couldn't find one place that told the whole truth about the end of life.</p>
+<p>Anyone who has watched someone they love wither and die knows that most guides don't tell you what it's really like. They tell you what to do, or what to choose. I wanted something different: one place, for anyone in any country, that explains every option plainly, doesn't judge, and respects each person's right to die with dignity.</p>
+<p>I'm an expat, and I worry about my mom back in the United States. When you live far from the people you love, you can't just drive over and work things out. You need clear information about the rules where they are, and where you are. That's why this atlas covers more than one country, and why it will keep adding more.</p>
+<p>Whatever you're facing, and wherever you are, I hope you find what you need here, and that you feel respected while you look.</p>
+<p class="signature">KW</p>
+</section>
 <h2 id="why">Why this atlas exists</h2>
 <p>Planning for the end of life usually means piecing things together from doctors, lawyers, funeral homes, governments and advocacy groups. Each covers one part, often for one country, and some have something to sell or a position to promote. End of Life Atlas brings it together in one place.</p>
 <h2 id="principles">What we believe</h2>
