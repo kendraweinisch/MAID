@@ -23,6 +23,10 @@ npm run serve   # preview at http://localhost:8080
 - `src/layout.mjs`: header, navigation, footer, and the crisis bar (shown on aid-in-dying and grief pages; the footer crisis line is on every page).
 - `public/images/atlas-map.svg`: the home-page map, drawn by `scripts/make-map.py`
   (edit the script and re-run `python3 scripts/make-map.py` to change it).
+- `src/journeys.mjs`: the two step-by-step journeys (for myself, for someone I love).
+- `public/printables/*.pdf`, `public/thumbs/*.png`: made by `scripts/make-printables.cjs`
+  from the printable pages. After changing a printable, run
+  `npm run build && node scripts/make-printables.cjs` and commit the results.
 - `src/styles.css`: all styles. `public/`: files copied as-is (favicon, `_redirects` for old addresses).
 - `build.mjs`: writes the static site to `dist/`, plus `sitemap.xml` and `robots.txt`.
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a

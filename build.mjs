@@ -5,6 +5,7 @@ import { layout, site } from './src/layout.mjs';
 import { home, guides, checklists, maidHub, placePage, maidPages, staticPages, notFound } from './src/pages.mjs';
 import { printables, printablesIndex } from './src/printables.mjs';
 import { buildSearchIndex } from './src/search-index.mjs';
+import { journeys } from './src/journeys.mjs';
 
 const out = 'dist';
 // BASE_PATH serves the site from a sub-folder, e.g. "/maid" on username.github.io/maid/.
@@ -20,6 +21,7 @@ const data = JSON.parse(await readFile('src/data/places.json', 'utf8'));
 
 const pages = [
   home(data),
+  ...journeys,
   ...guides,
   printablesIndex({ planAhead: checklists[0], doctor: checklists[1], afterDeath: checklists[2] }),
   ...checklists,

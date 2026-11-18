@@ -32,6 +32,11 @@ for (const f of files) {
     const target = href.endsWith('/') ? join(root, href, 'index.html') : join(root, href);
     if (!(await exists(target))) problems.push(`${f}: broken link ${href}`);
   }
+  for (let [, href, anchor] of html.matchAll(/href="(\/[^"#?]*)#([^"]+)"/g)) {
+    if (base && href.startsWith(base + '/')) href = href.slice(base.length);
+    const target = href.endsWith('/') ? join(root, href, 'index.html') : join(root, href);
+    if ((await exists(target)) && !(await readFile(target, 'utf8')).includes(`id="${anchor}"`)) problems.push(`${f}: missing section #${anchor} on ${href}`);
+  }
 }
 
 if (problems.length) {

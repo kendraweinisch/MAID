@@ -1,3 +1,36 @@
+import { readFileSync } from 'node:fs';
+
+const META = JSON.parse(readFileSync(new URL('./data/printables-meta.json', import.meta.url), 'utf8'));
+const CARD = {
+  'plan-ahead': ['Planning ahead', 'Your people, documents, money, digital life and wishes, all in one place.'],
+  'funeral-planner': ['Planning ahead', 'For your own funeral or gathering, or one for someone who has died.'],
+  'talking-with-a-parent': ['Planning ahead', 'Gentle questions to ask, with space to write the answers.'],
+  'letters-to-leave': ['Planning ahead', 'Prompts for letters to be read later, and how to make sure they arrive.'],
+  'life-story': ['Planning ahead', 'Tell your story in your own words, so your family can tell it your way.'],
+  'questions-for-the-doctor': ['Serious illness', 'What to ask after a diagnosis, about comfort care and hospice.'],
+  'after-a-death': ['After a death', 'Who to call first, what to do within the day, and what can wait.'],
+  'eulogy': ['After a death', 'Prompts, a simple three-part shape, and space to draft.'],
+  'remembering-someone': ['For children', 'Drawing and writing pages about someone they love who died.'],
+  'remembering-grandparent': ['For children', 'Family stories, memories and recipes from a grandparent.'],
+  'remembering-pet': ['For children', 'Favorite moments, feelings and drawings for a pet who died.'],
+};
+
+// A card for one printable: a picture of its first page, what it is, and download links.
+export function printCard(slug, title) {
+  const [tag, short] = CARD[slug] || ['Printable', ''];
+  const m = META[slug] || { pages: 1, kb: 100 };
+  return `<article class="pcard">
+<div class="pcard-thumb"><img src="/thumbs/${slug}.png" alt="" width="367" height="475" loading="lazy"></div>
+<div class="pcard-body">
+<p class="tag">Free printable · ${tag}</p>
+<h3><a href="/checklists/${slug}/">${title}</a></h3>
+<p class="muted small">${short}</p>
+<p class="pcard-actions"><a class="btn btn-small" href="/printables/${slug}.pdf" download>Download PDF<span class="sr-only">: ${title}</span></a> <a class="small" href="/checklists/${slug}/">Open and print<span class="sr-only">: ${title}</span></a></p>
+<p class="small muted pcard-meta">${m.pages} ${m.pages === 1 ? 'page' : 'pages'} · ${m.kb} KB PDF</p>
+</div>
+</article>`;
+}
+
 // Printable worksheets and workbooks: free, no account, made to be printed
 // and filled in by hand. All writing space is decorative (aria-hidden) so
 // screen readers hear only the prompts.
@@ -190,14 +223,12 @@ export const rememberingPet = workbook({
 
 export function printablesIndex(existing) {
   const groups = [
-    ['Planning ahead', [existing.planAhead, existing.doctor, parentConversation, lifeStory, lettersToLeave, funeralPlanner]],
-    ['After a death', [existing.afterDeath, funeralPlanner, eulogyGuide]],
+    ['Planning ahead', [existing.planAhead, funeralPlanner, parentConversation, lettersToLeave, lifeStory]],
+    ['Serious illness and after a death', [existing.doctor, existing.afterDeath, eulogyGuide]],
     ['For children who are grieving', [rememberingSomeone, rememberingGrandparent, rememberingPet]],
   ];
   const cards = (list) =>
-    `<div class="grid grid-wide" style="margin:20px 0 48px">${list
-      .map((c) => `<a class="card" href="${c.path}"><strong>${c.title}</strong><span class="muted small">${c.description}</span></a>`)
-      .join('')}</div>`;
+    `<div class="cards" style="margin:20px 0 56px">${list.map((c) => printCard(c.path.split('/')[2], c.title)).join('')}</div>`;
   return {
     path: '/checklists/',
     title: 'Free printables',

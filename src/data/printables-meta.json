@@ -1,0 +1,57 @@
+{
+  "plan-ahead": {
+    "pages": 5,
+    "kb": 124,
+    "title": "Plan-ahead worksheet | End of Life Atlas"
+  },
+  "funeral-planner": {
+    "pages": 3,
+    "kb": 101,
+    "title": "Funeral or celebration of life planner | End of Life Atlas"
+  },
+  "talking-with-a-parent": {
+    "pages": 5,
+    "kb": 135,
+    "title": "Talking with a parent about the end of life | End of Life Atlas"
+  },
+  "letters-to-leave": {
+    "pages": 3,
+    "kb": 116,
+    "title": "Letters to leave | End of Life Atlas"
+  },
+  "life-story": {
+    "pages": 3,
+    "kb": 109,
+    "title": "My life story | End of Life Atlas"
+  },
+  "questions-for-the-doctor": {
+    "pages": 2,
+    "kb": 87,
+    "title": "Questions for the doctor | End of Life Atlas"
+  },
+  "after-a-death": {
+    "pages": 2,
+    "kb": 86,
+    "title": "After a death: the first 24 hours | End of Life Atlas"
+  },
+  "eulogy": {
+    "pages": 4,
+    "kb": 128,
+    "title": "Writing a eulogy | End of Life Atlas"
+  },
+  "remembering-someone": {
+    "pages": 6,
+    "kb": 154,
+    "title": "Someone I love: a remembering book | End of Life Atlas"
+  },
+  "remembering-grandparent": {
+    "pages": 5,
+    "kb": 153,
+    "title": "My grandparent: a remembering book | End of Life Atlas"
+  },
+  "remembering-pet": {
+    "pages": 4,
+    "kb": 136,
+    "title": "My pet: a remembering book | End of Life Atlas"
+  }
+}

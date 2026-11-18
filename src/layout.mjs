@@ -93,7 +93,13 @@ ${body}
 </ul>
 </div>
 <div>
-<h2>Printables</h2>
+<h2>Start here</h2>
+<ul>
+<li><a href="/for-myself/">Planning for myself</a></li>
+<li><a href="/for-someone-i-love/">Planning for someone I love</a></li>
+<li><a href="/ask/">Ask a question</a></li>
+</ul>
+<h2 style="margin-top:24px">Printables</h2>
 <ul>
 <li><a href="/checklists/plan-ahead/">Plan-ahead worksheet</a></li>
 <li><a href="/checklists/questions-for-the-doctor/">Questions for the doctor</a></li>
