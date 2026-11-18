@@ -25,7 +25,7 @@
   var SYNONYMS = {
     euthanasia: 'medical aid dying', 'assisted suicide': 'medical aid dying', 'assisted dying': 'medical aid dying',
     maid: 'medical aid dying', 'death with dignity': 'medical aid dying', 'right to die': 'medical aid dying',
-    poa: 'power attorney', lpa: 'lasting power attorney', 'living will': 'advance directive',
+    poa: 'power attorney', lpa: 'lasting power attorney', 'living will': 'advance directive form state', 'health care proxy': 'advance directive proxy form', 'advance directive': 'advance directive form state', 'medical power of attorney': 'advance directive power attorney health care',
     dnr: 'polst cpr', 'do not resuscitate': 'polst cpr', molst: 'polst',
     cost: 'cost price pay', price: 'cost price', expensive: 'cost price', afford: 'cost pay',
     obituary: 'obituary life story', eulogy: 'eulogy', urn: 'cremation ashes', ashes: 'cremation ashes',

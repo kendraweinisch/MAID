@@ -40,6 +40,8 @@ export function buildSearchIndex(pages, renderBody) {
       const body = toText(m ? part.slice(m[0].length) : part.replace(/<h1[\s\S]*?<\/h1>/, ''));
       if (body.length < 40) continue;
       if (/^(Sources|Related|On this page|Next steps)$/i.test(heading)) continue;
+      // State advance directive pages share most of their text: index only what is unique to each state.
+      if (page.stateForm && !(idMatch && ['forms', 'registry'].includes(idMatch[1]))) continue;
       records.push({
         u: page.path + (idMatch ? '#' + idMatch[1] : ''),
         t: page.title,

@@ -6,6 +6,7 @@ import { home, guides, checklists, maidHub, placePage, maidPages, staticPages, n
 import { printables, printablesIndex } from './src/printables.mjs';
 import { buildSearchIndex } from './src/search-index.mjs';
 import { journeys } from './src/journeys.mjs';
+import { adPages } from './src/advance-directives.mjs';
 
 const out = 'dist';
 // BASE_PATH serves the site from a sub-folder, e.g. "/maid" on username.github.io/maid/.
@@ -23,6 +24,7 @@ const pages = [
   home(data),
   ...journeys,
   ...guides,
+  ...adPages,
   printablesIndex({ planAhead: checklists[0], doctor: checklists[1], afterDeath: checklists[2] }),
   ...checklists,
   ...printables,

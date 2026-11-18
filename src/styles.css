@@ -318,3 +318,7 @@ textarea { min-height: 160px; resize: vertical; }
 .msg-results li { background: #FFFDF8; border: 1.5px solid var(--ink); padding: 14px 18px; margin: 0 !important; }
 .res-title { font-size: 19px; }
 @media print { .dl-panel { display: none; } }
+
+/* Advance directive state grid */
+.state-grid { grid-template-columns: repeat(auto-fill, minmax(min(190px, 100%), 1fr)); }
+.state-card { padding: 14px 16px; }

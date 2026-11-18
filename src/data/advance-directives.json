@@ -1,0 +1,784 @@
+{
+ "verified": "2026-11-18",
+ "states": [
+  {
+   "code": "AL",
+   "name": "Alabama",
+   "slug": "alabama",
+   "called": null,
+   "links": [
+    {
+     "kind": "law",
+     "label": "Alabama law on advance directives (Code of Alabama § 22-8A-4, which sets out the form)",
+     "url": "https://alison.legislature.state.al.us/code-of-alabama?section=22-8A-4"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Alabama.pdf"
+  },
+  {
+   "code": "AK",
+   "name": "Alaska",
+   "slug": "alaska",
+   "called": "Advance health care directive",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Alaska law with an optional form (AS 13.52.300)",
+     "url": "https://www.akleg.gov/basis/statutes.asp#13.52.300"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Alaska.pdf"
+  },
+  {
+   "code": "AZ",
+   "name": "Arizona",
+   "slug": "arizona",
+   "called": "Health care power of attorney and living will",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Life care planning forms from the Arizona Attorney General (free)",
+     "url": "https://www.azag.gov/issues/elder-affairs/life-care-planning"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Arizona.pdf"
+  },
+  {
+   "code": "AR",
+   "name": "Arkansas",
+   "slug": "arkansas",
+   "called": null,
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance care plan form from the Arkansas Department of Health",
+     "url": "https://healthy.arkansas.gov/images/uploads/pdf/AdvanceCarePlanForm.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Arkansas.pdf"
+  },
+  {
+   "code": "CA",
+   "name": "California",
+   "slug": "california",
+   "called": "Advance health care directive",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance health care directive form from the California Attorney General (Probate Code § 4701)",
+     "url": "https://oag.ca.gov/system/files/media/ProbateCodeAdvanceHealthCareDirectiveForm-fillable.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/California.pdf"
+  },
+  {
+   "code": "CO",
+   "name": "Colorado",
+   "slug": "colorado",
+   "called": "Medical durable power of attorney, living will and CPR directive",
+   "links": [
+    {
+     "kind": "info",
+     "label": "Advance care planning from the Colorado health department",
+     "url": "https://cdphe.colorado.gov/advance-care-planning"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Colorado.pdf"
+  },
+  {
+   "code": "CT",
+   "name": "Connecticut",
+   "slug": "connecticut",
+   "called": null,
+   "links": [
+    {
+     "kind": "form",
+     "label": "Living will and advance directives combined form, from the Connecticut Attorney General's page",
+     "url": "https://portal.ct.gov/ag/health-issues/connecticuts-living-will-laws"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Connecticut.pdf"
+  },
+  {
+   "code": "DE",
+   "name": "Delaware",
+   "slug": "delaware",
+   "called": "Advance health care directive",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance health care directive form from the Delaware Division of Services for Aging and Adults with Physical Disabilities",
+     "url": "https://dhss.delaware.gov/dsaapd/division-of-services-for-aging-and-adults-with-physical-disabilities/advance-directives/"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Delaware.pdf"
+  },
+  {
+   "code": "DC",
+   "name": "District of Columbia",
+   "slug": "district-of-columbia",
+   "called": "Durable power of attorney for health care",
+   "links": [
+    {
+     "kind": "law",
+     "label": "DC law on the durable power of attorney for health care (D.C. Code § 21-2207)",
+     "url": "https://code.dccouncil.gov/us/dc/council/code/sections/21-2207"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/DistrictofColumbia.pdf"
+  },
+  {
+   "code": "FL",
+   "name": "Florida",
+   "slug": "florida",
+   "called": "Living will and designation of health care surrogate",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Living will form from the Florida Attorney General (Florida Statutes chapter 765)",
+     "url": "https://www.myfloridalegal.com/files/pdf/page/B18C541B29F7A7F885256FEF0044C13A/LivingWill.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Florida.pdf"
+  },
+  {
+   "code": "GA",
+   "name": "Georgia",
+   "slug": "georgia",
+   "called": "Georgia Advance Directive for Health Care",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Georgia Advance Directive for Health Care, from the Division of Aging Services",
+     "url": "https://aging.georgia.gov/get-advance-directives"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Georgia.pdf"
+  },
+  {
+   "code": "HI",
+   "name": "Hawaii",
+   "slug": "hawaii",
+   "called": "Advance health care directive",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Hawaii law with an optional form (HRS § 327E-16)",
+     "url": "https://www.capitol.hawaii.gov/hrscurrent/Vol06_Ch0321-0344/HRS0327E/HRS_0327E-0016.htm"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Hawaii.pdf"
+  },
+  {
+   "code": "ID",
+   "name": "Idaho",
+   "slug": "idaho",
+   "called": "Living will and durable power of attorney for health care",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance directive form and registry from the Idaho Department of Health and Welfare",
+     "url": "https://healthandwelfare.idaho.gov/services-programs/birth-marriage-death-records/advance-directives-and-registry-services"
+    }
+   ],
+   "registry": "The Idaho Department of Health and Welfare keeps a registry where you can file your directive.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Idaho.pdf"
+  },
+  {
+   "code": "IL",
+   "name": "Illinois",
+   "slug": "illinois",
+   "called": "Statutory short form power of attorney for health care",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Statutory short form power of attorney for health care (Illinois, 2021 form)",
+     "url": "https://www.illinois.gov/content/dam/soi/en/web/gac/forms/documents/poahealthcareform2021.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Illinois.pdf"
+  },
+  {
+   "code": "IN",
+   "name": "Indiana",
+   "slug": "indiana",
+   "called": "Appointment of health care representative",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Indiana advance directive (health care representative) from Indiana Disability Rights, a state agency",
+     "url": "https://secure.in.gov/idr/advanced-directive-resources/advanced-directive-indiana-health-care-representative"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Indiana.pdf"
+  },
+  {
+   "code": "IA",
+   "name": "Iowa",
+   "slug": "iowa",
+   "called": "Durable power of attorney for health care",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Iowa law on the durable power of attorney for health care (Iowa Code chapter 144B)",
+     "url": "https://www.legis.iowa.gov/docs/code/144B.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Iowa.pdf"
+  },
+  {
+   "code": "KS",
+   "name": "Kansas",
+   "slug": "kansas",
+   "called": "Durable power of attorney for health care decisions",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Kansas law with the form (K.S.A. 58-632)",
+     "url": "https://www.ksrevisor.gov/statutes/chapters/ch58/058_006_0032.html"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Kansas.pdf"
+  },
+  {
+   "code": "KY",
+   "name": "Kentucky",
+   "slug": "kentucky",
+   "called": "Living will directive",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Living will packet from the Kentucky Attorney General (KRS 311.625)",
+     "url": "https://www.ag.ky.gov/AG%20Publications/livingwillpacket.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Kentucky.pdf"
+  },
+  {
+   "code": "LA",
+   "name": "Louisiana",
+   "slug": "louisiana",
+   "called": "Living will declaration",
+   "links": [
+    {
+     "kind": "info",
+     "label": "Louisiana Secretary of State (keeps the state living will registry)",
+     "url": "https://www.sos.la.gov/"
+    }
+   ],
+   "registry": "The Louisiana Secretary of State keeps a registry for living will declarations. Filing is optional and there is a fee.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Louisiana.pdf"
+  },
+  {
+   "code": "ME",
+   "name": "Maine",
+   "slug": "maine",
+   "called": "Advance health care directive",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Maine law with an optional form (18-C M.R.S. § 5-805)",
+     "url": "https://legislature.maine.gov/statutes/18-C/title18-Csec5-805.html"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Maine.pdf"
+  },
+  {
+   "code": "MD",
+   "name": "Maryland",
+   "slug": "maryland",
+   "called": "Maryland advance directive",
+   "links": [
+    {
+     "kind": "info",
+     "label": "Advance directive program and forms from the Maryland Department of Health",
+     "url": "https://health.maryland.gov/phpa/ccdb/ADP/Pages/Policy-and-Law.aspx"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Maryland.pdf"
+  },
+  {
+   "code": "MA",
+   "name": "Massachusetts",
+   "slug": "massachusetts",
+   "called": "Health care proxy",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Massachusetts health care proxy form, on mass.gov",
+     "url": "https://www.mass.gov/doc/download-the-massachusetts-healthcare-proxy-form/download"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Massachusetts.pdf"
+  },
+  {
+   "code": "MI",
+   "name": "Michigan",
+   "slug": "michigan",
+   "called": "Patient advocate designation",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Michigan law on patient advocate designations (MCL 700.5506)",
+     "url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-700-5506"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Michigan.pdf"
+  },
+  {
+   "code": "MN",
+   "name": "Minnesota",
+   "slug": "minnesota",
+   "called": "Health care directive",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Minnesota law with a suggested form (Minn. Stat. § 145C.16)",
+     "url": "https://www.revisor.mn.gov/statutes/cite/145C.16"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Minnesota.pdf"
+  },
+  {
+   "code": "MS",
+   "name": "Mississippi",
+   "slug": "mississippi",
+   "called": "Advance health-care directive",
+   "links": [],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/MISSISSIPPI.pdf"
+  },
+  {
+   "code": "MO",
+   "name": "Missouri",
+   "slug": "missouri",
+   "called": "Durable power of attorney for health care and a declaration (living will)",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Missouri law on the declaration (RSMo 459.015)",
+     "url": "https://revisor.mo.gov/main/OneSection.aspx?section=459.015"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Missouri.pdf"
+  },
+  {
+   "code": "MT",
+   "name": "Montana",
+   "slug": "montana",
+   "called": null,
+   "links": [
+    {
+     "kind": "info",
+     "label": "End-of-Life Registry from the Montana Attorney General",
+     "url": "https://dojmt.gov/consumer/end-of-life-registry/"
+    }
+   ],
+   "registry": "The Montana Attorney General runs an End-of-Life Registry where you can store your directive online.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Montana.pdf"
+  },
+  {
+   "code": "NE",
+   "name": "Nebraska",
+   "slug": "nebraska",
+   "called": "Power of attorney for health care and a declaration (living will)",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Power of attorney for health care form from the Nebraska Judicial Branch self-help center",
+     "url": "https://supremecourt.nebraska.gov/self-help/medical/power-attorney-medical"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Nebraska.pdf"
+  },
+  {
+   "code": "NV",
+   "name": "Nevada",
+   "slug": "nevada",
+   "called": null,
+   "links": [
+    {
+     "kind": "info",
+     "label": "Nevada Lockbox (advance directive registry) from the Nevada Secretary of State",
+     "url": "https://www.nvsos.gov/online-services/nevada-lockbox/forms-resources"
+    }
+   ],
+   "registry": "The Nevada Secretary of State runs the Nevada Lockbox, a free registry for advance directives.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Nevada.pdf"
+  },
+  {
+   "code": "NH",
+   "name": "New Hampshire",
+   "slug": "new-hampshire",
+   "called": "Advance directive (durable power of attorney for health care and living will)",
+   "links": [
+    {
+     "kind": "law",
+     "label": "New Hampshire law with the form (RSA 137-J:20)",
+     "url": "https://gc.nh.gov/rsa/html/x/137-j/137-J-20.htm"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/NewHampshire.pdf"
+  },
+  {
+   "code": "NJ",
+   "name": "New Jersey",
+   "slug": "new-jersey",
+   "called": "Proxy directive and instruction directive",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance directive forms from the New Jersey Department of Health",
+     "url": "https://www.nj.gov/health/advancedirective/"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/NewJersey.pdf"
+  },
+  {
+   "code": "NM",
+   "name": "New Mexico",
+   "slug": "new-mexico",
+   "called": "Optional advance health-care directive",
+   "links": [
+    {
+     "kind": "partner",
+     "label": "Optional advance health-care directive from the State Bar of New Mexico's elder program (a joint project with the state Aging and Long-Term Services Department)",
+     "url": "https://www.sbnm.org/Portals/NMBAR/forPublic/LREP/2021%20Updated%20Logo%20Files/AdvancedHealthcare-English.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/NewMexico.pdf"
+  },
+  {
+   "code": "NY",
+   "name": "New York",
+   "slug": "new-york",
+   "called": "Health care proxy",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Health care proxy form from the New York State Department of Health",
+     "url": "https://www.health.ny.gov/publications/1430.pdf"
+    },
+    {
+     "kind": "info",
+     "label": "Choosing your health care agent (instructions and other languages)",
+     "url": "https://www.health.ny.gov/professionals/patients/health_care_proxy/"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/New_York.pdf"
+  },
+  {
+   "code": "NC",
+   "name": "North Carolina",
+   "slug": "north-carolina",
+   "called": "Health care power of attorney and advance directive for a natural death (living will)",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Forms and registry from the North Carolina Secretary of State",
+     "url": "https://www.sosnc.gov/divisions/advance_healthcare_directives"
+    }
+   ],
+   "registry": "The North Carolina Secretary of State keeps an Advance Health Care Directive Registry. Filing is optional.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/NorthCarolina.pdf"
+  },
+  {
+   "code": "ND",
+   "name": "North Dakota",
+   "slug": "north-dakota",
+   "called": "Health care directive",
+   "links": [
+    {
+     "kind": "law",
+     "label": "North Dakota law with an optional form (Century Code chapter 23-06.5)",
+     "url": "https://ndlegis.gov/cencode/t23c06-5.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/NorthDakota.pdf"
+  },
+  {
+   "code": "OH",
+   "name": "Ohio",
+   "slug": "ohio",
+   "called": "Living will declaration and health care power of attorney",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Ohio law on living wills (Revised Code chapter 2133)",
+     "url": "https://codes.ohio.gov/ohio-revised-code/chapter-2133"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Ohio.pdf"
+  },
+  {
+   "code": "OK",
+   "name": "Oklahoma",
+   "slug": "oklahoma",
+   "called": "Advance directive for health care",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Statutory advance directive form from the Oklahoma State Department of Health",
+     "url": "https://oklahoma.gov/health/health-education/data-and-statistics/center-for-health-statistics/healthcare-information/advance-directives.html"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Oklahoma.pdf"
+  },
+  {
+   "code": "OR",
+   "name": "Oregon",
+   "slug": "oregon",
+   "called": "Oregon advance directive",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Oregon advance directive form and user guide from the Oregon Health Authority (in several languages)",
+     "url": "https://www.oregon.gov/oha/PH/ABOUT/Pages/ADAC-Forms.aspx"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Oregon.pdf"
+  },
+  {
+   "code": "PA",
+   "name": "Pennsylvania",
+   "slug": "pennsylvania",
+   "called": "Living will and health care power of attorney",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Pennsylvania law with a sample form (20 Pa.C.S. § 5471)",
+     "url": "https://www.palegis.us/statutes/consolidated/view-statute?txtType=HTM&ttl=20&div=0&chapter=54&section=71&subsctn=0"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Pennsylvania.pdf"
+  },
+  {
+   "code": "RI",
+   "name": "Rhode Island",
+   "slug": "rhode-island",
+   "called": "Durable power of attorney for health care and living will declaration",
+   "links": [
+    {
+     "kind": "info",
+     "label": "End-of-life decisions and advance directives, from the Rhode Island Department of Health",
+     "url": "https://health.ri.gov/death-and-dying/end-life-decisions-advanced-directives"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/RhodeIsland.pdf"
+  },
+  {
+   "code": "SC",
+   "name": "South Carolina",
+   "slug": "south-carolina",
+   "called": "Health care power of attorney and declaration of a desire for a natural death (living will)",
+   "links": [
+    {
+     "kind": "law",
+     "label": "South Carolina law on the living will (Code of Laws title 44, chapter 77)",
+     "url": "https://www.scstatehouse.gov/code/t44c077.php"
+    },
+    {
+     "kind": "info",
+     "label": "South Carolina Department on Aging (offers the state forms)",
+     "url": "https://aging.sc.gov/"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/SouthCarolina.pdf"
+  },
+  {
+   "code": "SD",
+   "name": "South Dakota",
+   "slug": "south-dakota",
+   "called": "Living will and durable power of attorney for health care",
+   "links": [
+    {
+     "kind": "law",
+     "label": "South Dakota law with a living will form (SDCL 34-12D-3)",
+     "url": "https://sdlegislature.gov/Statutes/34-12D-3"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/SouthDakota.pdf"
+  },
+  {
+   "code": "TN",
+   "name": "Tennessee",
+   "slug": "tennessee",
+   "called": "Advance directive for health care",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance directive for health care, the state model form from the Tennessee Department of Health",
+     "url": "https://www.tn.gov/content/dam/tn/hfc/documents/Advance_Directive_for_Health_Care.pdf"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Tennessee.pdf"
+  },
+  {
+   "code": "TX",
+   "name": "Texas",
+   "slug": "texas",
+   "called": "Directive to physicians and family or surrogates, and medical power of attorney",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance directive forms from Texas Health and Human Services",
+     "url": "https://www.hhs.texas.gov/regulations/forms/advance-directives"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Texas.pdf"
+  },
+  {
+   "code": "UT",
+   "name": "Utah",
+   "slug": "utah",
+   "called": "Advance health care directive",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Utah law with the optional form (Utah Code § 75A-9-110, in effect from 2026)",
+     "url": "https://le.utah.gov/xcode/Title75A/Chapter9/75A-9-S110.html"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Utah.pdf"
+  },
+  {
+   "code": "VT",
+   "name": "Vermont",
+   "slug": "vermont",
+   "called": "Advance directive",
+   "links": [
+    {
+     "kind": "info",
+     "label": "Create, register and change an advance directive, from the Vermont Department of Health",
+     "url": "https://www.healthvermont.gov/systems/advance-directives/create-register-and-make-changes-advance-directive"
+    }
+   ],
+   "registry": "Vermont has a free Advance Directive Registry. Vermont has no required form.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Vermont.pdf"
+  },
+  {
+   "code": "VA",
+   "name": "Virginia",
+   "slug": "virginia",
+   "called": "Advance directive",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Virginia law with a suggested form (Code of Virginia § 54.1-2984)",
+     "url": "https://law.lis.virginia.gov/vacode/title54.1/chapter29/section54.1-2984/"
+    },
+    {
+     "kind": "info",
+     "label": "Advance Health Care Directive Registry, from the Virginia Department of Health",
+     "url": "https://www.vdh.virginia.gov/commissioner/advance-health-care-directive-registry/"
+    }
+   ],
+   "registry": "Virginia has a state Advance Health Care Directive Registry.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Virginia.pdf"
+  },
+  {
+   "code": "WA",
+   "name": "Washington",
+   "slug": "washington",
+   "called": "Health care directive (living will) and durable power of attorney for health care",
+   "links": [
+    {
+     "kind": "law",
+     "label": "Washington law with the health care directive form (RCW 70.122.030)",
+     "url": "https://app.leg.wa.gov/RCW/default.aspx?cite=70.122.030"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Washington.pdf"
+  },
+  {
+   "code": "WV",
+   "name": "West Virginia",
+   "slug": "west-virginia",
+   "called": "Living will, medical power of attorney, or the combined form",
+   "links": [
+    {
+     "kind": "partner",
+     "label": "Forms from the West Virginia Center for End-of-Life Care",
+     "url": "https://wvendoflife.org/faq/advance-care-plan-faqs/"
+    },
+    {
+     "kind": "law",
+     "label": "West Virginia law with the forms (W. Va. Code § 16-30-4)",
+     "url": "https://code.wvlegislature.gov/16-30-4/"
+    }
+   ],
+   "registry": "West Virginia has an e-Directive Registry, run by the West Virginia Center for End-of-Life Care.",
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/WestVirginia.pdf"
+  },
+  {
+   "code": "WI",
+   "name": "Wisconsin",
+   "slug": "wisconsin",
+   "called": "Power of attorney for health care",
+   "links": [
+    {
+     "kind": "form",
+     "label": "Advance directive forms from the Wisconsin Department of Health Services (English, Spanish and more)",
+     "url": "https://www.dhs.wisconsin.gov/forms/advdirectives/adformspoa.htm"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/wisconsin.pdf"
+  },
+  {
+   "code": "WY",
+   "name": "Wyoming",
+   "slug": "wyoming",
+   "called": "Advance health care directive",
+   "links": [
+    {
+     "kind": "info",
+     "label": "Advance directive help from the Wyoming Judicial Branch",
+     "url": "https://www.wyocourts.gov/legal-help-by-topic/advance-directive/"
+    }
+   ],
+   "registry": null,
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Wyoming.pdf"
+  }
+ ]
+}

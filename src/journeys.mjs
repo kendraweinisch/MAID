@@ -25,7 +25,7 @@ const myself = {
     {
       h: 'Put it in writing',
       stops: [
-        { id: 'medical', t: 'Write down your medical wishes', d: "An advance directive and health care power of attorney, on your state's or country's form.", links: [['/plan-ahead/#directive', 'Advance directives']] },
+        { id: 'medical', t: 'Write down your medical wishes', d: "An advance directive and health care power of attorney, on your state's or country's form.", links: [['/plan-ahead/advance-directives/', 'Your state\'s form'], ['/plan-ahead/#directive', 'Advance directives']] },
         { id: 'will', t: 'Make a will and the money documents', d: 'A will, a financial power of attorney, and up-to-date beneficiaries. Rules differ by state and country.', links: [['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork'], ['/plan-ahead/property-abroad/', 'Property abroad']] },
         { id: 'words', t: 'Leave your words', d: 'Letters for the people you love, and your life story in your own words.', links: [['/checklists/letters-to-leave/', 'Letters to leave'], ['/checklists/life-story/', 'My life story']] },
         { id: 'one-place', t: 'Put everything in one place', d: 'Where your documents are, your accounts, your digital life, and who to call.', links: [['/checklists/plan-ahead/', 'Plan-ahead worksheet'], ['/plan-ahead/wills-and-trusts/#digital', 'Your digital life']] },
@@ -55,7 +55,7 @@ const lovedOne = {
       h: 'While they are well',
       stops: [
         { id: 'talk', t: 'Start the conversation', d: 'Gentle ways to ask what they want, with space to write down their answers.', links: [['/plan-ahead/talking-with-a-parent/', 'Talking with a parent'], ['/checklists/talking-with-a-parent/', 'Conversation sheet']] },
-        { id: 'documents', t: 'Help them get their documents in order', d: 'An advance directive, a will, powers of attorney, and a list of where everything is.', links: [['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork'], ['/checklists/plan-ahead/', 'Plan-ahead worksheet']] },
+        { id: 'documents', t: 'Help them get their documents in order', d: 'An advance directive, a will, powers of attorney, and a list of where everything is.', links: [['/plan-ahead/advance-directives/', 'Advance directive forms by state'], ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork'], ['/checklists/plan-ahead/', 'Plan-ahead worksheet']] },
         { id: 'far', t: 'If you live far away', d: 'Video calls, local helpers, copies of key papers, and being their proxy across time zones.', links: [['/plan-ahead/talking-with-a-parent/#far', 'When you live far away']] },
       ],
     },

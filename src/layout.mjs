@@ -66,6 +66,7 @@ const SECTION_NAMES = {
   '/grief/': 'Grief',
   '/medical-aid-in-dying/': 'Medical aid in dying',
   '/medical-aid-in-dying/places/': 'Where it is legal',
+  '/plan-ahead/advance-directives/': 'Advance directives by state',
   '/checklists/': 'Printables',
 };
 

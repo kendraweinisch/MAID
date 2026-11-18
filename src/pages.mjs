@@ -305,7 +305,7 @@ export const guides = [
       { id: 'directive', h: 'Write an advance directive', html: `<p>An advance directive is a legal document that says what medical care you want if you can't speak for yourself. It usually has two parts:</p>
 <ul><li><strong>A living will:</strong> the treatments you would and wouldn't want, such as breathing machines or tube feeding.</li>
 <li><strong>A health care power of attorney:</strong> the person who decides for you (your health care proxy or agent).</li></ul>
-<p>The names, forms and rules differ by country. In the US, each state has its own form and rules about witnesses or notaries. In England and Wales, the equivalents are an advance decision and a lasting power of attorney for health and welfare. Forms are usually free, and you often don't need a lawyer. Give copies to your proxy and your doctor, and keep the original where it can be found.</p>` },
+<p>The names, forms and rules differ by country. In the US, each state has its own form and rules about witnesses or notaries. In England and Wales, the equivalents are an advance decision and a lasting power of attorney for health and welfare. Forms are usually free, and you often don't need a lawyer. <strong>Find <a href="/plan-ahead/advance-directives/">your state's advance directive form</a></strong>, official and free, for all 50 states and DC. Give copies to your proxy and your doctor, and keep the original where it can be found.</p>` },
       { id: 'proxy', h: 'Choose your health care proxy', html: `<p>Pick someone who will follow your wishes even if they disagree, can stay calm under pressure, and can be reached quickly. Name a backup. Then tell them, in detail, what matters to you.</p>` },
       { id: 'steward', h: 'Name one person who knows where everything is', html: `<p>Besides your health care proxy and executor, it helps to choose one trusted person (some call them a steward) who knows where your documents, passwords and wishes are kept, and whom to call. It can be the same person. Tell them, and write their name on your <a href="/checklists/plan-ahead/">plan-ahead worksheet</a>.</p>` },
       { id: 'talk', h: 'Have the conversation', html: `<p>The document matters less than the conversation behind it. Useful questions to talk through:</p>
@@ -324,6 +324,7 @@ export const guides = [
       ['National Institute on Aging: advance care planning', 'https://www.nia.nih.gov/health/advance-care-planning/advance-care-planning-advance-directives-health-care'],
     ],
     related: [
+      ['/plan-ahead/advance-directives/', 'Advance directive forms by state', 'Official, free forms for every US state.'],
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
       ['/plan-ahead/choices-for-the-body/', 'Every choice for the body', 'Burial, cremation, sea, trees, composting and more.'],
       ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork', 'What each document does, state by state.'],
