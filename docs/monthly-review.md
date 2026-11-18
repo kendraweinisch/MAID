@@ -40,7 +40,12 @@ and the Isle of Man, US state bills, and any new US states.
 | Going to Switzerland | Approximate fees |
 | Finding help | Directory links still live |
 
-## 4. Rules for any change
+## 4. Printables
+
+If any printable's text changed, regenerate the PDFs and thumbnails:
+`npm run build && node scripts/make-printables.cjs`, and commit them.
+
+## 5. Rules for any change
 
 - No invented facts. Every new or changed fact needs a source on the page.
 - Prefer official sources (governments, regulators, statutes), then
@@ -49,7 +54,7 @@ and the Isle of Man, US state bills, and any new US states.
 - Update `src/data/review.json` `lastScan` to the date of the check, and a
   guide's `reviewed` date only when its text changed.
 
-## 5. Pull request
+## 6. Pull request
 
 Title: `Monthly accuracy check: <Month YYYY>`. In the description, list
 what changed (with sources), what was confirmed unchanged, blocked links

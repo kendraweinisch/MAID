@@ -1,4 +1,7 @@
 import { esc, fmtDate, site } from './layout.mjs';
+import { icons } from './icons.mjs';
+import { printCard } from './printables.mjs';
+import { journeyMeta } from './journeys.mjs';
 
 const MAID = '/medical-aid-in-dying';
 
@@ -8,6 +11,39 @@ const analyticsOn = Boolean(process.env.GOATCOUNTER_CODE);
 const onNetlify = process.env.NETLIFY === 'true';
 
 /* ---------- shared pieces ---------- */
+
+// Cards for every choice for the body (icon, name, one line), linking to sections.
+const BODY = '/plan-ahead/choices-for-the-body/';
+const bodyOptions = [
+  ['traditional', 'burial', 'Traditional burial', 'A casket in a cemetery plot, usually after a viewing.'],
+  ['entombment', 'mausoleum', 'Mausoleum or columbarium', 'Above ground, for a body or for ashes.'],
+  ['green', 'green', 'Green burial', 'No embalming or vault: back to the earth.'],
+  ['tree', 'tree', 'Under a tree', 'Woodland burial, tree urns and memorial forests.'],
+  ['cremation', 'cremation', 'Cremation', 'The most common choice in the US.'],
+  ['water', 'water', 'Water cremation', 'Alkaline hydrolysis; legal in about 28 US states.'],
+  ['composting', 'compost', 'Human composting', 'Becomes soil in weeks; legal in 14 US states.'],
+  ['sea', 'sea', 'Burial at sea', 'A body or ashes, under simple rules.'],
+  ['ashes', 'ashes', 'What to do with ashes', 'Keep, bury, scatter, plant or divide.'],
+  ['donation', 'donation', 'Body and organ donation', 'Help others, or medical science.'],
+  ['home', 'home', 'A home funeral', 'Caring for them at home first.'],
+];
+const optionCards = (list, link = true) =>
+  `<div class="cards cards-tight">${list
+    .map(([id, icon, name, line]) => `<a class="ocard" href="${link ? BODY : ''}#${id}">${icons[icon]}<strong>${name}</strong><span class="muted small">${line}</span></a>`)
+    .join('')}</div>`;
+
+const journeyCards = () =>
+  `<div class="cards cards-two">${journeyMeta
+    .map(
+      (j) => `<a class="jcard" href="${j.path}">
+<span class="jcard-icon">${j.icon}</span>
+<strong class="jcard-title">${j.title}</strong>
+<span class="jcard-text">${j.description}</span>
+<span class="jcard-stops">${j.phases.map((p) => p.h).join(' · ')}</span>
+<span class="jcard-go">Start here <span aria-hidden="true">→</span></span>
+</a>`
+    )
+    .join('')}</div>`;
 
 const pill = (p) => `<span class="pill pill-${p.status}">${esc(p.statusLabel)}</span>`;
 
@@ -126,12 +162,22 @@ export function home(data) {
 <p class="eyebrow">An atlas for the end of life</p>
 <h1>Every part of the end of life, explained.</h1>
 <p class="lead">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
-<div class="actions"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></div>
-<p class="small" style="margin:16px 0 0">Or <a href="/ask/">ask a question</a> in your own words.</p>
+<div class="actions"><a class="btn" href="/for-myself/">I'm planning for myself</a><a class="btn btn-quiet" href="/for-someone-i-love/">I'm planning for someone I love</a></div>
+<p class="small" style="margin:14px 0 0">Has someone just died? <a href="/checklists/after-a-death/">The first 24 hours</a>.</p>
+<p class="small" style="margin:6px 0 0">Or <a href="/ask/">ask a question</a> in your own words.</p>
 <p class="edition">Last checked ${fmtDate(site.lastScan)} · Free · No ads</p>
 </div>
 </div>
 <div class="hero-after"></div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="who-h">
+<div class="wrap">
+<p class="eyebrow">Start here</p>
+<h2 id="who-h">Who are you planning for?</h2>
+<p class="sub" style="margin-bottom:28px">Choose a path. Each one takes you step by step, in a sensible order, to the guides and printables you need.</p>
+${journeyCards()}
 </div>
 </section>
 
@@ -168,15 +214,22 @@ export function home(data) {
 <div class="wrap section">
 <h2 id="tools-h">Free printables</h2>
 <p class="sub" style="margin-bottom:28px">Worksheets, checklists and remembering books for children. No account, no email. Print them, fill them in, and keep them where your family can find them.</p>
-<div class="grid grid-wide">
-<a class="card" href="/checklists/plan-ahead/"><strong>Plan-ahead worksheet</strong><span class="muted small">Your wishes, your people and where everything is kept.</span></a>
-<a class="card" href="/checklists/funeral-planner/"><strong>Funeral or celebration of life planner</strong><span class="muted small">For your own, or for someone who has died.</span></a>
-<a class="card" href="/checklists/talking-with-a-parent/"><strong>Talking with a parent</strong><span class="muted small">Gentle questions, with space for the answers.</span></a>
-<a class="card" href="/checklists/letters-to-leave/"><strong>Letters to leave</strong><span class="muted small">Prompts, and how to make sure they arrive.</span></a>
-<a class="card" href="/checklists/eulogy/"><strong>Writing a eulogy</strong><span class="muted small">Prompts, a simple shape, and space to draft.</span></a>
-<a class="card" href="/checklists/remembering-someone/"><strong>Remembering books for children</strong><span class="muted small">For a person, a grandparent or a pet.</span></a>
+<div class="cards">
+${printCard('plan-ahead', 'Plan-ahead worksheet')}
+${printCard('funeral-planner', 'Funeral or celebration of life planner')}
+${printCard('remembering-someone', 'Someone I love: a remembering book')}
 </div>
-<p style="margin-top:24px"><a href="/checklists/">See all printables</a></p>
+<p style="margin-top:24px"><a class="btn btn-quiet" href="/checklists/">See all 11 printables</a></p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="body-h">
+<div class="wrap">
+<p class="eyebrow">More than burial or cremation</p>
+<h2 id="body-h">Every choice for the body</h2>
+<p class="sub" style="margin-bottom:28px">Green burial, being planted under a tree, burial at sea, water cremation, human composting and more: how each works, where it's legal, and which is gentlest on the earth.</p>
+${optionCards(bodyOptions.slice(0, 8))}
+<p style="margin-top:24px"><a class="btn btn-quiet" href="/plan-ahead/choices-for-the-body/">See every choice</a></p>
 </div>
 </section>
 
@@ -255,13 +308,7 @@ export const guides = [
     description: 'Every option for the body after death: traditional burial, mausoleums, green burial, burial under a tree, cremation, water cremation, human composting, burial at sea, scattering ashes, memorial reefs, body donation and more, with where each is legal.',
     lead: "There are far more choices than burial or cremation. Here is each one, how it works, and where it's allowed, so you can choose what fits.",
     sections: [
-      { id: 'overview', h: 'At a glance', html: `<ul>
-<li><strong>In the ground:</strong> traditional burial, green (natural) burial, burial under a tree.</li>
-<li><strong>Above ground:</strong> a mausoleum, or a niche for ashes in a columbarium.</li>
-<li><strong>Turned to ashes or soil:</strong> cremation, water cremation, human composting.</li>
-<li><strong>At sea:</strong> burial of the body, scattering of ashes, or a memorial reef.</li>
-<li><strong>For others:</strong> whole-body donation to medical science, organ donation.</li>
-<li><strong>What to do with ashes:</strong> keep, bury, scatter, plant, divide, or turn into keepsakes.</li></ul>
+      { id: 'overview', h: 'At a glance', html: `${optionCards(bodyOptions, false)}
 <p>Almost any of these can come with a funeral, a celebration of life, a home funeral, or no ceremony at all. Write your choice down in the <a href="/checklists/funeral-planner/">funeral planner</a>.</p>` },
       { id: 'traditional', h: 'Traditional burial', html: `<p>The body is placed in a casket and buried in a cemetery plot, usually after a viewing. Embalming is rarely required by law, though some funeral homes require it for a public viewing. Many cemeteries require a vault or liner around the casket; that is the cemetery's rule, not the law. It is usually the most expensive option once the plot, opening the grave and a headstone are added. See <a href="/what-it-costs/#funeral">what it costs</a>.</p>` },
       { id: 'entombment', h: 'Mausoleums and columbariums', html: `<p>Entombment places the casket in a crypt above ground in a mausoleum. A columbarium is a wall or building with small niches for urns of ashes. Both are available at many cemeteries, and a columbarium niche usually costs much less than a crypt.</p>` },
@@ -289,6 +336,28 @@ export const guides = [
 <p><strong>Whole-body donation</strong> to a medical school or research program is a different thing. It usually has to be arranged in advance, and many programs cover cremation afterward and return the ashes. Programs can decline a donation, for example because of certain illnesses or if an autopsy was done, so have a backup plan.</p>` },
       { id: 'home', h: 'A home funeral', html: `<p>Whatever the final choice, a family can care for the body at home for a day or more before burial or cremation: washing, dressing and sitting with them. Most US states allow families to do this; some require a funeral director for certain steps. End-of-life doulas can help.</p>` },
       { id: 'other', h: 'Other choices people ask about', html: `<p><strong>Cryonics</strong> preserves a body or brain at very low temperatures in the hope that future science could revive it. It is very expensive, offered by only a few organizations, and there is no evidence yet that revival is possible.</p>` },
+      { id: 'greenest', h: 'Which choice is the most environmentally friendly?', html: `<p><strong>Natural (green) burial is generally the lowest-impact choice,</strong> especially in a conservation burial ground where the land is protected for good.</p>
+<p>A life-cycle study for DELA, a Dutch funeral provider, compared the climate impact of each method per person:</p>
+<div class="table-box" tabindex="0" role="region" aria-label="Climate impact by method"><table style="min-width:420px">
+<caption class="sr-only">Climate impact of each method, per person</caption>
+<thead><tr><th scope="col">Method</th><th scope="col">Climate impact (kg CO₂ equivalent)</th></tr></thead>
+<tbody>
+<tr><td>Natural burial</td><td>40</td></tr>
+<tr><td>Electric cremation</td><td>45</td></tr>
+<tr><td>Human composting</td><td>47</td></tr>
+<tr><td>Water cremation (resomation)</td><td>118</td></tr>
+<tr><td>Traditional burial with a stone monument</td><td>120</td></tr>
+<tr><td>Gas cremation</td><td>181</td></tr>
+</tbody></table></div>
+<p class="small muted">Source: <a href="https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies">Hedgehog, comparative life-cycle study for DELA</a> (Netherlands). The <a href="https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf">Green Burial Council</a> also finds flame cremation has the highest carbon footprint, and notes it releases mercury.</p>
+<p>The ranking depends on local conditions. An electric cremator run on clean power does far better than a gas one. Figures for newer methods like water cremation and human composting vary between studies, and many published claims come from the companies that offer them. A traditional burial's footprint also grows with embalming, a concrete vault and the land it uses.</p>
+<p><strong>Ways to lower the impact, whatever you choose:</strong></p>
+<ul>
+<li>Skip embalming.</li>
+<li>Choose a simple shroud or a biodegradable coffin or urn.</li>
+<li>Skip a concrete vault where the cemetery allows it.</li>
+<li>Choose a provider nearby, to cut transport.</li>
+<li>Choose flowers that are local and in season, or donations instead.</li></ul>` },
       { id: 'choose', h: 'How to choose', html: `<ul>
 <li>What feels right to you: returning to the earth, staying in one place family can visit, or being scattered somewhere you loved?</li>
 <li>Your faith or culture: many traditions have clear practices, so ask your faith leader.</li>
@@ -302,6 +371,8 @@ export const guides = [
       ['Montana Legislature: background paper on natural organic reduction and alkaline hydrolysis (January 2026, PDF)', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
       ['Green Burial Council', 'https://www.greenburialcouncil.org/'],
       ['Funeral Consumers Alliance', 'https://www.funerals.org/'],
+      ['Hedgehog: comparative life-cycle study for DELA', 'https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies'],
+      ['Green Burial Council: environmental benefits and costs of disposition (PDF)', 'https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf'],
     ],
     related: [
       ['/checklists/funeral-planner/', 'Funeral or celebration of life planner', 'Write your choices down.'],

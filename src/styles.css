@@ -203,10 +203,10 @@ tbody tr + tr { border-top: 1px solid var(--rule); }
 /* Workbooks: writing lines and drawing boxes */
 .prompt { margin: 0 0 22px; }
 .prompt p { margin-bottom: 6px; }
-.write-lines { height: calc(var(--lines, 3) * 34px); background: repeating-linear-gradient(to bottom, transparent 0 33px, var(--rule-strong) 33px 34px); }
-.draw-box { border: 1.5px dashed var(--rule-strong); background: #FFFDF8; }
+.write-lines { height: calc(var(--lines, 3) * 34px); background: repeating-linear-gradient(to bottom, transparent 0 32px, var(--rule-strong) 32px 34px); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.draw-box { border: 1.5px dashed var(--rule-strong); background: #FFFDF8; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .wb-page { break-inside: avoid-page; }
-@media print { .wb-page { break-before: page; } .wb-page:first-of-type { break-before: auto; } .write-lines { background: repeating-linear-gradient(to bottom, transparent 0 33px, #999 33px 34px); } }
+@media print { .wb-page { break-before: page; } .wb-page:first-of-type { break-before: auto; } .write-lines { background: repeating-linear-gradient(to bottom, transparent 0 32px, #888 32px 34px); } }
 
 /* Ask assistant */
 .ask-form { margin: 8px 0 16px; }
@@ -227,3 +227,61 @@ tbody tr + tr { border-top: 1px solid var(--rule); }
 
 textarea { min-height: 160px; resize: vertical; }
 .suggest-form { margin-top: 24px; }
+
+/* ---------- Cards (printables, choices, journeys) ---------- */
+.cards { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+.cards-tight { gap: 16px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.cards-two { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.icon { width: 44px; height: 44px; color: var(--accent); flex: none; }
+
+/* Printable card: a picture of the page on a tinted panel */
+.pcard { display: flex; flex-direction: column; background: #FFFDF8; border: 1.5px solid var(--ink); transition: box-shadow .15s, transform .15s; }
+.pcard:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-2px, -2px); }
+.pcard-thumb { background: var(--paper-2); border-bottom: 1px solid var(--rule-strong); padding: 22px 20px 0; display: flex; justify-content: center; align-items: flex-start; height: 230px; overflow: hidden; }
+.pcard-thumb img { width: 66%; height: auto; background: #FFF; box-shadow: 0 2px 10px rgba(30, 35, 40, .18); transform: rotate(-1.2deg); }
+.pcard-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.pcard-body h3 { font-size: 22px; margin: 0 0 6px; }
+.pcard-body h3 a { color: var(--ink); text-decoration: none; }
+.pcard-body h3 a:hover { color: var(--accent-text); text-decoration: underline; }
+.pcard-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: auto 0 4px; padding-top: 10px; }
+.pcard-meta { margin: 6px 0 0; }
+.tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent-text); margin: 0 0 8px; }
+.btn-small { min-height: 44px; padding: 8px 14px; font-size: 13px; }
+
+/* Option card: icon, name, one line */
+.ocard { display: flex; flex-direction: column; gap: 6px; padding: 20px; background: #FFFDF8; border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; transition: box-shadow .15s, transform .15s; }
+.ocard strong { font-size: 20px; line-height: 1.25; margin-top: 4px; }
+.ocard:hover { box-shadow: 5px 5px 0 var(--accent); transform: translate(-2px, -2px); color: var(--ink); }
+.ocard:hover strong { color: var(--accent-text); }
+
+/* Journey card */
+.jcard { display: flex; flex-direction: column; gap: 10px; padding: 30px 30px 26px; background: var(--paper-2); border: 1.5px solid var(--ink); color: var(--ink); text-decoration: none; box-shadow: 8px 8px 0 var(--ink); transition: transform .15s, box-shadow .15s; }
+.jcard:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--accent); color: var(--ink); }
+.jcard-icon .icon { width: 64px; height: 64px; }
+.jcard-title { font-size: 30px; line-height: 1.15; letter-spacing: -0.01em; }
+.jcard-text { font-size: 18px; color: var(--muted); }
+.jcard-stops { font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent-text); border-top: 1px solid var(--rule-strong); padding-top: 12px; margin-top: 4px; }
+.jcard-go { font-family: var(--mono); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-top: auto; }
+
+/* Journey page: a trail of numbered stops, like the map */
+.journey-icon .icon { width: 72px; height: 72px; margin-bottom: 8px; }
+.journey-progress { font-family: var(--mono); letter-spacing: 0.03em; color: var(--muted); margin: 18px 0 0; }
+.trail { list-style: none; padding: 0 0 0 56px !important; margin: 16px 0 8px; position: relative; }
+.trail::before { content: ""; position: absolute; left: 21px; top: 10px; bottom: 30px; border-left: 3px dashed var(--accent); }
+.stop { position: relative; margin: 0 0 22px; }
+.stop-n { position: absolute; left: -56px; top: 14px; width: 44px; height: 44px; border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); color: var(--accent-text); font-family: var(--mono); font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.stop-card { background: #FFFDF8; border: 1.5px solid var(--ink); padding: 18px 20px 14px; }
+.stop-card h3 { font-size: 22px; margin: 0 0 6px; }
+.stop-card p { margin: 0 0 10px; }
+.stop-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-link { display: inline-flex; align-items: center; min-height: 36px; padding: 4px 12px; border: 1.5px solid var(--accent); color: var(--accent-text); text-decoration: none; font-size: 16px; }
+.chip-link:hover { background: var(--accent); color: #FFFFFF; }
+.stop-done { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; border-top: 1px solid var(--rule); padding-top: 10px; margin: 8px 0 0 !important; }
+.stop-done input { width: 22px; height: 22px; accent-color: var(--accent); margin: 0; }
+.stop-done label { cursor: pointer; padding: 6px 0; }
+.stop.is-done .stop-n { background: var(--accent); color: #FFFFFF; }
+.stop.is-done .stop-card { background: var(--paper-2); }
+.stop.is-done .stop-card h3::after { content: " \2713"; color: var(--accent-text); }
+@media (max-width: 560px) { .trail { padding-left: 46px !important; } .trail::before { left: 16px; } .stop-n { left: -46px; width: 36px; height: 36px; } .jcard { padding: 22px; box-shadow: 6px 6px 0 var(--ink); } .jcard-title { font-size: 25px; } }
+@media (prefers-reduced-motion: reduce) { .pcard, .ocard, .jcard { transition: none; } .pcard:hover, .ocard:hover, .jcard:hover { transform: none; } }
+@media print { .stop-done, .journey-progress { display: none; } .trail::before { border-left-style: solid; } }
