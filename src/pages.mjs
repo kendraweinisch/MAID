@@ -153,15 +153,21 @@ export function home(data) {
 <p class="lead" style="margin-top:24px">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
 <p style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></p>
 </div>
-<aside class="hero-side card" aria-labelledby="trust-h">
-<h2 id="trust-h" class="eyebrow" style="font-family:var(--sans);color:var(--muted)">What makes this different</h2>
-<div class="trust">
+<div class="hero-art">
+<img src="/images/atlas-map.svg" alt="" width="800" height="640" fetchpriority="high">
+</div>
+</div>
+</section>
+
+<section class="band section-tight" aria-labelledby="trust-h">
+<div class="wrap">
+<h2 id="trust-h" class="sr-only">What makes this different</h2>
+<div class="trust-row">
 <div><strong>Organized by what you're facing</strong><span class="muted">Not by what someone wants to sell you.</span></div>
 <div><strong>Checked and dated</strong><span class="muted">Every guide shows when it was last reviewed and links its sources.</span></div>
 <div><strong>Nothing to sell inside the guide</strong><span class="muted">No funding, no ads, no referral fees. <a href="/about/#funding">How we're funded</a></span></div>
 <div><strong>Every option, including the hard ones</strong><span class="muted">Hospice, home funerals, green burial and medical aid in dying, covered plainly.</span></div>
 </div>
-</aside>
 </div>
 </section>
 
