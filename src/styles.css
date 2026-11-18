@@ -174,3 +174,12 @@ tbody tr { border-top: 1px solid var(--line); }
   .section { padding: 0; }
   .check li { margin-bottom: 18px; }
 }
+
+/* Home hero map and trust row */
+.hero .wrap { align-items: center; }
+.hero-art { flex: 1 1 420px; min-width: 0; }
+.hero-art img { display: block; width: 100%; height: auto; }
+.hero-main { flex: 1 1 480px; }
+.trust-row { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); font-size: 16px; }
+.trust-row strong { display: block; margin-bottom: 4px; }
+@media (max-width: 720px) { .hero-art { order: 2; } }
