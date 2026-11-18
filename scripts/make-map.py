@@ -1,17 +1,17 @@
 """Draws the decorative atlas map used on the home page.
 
 Run:  python3 scripts/make-map.py   (writes public/images/atlas-map.svg)
-Contour lines are concentric wobbly loops around a few "hills"; a dotted
-route with five stops (one per stage of the guide) crosses the map.
+A printed-atlas style plate: contour lines around a few hills, a graticule
+with edge ticks, a terracotta trail with five stops (one per stage of the
+guide), and a compass. Colours match src/styles.css.
 """
 import math, random
 
-W, H = 800, 640
-random.seed(7)
-INK, ACCENT, PATH = "#2F6F64", "#2F6F64", "#245A51"
+W, H = 1200, 620
+random.seed(11)
+PAPER, CONTOUR, FILL, INK, RED = "#EFE8DA", "#5E6E6A", "#E4DCCB", "#1E2328", "#A8431E"
 
 def smooth_closed(pts):
-    # Catmull-Rom spline through points, as cubic Bezier segments.
     n = len(pts)
     d = f"M{pts[0][0]:.1f},{pts[0][1]:.1f}"
     for i in range(n):
@@ -27,67 +27,57 @@ def hill(cx, cy, rings, base, step, stretch=1.0, tilt=0.0):
     for k in range(rings):
         r0 = base + k * step
         pts = []
-        for i in range(48):
-            t = 2 * math.pi * i / 48
-            wob = 1 + 0.10 * math.sin(2 * t + ph[0]) + 0.06 * math.sin(3 * t + ph[1] + k * 0.25) + 0.035 * math.sin(5 * t + ph[2])
+        for i in range(56):
+            t = 2 * math.pi * i / 56
+            wob = 1 + 0.11 * math.sin(2 * t + ph[0]) + 0.06 * math.sin(3 * t + ph[1] + k * 0.3) + 0.03 * math.sin(6 * t + ph[2])
             x, y = r0 * wob * math.cos(t) * stretch, r0 * wob * math.sin(t)
-            xr = x * math.cos(tilt) - y * math.sin(tilt)
-            yr = x * math.sin(tilt) + y * math.cos(tilt)
-            pts.append((cx + xr, cy + yr))
+            pts.append((cx + x * math.cos(tilt) - y * math.sin(tilt), cy + x * math.sin(tilt) + y * math.cos(tilt)))
         out.append((k, smooth_closed(pts)))
     return out
 
-hills = [
-    hill(210, 190, 9, 18, 26, 1.25, -0.3),
-    hill(610, 450, 8, 16, 27, 1.15, 0.4),
-    hill(640, 110, 5, 14, 24, 1.3, 0.1),
-    hill(150, 560, 5, 14, 25, 1.4, -0.1),
-]
-
 contours = []
-for rings in hills:
-    total = len(rings)
-    for k, d in rings:
-        op = 0.55 - 0.035 * k
-        width = 1.6 if k % 4 == 0 else 1.1
-        fill = ' fill="#DCEBE6"' if k == 0 else ' fill="none"'
-        contours.append(f'<path d="{d}"{fill} stroke="{INK}" stroke-opacity="{op:.2f}" stroke-width="{width}"/>')
+for args in [(260, 170, 9, 16, 24, 1.4, -0.2), (700, 470, 10, 14, 24, 1.5, 0.25),
+             (1010, 120, 7, 14, 23, 1.3, 0.1), (1080, 520, 6, 12, 24, 1.2, -0.4), (120, 560, 5, 12, 24, 1.3, 0.0)]:
+    for k, d in hill(*args):
+        fill = FILL if k == 0 else "none"
+        width = 1.5 if k % 5 == 0 else 0.9
+        contours.append(f'<path d="{d}" fill="{fill}" stroke="{CONTOUR}" stroke-opacity="{0.62 - 0.03 * k:.2f}" stroke-width="{width}"/>')
 
-# Route through five stops, left-bottom to right-top.
-stops = [(110, 410), (300, 330), (420, 470), (560, 270), (700, 300)]
+# Graticule and edge ticks, like a printed plate.
+grat = "".join(f'<line x1="{x}" y1="0" x2="{x}" y2="{H}"/>' for x in range(150, W, 150)) + \
+       "".join(f'<line x1="0" y1="{y}" x2="{W}" y2="{y}"/>' for y in range(155, H, 155))
+ticks = "".join(f'<line x1="{x}" y1="10" x2="{x}" y2="{16 if x % 150 else 22}"/><line x1="{x}" y1="{H - 10}" x2="{x}" y2="{H - (16 if x % 150 else 22)}"/>' for x in range(30, W, 30))
+labels = "".join(f'<text x="{x}" y="36" text-anchor="middle">{chr(64 + i)}</text>' for i, x in enumerate(range(150, W, 150), 1))
+
+# The trail: five stops across the top and right of the plate.
+stops = [(690, 95), (800, 215), (905, 120), (1000, 270), (1120, 175)]
 route = f"M{stops[0][0]},{stops[0][1]}"
 for (x0, y0), (x1, y1) in zip(stops, stops[1:]):
     mx = (x0 + x1) / 2
     route += f" C{mx},{y0} {mx},{y1} {x1},{y1}"
-
-markers = []
+marks = ""
 for i, (x, y) in enumerate(stops):
     last = i == len(stops) - 1
-    markers.append(
-        f'<circle cx="{x}" cy="{y}" r="{13 if last else 11}" fill="{ACCENT if last else "#FFFFFF"}" stroke="{PATH}" stroke-width="3"/>'
-        f'<text x="{x}" y="{y + 5}" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="{"#FFFFFF" if last else PATH}">{i + 1}</text>'
-    )
+    marks += (f'<circle cx="{x}" cy="{y}" r="14" fill="{RED if last else PAPER}" stroke="{RED}" stroke-width="2.5"/>'
+              f'<text x="{x}" y="{y + 5}" text-anchor="middle" font-family="IBM Plex Mono, Menlo, monospace" font-size="13" font-weight="600" fill="{PAPER if last else RED}">{i + 1}</text>')
 
-compass = f'''<g transform="translate(730 560)" stroke="{PATH}" stroke-width="1.5" fill="none">
-<circle r="30" stroke-opacity="0.5"/><circle r="22" stroke-opacity="0.3"/>
-<path d="M0,-38 L7,0 L0,38 L-7,0 Z" fill="#FFFFFF"/><path d="M0,-38 L7,0 L-7,0 Z" fill="{PATH}"/>
-<text y="-44" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="{PATH}" stroke="none">N</text></g>'''
-
-grid = "".join(f'<line x1="{x}" y1="0" x2="{x}" y2="{H}"/>' for x in range(100, W, 100)) + \
-       "".join(f'<line x1="0" y1="{y}" x2="{W}" y2="{y}"/>' for y in range(100, H, 100))
+compass = f'''<g transform="translate(1100 420)" fill="none" stroke="{INK}" stroke-width="1.2">
+<circle r="34" stroke-opacity="0.45"/><line x1="-46" y1="0" x2="46" y2="0" stroke-opacity="0.35"/><line x1="0" y1="-46" x2="0" y2="46" stroke-opacity="0.35"/>
+<path d="M0,-42 L8,0 L0,42 L-8,0 Z" fill="{PAPER}"/><path d="M0,-42 L8,0 L-8,0 Z" fill="{INK}"/>
+<text y="-52" text-anchor="middle" font-family="IBM Plex Mono, Menlo, monospace" font-size="13" fill="{INK}" stroke="none">N</text></g>'''
 
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">
-<defs><clipPath id="c"><rect width="{W}" height="{H}" rx="24"/></clipPath></defs>
-<g clip-path="url(#c)">
-<rect width="{W}" height="{H}" fill="#EEF4F1"/>
-<g stroke="{INK}" stroke-opacity="0.08" stroke-width="1">{grid}</g>
+<rect width="{W}" height="{H}" fill="{PAPER}"/>
+<g stroke="{INK}" stroke-opacity="0.10" stroke-width="1">{grat}</g>
 {"".join(contours)}
-<path d="{route}" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-opacity="0.8"/>
-<path d="{route}" fill="none" stroke="{PATH}" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.5 10"/>
-{"".join(markers)}
+<path d="{route}" fill="none" stroke="{PAPER}" stroke-width="10" stroke-linecap="round"/>
+<path d="{route}" fill="none" stroke="{RED}" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 7"/>
+{marks}
 {compass}
-</g>
-<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="23" fill="none" stroke="#DDE2DF" stroke-width="2"/>
+<g stroke="{INK}" stroke-width="1">{ticks}</g>
+<g font-family="IBM Plex Mono, Menlo, monospace" font-size="12" fill="{INK}" fill-opacity="0.7">{labels}</g>
+<rect x="6" y="6" width="{W - 12}" height="{H - 12}" fill="none" stroke="{INK}" stroke-width="1"/>
+<rect x="1" y="1" width="{W - 2}" height="{H - 2}" fill="none" stroke="{INK}" stroke-width="2"/>
 </svg>
 '''
 open("public/images/atlas-map.svg", "w").write(svg)

@@ -147,21 +147,23 @@ export function home(data) {
     body: `
 <section class="hero">
 <div class="wrap">
-<div class="hero-main">
-<p class="eyebrow">A plain guide to the end of life</p>
+<div class="plate">
+<img class="plate-map" src="/images/atlas-map.svg" alt="" width="1200" height="620" fetchpriority="high">
+<div class="plate-title">
+<p class="eyebrow">An atlas for the end of life</p>
 <h1>Every part of the end of life, explained.</h1>
-<p class="lead" style="margin-top:24px">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
-<p style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></p>
+<p class="lead">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
+<div class="actions"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></div>
+<p class="edition">Reviewed ${fmtDate(site.lastVerified)} · Free · No ads</p>
 </div>
-<div class="hero-art">
-<img src="/images/atlas-map.svg" alt="" width="800" height="640" fetchpriority="high">
 </div>
+<div class="hero-after"></div>
 </div>
 </section>
 
 <section class="band section-tight" aria-labelledby="trust-h">
 <div class="wrap">
-<h2 id="trust-h" class="sr-only">What makes this different</h2>
+<h2 id="trust-h" class="eyebrow">About this atlas</h2>
 <div class="trust-row">
 <div><strong>Organized by what you're facing</strong><span class="muted">Not by what someone wants to sell you.</span></div>
 <div><strong>Checked and dated</strong><span class="muted">Every guide shows when it was last reviewed and links its sources.</span></div>
@@ -173,16 +175,17 @@ export function home(data) {
 
 <section id="where" class="section" aria-labelledby="where-h">
 <div class="wrap">
+<p class="eyebrow">Contents</p>
 <h2 id="where-h">Where are you right now?</h2>
-<p class="sub" style="margin-bottom:32px">Start with what you're facing. Each guide is short, plain and links to the next step.</p>
-<div class="grid">
-<a class="card stage" href="/plan-ahead/"><span class="stage-n">1</span><strong>I want to plan ahead</strong><span class="muted small">Advance directives, a health care proxy, your wishes and your paperwork.</span></a>
-<a class="card stage" href="/serious-illness/"><span class="stage-n">2</span><strong>Someone I love is seriously ill</strong><span class="muted small">Palliative care, hospice, care at home, and the questions to ask.</span></a>
-<a class="card stage" href="/last-weeks/"><span class="stage-n">3</span><strong>Death may be weeks away</strong><span class="muted small">What to expect, comfort, being present, and saying goodbye.</span></a>
-<a class="card stage" href="/after-a-death/"><span class="stage-n">4</span><strong>Someone has just died</strong><span class="muted small">The first 24 hours, the first week, funerals and paperwork.</span></a>
-<a class="card stage" href="/grief/"><span class="stage-n">5</span><strong>I'm grieving</strong><span class="muted small">For adults, children and pets, and when to get more help.</span></a>
-<a class="card stage" href="${MAID}/"><span class="stage-n">+</span><strong>I'm considering medical aid in dying</strong><span class="muted small">Where it's legal, who qualifies and how the process works.</span></a>
-</div>
+<p class="sub" style="margin-bottom:32px">Start with what you’re facing. Each guide is short, plain and leads to the next step.</p>
+<ol class="contents">
+<li><a href="/plan-ahead/"><span class="c-num">01</span><span class="c-title">I want to plan ahead</span><span class="c-go">Read</span><span class="c-desc">Advance directives, a health care proxy, your wishes and your paperwork.</span></a></li>
+<li><a href="/serious-illness/"><span class="c-num">02</span><span class="c-title">Someone I love is seriously ill</span><span class="c-go">Read</span><span class="c-desc">Palliative care, hospice, care at home, and the questions to ask.</span></a></li>
+<li><a href="/last-weeks/"><span class="c-num">03</span><span class="c-title">Death may be weeks away</span><span class="c-go">Read</span><span class="c-desc">What to expect, comfort, being present, and saying goodbye.</span></a></li>
+<li><a href="/after-a-death/"><span class="c-num">04</span><span class="c-title">Someone has just died</span><span class="c-go">Read</span><span class="c-desc">The first 24 hours, the first week, funerals and paperwork.</span></a></li>
+<li><a href="/grief/"><span class="c-num">05</span><span class="c-title">I’m grieving</span><span class="c-go">Read</span><span class="c-desc">For adults, children and pets, and when to get more help.</span></a></li>
+<li><a href="${MAID}/"><span class="c-num">06</span><span class="c-title">I’m considering medical aid in dying</span><span class="c-go">Read</span><span class="c-desc">Where it’s legal, who qualifies and how the process works.</span></a></li>
+</ol>
 </div>
 </section>
 
@@ -231,13 +234,13 @@ ${placeOptions(data.places)}
 
 <section class="section" aria-label="Services">
 <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px">
-<div class="card" style="flex:999 1 560px;min-width:0;padding:36px">
+<div class="card" style="flex:999 1 560px;min-width:0">
 <p class="eyebrow">Paid service</p>
 <h2>Want a person to help you through it?</h2>
 <p class="sub">A navigator helps you or your family make sense of the options: planning documents, choosing hospice, arranging a funeral, handling paperwork after a death, or medical aid in dying.</p>
 <a class="btn" href="/navigation/">About navigation sessions</a>
 </div>
-<div class="card" style="flex:1 1 300px;min-width:0;padding:36px">
+<div class="card" style="flex:1 1 300px;min-width:0">
 <p class="eyebrow">For organizations</p>
 <h2 style="font-size:30px">Hospices, employers and insurers</h2>
 <p class="muted">License our guides and checklists for your patients, employees or members, or train your staff.</p>
