@@ -57,7 +57,6 @@ ${crisis ? '<div class="crisis" role="note">If you are thinking about suicide or
 <a class="brand" href="/">${site.name} <span>${site.tagline}</span></a>
 <nav class="nav" aria-label="Main">
 ${links}
-<a class="btn" href="/navigation/">Talk to a navigator</a>
 </nav>
 </div>
 </header>

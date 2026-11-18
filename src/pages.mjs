@@ -235,13 +235,7 @@ ${placeOptions(data.places)}
 
 <section class="section" aria-label="Services">
 <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px">
-<div class="card" style="flex:999 1 560px;min-width:0">
-<p class="eyebrow">Paid service</p>
-<h2>Want a person to help you through it?</h2>
-<p class="sub">A navigator helps you or your family make sense of the options: planning documents, choosing hospice, arranging a funeral, handling paperwork after a death, or medical aid in dying.</p>
-<a class="btn" href="/navigation/">About navigation sessions</a>
-</div>
-<div class="card" style="flex:1 1 300px;min-width:0">
+<div class="card" style="flex:1 1 300px;min-width:0;max-width:760px">
 <p class="eyebrow">For organizations</p>
 <h2 style="font-size:30px">Hospices, employers and insurers</h2>
 <p class="muted">License our guides and checklists for your patients, employees or members, or train your staff.</p>
@@ -488,7 +482,7 @@ export const guides = [
     ],
     related: [
       ['/after-a-death/', 'After a death', 'The practical steps.'],
-      ['/navigation/', 'Talk to a navigator', 'Help with the paperwork, so you have room to grieve.'],
+      ['/checklists/after-a-death/', 'First-24-hours checklist', 'Printable, for the practical steps.'],
     ],
   }),
 ];
@@ -530,7 +524,7 @@ export const checklists = [
       { h: 'Within the day', items: ['Tell close family and friends, or ask someone to do it.', 'Choose a funeral home or cremation provider. Ask for the itemized price list.', 'Look for written wishes about the body and the funeral.', 'Arrange care for children and pets, and secure the home.'] },
       { h: 'This can wait a few days', items: ['Order certified copies of the death certificate.', 'Find the will and contact the executor.', 'Notify the social security or pension agency, employers, banks and insurers.', 'Plan the service. It can happen weeks later.'] },
     ],
-    note: 'If you are struggling, you do not have to do this alone. Ask a friend, the hospice team or a navigator for help.',
+    note: 'If you are struggling, you do not have to do this alone. Ask a friend, a family member or the hospice team for help.',
   }),
 ];
 
@@ -633,7 +627,6 @@ ${sources}
 <li><a href="${MAID}/process/">How the process works</a></li>
 <li><a href="/serious-illness/">Hospice and palliative care</a></li>
 <li><a href="${MAID}/families/">A guide for families</a></li>
-<li><a href="/navigation/">Talk to a navigator</a></li>
 <li><a href="/updates/">Get updates when ${esc(p.name)}'s law changes</a></li>
 </ul>
 </div>
@@ -657,7 +650,7 @@ export const maidPages = [
 <li><strong>Written request.</strong> A signed form, usually with witnesses, then the prescription.</li>
 <li><strong>Decide if and when.</strong> Having the prescription doesn't mean you must use it.</li></ol>` },
       { id: 'early', h: 'Why starting early matters', html: `<p>Everyone who asks must be able to make and communicate their own decision at every step. If illness takes that ability away, the process stops. Starting the conversation early keeps the option open, even if you never use it.</p>` },
-      { id: 'decline', h: "If your doctor won't take part", html: `<p>Doctors and hospices can decline. Ask for a referral, or <a href="/navigation/">talk to a navigator</a> about clinicians who do take part where you live.</p>` },
+      { id: 'decline', h: "If your doctor won't take part", html: `<p>Doctors and hospices can decline. Ask for a referral to one who does. Hospice teams and local aid-in-dying advocacy groups often know which clinicians take part where you live.</p>` },
       { id: 'hospice', h: 'Alongside hospice', html: `<p>Many people who ask for medical aid in dying are also in hospice. <a href="/serious-illness/">Hospice and palliative care</a> remain available whatever you decide.</p>` },
     ],
     related: [
@@ -706,7 +699,7 @@ export const maidPages = [
       ['Swissinfo: Pegasos', 'https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578'],
     ],
     related: [
-      ['/navigation/', 'Talk to a navigator', 'Help preparing an application.'],
+      [`${MAID}/process/`, 'How the process works', 'The usual steps.'],
       [`${MAID}/`, 'Where it is legal', 'Every place we cover.'],
     ],
   }),
@@ -715,33 +708,6 @@ export const maidPages = [
 /* ---------- service and policy pages ---------- */
 
 export const staticPages = [
-  {
-    path: '/navigation/',
-    title: 'Navigation sessions',
-    description: 'Paid, one-to-one help with any end-of-life question: planning documents, hospice, funerals, paperwork after a death, or medical aid in dying.',
-    body: `
-<section class="section"><div class="wrap prose">
-<p class="eyebrow">Paid service</p>
-<h1>Talk to a navigator</h1>
-<p class="lead" style="margin:20px 0">One-to-one help for you or your family, at any stage: making a plan, choosing hospice, arranging a funeral, sorting out paperwork after a death, or understanding medical aid in dying.</p>
-<h2>What navigators do and don't do</h2>
-<ul>
-<li>They explain the options and the process, and help you prepare.</li>
-<li>They never give medical or legal advice, and never decide whether you qualify for anything. Doctors and lawyers do.</li>
-<li>They never help with anything outside the law.</li>
-<li>If you're in crisis, they'll connect you with crisis support first.</li>
-</ul>
-<h2>Prices</h2>
-<ul>
-<li>One session: [PRICE]</li>
-<li>Ongoing support: [PRICE]</li>
-<li>Reduced fees available on request</li>
-</ul>
-<p>We are never paid by hospices, funeral homes, clinicians or assisted-dying organizations, so our guidance doesn't depend on where you go.</p>
-<h2>Booking opens soon</h2>
-${signupForm('navigation-interest', emailField('nav-email') + '<div class="field"><label for="nav-topic">What would you like help with?</label><input id="nav-topic" name="topic" type="text"></div>', 'Tell me when booking opens', "Please don't include medical details here. <a href=\"/privacy/\">Privacy</a>")}
-</div></section>`,
-  },
   {
     path: '/professionals/',
     title: 'For organizations',
@@ -799,7 +765,7 @@ ${updatesForm('updates')}
 <h2 id="funding">How we're funded</h2>
 <p><strong>End of Life Atlas currently has no funding.</strong> It is built and maintained independently, and it earns no money. The guides and checklists are free.</p>
 <p>We take no advertising, no referral fees and no payments from hospices, funeral homes, clinicians, pharmacies or assisted-dying organizations.</p>
-<p>The navigation and organization services described on this site are not open yet. If we start charging for them, or take any other funding, we will say so on this page.</p>
+<p>The organization services described on this site are not open yet. If we start charging for anything, or take any other funding, we will say so on this page.</p>
 <h2 id="editorial">Editorial and review policy</h2>
 <ul>
 <li>Facts come from official sources or named reports, linked on the page.</li>

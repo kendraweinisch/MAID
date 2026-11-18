@@ -42,7 +42,7 @@ among many, with the same care as the rest.
 
 ## How it makes money (updated)
 
-- Navigation sessions for any end-of-life question, not only aid in dying
+- Navigation sessions for any end-of-life question (paused: removed from the site for now)
 - Licensing guides and checklists to hospices, employers' benefits programs and insurers (Empathy's model)
 - Professional training
 - Paid print packs (bound worksheets) once the free versions prove useful

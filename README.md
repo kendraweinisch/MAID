@@ -82,9 +82,8 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
-- [ ] Set navigation prices (`[PRICE]` on `/navigation/`)
 - [ ] Set up corrections@, privacy@ and accessibility@ email addresses
-- [ ] Lawyer review of the whole site, especially `/going-abroad/` and `/navigation/`
+- [ ] Lawyer review of the whole site, especially the Switzerland and property-abroad pages
 - [ ] Turn on search indexing
 
 ## Other files
