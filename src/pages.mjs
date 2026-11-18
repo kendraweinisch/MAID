@@ -277,7 +277,7 @@ export const guides = [
 <p>For what each document does and how the rules differ by state, see <a href="/plan-ahead/wills-and-trusts/">wills, trusts and the paperwork</a>.</p>
 <p>Own a home in another country? You may need a will there too. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>
 <p><a href="/checklists/plan-ahead/">Use the printable plan-ahead worksheet</a>.</p>` },
-      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, a party, or nothing at all. Music, readings, who should speak. Writing it down is a gift to whoever has to arrange it: use the <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a>. You can also write <a href="/checklists/letters-to-leave/">letters to leave</a> and your <a href="/checklists/life-story/">life story</a>, so your family can tell it your way. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
+      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, a party, or nothing at all. Music, readings, who should speak. See <a href="/plan-ahead/choices-for-the-body/">every choice for the body</a>, from burial at sea to being planted under a tree. Writing it down is a gift to whoever has to arrange it: use the <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a>. You can also write <a href="/checklists/letters-to-leave/">letters to leave</a> and your <a href="/checklists/life-story/">life story</a>, so your family can tell it your way. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
       { id: 'review', h: 'Review it every few years', html: `<p>Look again after a new diagnosis, a divorce or a death in the family, or every few years anyway. Update the documents and tell your proxy what changed.</p>` },
     ],
     sources: [
@@ -285,6 +285,7 @@ export const guides = [
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
+      ['/plan-ahead/choices-for-the-body/', 'Every choice for the body', 'Burial, cremation, sea, trees, composting and more.'],
       ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork', 'What each document does, state by state.'],
       ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
       ['/plan-ahead/talking-with-a-parent/', 'Talking with a parent', 'Near or far.'],
@@ -292,6 +293,67 @@ export const guides = [
     ],
   }),
 
+  guide({
+    path: '/plan-ahead/choices-for-the-body/',
+    title: 'Every choice for the body',
+    eyebrow: 'Plan ahead',
+    reviewed: '2026-11-18',
+    description: 'Every option for the body after death: traditional burial, mausoleums, green burial, burial under a tree, cremation, water cremation, human composting, burial at sea, scattering ashes, memorial reefs, body donation and more, with where each is legal.',
+    lead: "There are far more choices than burial or cremation. Here is each one, how it works, and where it's allowed, so you can choose what fits.",
+    sections: [
+      { id: 'overview', h: 'At a glance', html: `<ul>
+<li><strong>In the ground:</strong> traditional burial, green (natural) burial, burial under a tree.</li>
+<li><strong>Above ground:</strong> a mausoleum, or a niche for ashes in a columbarium.</li>
+<li><strong>Turned to ashes or soil:</strong> cremation, water cremation, human composting.</li>
+<li><strong>At sea:</strong> burial of the body, scattering of ashes, or a memorial reef.</li>
+<li><strong>For others:</strong> whole-body donation to medical science, organ donation.</li>
+<li><strong>What to do with ashes:</strong> keep, bury, scatter, plant, divide, or turn into keepsakes.</li></ul>
+<p>Almost any of these can come with a funeral, a celebration of life, a home funeral, or no ceremony at all. Write your choice down in the <a href="/checklists/funeral-planner/">funeral planner</a>.</p>` },
+      { id: 'traditional', h: 'Traditional burial', html: `<p>The body is placed in a casket and buried in a cemetery plot, usually after a viewing. Embalming is rarely required by law, though some funeral homes require it for a public viewing. Many cemeteries require a vault or liner around the casket; that is the cemetery's rule, not the law. It is usually the most expensive option once the plot, opening the grave and a headstone are added. See <a href="/what-it-costs/#funeral">what it costs</a>.</p>` },
+      { id: 'entombment', h: 'Mausoleums and columbariums', html: `<p>Entombment places the casket in a crypt above ground in a mausoleum. A columbarium is a wall or building with small niches for urns of ashes. Both are available at many cemeteries, and a columbarium niche usually costs much less than a crypt.</p>` },
+      { id: 'green', h: 'Green (natural) burial', html: `<p>The body is buried without embalming, in a shroud or a simple biodegradable coffin, with no concrete vault, so it returns to the earth. Some green burial grounds are also nature reserves, with the land protected for good. Some ordinary cemeteries now have green sections.</p>
+<p>In the US, the <a href="https://www.greenburialcouncil.org/">Green Burial Council</a> lists certified providers. In the UK, natural and woodland burial grounds are widespread.</p>` },
+      { id: 'tree', h: 'Being planted under a tree', html: `<ul>
+<li><strong>Woodland or green burial,</strong> where a tree is planted on or near the grave, or the grave is among existing trees.</li>
+<li><strong>A tree urn for ashes:</strong> a biodegradable urn with a seedling or seed. Ashes are very alkaline and salty, which can harm plants, so good tree urns include a soil mix to balance them. Plant it only where the landowner or local rules allow.</li>
+<li><strong>Memorial forests:</strong> privately run forests where ashes are placed at the roots of a chosen tree, often with a small marker.</li></ul>` },
+      { id: 'cremation', h: 'Cremation', html: `<p>The body is reduced to ashes by heat. <strong>Direct cremation</strong>, with no viewing or service beforehand, is usually the least expensive choice, and a gathering can be held later. Cremation can also follow a full funeral. Cremation is now the most common choice in the US. See <a href="#ashes">what to do with ashes</a>.</p>` },
+      { id: 'water', h: 'Water cremation (alkaline hydrolysis)', html: `<p>Also called aquamation. The body is placed in warm water with an alkaline solution, which breaks it down over several hours, leaving bones that are processed into ashes, like flame cremation. It uses far less energy than flame cremation. In the US, it was legal in about 28 states as of January 2026. In the UK, it isn't widely available yet, and the Law Commission has been reviewing new methods like this.</p>` },
+      { id: 'composting', h: 'Human composting (natural organic reduction)', html: `<p>Also called terramation. The body is placed in a vessel with wood chips, straw and other plant material, and over about one to two months it becomes soil. Families can take some of the soil home, often to grow a garden or a tree, or donate it to conservation land. As of January 2026, it was legal in 14 US states: Arizona, California, Colorado, Delaware, Georgia, Maine, Maryland, Minnesota, Nevada, New Jersey, New York, Oregon, Vermont and Washington. Providers can serve people from other states, though transport adds cost.</p>` },
+      { id: 'sea', h: 'Burial at sea', html: `<ul>
+<li><strong>US:</strong> a body may be buried at least 3 nautical miles from land, in water at least 600 feet deep. Ashes may be scattered or placed at least 3 nautical miles from land, in water of any depth. The EPA must be told within 30 days, using its online reporting tool. Eligible veterans may also be able to arrange burial at sea through the US Navy.</li>
+<li><strong>UK:</strong> burying a body at sea in English waters needs a marine licence from the Marine Management Organisation, usually at a few designated sites such as off the Needles (Isle of Wight). Scattering ashes at sea doesn't need a licence.</li>
+<li><strong>Memorial reefs:</strong> ashes are mixed into a concrete reef structure placed on the sea floor, where it becomes a habitat for marine life. A few specialist companies offer this.</li></ul>` },
+      { id: 'ashes', h: 'What to do with ashes', html: `<ul>
+<li><strong>Keep them</strong> at home in an urn, or in a columbarium niche.</li>
+<li><strong>Bury them</strong> in a cemetery plot, a family grave or a green burial ground, often for less than a full burial.</li>
+<li><strong>Scatter them:</strong> on private land with the owner's permission. Parks, public land, rivers and lakes have their own rules, and some need a permit, so ask the landowner or local authority first.</li>
+<li><strong>Plant them</strong> with a tree (see above).</li>
+<li><strong>Divide them</strong> among family members, so each can keep or scatter a part.</li>
+<li><strong>Keepsakes:</strong> small amounts can be made into jewelry, glass, or even lab-grown diamonds, or sent on a memorial spaceflight.</li></ul>` },
+      { id: 'donation', h: 'Body and organ donation', html: `<p><strong>Organ and tissue donation</strong> can help others and is compatible with almost every option above, including an open-casket funeral. Register with your country or state donor registry and tell your family.</p>
+<p><strong>Whole-body donation</strong> to a medical school or research program is a different thing. It usually has to be arranged in advance, and many programs cover cremation afterward and return the ashes. Programs can decline a donation, for example because of certain illnesses or if an autopsy was done, so have a backup plan.</p>` },
+      { id: 'home', h: 'A home funeral', html: `<p>Whatever the final choice, a family can care for the body at home for a day or more before burial or cremation: washing, dressing and sitting with them. Most US states allow families to do this; some require a funeral director for certain steps. End-of-life doulas can help.</p>` },
+      { id: 'other', h: 'Other choices people ask about', html: `<p><strong>Cryonics</strong> preserves a body or brain at very low temperatures in the hope that future science could revive it. It is very expensive, offered by only a few organizations, and there is no evidence yet that revival is possible.</p>` },
+      { id: 'choose', h: 'How to choose', html: `<ul>
+<li>What feels right to you: returning to the earth, staying in one place family can visit, or being scattered somewhere you loved?</li>
+<li>Your faith or culture: many traditions have clear practices, so ask your faith leader.</li>
+<li>Cost, and what is available and legal where you live.</li>
+<li>What your family needs: a grave to visit, or the freedom to remember you anywhere.</li></ul>
+<p>Write it down, tell someone, and keep it with your <a href="/checklists/plan-ahead/">plan-ahead worksheet</a>.</p>` },
+    ],
+    sources: [
+      ['US EPA: burial at sea', 'https://www.epa.gov/ocean-dumping/burial-sea'],
+      ['GOV.UK: burial at sea', 'https://www.gov.uk/burial-at-sea'],
+      ['Montana Legislature: background paper on natural organic reduction and alkaline hydrolysis (January 2026, PDF)', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
+      ['Green Burial Council', 'https://www.greenburialcouncil.org/'],
+      ['Funeral Consumers Alliance', 'https://www.funerals.org/'],
+    ],
+    related: [
+      ['/checklists/funeral-planner/', 'Funeral or celebration of life planner', 'Write your choices down.'],
+      ['/what-it-costs/#funeral', 'What it costs', 'Funeral, burial and cremation prices.'],
+    ],
+  }),
   guide({
     path: '/plan-ahead/wills-and-trusts/',
     title: 'Wills, trusts and the paperwork',
@@ -636,6 +698,7 @@ export const guides = [
 <li><strong>Cremation:</strong> with or without a service. Direct cremation, with no service beforehand, usually costs least.</li>
 <li><strong>Body donation:</strong> usually arranged in advance with a program.</li>
 <li><strong>Home funeral:</strong> most states allow families to care for their own dead; some require a funeral director for certain steps.</li></ul>
+<p>There are many more choices, including water cremation, human composting, burial at sea and being planted under a tree: see <a href="/plan-ahead/choices-for-the-body/">every choice for the body</a>.</p>
 <p>A service can happen weeks later, in any form you like. The <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a> and <a href="/checklists/eulogy/">eulogy guide</a> can help. To find independent help nearby, see <a href="/finding-help/">finding help</a>.</p>` },
       { id: 'rights', h: 'Your rights with funeral homes', html: `<p>Wherever you are, ask for written, itemized prices before you agree to anything. In the US, the FTC Funeral Rule gives you the right to:</p>
 <ul><li>Get an itemized price list, in person, and prices by phone.</li>
