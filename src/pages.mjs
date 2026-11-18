@@ -26,38 +26,6 @@ const placeTable = (list, caption) => `<div class="table-box" tabindex="0" role=
 ${placeRows(list)}
 </tbody></table></div>`;
 
-// Forms post to FORM_ENDPOINT (for example a Formspree URL) when it is set,
-// use Netlify Forms when building on Netlify, and otherwise show as "opening soon".
-const formEndpoint = process.env.FORM_ENDPOINT || '';
-const onNetlify = process.env.NETLIFY === 'true';
-
-const signupForm = (name, fields, button, note) => {
-  if (!formEndpoint && !onNetlify) {
-    return `<div class="card"><p style="margin:0"><strong>Sign-up opens soon.</strong> <span class="muted">This form isn't connected yet.</span></p></div>`;
-  }
-  const attrs = formEndpoint
-    ? `action="${esc(formEndpoint)}"`
-    : `action="/thanks/" data-netlify="true" netlify-honeypot="company"`;
-  return `<form class="form" name="${name}" method="POST" ${attrs}>
-<input type="hidden" name="form-name" value="${name}">
-<p hidden><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
-${fields}
-<button class="btn btn-dark" type="submit">${button}</button>
-${note ? `<p class="form-note">${note}</p>` : ''}
-</form>`;
-};
-
-const emailField = (id) => `<div class="field"><label for="${id}">Email</label><input id="${id}" name="email" type="email" autocomplete="email" required></div>`;
-
-const updatesForm = (id) =>
-  signupForm(
-    'updates',
-    emailField(`${id}-email`) +
-      `<div class="field"><label for="${id}-place">State or country (optional)</label><input id="${id}-place" name="place" type="text"></div>`,
-    'Get updates',
-    'New guides and law changes for your area. Unsubscribe any time. <a href="/privacy/">Privacy</a>'
-  );
-
 const sourceList = (sources) =>
   sources.length
     ? `<h2 id="sources">Sources</h2><ul>${sources.map(([label, url]) => `<li><a href="${esc(url)}">${esc(label)}</a></li>`).join('')}</ul>`
@@ -228,15 +196,6 @@ ${placeOptions(data.places)}
 </div>
 </section>
 
-<section class="band-tint" aria-labelledby="updates-h">
-<div class="wrap section" style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
-<div style="flex:1 1 420px;min-width:0">
-<h2 id="updates-h">New guides and law changes, by email</h2>
-<p style="margin:0">Occasional, plain updates. Tell us your state or country to hear when its rules change.</p>
-</div>
-<div style="flex:1 1 420px;min-width:0">${updatesForm('home')}</div>
-</div>
-</section>
 
 ${checkerScript}`,
   };
@@ -842,7 +801,7 @@ ${placeTable(us, 'United States')}
 ${placeTable(world, 'Around the world')}
 <div id="elsewhere" class="card" style="margin-top:40px">
 <h3>Don't see your country?</h3>
-<p>We're researching: ${data.researching.map(esc).join(', ')}. <a href="/updates/">Get updates</a> when we add it.</p>
+<p>We're researching: ${data.researching.map(esc).join(', ')}.</p>
 <p class="muted" style="margin:0">Whatever the law where you live, <a href="/serious-illness/">hospice and palliative care</a> are available, and they can make a great difference.</p>
 </div>
 </div></section>`,
@@ -883,7 +842,6 @@ ${sources}
 <li><a href="${MAID}/process/">How the process works</a></li>
 <li><a href="/serious-illness/">Hospice and palliative care</a></li>
 <li><a href="${MAID}/families/">A guide for families</a></li>
-<li><a href="/updates/">Get updates when ${esc(p.name)}'s law changes</a></li>
 </ul>
 </div>
 </section>`,
@@ -1005,17 +963,6 @@ export const staticPages = [
 </div></section>`,
   },
   {
-    path: '/updates/',
-    title: 'Updates by email',
-    description: 'Occasional email updates: new guides and law changes for your state or country.',
-    body: `
-<section class="section"><div class="wrap prose">
-<h1>Updates by email</h1>
-<p class="lead" style="margin:20px 0">Occasional, plain updates: new guides, and changes to the rules where you live.</p>
-${updatesForm('updates')}
-</div></section>`,
-  },
-  {
     path: '/about/',
     title: 'About End of Life Atlas',
     description: 'How End of Life Atlas is funded, how we check facts, and who reviews our guides.',
@@ -1058,19 +1005,18 @@ ${updatesForm('updates')}
   {
     path: '/privacy/',
     title: 'Privacy',
-    description: 'What End of Life Atlas collects and what we never do with it.',
+    description: 'End of Life Atlas collects no personal information: no accounts, forms, email lists or tracking.',
     body: `
 <section class="section"><div class="wrap prose">
 <h1>Privacy</h1>
-<p class="lead" style="margin:20px 0">This is a sensitive subject, so we collect as little as we can.</p>
+<p class="lead" style="margin:20px 0">This is a sensitive subject, so we don't collect anything about you.</p>
 <ul>
-<li>We use no advertising or tracking cookies.</li>
+<li>There are no accounts, sign-ups, forms or email lists.</li>
+<li>We use no advertising, analytics or tracking cookies.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
-<li>If you sign up for email updates, we store your email and the place you chose, and use them only to send those updates.</li>
-<li>We never sell or share your information with advertisers or providers.</li>
-<li>Please don't send medical details through our forms.</li>
+<li>Like any website, the site's host (Netlify) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
 </ul>
-<p>To see or delete your information, email privacy@eolatlas.com.</p>
+<p>Questions about privacy? Email privacy@eolatlas.com.</p>
 </div></section>`,
   },
   {
@@ -1127,17 +1073,6 @@ ${updatesForm('updates')}
 <noscript><p>The assistant needs JavaScript. You can still browse <a href="/#where">where to start</a>.</p></noscript>
 </div></section>
 <script src="/assistant.js" defer></script>`,
-  },
-  {
-    path: '/thanks/',
-    title: 'Thank you',
-    description: 'Your request was received.',
-    body: `
-<section class="section"><div class="wrap prose">
-<h1>Thank you</h1>
-<p class="lead" style="margin:20px 0">We've received your request. We'll only email you about what you asked for.</p>
-<p><a href="/">Back to the home page</a></p>
-</div></section>`,
   },
 ];
 
