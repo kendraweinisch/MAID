@@ -31,6 +31,21 @@ export function printCard(slug, title) {
 </article>`;
 }
 
+// Search-friendly titles for the printables.
+export const PRINT_SEO = {
+  'plan-ahead': 'End-of-life planning worksheet (free printable)',
+  'funeral-planner': 'Funeral and celebration of life planning checklist (free printable)',
+  'talking-with-a-parent': 'Questions to ask aging parents about end-of-life wishes (free printable)',
+  'letters-to-leave': 'Letters to leave for loved ones: prompts (free printable)',
+  'life-story': 'Write your own obituary and life story (free printable)',
+  'questions-for-the-doctor': 'Questions to ask the doctor after a serious diagnosis (free printable)',
+  'after-a-death': 'What to do when someone dies: first 24 hours checklist (free printable)',
+  'eulogy': 'How to write a eulogy: prompts and template (free printable)',
+  'remembering-someone': "Children's grief workbook: a remembering book (free printable)",
+  'remembering-grandparent': "Children's grief workbook for the death of a grandparent (free printable)",
+  'remembering-pet': "Children's pet loss workbook (free printable)",
+};
+
 // The panel at the top of each printable: a picture of the page and download buttons.
 export function dlPanel(slug) {
   const m = META[slug];
@@ -61,6 +76,7 @@ function page({ path, title, description, kind, lead, intro = '', body }) {
   return {
     path,
     title,
+    seoTitle: PRINT_SEO[path.split('/')[2]],
     description,
     body: `
 <section class="section">

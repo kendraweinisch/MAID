@@ -30,7 +30,7 @@
     cost: 'cost price pay', price: 'cost price', expensive: 'cost price', afford: 'cost pay',
     obituary: 'obituary life story', eulogy: 'eulogy', urn: 'cremation ashes', ashes: 'cremation ashes',
     aquamation: 'water cremation alkaline hydrolysis', resomation: 'water cremation alkaline hydrolysis', terramation: 'human composting', compost: 'composting', 'sea burial': 'burial sea', tree: 'tree woodland', mausoleum: 'mausoleum entombment', buried: 'burial', bury: 'burial', scatter: 'scatter ashes', donate: 'donation',
-    passed: 'death died', 'passed away': 'death died', died: 'death died', dies: 'death died',
+    passed: 'death died', 'signs of death': 'signs death near', 'death is near': 'signs death near', dying: 'dying death signs', 'palliative': 'palliative hospice', 'death certificate': 'death certificates', 'death certificates': 'death certificates', 'passed away': 'death died', died: 'death died', dies: 'death died',
     kids: 'children', child: 'children', grandma: 'grandparent', grandpa: 'grandparent', dog: 'pet', cat: 'pet',
     mom: 'parent', mum: 'parent', dad: 'parent', mother: 'parent', father: 'parent',
     inheritance: 'inheritance estate will', estate: 'estate will probate', executor: 'executor will',

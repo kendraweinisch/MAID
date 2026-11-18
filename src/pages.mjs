@@ -1,6 +1,6 @@
 import { esc, fmtDate, site } from './layout.mjs';
 import { icons } from './icons.mjs';
-import { printCard, dlPanel } from './printables.mjs';
+import { printCard, dlPanel, PRINT_SEO } from './printables.mjs';
 import { iconFor, linkCards, dirCard, infoCard } from './ui.mjs';
 import { journeyMeta } from './journeys.mjs';
 
@@ -88,11 +88,31 @@ const GUIDE_PRINTABLES = {
 };
 
 // A guide page: hero, "on this page" list, sections, sources and related links.
-function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVerified, sections, sources = [], related = [], crisis = false }) {
+// Search-friendly page titles: the words people actually search, kept accurate.
+const SEO_TITLES = {
+  '/plan-ahead/': 'End-of-life planning: advance directive, living will and health care proxy',
+  '/plan-ahead/wills-and-trusts/': 'Wills, trusts and probate: rules by US state, Canada, UK and Australia',
+  '/plan-ahead/property-abroad/': 'Wills for expats: property in Mexico, Costa Rica, Canada, the UK and Europe',
+  '/plan-ahead/talking-with-a-parent/': 'How to talk to aging parents about end-of-life wishes, near or far',
+  '/plan-ahead/choices-for-the-body/': 'Green burial, human composting, aquamation, burial at sea: every option',
+  '/serious-illness/': 'Serious illness: palliative care, hospice and POLST explained',
+  '/last-weeks/': 'The last weeks of life: what dying is really like',
+  '/after-a-death/': 'What to do when someone dies: the first hours, funeral and estate',
+  '/grief/': "Grief: what's normal, helping a grieving child, and pet loss",
+  '/what-it-costs/': 'How much does dying cost? Hospice, care homes and funeral costs',
+  '/medical-aid-in-dying/process/': 'How medical aid in dying (assisted suicide) works: steps and waiting periods',
+  '/medical-aid-in-dying/families/': 'Medical aid in dying and euthanasia: a guide for families',
+  '/medical-aid-in-dying/switzerland/': 'Assisted suicide in Switzerland for foreigners: how it works and costs',
+};
+
+function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVerified, sections, sources = [], related = [], crisis = false, faq = [] }) {
   const toc = sections.map((s) => `<li><a href="#${s.id}">${s.h}</a></li>`).join('');
   return {
     path,
     title,
+    seoTitle: SEO_TITLES[path],
+    article: { modified: reviewed },
+    faq,
     description,
     crisis,
     body: `
@@ -122,6 +142,7 @@ function checklist({ path, title, description, lead, groups, note }) {
   return {
     path,
     title,
+    seoTitle: PRINT_SEO[path.split('/')[2]],
     description,
     body: `
 <section class="section">
@@ -672,13 +693,107 @@ ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · fune
     ],
   }),
   guide({
+    path: '/last-weeks/signs-death-is-near/',
+    title: 'Signs that death is near',
+    eyebrow: 'The last weeks',
+    reviewed: '2026-11-19',
+    description: 'The common signs that death is weeks, days or hours away, what they mean, and how to keep someone comfortable.',
+    lead: "Everyone's dying is different, but most people show some of these signs. Knowing them helps you understand what you're seeing and when to call family.",
+    sections: [
+      { id: 'weeks', h: 'In the last weeks', html: `<ul>
+<li>Sleeping much more, and being harder to wake.</li>
+<li>Eating and drinking less, and losing interest in food. This is a natural part of dying; forcing food or fluids can cause discomfort.</li>
+<li>Withdrawing from people and activities, and talking less.</li>
+<li>Weakness, and needing help to move, wash and use the toilet.</li></ul>` },
+      { id: 'days', h: 'In the last days', html: `<ul>
+<li>Confusion, restlessness or agitation, or seeing people who aren't there.</li>
+<li>Less urine, and darker urine.</li>
+<li>Hands, feet and knees feeling cool, and skin looking blotchy or bluish (mottled).</li>
+<li>Some people have a short burst of energy or clarity before declining again. It can be a chance to say things that matter.</li></ul>` },
+      { id: 'hours', h: 'In the last hours', html: `<ul>
+<li>Breathing changes: long pauses between breaths, or quick shallow breaths.</li>
+<li>A rattling or gurgling sound as the person can no longer clear saliva. It is usually more distressing to hear than to have.</li>
+<li>Becoming unresponsive. Hearing may remain, so keep talking.</li></ul>` },
+      { id: 'help', h: 'What helps', html: `<p>Tell the care team about any sign of pain, breathlessness or distress: these can be treated. Moisten the lips and mouth, change position gently, and keep the room calm. If the person is in hospice, call the hospice team whenever you are unsure. When death has happened, see <a href="/checklists/after-a-death/">the first 24 hours</a>.</p>` },
+    ],
+    sources: [
+      ['National Institute on Aging: end of life', 'https://www.nia.nih.gov/health/end-of-life'],
+    ],
+    related: [
+      ['/last-weeks/', 'The last weeks', 'The full guide, including dignity and saying goodbye.'],
+      ['/checklists/after-a-death/', 'After a death: the first 24 hours', 'Printable checklist.'],
+    ],
+  }),
+  guide({
+    path: '/serious-illness/hospice-vs-palliative-care/',
+    title: 'Hospice vs palliative care',
+    eyebrow: 'Serious illness',
+    reviewed: '2026-11-19',
+    description: 'The difference between hospice and palliative care: when each starts, whether you can keep treatment, who pays, and where it happens.',
+    lead: 'Both focus on comfort and quality of life. The difference is mostly about timing, and whether treatment aimed at a cure continues.',
+    sections: [
+      { id: 'compare', h: 'Side by side', html: `<div class="table-box" tabindex="0" role="region" aria-label="Hospice and palliative care compared"><table style="min-width:560px">
+<caption class="sr-only">Hospice and palliative care compared</caption>
+<thead><tr><th scope="col"></th><th scope="col">Palliative care</th><th scope="col">Hospice</th></tr></thead>
+<tbody>
+<tr><th scope="row">When</th><td>At any stage of a serious illness, even right after diagnosis</td><td>Near the end of life; in the US, usually when life expectancy is six months or less</td></tr>
+<tr><th scope="row">Treatment to cure</th><td>Can continue alongside</td><td>Usually stops for the terminal illness; other care continues</td></tr>
+<tr><th scope="row">Focus</th><td>Relief from pain, symptoms and stress</td><td>Comfort, dignity and support for the whole family</td></tr>
+<tr><th scope="row">Where</th><td>Hospital, clinic or at home</td><td>Mostly at home; also care homes and inpatient hospices</td></tr>
+<tr><th scope="row">Who pays (US)</th><td>Usually covered like other medical care, with normal costs</td><td>Medicare's hospice benefit covers most costs</td></tr>
+</tbody></table></div>
+<p>Outside the US, both are usually provided through the public health system or charities, often free to patients.</p>` },
+      { id: 'when', h: 'When to ask', html: `<p>Ask for palliative care as soon as an illness causes pain, distress or hard decisions. Ask about hospice when treatment is no longer helping, or is no longer what the person wants. You can leave hospice and return to treatment if you change your mind. Many families say they wish they had known about hospice sooner.</p>` },
+    ],
+    sources: [
+      ['Medicare: hospice care coverage', 'https://www.medicare.gov/coverage/hospice-care'],
+      ['National Institute on Aging: end of life', 'https://www.nia.nih.gov/health/end-of-life'],
+    ],
+    related: [
+      ['/serious-illness/', 'Serious illness', 'The full guide.'],
+      ['/checklists/questions-for-the-doctor/', 'Questions for the doctor', 'Printable, for appointments.'],
+    ],
+  }),
+  guide({
+    path: '/after-a-death/death-certificates/',
+    title: 'How many death certificates do you need?',
+    eyebrow: 'After a death',
+    reviewed: '2026-11-19',
+    description: 'How many certified copies of a death certificate to order, who usually needs one, and what to do if the death happened abroad.',
+    lead: "Most banks, insurers and agencies want a certified copy. Counting them up front saves weeks of waiting for more.",
+    faq: [
+      ['How many death certificates do I need?', 'Count every organization that will need proof of death: each bank, insurer, pension, investment account, vehicle or property title, and government agency. Many families need several. Ordering a few extra up front is usually cheaper and faster than ordering more later.'],
+      ['Who usually orders death certificates?', 'In the US, the funeral home usually files the death certificate and can order certified copies for you. You can also order more later from the vital records office where the death happened.'],
+    ],
+    sections: [
+      { id: 'count', h: 'Count who will need one', html: `<p>Make a list. Each of these usually wants its own certified copy, and some keep it:</p>
+<ul class="check">
+<li>Each bank and credit union</li>
+<li>Each life insurance policy</li>
+<li>Pensions and retirement accounts</li>
+<li>Investment and brokerage accounts</li>
+<li>Vehicle titles and property deeds</li>
+<li>Government agencies, such as a social security or pension agency, or the tax office</li>
+<li>The court or registry handling the will and estate (probate)</li>
+<li>Employer benefits and credit card companies</li></ul>
+<p>Some organizations accept a photocopy or will return the original, so ask before you send one.</p>` },
+      { id: 'order', h: 'How to order them', html: `<p>In the US, the funeral home usually files the death certificate and can order certified copies. You can order more later from the vital records office in the state or county where the death happened. Fees vary by state. Elsewhere, the registrar or civil registry where the death was registered issues copies.</p>` },
+      { id: 'abroad', h: 'If the death happened abroad', html: `<p>A foreign death certificate may need to be officially certified (with an apostille, in many countries) and translated before banks or courts at home will accept it. The nearest embassy or consulate of the person's home country can help with the first steps. See <a href="/plan-ahead/property-abroad/#after">if someone dies owning property abroad</a>.</p>` },
+    ],
+    related: [
+      ['/after-a-death/', 'After a death', 'The full guide.'],
+      ['/checklists/after-a-death/', 'After a death: the first 24 hours', 'Printable checklist.'],
+    ],
+  }),
+  guide({
     path: '/serious-illness/',
     title: 'Serious illness',
     eyebrow: 'Stage 2',
     description: 'Palliative care, hospice, POLST forms, care at home and the questions to ask after a serious diagnosis.',
     lead: 'A serious diagnosis brings a flood of decisions. These are the options most families wish they had heard about sooner.',
     sections: [
-      { id: 'palliative', h: 'Palliative care: at any stage', html: `<p>Palliative care is specialist care for pain, symptoms and stress. You can have it at any stage of a serious illness, alongside treatment aimed at a cure. Ask for a palliative care referral early; many people only hear about it near the end.</p>` },
+      { id: 'palliative', h: 'Palliative care: at any stage', html: `<p>Not sure which you need? See <a href="/serious-illness/hospice-vs-palliative-care/">hospice vs palliative care</a>.</p>
+<p>Palliative care is specialist care for pain, symptoms and stress. You can have it at any stage of a serious illness, alongside treatment aimed at a cure. Ask for a palliative care referral early; many people only hear about it near the end.</p>` },
       { id: 'hospice', h: 'Hospice: when the focus turns to comfort', html: `<p>Hospice is care focused on comfort when a cure is no longer the goal. It exists in most countries, though how it's organized and paid for differs. In the US, Medicare covers hospice when a doctor certifies a life expectancy of six months or less if the illness runs its usual course. It includes the care team, comfort medications and equipment, usually at home.</p>
 <ul><li>Choosing hospice usually means stopping treatment meant to cure the terminal illness, but not other care.</li>
 <li>You can leave hospice and go back to curative treatment if you change your mind.</li>
@@ -708,7 +823,8 @@ ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · fune
     description: 'What to expect in the last weeks and days of life, how to keep someone comfortable, end-of-life doulas, and saying goodbye.',
     lead: 'Dying is often slower and harder than people expect. Knowing what it can really be like helps you prepare, ask for the right help, and decide what you want.',
     sections: [
-      { id: 'honest', h: 'What dying can really be like', html: `<p>Some deaths are peaceful. Many are not, especially after a long illness. It helps to know what can happen, so that it doesn't come as a shock:</p>
+      { id: 'honest', h: 'What dying can really be like', html: `<p>For a stage-by-stage list, see <a href="/last-weeks/signs-death-is-near/">signs that death is near</a>.</p>
+<p>Some deaths are peaceful. Many are not, especially after a long illness. It helps to know what can happen, so that it doesn't come as a shock:</p>
 <ul>
 <li><strong>Wasting.</strong> People can lose a great deal of weight and muscle, until they look very different from the person you knew.</li>
 <li><strong>Exhaustion and dependence.</strong> Many need help to wash, eat, use the toilet and turn in bed. For someone who valued their independence, this can be the hardest part.</li>
@@ -746,7 +862,7 @@ ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · fune
 <li><strong>In a hospital or care home:</strong> staff will guide you.</li></ul>
 <p>There is usually no rush to move the body. You can take time to sit, say goodbye, and call family.</p>
 <p><a href="/checklists/after-a-death/">Print the first-24-hours checklist</a>.</p>` },
-      { id: 'certificates', h: 'Death certificates', html: `<p>A funeral home usually files the death certificate. Order several certified copies: banks, insurers, pension plans and government agencies often each want one.</p>` },
+      { id: 'certificates', h: 'Death certificates', html: `<p>A funeral home usually files the death certificate. Order several certified copies: banks, insurers, pension plans and government agencies often each want one. See <a href="/after-a-death/death-certificates/">how many death certificates you need</a>.</p>` },
       { id: 'options', h: 'Funeral, burial and cremation options', html: `<ul><li><strong>Burial:</strong> traditional, or green (natural) burial without embalming or a concrete vault.</li>
 <li><strong>Cremation:</strong> with or without a service. Direct cremation, with no service beforehand, usually costs least.</li>
 <li><strong>Body donation:</strong> usually arranged in advance with a program.</li>
@@ -867,8 +983,11 @@ export function maidHub(data) {
   return {
     path: `${MAID}/`,
     title: 'Medical aid in dying',
+    seoTitle: 'Euthanasia, assisted suicide and medical aid in dying: where it is legal',
+    article: { modified: site.lastScan },
+    faq: [["What is the difference between euthanasia and assisted suicide?", "In euthanasia, a doctor or nurse gives the medication, usually by injection. In assisted suicide, also called medical aid in dying or self-administered assisted dying, the person takes the medication themselves. Some countries allow both; US states allow only the second."], ["Is euthanasia legal in the United States?", "No. No US state allows a clinician to give the medication. In the states with medical aid in dying laws, an eligible adult with a terminal illness can be prescribed medication that they take themselves."], ["Where is euthanasia legal?", "Euthanasia (a clinician giving the medication) is allowed in places including Canada, the Netherlands, Belgium, Spain and New Zealand. Switzerland allows assisted suicide but not euthanasia. Check each place's page for its current status."], ["Why are there so many names for it?", "Different laws, countries and groups use different words: medical aid in dying, assisted dying, assisted suicide, euthanasia, MAID, death with dignity and voluntary assisted dying. Some people feel the word suicide doesn't fit someone who is already dying; others use it plainly. This site uses the term each law uses."]],
     crisis: true,
-    description: 'Where medical aid in dying is legal in the US and worldwide, who qualifies, how the process works, and going to Switzerland.',
+    description: 'Where euthanasia, assisted suicide and medical aid in dying are legal in the US and worldwide, what each term means, who qualifies and how the process works.',
     body: `
 <section class="page-hero">
 <div class="wrap prose">
@@ -880,6 +999,23 @@ export function maidHub(data) {
 </section>
 <section class="section"><div class="wrap">
 <div class="prose" style="margin-bottom:48px">
+<h2 id="terms">What it's called</h2>
+<p>People, laws and countries use different words for this. They don't all mean exactly the same thing:</p>
+<div class="table-box" tabindex="0" role="region" aria-label="Terms for assisted dying"><table style="min-width:560px">
+<caption class="sr-only">Terms for assisted dying and where they are used</caption>
+<thead><tr><th scope="col">Term</th><th scope="col">What it usually means</th><th scope="col">Where you'll hear it</th></tr></thead>
+<tbody>
+<tr><td><strong>Medical aid in dying</strong></td><td>A doctor prescribes medication that the person takes themselves.</td><td>US laws and medical groups</td></tr>
+<tr><td><strong>Death with Dignity</strong></td><td>The same, as the name of several US state laws.</td><td>Oregon, Washington, Maine, DC</td></tr>
+<tr><td><strong>Assisted suicide</strong></td><td>The person takes the medication themselves, with help to obtain it.</td><td>Switzerland; common in news and searches</td></tr>
+<tr><td><strong>Euthanasia</strong></td><td>A doctor or nurse gives the medication, usually by injection.</td><td>Netherlands, Belgium, Spain; widely used in searches</td></tr>
+<tr><td><strong>Medical assistance in dying (MAID)</strong></td><td>Covers both: the person takes it, or a clinician gives it.</td><td>Canada</td></tr>
+<tr><td><strong>Assisted dying</strong>, <strong>voluntary assisted dying</strong></td><td>The general term, covering one or both.</td><td>UK; Australia (voluntary assisted dying)</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>Is euthanasia legal in the US?</strong> No. No US state allows a clinician to give the medication. In states with medical aid in dying laws, the person must take it themselves.</li>
+<li><strong>Where is euthanasia allowed?</strong> Places including Canada, the Netherlands, Belgium, Spain and New Zealand allow a clinician to give the medication. Switzerland allows assisted suicide but not euthanasia.</li>
+<li><strong>Why so many names?</strong> Some people feel "suicide" doesn't fit someone who is already dying and choosing how; others use the word plainly. This site uses the term each place's law uses, and describes them all without judgment.</li></ul>
 <h2>Why people ask</h2>
 <p>Oregon has published data on every person who has used its law since 1998. In 2025, the concerns people gave were:</p>
 <ul>
@@ -908,6 +1044,19 @@ ${placeTable(world, 'Around the world')}
   };
 }
 
+// The words used for assisted dying differ by place; use the local ones in titles.
+function placeTerm(p) {
+  if (p.region === 'us') return 'Medical aid in dying (assisted suicide)';
+  return {
+    canada: 'Euthanasia and medical assistance in dying (MAID)',
+    switzerland: 'Assisted suicide',
+    'england-and-wales': 'Assisted dying',
+    france: 'Aid in dying',
+  }[p.slug] || 'Euthanasia and assisted dying';
+}
+
+const placeName = (p) => (p.slug === 'netherlands' ? 'the Netherlands' : p.name);
+
 export function placePage(p) {
   const residentsOnly = p.region === 'us' && /residents only/.test(p.nonResidents);
   const sources = p.sources.length
@@ -916,8 +1065,10 @@ export function placePage(p) {
   return {
     path: `${MAID}/places/${p.slug}/`,
     title: `Medical aid in dying in ${p.name}`,
+    seoTitle: `${placeTerm(p)} in ${placeName(p)}: is it legal?`,
+    article: { modified: p.verified || site.lastScan },
     crisis: true,
-    description: `${p.name}: ${p.statusLabel}. ${p.summary}`,
+    description: `${placeTerm(p)} in ${placeName(p)}: ${p.statusLabel}. ${p.summary}`,
     body: `
 <section class="section">
 <div class="wrap prose">
