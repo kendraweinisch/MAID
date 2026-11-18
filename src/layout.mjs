@@ -23,6 +23,8 @@ export const fmtDate = (iso) =>
     ? new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
     : 'Not yet verified';
 
+const SEARCH_ICON = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>';
+
 const nav = [
   ['/plan-ahead/', 'Plan ahead'],
   ['/serious-illness/', 'Serious illness'],
@@ -31,7 +33,6 @@ const nav = [
   ['/grief/', 'Grief'],
   ['/medical-aid-in-dying/', 'Medical aid in dying'],
   ['/what-it-costs/', 'Costs'],
-  ['/ask/', 'Ask'],
 ];
 
 // Structured data (schema.org) so search engines understand each page.
@@ -98,9 +99,16 @@ ${jsonLd(page, fullTitle)}
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 ${crisis ? '<div class="crisis" role="note">If you are thinking about suicide or are in crisis, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>. You are not alone.</div>\n' : ''}<header class="site-header">
-<div class="wrap">
+<div class="wrap header-top">
 <a class="brand" href="/">${site.name} <span>${site.tagline}</span></a>
-<nav class="nav" aria-label="Main">
+<form class="site-search" role="search" action="/ask/" method="get">
+<label class="sr-only" for="site-search-q">Search the site</label>
+<input id="site-search-q" name="q" type="search" placeholder="Search the site" autocomplete="off">
+<button class="btn" type="submit">${SEARCH_ICON}<span>Search</span></button>
+</form>
+</div>
+<div class="nav-band">
+<nav class="wrap nav" aria-label="Main">
 ${links}
 </nav>
 </div>

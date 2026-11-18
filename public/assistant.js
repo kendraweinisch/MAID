@@ -185,6 +185,15 @@
     });
   });
 
+  // Searches from the site-wide search box arrive as /ask/?q=...
+  var fromUrl = '';
+  try { fromUrl = (new URLSearchParams(window.location.search).get('q') || '').trim(); } catch (e) {}
+  if (fromUrl) {
+    ready.then(function () { answer(fromUrl); }).catch(function () {});
+    var top = document.getElementById('site-search-q');
+    if (top) top.value = fromUrl;
+  }
+
   var clear = document.getElementById('ask-clear');
   if (clear) clear.addEventListener('click', function () { log.innerHTML = ''; input.focus(); });
 })();
