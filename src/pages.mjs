@@ -1,7 +1,7 @@
 import { esc, fmtDate, site } from './layout.mjs';
 import { icons } from './icons.mjs';
 import { printCard, dlPanel, PRINT_SEO } from './printables.mjs';
-import { iconFor, linkCards, dirCard, infoCard } from './ui.mjs';
+import { iconFor, linkCards, dirCard, infoCard, cardifyLists } from './ui.mjs';
 import { journeyMeta } from './journeys.mjs';
 
 const MAID = '/medical-aid-in-dying';
@@ -87,6 +87,121 @@ const GUIDE_PRINTABLES = {
   '/grief/': [['remembering-someone', 'Someone I love: a remembering book'], ['remembering-grandparent', 'My grandparent: a remembering book'], ['remembering-pet', 'My pet: a remembering book']],
 };
 
+
+// Link a phrase where a fact is stated, to the source that supports it.
+// Only text outside tags and outside existing links is matched, first time only.
+function linkPhrase(html, phrase, url) {
+  const parts = html.split(/(<[^>]+>)/);
+  let inLink = 0;
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    if (part.startsWith('<')) {
+      if (/^<a[\s>]/i.test(part)) inLink++;
+      else if (/^<\/a>/i.test(part)) inLink--;
+      continue;
+    }
+    if (inLink) continue;
+    const at = part.indexOf(phrase);
+    if (at === -1) continue;
+    parts[i] = part.slice(0, at) + `<a class="src-link" href="${esc(url)}">${phrase}</a>` + part.slice(at + phrase.length);
+    return { html: parts.join(''), done: true };
+  }
+  return { html, done: false };
+}
+
+// Where each source is referenced in the text: [exact phrase, source URL].
+const INLINE = {
+  '/plan-ahead/': [
+    ["a legal document that says what medical care you want if you can't speak for yourself", 'https://www.nia.nih.gov/health/advance-care-planning/advance-care-planning-advance-directives-health-care'],
+  ],
+  '/plan-ahead/choices-for-the-body/': [
+    ['The EPA must be told within 30 days', 'https://www.epa.gov/ocean-dumping/burial-sea'],
+    ['needs a marine licence from the Marine Management Organisation', 'https://www.gov.uk/burial-at-sea'],
+    ['it was legal in about 28 states as of January 2026', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
+    ['it was legal in 14 US states', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
+    ['A life-cycle study for DELA', 'https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies'],
+  ],
+  '/plan-ahead/wills-and-trusts/': [
+    ['about half of states accept a will written entirely in your own handwriting', 'https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html'],
+    ['Nine community property states', 'https://www.nerdwallet.com/estate-planning/learn/community-property'],
+    ['estates over $15 million in 2026', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
+    ['12 states and the District of Columbia have one', 'https://taxfoundation.org/data/all/state/estate-inheritance-taxes/'],
+    ['Kentucky, Maryland, Nebraska, New Jersey and Pennsylvania', 'https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/'],
+    ['a typed will must be signed in front of two witnesses who are present together', 'https://www.canadianlawyermag.com/practice-areas/trusts-and-estates/how-to-craft-valid-wills-in-canada/381456'],
+    ["doesn't need probate", 'https://canadalife.com/investing-saving/estate-planning/wills-101-what-is-will/types-of-wills.html'],
+    ['Ontario charges $15 for every $1,000', 'https://www.ontario.ca/page/estate-administration-tax'],
+    ['who must each clearly see you sign', 'https://www.gov.uk/make-will'],
+    ['which costs £92 per document', 'https://www.gov.uk/power-of-attorney'],
+    ['40% on the value above £325,000', 'https://www.gov.uk/inheritance-tax'],
+    ['a will needs only one witness', 'https://www.mygov.scot/making-a-will'],
+    ['signed in front of two witnesses who are present at the same time', 'https://www.legalaid.tas.gov.au/wills-making-a-will'],
+    ['generally up to 15% on the taxable part', 'https://www.ato.gov.au/super/apra-regulated-funds/paying-benefits/paying-superannuation-death-benefits/'],
+    ['New South Wales uses separate documents for money', 'https://www.alrc.gov.au/publication/elder-abuse-dp-83/5-enduring-powers-of-attorney-and-enduring-guardianship/development-of-enduring-powers/'],
+    ["Some states recognize another state's document", 'https://www.compass.info/featured-topics/powers-of-attorney/what-is-the-difference-between-a-will-an-enduring-power-of-attorney-an-enduring-guardian-and-an-advance-care-directive-/'],
+  ],
+  '/plan-ahead/property-abroad/': [
+    ['through a bank trust called a ', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
+    ['Notaries cut their fees for wills, often by up to half', 'https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/'],
+    ['Wills are made before a notary, in Spanish, and can be limited to your Costa Rica assets', 'https://aglegal.com/costa-rica-wills-foreigners/'],
+    ['needs a clearance certificate from the Canada Revenue Agency', 'https://www.osullivanlaw.com/wp-content/uploads/2026/04/Advisory-11-Cross-border-Canada-U.S.-estate-administration-highlights.pdf'],
+    ['Ontario issues an ancillary grant and may require a bond', 'https://www.mondaq.com/canada/wills-intestacy-estate-planning/685076/cross-border-canada-us-estate-administration-highlights'],
+    ['UK inheritance tax applies to UK property', 'https://www.gov.uk/inheritance-tax'],
+    ['Executors need a UK grant of probate', 'https://www.gov.uk/applying-for-probate'],
+    ['a federal estate tax return is only required when the gross estate is over $15 million', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
+    ['Under the EU Succession Regulation', 'https://eur-lex.europa.eu/eli/reg/2012/650'],
+    ['European Certificate of Succession', 'https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/civil-justice/family-law/successions-and-wills_en'],
+    ['These countries all have forced-heirship rules', 'https://www.notariesofeurope.eu/wp-content/uploads/2025/05/CNUE_Handbook-Successions_2025_EN_0006-1.pdf'],
+  ],
+  '/what-it-costs/': [
+    ["according to KFF's analysis of 2014 data", 'https://www.kff.org/medicare/medicare-spending-at-the-end-of-life/'],
+    ['You may pay up to $5 for each prescription', 'https://www.medicare.gov/coverage/hospice-care'],
+    ['the NFDA projected a 63.4% cremation rate for 2025', 'https://nfda.org/news/statistics'],
+    ['A 1997 federal law bars federal funds from paying for it', 'https://www.law.cornell.edu/uscode/text/42/chapter-138'],
+  ],
+  '/serious-illness/hospice-vs-palliative-care/': [
+    ["Medicare's hospice benefit covers most costs", 'https://www.medicare.gov/coverage/hospice-care'],
+  ],
+  '/serious-illness/': [
+    ['Medicare covers hospice when a doctor certifies a life expectancy of six months or less', 'https://www.medicare.gov/coverage/hospice-care'],
+    ['a POLST form', 'https://polst.org/'],
+  ],
+  '/after-a-death/': [
+    ['the FTC Funeral Rule', 'https://consumer.ftc.gov/articles/ftc-funeral-rule'],
+  ],
+  '/medical-aid-in-dying/switzerland/': [
+    ['Pegasos is reported at about CHF 10,000 all-in', 'https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578'],
+  ],
+};
+
+function addInlineSources(path, sections) {
+  const todo = (INLINE[path] || []).map(([phrase, url]) => ({ phrase, url, done: false }));
+  const out = sections.map((s) => {
+    let html = s.html;
+    for (const t of todo) {
+      if (t.done) continue;
+      const r = linkPhrase(html, t.phrase, t.url);
+      html = r.html;
+      t.done = r.done;
+    }
+    return { ...s, html };
+  });
+  const missed = todo.filter((t) => !t.done);
+  if (missed.length) throw new Error(`Inline source phrase not found on ${path}: ${missed.map((t) => JSON.stringify(t.phrase)).join(', ')}`);
+  return out;
+}
+
+
+// Key figures and facts shown at the top of a guide. Every one is stated, with
+// its source, further down the same page.
+const GLANCE = {
+  '/plan-ahead/': [['2 parts', 'An advance directive: your wishes, and who decides for you'], ['Free', 'State forms usually cost nothing, often no lawyer needed'], ['Every few years', 'Review it, and after any big change']],
+  '/plan-ahead/choices-for-the-body/': [['11', 'Options covered here, from burial to composting'], ['40 kg', 'CO₂e for natural burial, the lowest in the DELA study'], ['14 states', 'Allowed human composting as of January 2026']],
+  '/plan-ahead/wills-and-trusts/': [['$15M', 'Federal estate tax starts above this in 2026'], ['12 + DC', 'US states with their own estate tax'], ['2 witnesses', 'Needed for a will in most US states']],
+  '/what-it-costs/': [['~25%', 'Of US Medicare spending on 65+ goes to the last year of life (2014)'], ['$355/day', 'US median for a private nursing home room (2025)'], ['$8,300', 'US median funeral with viewing and burial (2023)']],
+  '/after-a-death/': [['1 call', 'The hospice, or emergency services if unexpected'], ['No rush', 'There is usually time to sit and say goodbye'], ['Several', 'Certified death certificate copies to order']],
+  '/serious-illness/': [['Any stage', 'When palliative care can start'], ['6 months', 'US hospice eligibility: life expectancy or less'], ['Reversible', 'You can leave hospice and resume treatment']],
+};
+
 // A guide page: hero, "on this page" list, sections, sources and related links.
 // Search-friendly page titles: the words people actually search, kept accurate.
 const SEO_TITLES = {
@@ -105,7 +220,16 @@ const SEO_TITLES = {
   '/medical-aid-in-dying/switzerland/': 'Assisted suicide in Switzerland for foreigners: how it works and costs',
 };
 
-function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVerified, sections, sources = [], related = [], crisis = false, faq = [] }) {
+// "At a glance": a few key figures or facts from the page, as big cards.
+const glanceCards = (glance) =>
+  glance.length
+    ? `<div class="glance" role="list" aria-label="At a glance">${glance
+        .map(([big, label]) => `<div class="glance-card" role="listitem"><strong>${big}</strong><span>${label}</span></div>`)
+        .join('')}</div>`
+    : '';
+
+function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVerified, sections: rawSections, sources = [], related = [], crisis = false, faq = [], glance = GLANCE[path] || [] }) {
+  const sections = addInlineSources(path, rawSections).map((s) => ({ ...s, html: cardifyLists(s.html) }));
   const toc = sections.map((s) => `<li><a href="#${s.id}">${s.h}</a></li>`).join('');
   return {
     path,
@@ -117,21 +241,27 @@ function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVe
     crisis,
     body: `
 <section class="page-hero">
-<div class="wrap prose">
+<div class="wrap guide-layout">
+<div aria-hidden="true"></div>
+<div class="prose">
 <div class="hero-icon">${iconFor(path)}</div>
 <p class="eyebrow">${eyebrow}</p>
 <h1>${title}</h1>
 <p class="lead" style="margin-top:20px">${lead}</p>
 <p class="small muted" style="margin:0">Written or last revised ${fmtDate(reviewed)} · Checked for accuracy ${fmtDate(site.lastScan)} · <a href="/about/#editorial">How we check facts</a></p>
 </div>
+</div>
 </section>
 <section class="section">
-<div class="wrap prose">
+<div class="wrap guide-layout">
 <nav class="toc card" aria-label="On this page"><strong>On this page</strong><ul>${toc}</ul></nav>
-${sections.map((s) => `<h2 id="${s.id}">${s.h}</h2>\n${s.html}`).join('\n')}
+<div class="prose guide-body">
+${glanceCards(glance)}
+${sections.map((s, i) => `<h2 id="${s.id}" class="num-h"><span class="h-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>${s.h}</h2>\n${s.html}`).join('\n')}
 ${GUIDE_PRINTABLES[path] ? `<h2 id="printables">Printables for this</h2>\n<div class="cards" style="margin-top:20px">${GUIDE_PRINTABLES[path].map(([slug, t]) => printCard(slug, t)).join('')}</div>` : ''}
 ${related.length ? `<h2 id="related">Related</h2>${relatedCards(related)}` : ''}
 ${sourceList(sources)}
+</div>
 </div>
 </section>`,
   };
@@ -1079,7 +1209,7 @@ export function placePage(p) {
 <p class="lead">${esc(p.summary)}</p>
 <dl class="facts">
 <dt>Status</dt><dd>${esc(p.statusLabel)}</dd>
-<dt>Law</dt><dd>${esc(p.law)}</dd>
+<dt>Law</dt><dd>${p.sources.length ? `<a class="src-link" href="${esc(p.sources[0].url)}">${esc(p.law)}</a>` : esc(p.law)}</dd>
 <dt>Since</dt><dd>${esc(p.since)}</dd>
 <dt>Open to non-residents?</dt><dd>${esc(p.nonResidents)}</dd>
 <dt>Last verified</dt><dd>${fmtDate(p.verified)}</dd>

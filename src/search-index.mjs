@@ -15,6 +15,7 @@ const toText = (html) =>
   decode(
     html
       .replace(/<script[\s\S]*?<\/script>/g, ' ')
+      .replace(/<span class="h-num"[^>]*>[^<]*<\/span>/g, '')
       .replace(/<(nav|form|button)[\s\S]*?<\/\1>/g, ' ')
       .replace(/<[^>]+aria-hidden="true"[^>]*><\/[a-z]+>/g, ' ')
       .replace(/<\/(p|li|h[1-6]|dt|dd|tr)>/g, '. ')

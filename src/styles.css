@@ -341,3 +341,44 @@ textarea { min-height: 160px; resize: vertical; }
   .site-search .btn span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .site-search .btn { padding: 10px 14px; }
 }
+
+/* ---------- Guide pages: wider layout, numbered sections, cards ---------- */
+.guide-layout { display: block; }
+@media (min-width: 1100px) {
+  .guide-layout { display: grid; grid-template-columns: 230px minmax(0, 760px); gap: 64px; justify-content: center; align-items: start; }
+  .guide-layout .toc { position: sticky; top: 24px; max-height: calc(100vh - 48px); overflow: auto; margin: 0; }
+  .guide-layout .toc ul { columns: 1; padding-left: 0; list-style: none; font-size: 16px; }
+  .guide-layout .toc li { margin: 0; padding: 7px 0; border-bottom: 1px solid var(--rule); }
+  .guide-layout .toc a { text-decoration: none; color: var(--ink); }
+  .guide-layout .toc a:hover { color: var(--accent-text); text-decoration: underline; }
+  .guide-layout .prose { max-width: 760px; }
+}
+.num-h { display: flex; align-items: baseline; gap: 14px; }
+.h-num { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--accent-text); letter-spacing: .04em; flex: none; }
+
+/* At a glance */
+.glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 14px; margin: 0 0 8px; }
+.glance-card { background: var(--ink); color: #F5F0E6; padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 8px; }
+.glance-card strong { font-size: 34px; line-height: 1.05; font-weight: 600; letter-spacing: -0.01em; }
+.glance-card span { font-size: 15px; line-height: 1.4; color: #E2DCCF; }
+
+/* Lists of bold terms become small cards */
+.prose ul.point-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0 22px; }
+.prose ul.point-grid li { margin: 0; background: #FFFDF8; border: 1.5px solid var(--ink); border-left: 5px solid var(--accent); padding: 14px 16px; font-size: 17px; line-height: 1.5; }
+.prose ul.point-grid li strong { display: block; font-size: 18px; margin-bottom: 4px; }
+.prose ul.point-grid-odd li:last-child { grid-column: 1 / -1; }
+@media (max-width: 640px) { .prose ul.point-grid { grid-template-columns: 1fr; } }
+
+/* Plain bullet lists: a softer marker */
+.guide-body ul:not([class]) { list-style: none; padding-left: 0; }
+.guide-body ul:not([class]) > li { position: relative; padding-left: 26px; }
+.guide-body ul:not([class]) > li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; background: var(--accent); transform: rotate(45deg); }
+
+/* A link on the sentence a source supports */
+a.src-link { text-decoration-style: dotted; text-decoration-thickness: 1.5px; }
+
+@media print {
+  .guide-layout { display: block; }
+  .glance-card { background: #fff; color: #000; border: 1px solid #000; }
+  .glance-card span { color: #000; }
+}
