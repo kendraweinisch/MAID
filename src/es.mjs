@@ -13,6 +13,23 @@ const ad = JSON.parse(readFileSync(new URL('./data/advance-directives.json', imp
 const EN = ' <span class="muted small">(en inglés)</span>';
 const enLink = (href, text) => `<a href="${href}" hreflang="en">${text}</a>${EN}`;
 
+const META = JSON.parse(readFileSync(new URL('./data/printables-meta.json', import.meta.url), 'utf8'));
+
+// Download panel for a Spanish printable: a picture of the page and buttons.
+function dlPanelEs(slug) {
+  const m = META[slug];
+  if (!m) return `<p class="no-print"><button class="btn" type="button" onclick="window.print()">Imprimir esta página</button></p>`;
+  return `<div class="dl-panel no-print">
+<img src="/thumbs/${slug}.png" alt="" width="367" height="475">
+<div>
+<p class="tag">Para imprimir · Gratis</p>
+<p class="dl-meta">${m.pages} ${m.pages === 1 ? 'página' : 'páginas'} · PDF de ${m.kb} KB · Sin registrarse</p>
+<div class="actions"><a class="btn" href="/printables/${slug}.pdf" download>Descargar PDF</a><button class="btn btn-quiet" type="button" onclick="window.print()">Imprimir esta página</button></div>
+<p class="small muted" style="margin:12px 0 0">Téngala a mano, por ejemplo en la puerta del refrigerador o con sus papeles importantes.</p>
+</div>
+</div>`;
+}
+
 const reviewNote = `<p class="small muted es-note">Traducción pendiente de revisión por un hablante nativo. ¿Ve un error? <a href="/suggestions/">Díganos</a>.</p>`;
 
 function esGuide({ path, title, description, eyebrow, lead, icon = 'plan', reviewed, sections, related = [], sources = [], crisis = false, faq = [] }) {
@@ -278,8 +295,8 @@ const primeras24 = {
 <p class="eyebrow">Lista para imprimir</p>
 <h1>Después de una muerte: las primeras 24 horas</h1>
 <p class="lead" style="margin:20px 0">Muy poco es urgente. Haga esto en orden y deje el resto para después.</p>
-<p class="no-print"><button class="btn" type="button" onclick="window.print()">Imprimir esta página</button></p>
-${reviewNote}
+${dlPanelEs('primeras-24-horas')}
+<div class="no-print">${reviewNote}</div>
 <h2>Enseguida</h2>
 <ul class="check">
 <li>Muerte esperada con hospicio: llame al hospicio. Muerte inesperada: llame al número de emergencias (911 en EE. UU. y Canadá, 999 en el Reino Unido, 112 en la Unión Europea).</li>
@@ -301,7 +318,7 @@ ${reviewNote}
 <li>Planifique la ceremonia. Puede hacerse semanas después.</li>
 </ul>
 <p class="muted small">Si le está costando, no tiene que hacerlo solo. Pida ayuda a un amigo, a un familiar o al equipo del hospicio.</p>
-<p class="muted small print-only">De End of Life Atlas · eolatlas.com · Información, no consejo médico ni legal.</p>
+<p class="muted small print-only">De End of Life Atlas · eolatlas.com · Información, no consejo médico ni legal. Traducción pendiente de revisión; para avisar de un error: eolatlas.com/suggestions</p>
 </div>
 </section>`,
 };
@@ -448,7 +465,7 @@ ${linkCards([
     ['/es/cuidados-paliativos-y-hospicio/', 'Cuidados paliativos y hospicio', 'La diferencia, y cuándo pedirlos.', 'illness'],
     ['/es/senales-de-que-la-muerte-esta-cerca/', 'Señales de que la muerte está cerca', 'Qué esperar y qué ayuda.', 'lastweeks'],
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Lo urgente y lo que puede esperar.', 'afterdeath'],
-    ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Una lista para imprimir.', 'printer'],
+    ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Una lista para imprimir, también en PDF.', 'printer'],
     ['/es/duelo/', 'Duelo', 'Qué es normal, los niños, y cuándo pedir ayuda.', 'grief'],
     ['/es/preguntar/', 'Haga una pregunta', 'Respuestas de las páginas en español de este sitio.', 'ask'],
   ])}
