@@ -37,7 +37,7 @@
     trust: 'trust trusts', switzerland: 'switzerland dignitas pegasos', abroad: 'abroad country far away distance',
     'live abroad': 'far away distance', 'far away': 'far away distance', expat: 'far away distance abroad',
     'dies at home': 'first hours hospice call', 'died at home': 'first hours hospice call', 'just died': 'first hours call',
-    mexico: 'mexico fideicomiso', uk: 'uk england wales scotland', britain: 'uk england', canada: 'canada',
+    mexico: 'mexico fideicomiso', uk: 'uk england wales scotland', britain: 'uk england', canada: 'canada', australia: 'australia', aussie: 'australia', super: 'superannuation super', superannuation: 'superannuation super',
     nursing: 'nursing home care', 'care home': 'nursing home care', hospice: 'hospice palliative',
     pain: 'pain comfort suffering', grief: 'grief grieving', grieving: 'grief grieving', funeral: 'funeral burial cremation'
   };

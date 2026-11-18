@@ -313,8 +313,8 @@ export const guides = [
     title: 'Wills, trusts and the paperwork',
     eyebrow: 'Plan ahead',
     reviewed: '2026-11-18',
-    description: 'The documents everyone needs, what a will does and does not cover, living trusts, avoiding probate, powers of attorney, and how the rules differ by US state, in Canada and in the UK.',
-    lead: "A few documents spare your family months of work and expense. Here is what each one does, and how the rules change across US states, Canada and the UK.",
+    description: 'The documents everyone needs, what a will does and does not cover, living trusts, avoiding probate, powers of attorney, and how the rules differ by US state, in Canada, the UK and Australia.',
+    lead: "A few documents spare your family months of work and expense. Here is what each one does, and how the rules change across US states, Canada, the UK and Australia.",
     sections: [
       { id: 'set', h: 'The basic set of documents', html: `<ul>
 <li><strong>A will:</strong> who gets what, who handles it (your executor), and who would raise your children.</li>
@@ -337,7 +337,7 @@ export const guides = [
 <li><strong>Electronic wills</strong> are allowed in only a small number of states so far.</li>
 <li><strong>Louisiana is different.</strong> It follows a civil-law system with its own will formats and limited forced-heirship rules for young or disabled children.</li>
 <li><strong>If you move,</strong> a will made validly in one state is generally accepted in another, but have it reviewed, because property and spousal rules change.</li></ul>
-<p>Outside the US, the rules are different again: see <a href="#canada">Canada</a> and <a href="#uk">the UK</a> below, and <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>` },
+<p>Outside the US, the rules are different again: see <a href="#canada">Canada</a>, <a href="#uk">the UK</a> and <a href="#australia">Australia</a> below, and <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>` },
       { id: 'spouses', h: 'Married couples: community property and spousal rights', html: `<ul>
 <li><strong>Nine community property states</strong> (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington and Wisconsin) generally treat property earned during marriage as owned half by each spouse. You can only leave your own half by will.</li>
 <li><strong>In most other states,</strong> a surviving spouse can claim a share of the estate (an "elective share") even if the will leaves them less.</li></ul>` },
@@ -377,6 +377,16 @@ export const guides = [
 <li><strong>Trusts</strong> are used mainly for tax planning, children or vulnerable beneficiaries, rather than to avoid probate.</li>
 <li><strong>Inheritance tax:</strong> 40% on the value above £325,000, with an extra allowance when a home goes to children or grandchildren. Gifts to a spouse, civil partner or charity are usually exempt. From April 2027, most unused pension funds are set to count toward inheritance tax; check the current rules.</li>
 <li><strong>Scotland is different:</strong> a will needs only one witness, and a spouse and children have "legal rights" to a share of the moveable estate (money and possessions, not land or buildings), whatever the will says.</li></ul>` },
+      { id: 'australia', h: 'In Australia', html: `<p>Wills, estates and powers of attorney are governed by each state and territory, so the rules depend on where you live.</p>
+<ul>
+<li><strong>Making a valid will:</strong> it must be in writing and signed in front of two witnesses who are present at the same time. The safest choice is witnesses who inherit nothing under the will.</li>
+<li><strong>Informal wills:</strong> in every state and territory, the Supreme Court can accept a document that wasn't signed or witnessed properly, if it is clear the person meant it as their will. It's slow, costly and uncertain, so make a proper will instead.</li>
+<li><strong>Marriage and divorce:</strong> in most states, getting married cancels an earlier will unless it was made with that marriage in mind; South Australia and the ACT are exceptions. Divorce usually cancels gifts to the former spouse, though the details differ. Review your will after either.</li>
+<li><strong>Superannuation is not covered by your will.</strong> Your fund pays it according to a <strong>binding death benefit nomination</strong> if you have a valid one, and otherwise at the trustee's discretion. Some nominations lapse, often after three years, so check yours.</li>
+<li><strong>Tax:</strong> Australia has no inheritance or estate tax. But super paid to someone who wasn't financially dependent on you, such as an adult child, can be taxed: generally up to 15% on the taxable part (more on any untaxed part), plus the Medicare levy when paid directly from the fund. Inherited assets can also carry capital gains tax when they are later sold.</li>
+<li><strong>Family provision claims:</strong> certain family members, and in some states others who depended on you, can ask the court for a larger share if the will doesn't adequately provide for them.</li>
+<li><strong>Powers of attorney and medical decisions</strong> have different names and forms in each state. For example, New South Wales uses separate documents for money (an enduring power of attorney) and for health and personal decisions (an enduring guardian), while Queensland and Victoria combine them. Some states recognize another state's document, but not all automatically.</li>
+<li><strong>Probate</strong> is granted by the Supreme Court of the state where the person lived or owned property, and fees differ by state.</li></ul>` },
       { id: 'lawyer', h: 'Do it yourself, or see a lawyer?', html: `<p>A simple estate can often be handled with your state's standard forms or reputable will software. See a lawyer if you have a blended family, minor children, a business, property in more than one state or country, a beneficiary with a disability, a large estate, or someone likely to contest the will. If money is tight, legal aid organizations and bar association referral services can help.</p>` },
       { id: 'keep', h: 'Keeping and updating it', html: `<ul>
 <li>Keep the original will somewhere safe that your executor can get to. A safe deposit box only in your name can be hard to open after you die.</li>
@@ -396,6 +406,10 @@ export const guides = [
       ['GOV.UK: lasting power of attorney', 'https://www.gov.uk/power-of-attorney'],
       ['GOV.UK: Inheritance Tax', 'https://www.gov.uk/inheritance-tax'],
       ['mygov.scot: making a will', 'https://www.mygov.scot/making-a-will'],
+      ['Legal Aid Commission of Tasmania: making a will', 'https://www.legalaid.tas.gov.au/wills-making-a-will'],
+      ['Australian Taxation Office: paying superannuation death benefits', 'https://www.ato.gov.au/super/apra-regulated-funds/paying-benefits/paying-superannuation-death-benefits/'],
+      ['Australian Law Reform Commission: enduring powers of attorney and guardianship', 'https://www.alrc.gov.au/publication/elder-abuse-dp-83/5-enduring-powers-of-attorney-and-enduring-guardianship/development-of-enduring-powers/'],
+      ['Compass (Australian Government): wills, enduring powers and advance care directives', 'https://www.compass.info/featured-topics/powers-of-attorney/what-is-the-difference-between-a-will-an-enduring-power-of-attorney-an-enduring-guardian-and-an-advance-care-directive-/'],
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Where everything is, all in one place.'],
