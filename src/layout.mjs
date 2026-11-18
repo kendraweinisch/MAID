@@ -24,6 +24,7 @@ const nav = [
   ['/after-a-death/', 'After a death'],
   ['/grief/', 'Grief'],
   ['/medical-aid-in-dying/', 'Medical aid in dying'],
+  ['/what-it-costs/', 'Costs'],
 ];
 
 export function layout({ path, title, description, body, crisis = false }) {
@@ -77,6 +78,7 @@ ${body}
 <li><a href="/about/#editorial">Editorial and review policy</a></li>
 <li><a href="/about/#reviewers">Our reviewers</a></li>
 <li><a href="/finding-help/">Finding help near you</a></li>
+<li><a href="/what-it-costs/">What it costs</a></li>
 <li><a href="/privacy/">Privacy</a></li>
 <li><a href="/accessibility/">Accessibility</a></li>
 </ul>

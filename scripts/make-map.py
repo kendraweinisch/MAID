@@ -2,14 +2,14 @@
 
 Run:  python3 scripts/make-map.py   (writes public/images/atlas-map.svg)
 A printed-atlas style plate: contour lines around a few hills, a graticule
-with edge ticks, a sage-green trail with five stops (one per stage of the
+with edge ticks, a blue trail with five stops (one per stage of the
 guide), and a compass. Colours match src/styles.css.
 """
 import math, random
 
 W, H = 1200, 620
 random.seed(11)
-PAPER, CONTOUR, FILL, INK, RED = "#EFE8DA", "#7A7064", "#E4DCCB", "#1E2328", "#56705C"
+PAPER, CONTOUR, FILL, INK, RED = "#EFE8DA", "#7A7064", "#E4DCCB", "#1E2328", "#3A6690"
 
 def smooth_closed(pts):
     n = len(pts)
