@@ -154,6 +154,7 @@ export function home(data) {
 <h1>Every part of the end of life, explained.</h1>
 <p class="lead">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
 <div class="actions"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></div>
+<p class="small" style="margin:16px 0 0">Or <a href="/ask/">ask a question</a> in your own words.</p>
 <p class="edition">Reviewed ${fmtDate(site.lastVerified)} · Free · No ads</p>
 </div>
 </div>
@@ -276,7 +277,7 @@ export const guides = [
 <p>For what each document does and how the rules differ by state, see <a href="/plan-ahead/wills-and-trusts/">wills, trusts and the paperwork</a>.</p>
 <p>Own a home in another country? You may need a will there too. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>
 <p><a href="/checklists/plan-ahead/">Use the printable plan-ahead worksheet</a>.</p>` },
-      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, a party, or nothing at all. Music, readings, who should speak. Writing it down is a gift to whoever has to arrange it: use the <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a>. You can also write <a href="/checklists/letters-to-leave/">letters to leave</a> and your <a href="/checklists/life-story/">life story</a>, so your family can tell it your way. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
+      { id: 'wishes', h: 'Say what you want afterward', html: `<p>Burial, cremation, green burial or body donation. A religious service, a celebration of life, a party, or nothing at all. Music, readings, who should speak. See <a href="/plan-ahead/choices-for-the-body/">every choice for the body</a>, from burial at sea to being planted under a tree. Writing it down is a gift to whoever has to arrange it: use the <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a>. You can also write <a href="/checklists/letters-to-leave/">letters to leave</a> and your <a href="/checklists/life-story/">life story</a>, so your family can tell it your way. Body donation usually has to be arranged in advance with a medical school or program.</p>` },
       { id: 'review', h: 'Review it every few years', html: `<p>Look again after a new diagnosis, a divorce or a death in the family, or every few years anyway. Update the documents and tell your proxy what changed.</p>` },
     ],
     sources: [
@@ -284,6 +285,7 @@ export const guides = [
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
+      ['/plan-ahead/choices-for-the-body/', 'Every choice for the body', 'Burial, cremation, sea, trees, composting and more.'],
       ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork', 'What each document does, state by state.'],
       ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
       ['/plan-ahead/talking-with-a-parent/', 'Talking with a parent', 'Near or far.'],
@@ -292,12 +294,73 @@ export const guides = [
   }),
 
   guide({
+    path: '/plan-ahead/choices-for-the-body/',
+    title: 'Every choice for the body',
+    eyebrow: 'Plan ahead',
+    reviewed: '2026-11-18',
+    description: 'Every option for the body after death: traditional burial, mausoleums, green burial, burial under a tree, cremation, water cremation, human composting, burial at sea, scattering ashes, memorial reefs, body donation and more, with where each is legal.',
+    lead: "There are far more choices than burial or cremation. Here is each one, how it works, and where it's allowed, so you can choose what fits.",
+    sections: [
+      { id: 'overview', h: 'At a glance', html: `<ul>
+<li><strong>In the ground:</strong> traditional burial, green (natural) burial, burial under a tree.</li>
+<li><strong>Above ground:</strong> a mausoleum, or a niche for ashes in a columbarium.</li>
+<li><strong>Turned to ashes or soil:</strong> cremation, water cremation, human composting.</li>
+<li><strong>At sea:</strong> burial of the body, scattering of ashes, or a memorial reef.</li>
+<li><strong>For others:</strong> whole-body donation to medical science, organ donation.</li>
+<li><strong>What to do with ashes:</strong> keep, bury, scatter, plant, divide, or turn into keepsakes.</li></ul>
+<p>Almost any of these can come with a funeral, a celebration of life, a home funeral, or no ceremony at all. Write your choice down in the <a href="/checklists/funeral-planner/">funeral planner</a>.</p>` },
+      { id: 'traditional', h: 'Traditional burial', html: `<p>The body is placed in a casket and buried in a cemetery plot, usually after a viewing. Embalming is rarely required by law, though some funeral homes require it for a public viewing. Many cemeteries require a vault or liner around the casket; that is the cemetery's rule, not the law. It is usually the most expensive option once the plot, opening the grave and a headstone are added. See <a href="/what-it-costs/#funeral">what it costs</a>.</p>` },
+      { id: 'entombment', h: 'Mausoleums and columbariums', html: `<p>Entombment places the casket in a crypt above ground in a mausoleum. A columbarium is a wall or building with small niches for urns of ashes. Both are available at many cemeteries, and a columbarium niche usually costs much less than a crypt.</p>` },
+      { id: 'green', h: 'Green (natural) burial', html: `<p>The body is buried without embalming, in a shroud or a simple biodegradable coffin, with no concrete vault, so it returns to the earth. Some green burial grounds are also nature reserves, with the land protected for good. Some ordinary cemeteries now have green sections.</p>
+<p>In the US, the <a href="https://www.greenburialcouncil.org/">Green Burial Council</a> lists certified providers. In the UK, natural and woodland burial grounds are widespread.</p>` },
+      { id: 'tree', h: 'Being planted under a tree', html: `<ul>
+<li><strong>Woodland or green burial,</strong> where a tree is planted on or near the grave, or the grave is among existing trees.</li>
+<li><strong>A tree urn for ashes:</strong> a biodegradable urn with a seedling or seed. Ashes are very alkaline and salty, which can harm plants, so good tree urns include a soil mix to balance them. Plant it only where the landowner or local rules allow.</li>
+<li><strong>Memorial forests:</strong> privately run forests where ashes are placed at the roots of a chosen tree, often with a small marker.</li></ul>` },
+      { id: 'cremation', h: 'Cremation', html: `<p>The body is reduced to ashes by heat. <strong>Direct cremation</strong>, with no viewing or service beforehand, is usually the least expensive choice, and a gathering can be held later. Cremation can also follow a full funeral. Cremation is now the most common choice in the US. See <a href="#ashes">what to do with ashes</a>.</p>` },
+      { id: 'water', h: 'Water cremation (alkaline hydrolysis)', html: `<p>Also called aquamation. The body is placed in warm water with an alkaline solution, which breaks it down over several hours, leaving bones that are processed into ashes, like flame cremation. It uses far less energy than flame cremation. In the US, it was legal in about 28 states as of January 2026. In the UK, it isn't widely available yet, and the Law Commission has been reviewing new methods like this.</p>` },
+      { id: 'composting', h: 'Human composting (natural organic reduction)', html: `<p>Also called terramation. The body is placed in a vessel with wood chips, straw and other plant material, and over about one to two months it becomes soil. Families can take some of the soil home, often to grow a garden or a tree, or donate it to conservation land. As of January 2026, it was legal in 14 US states: Arizona, California, Colorado, Delaware, Georgia, Maine, Maryland, Minnesota, Nevada, New Jersey, New York, Oregon, Vermont and Washington. Providers can serve people from other states, though transport adds cost.</p>` },
+      { id: 'sea', h: 'Burial at sea', html: `<ul>
+<li><strong>US:</strong> a body may be buried at least 3 nautical miles from land, in water at least 600 feet deep. Ashes may be scattered or placed at least 3 nautical miles from land, in water of any depth. The EPA must be told within 30 days, using its online reporting tool. Eligible veterans may also be able to arrange burial at sea through the US Navy.</li>
+<li><strong>UK:</strong> burying a body at sea in English waters needs a marine licence from the Marine Management Organisation, usually at a few designated sites such as off the Needles (Isle of Wight). Scattering ashes at sea doesn't need a licence.</li>
+<li><strong>Memorial reefs:</strong> ashes are mixed into a concrete reef structure placed on the sea floor, where it becomes a habitat for marine life. A few specialist companies offer this.</li></ul>` },
+      { id: 'ashes', h: 'What to do with ashes', html: `<ul>
+<li><strong>Keep them</strong> at home in an urn, or in a columbarium niche.</li>
+<li><strong>Bury them</strong> in a cemetery plot, a family grave or a green burial ground, often for less than a full burial.</li>
+<li><strong>Scatter them:</strong> on private land with the owner's permission. Parks, public land, rivers and lakes have their own rules, and some need a permit, so ask the landowner or local authority first.</li>
+<li><strong>Plant them</strong> with a tree (see above).</li>
+<li><strong>Divide them</strong> among family members, so each can keep or scatter a part.</li>
+<li><strong>Keepsakes:</strong> small amounts can be made into jewelry, glass, or even lab-grown diamonds, or sent on a memorial spaceflight.</li></ul>` },
+      { id: 'donation', h: 'Body and organ donation', html: `<p><strong>Organ and tissue donation</strong> can help others and is compatible with almost every option above, including an open-casket funeral. Register with your country or state donor registry and tell your family.</p>
+<p><strong>Whole-body donation</strong> to a medical school or research program is a different thing. It usually has to be arranged in advance, and many programs cover cremation afterward and return the ashes. Programs can decline a donation, for example because of certain illnesses or if an autopsy was done, so have a backup plan.</p>` },
+      { id: 'home', h: 'A home funeral', html: `<p>Whatever the final choice, a family can care for the body at home for a day or more before burial or cremation: washing, dressing and sitting with them. Most US states allow families to do this; some require a funeral director for certain steps. End-of-life doulas can help.</p>` },
+      { id: 'other', h: 'Other choices people ask about', html: `<p><strong>Cryonics</strong> preserves a body or brain at very low temperatures in the hope that future science could revive it. It is very expensive, offered by only a few organizations, and there is no evidence yet that revival is possible.</p>` },
+      { id: 'choose', h: 'How to choose', html: `<ul>
+<li>What feels right to you: returning to the earth, staying in one place family can visit, or being scattered somewhere you loved?</li>
+<li>Your faith or culture: many traditions have clear practices, so ask your faith leader.</li>
+<li>Cost, and what is available and legal where you live.</li>
+<li>What your family needs: a grave to visit, or the freedom to remember you anywhere.</li></ul>
+<p>Write it down, tell someone, and keep it with your <a href="/checklists/plan-ahead/">plan-ahead worksheet</a>.</p>` },
+    ],
+    sources: [
+      ['US EPA: burial at sea', 'https://www.epa.gov/ocean-dumping/burial-sea'],
+      ['GOV.UK: burial at sea', 'https://www.gov.uk/burial-at-sea'],
+      ['Montana Legislature: background paper on natural organic reduction and alkaline hydrolysis (January 2026, PDF)', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
+      ['Green Burial Council', 'https://www.greenburialcouncil.org/'],
+      ['Funeral Consumers Alliance', 'https://www.funerals.org/'],
+    ],
+    related: [
+      ['/checklists/funeral-planner/', 'Funeral or celebration of life planner', 'Write your choices down.'],
+      ['/what-it-costs/#funeral', 'What it costs', 'Funeral, burial and cremation prices.'],
+    ],
+  }),
+  guide({
     path: '/plan-ahead/wills-and-trusts/',
     title: 'Wills, trusts and the paperwork',
     eyebrow: 'Plan ahead',
     reviewed: '2026-11-18',
-    description: 'The documents everyone needs, what a will does and does not cover, living trusts, avoiding probate, powers of attorney, and how the rules differ by US state.',
-    lead: "A few documents spare your family months of work and expense. Here is what each one does, and which rules change depending on where you live.",
+    description: 'The documents everyone needs, what a will does and does not cover, living trusts, avoiding probate, powers of attorney, and how the rules differ by US state, in Canada and in the UK.',
+    lead: "A few documents spare your family months of work and expense. Here is what each one does, and how the rules change across US states, Canada and the UK.",
     sections: [
       { id: 'set', h: 'The basic set of documents', html: `<ul>
 <li><strong>A will:</strong> who gets what, who handles it (your executor), and who would raise your children.</li>
@@ -320,7 +383,7 @@ export const guides = [
 <li><strong>Electronic wills</strong> are allowed in only a small number of states so far.</li>
 <li><strong>Louisiana is different.</strong> It follows a civil-law system with its own will formats and limited forced-heirship rules for young or disabled children.</li>
 <li><strong>If you move,</strong> a will made validly in one state is generally accepted in another, but have it reviewed, because property and spousal rules change.</li></ul>
-<p>Outside the US, the rules are different again. See <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>` },
+<p>Outside the US, the rules are different again: see <a href="#canada">Canada</a> and <a href="#uk">the UK</a> below, and <a href="/plan-ahead/property-abroad/">wills when you own property abroad</a>.</p>` },
       { id: 'spouses', h: 'Married couples: community property and spousal rights', html: `<ul>
 <li><strong>Nine community property states</strong> (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington and Wisconsin) generally treat property earned during marriage as owned half by each spouse. You can only leave your own half by will.</li>
 <li><strong>In most other states,</strong> a surviving spouse can claim a share of the estate (an "elective share") even if the will leaves them less.</li></ul>` },
@@ -341,6 +404,25 @@ export const guides = [
 <li><strong>State estate tax:</strong> 12 states and the District of Columbia have one, some starting at much lower amounts; Oregon's starts at $1 million.</li>
 <li><strong>State inheritance tax</strong> (paid by the person who inherits): Kentucky, Maryland, Nebraska, New Jersey and Pennsylvania. Spouses are usually exempt, and often children too. Maryland has both taxes.</li></ul>` },
       { id: 'digital', h: 'Your digital life', html: `<p>Many accounts let you name someone now: <a href="https://support.apple.com/en-us/102631">Apple Legacy Contact</a>, <a href="https://support.google.com/accounts/answer/3036546">Google Inactive Account Manager</a> and <a href="https://www.facebook.com/help/1568013990080948">Facebook legacy contact</a>. A password manager with emergency access helps too. Never write passwords in your will, which can become a public record.</p>` },
+      { id: 'canada', h: 'In Canada', html: `<p>Wills and estates are governed by each province and territory, so the rules depend on where you live.</p>
+<ul>
+<li><strong>Making a valid will:</strong> a typed will must be signed in front of two witnesses who are present together. Most provinces also accept a will written entirely in your own handwriting and signed, without witnesses; British Columbia and Prince Edward Island generally do not, though a BC court can sometimes accept one.</li>
+<li><strong>Quebec is different.</strong> It follows a civil-law system. A will made before a notary (a notarial will) doesn't need probate; handwritten and witnessed wills do need to be verified by a court or notary.</li>
+<li><strong>Marriage:</strong> in some provinces getting married cancels an earlier will. In others, including Ontario (since 2022) and British Columbia, it doesn't. Check yours, and review your will when you marry or separate.</li>
+<li><strong>Probate fees vary a lot.</strong> Ontario charges $15 for every $1,000 of an estate's value above $50,000 (1.5%). Some provinces charge much less, and a Quebec notarial will avoids probate.</li>
+<li><strong>Beneficiary designations:</strong> in most provinces you can name a beneficiary on an RRSP, RRIF or TFSA so it passes outside the will; Quebec allows this mainly through insurance products.</li>
+<li><strong>Powers of attorney</strong> are provincial too. In Ontario, for example, there are separate documents for property (a continuing power of attorney) and for personal care. Other provinces use different names and forms.</li>
+<li><strong>Taxes:</strong> there's no inheritance or estate tax. Instead, death counts as selling your property at market value, so capital gains tax can be due on the final tax return. A principal residence is usually exempt, and RRSPs and RRIFs are fully taxable unless they pass to a spouse or certain dependants.</li></ul>` },
+      { id: 'uk', h: 'In the United Kingdom', html: `<p>England and Wales, Scotland and Northern Ireland each have their own rules. This covers England and Wales, with notes on Scotland.</p>
+<ul>
+<li><strong>Making a valid will (England and Wales):</strong> it must be in writing and signed in front of two witnesses, who must each clearly see you sign. You can't leave anything to a witness or their spouse or civil partner. A handwritten will without witnesses isn't valid.</li>
+<li><strong>Marriage cancels a will</strong> in England and Wales, unless the will was made with that marriage in mind. Divorce doesn't cancel the whole will, but gifts to the former spouse fail.</li>
+<li><strong>Unmarried partners inherit nothing automatically</strong> if there is no will. This is one of the most important reasons to make one.</li>
+<li><strong>No fixed shares for children,</strong> but family members and dependants can ask a court for provision if the will leaves them without reasonable support.</li>
+<li><strong>Lasting powers of attorney:</strong> there are two kinds, one for property and financial affairs and one for health and welfare. Each must be registered with the Office of the Public Guardian, which costs £92 per document (reduced fees for low incomes).</li>
+<li><strong>Trusts</strong> are used mainly for tax planning, children or vulnerable beneficiaries, rather than to avoid probate.</li>
+<li><strong>Inheritance tax:</strong> 40% on the value above £325,000, with an extra allowance when a home goes to children or grandchildren. Gifts to a spouse, civil partner or charity are usually exempt. From April 2027, most unused pension funds are set to count toward inheritance tax; check the current rules.</li>
+<li><strong>Scotland is different:</strong> a will needs only one witness, and a spouse and children have "legal rights" to a share of the moveable estate (money and possessions, not land or buildings), whatever the will says.</li></ul>` },
       { id: 'lawyer', h: 'Do it yourself, or see a lawyer?', html: `<p>A simple estate can often be handled with your state's standard forms or reputable will software. See a lawyer if you have a blended family, minor children, a business, property in more than one state or country, a beneficiary with a disability, a large estate, or someone likely to contest the will. If money is tight, legal aid organizations and bar association referral services can help.</p>` },
       { id: 'keep', h: 'Keeping and updating it', html: `<ul>
 <li>Keep the original will somewhere safe that your executor can get to. A safe deposit box only in your name can be hard to open after you die.</li>
@@ -353,6 +435,13 @@ export const guides = [
       ['IRS: estate tax', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
       ['Nolo: are handwritten wills valid?', 'https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html'],
       ['NerdWallet: community property states', 'https://www.nerdwallet.com/estate-planning/learn/community-property'],
+      ['Canadian Lawyer: what makes a will valid in Canada', 'https://www.canadianlawyermag.com/practice-areas/trusts-and-estates/how-to-craft-valid-wills-in-canada/381456'],
+      ['Canada Life: types of wills, including Quebec', 'https://canadalife.com/investing-saving/estate-planning/wills-101-what-is-will/types-of-wills.html'],
+      ['Ontario: Estate Administration Tax', 'https://www.ontario.ca/page/estate-administration-tax'],
+      ['GOV.UK: making a will', 'https://www.gov.uk/make-will'],
+      ['GOV.UK: lasting power of attorney', 'https://www.gov.uk/power-of-attorney'],
+      ['GOV.UK: Inheritance Tax', 'https://www.gov.uk/inheritance-tax'],
+      ['mygov.scot: making a will', 'https://www.mygov.scot/making-a-will'],
     ],
     related: [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Where everything is, all in one place.'],
@@ -609,6 +698,7 @@ export const guides = [
 <li><strong>Cremation:</strong> with or without a service. Direct cremation, with no service beforehand, usually costs least.</li>
 <li><strong>Body donation:</strong> usually arranged in advance with a program.</li>
 <li><strong>Home funeral:</strong> most states allow families to care for their own dead; some require a funeral director for certain steps.</li></ul>
+<p>There are many more choices, including water cremation, human composting, burial at sea and being planted under a tree: see <a href="/plan-ahead/choices-for-the-body/">every choice for the body</a>.</p>
 <p>A service can happen weeks later, in any form you like. The <a href="/checklists/funeral-planner/">funeral or celebration of life planner</a> and <a href="/checklists/eulogy/">eulogy guide</a> can help. To find independent help nearby, see <a href="/finding-help/">finding help</a>.</p>` },
       { id: 'rights', h: 'Your rights with funeral homes', html: `<p>Wherever you are, ask for written, itemized prices before you agree to anything. In the US, the FTC Funeral Rule gives you the right to:</p>
 <ul><li>Get an itemized price list, in person, and prices by phone.</li>
@@ -1004,7 +1094,7 @@ ${updatesForm('updates')}
 <p class="lead" style="margin:20px 0">This is a sensitive subject, so we collect as little as we can.</p>
 <ul>
 <li>We use no advertising or tracking cookies.</li>
-<li>Checklists and the place picker run in your browser and save nothing.</li>
+<li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
 <li>If you sign up for updates or services, we store your email and what you told us, and use them only for what you asked for.</li>
 <li>We never sell or share your information with advertisers or providers.</li>
 <li>Please don't send medical details through our forms.</li>
@@ -1039,6 +1129,33 @@ ${updatesForm('updates')}
 <h2>Report a problem</h2>
 <p>If something on this site is hard to use, email accessibility@eolatlas.com and tell us the page and what happened. We'll reply within five business days and, where we can, give you the information in another way.</p>
 </div></section>`,
+  },
+  {
+    path: '/ask/',
+    title: 'Ask a question',
+    description: 'Ask a question about the end of life and get answers drawn only from End of Life Atlas pages, with links to read more. Private: nothing is stored or sent.',
+    body: `
+<section class="section"><div class="wrap prose">
+<p class="eyebrow">Ask the Atlas</p>
+<h1>Ask a question</h1>
+<p class="lead" style="margin:20px 0">Type a question in your own words. Answers come only from this site's guides, with a link to read more.</p>
+<p class="small muted">Private: your questions stay in your browser and are not stored or sent anywhere. This is information, not medical or legal advice. If you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline</a>.</p>
+<form id="ask-form" class="form ask-form" role="search" aria-label="Ask the Atlas">
+<div class="field"><label for="ask-input">Your question</label><input id="ask-input" name="q" type="text" autocomplete="off" required></div>
+<button class="btn" type="submit">Ask</button>
+</form>
+<div class="ask-try"><span class="small muted">Try:</span>
+<button type="button" class="chip" data-ask="What should I do in the first 24 hours after someone dies?">First 24 hours after a death</button>
+<button type="button" class="chip" data-ask="How much does a funeral cost?">Funeral costs</button>
+<button type="button" class="chip" data-ask="Is euthanasia legal in Canada?">Euthanasia in Canada</button>
+<button type="button" class="chip" data-ask="What is a lasting power of attorney?">Lasting power of attorney</button>
+<button type="button" class="chip" data-ask="How do I help a child who is grieving?">Helping a grieving child</button>
+</div>
+<ol id="ask-log" class="ask-log" aria-live="polite" aria-label="Answers"></ol>
+<p class="no-print"><button id="ask-clear" type="button" class="btn btn-quiet">Clear answers</button></p>
+<noscript><p>The assistant needs JavaScript. You can still browse <a href="/#where">where to start</a>.</p></noscript>
+</div></section>
+<script src="/assistant.js" defer></script>`,
   },
   {
     path: '/thanks/',

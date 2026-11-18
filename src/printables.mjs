@@ -62,7 +62,7 @@ export const funeralPlanner = checklist({
   description: 'A printable planner for a funeral, memorial or celebration of life: the body, the gathering, the people, music, words and the get-together afterward.',
   lead: "Use it to plan your own, so no one has to guess, or to plan one for someone who has died. Skip anything that doesn't fit.",
   groups: [
-    { h: 'The body', items: [`Burial / cremation / green burial / body donation / other: ${blank}`, `Where the body or ashes should rest: ${blank}`, `Clothing, jewelry or objects to include: ${blank}`, `Viewing or no viewing: ${blank}`] },
+    { h: 'The body', items: [`Burial / mausoleum / green or woodland burial / cremation / water cremation / human composting / burial at sea / body donation / other: ${blank}`, `If ashes: keep / bury / scatter (where) / plant with a tree / divide: ${blank}`, `Where the body or ashes should rest: ${blank}`, `Clothing, jewelry or objects to include: ${blank}`, `Viewing or no viewing: ${blank}`] },
     { h: 'The gathering', items: [`Kind of gathering: funeral, memorial, celebration of life, religious service, nothing formal: ${blank}`, `Where: ${blank}`, `When (it can be weeks later): ${blank}`, `Who leads it: ${blank}`, `Mood: quiet, joyful, a mix: ${blank}`] },
     { h: 'Words and music', items: [`Music to play: ${blank}`, `Readings, poems or prayers: ${blank}`, `Who should speak: ${blank}`, `Anything that must not be said or played: ${blank}`] },
     { h: 'People', items: [`People who must be told personally: ${blank}`, `People to invite: ${blank}`, `Who handles the guest list and messages: ${blank}`] },

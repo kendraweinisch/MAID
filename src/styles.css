@@ -207,3 +207,20 @@ tbody tr + tr { border-top: 1px solid var(--rule); }
 .draw-box { border: 1.5px dashed var(--rule-strong); background: #FFFDF8; }
 .wb-page { break-inside: avoid-page; }
 @media print { .wb-page { break-before: page; } .wb-page:first-of-type { break-before: auto; } .write-lines { background: repeating-linear-gradient(to bottom, transparent 0 33px, #999 33px 34px); } }
+
+/* Ask assistant */
+.ask-form { margin: 8px 0 16px; }
+.ask-try { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 32px; }
+.chip { font-family: var(--serif); font-size: 16px; padding: 8px 12px; min-height: 40px; background: transparent; color: var(--accent-text); border: 1.5px solid var(--accent); cursor: pointer; }
+.chip:hover { background: var(--accent); color: #FFFFFF; }
+.ask-log { list-style: none; padding: 0 !important; margin: 0 0 24px; }
+.msg { padding: 16px 0; border-top: 1px solid var(--rule); }
+.msg-who { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.msg-you .msg-text { font-weight: 600; }
+.msg-atlas { border-top: 0; padding-top: 0; }
+.msg-results { padding-left: 22px !important; }
+.msg-results li { margin-bottom: 14px; }
+.res-title { margin: 0 0 4px; font-weight: 600; }
+.res-text { margin: 0; color: var(--ink); }
+.msg-crisis { border: 1.5px solid var(--ink); background: var(--paper-2); padding: 12px 16px; margin-bottom: 12px; }
+.msg-crisis p { margin: 0; }

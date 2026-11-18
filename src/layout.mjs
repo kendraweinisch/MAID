@@ -25,6 +25,7 @@ const nav = [
   ['/grief/', 'Grief'],
   ['/medical-aid-in-dying/', 'Medical aid in dying'],
   ['/what-it-costs/', 'Costs'],
+  ['/ask/', 'Ask'],
 ];
 
 export function layout({ path, title, description, body, crisis = false }) {

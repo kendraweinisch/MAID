@@ -4,6 +4,7 @@ import { dirname, join } from 'node:path';
 import { layout, site } from './src/layout.mjs';
 import { home, guides, checklists, maidHub, placePage, maidPages, staticPages, notFound } from './src/pages.mjs';
 import { printables, printablesIndex } from './src/printables.mjs';
+import { buildSearchIndex } from './src/search-index.mjs';
 
 const out = 'dist';
 // BASE_PATH serves the site from a sub-folder, e.g. "/maid" on username.github.io/maid/.
@@ -37,6 +38,10 @@ for (const page of [...pages, notFound]) {
 }
 
 await cp('src/styles.css', join(out, 'styles.css'));
+
+// Knowledge base for the Ask assistant: the site's own text, by section.
+const index = buildSearchIndex(pages, (p) => p.body);
+await writeFile(join(out, 'search-index.json'), JSON.stringify(index));
 await cp('public', out, { recursive: true });
 
 const urls = pages.filter((p) => p.path !== '/thanks/').map((p) => `<url><loc>${site.url}${p.path}</loc></url>`).join('\n');
