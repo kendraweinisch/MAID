@@ -55,7 +55,7 @@ function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVe
 <p class="eyebrow">${eyebrow}</p>
 <h1>${title}</h1>
 <p class="lead" style="margin-top:20px">${lead}</p>
-<p class="small muted" style="margin:0">Last reviewed ${fmtDate(reviewed)} · <a href="/about/#editorial">How we check facts</a></p>
+<p class="small muted" style="margin:0">Written or last revised ${fmtDate(reviewed)} · Checked for accuracy ${fmtDate(site.lastScan)} · <a href="/about/#editorial">How we check facts</a></p>
 </div>
 </section>
 <section class="section">
@@ -128,7 +128,7 @@ export function home(data) {
 <p class="lead">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
 <div class="actions"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></div>
 <p class="small" style="margin:16px 0 0">Or <a href="/ask/">ask a question</a> in your own words.</p>
-<p class="edition">Reviewed ${fmtDate(site.lastVerified)} · Free · No ads</p>
+<p class="edition">Last checked ${fmtDate(site.lastScan)} · Free · No ads</p>
 </div>
 </div>
 <div class="hero-after"></div>
@@ -776,7 +776,7 @@ export function maidHub(data) {
 <p class="eyebrow">One choice among many</p>
 <h1>Medical aid in dying</h1>
 <p class="lead" style="margin-top:20px">In some places, an adult with a terminal illness who can make their own decisions can ask a doctor for medication to end their life peacefully. Here is where it's legal, who qualifies and how it works.</p>
-<p class="small muted" style="margin:0">Last verified ${fmtDate(site.lastVerified)} · We cover legal processes only.</p>
+<p class="small muted" style="margin:0">Laws last checked ${fmtDate(site.lastScan)} · We cover legal processes only.</p>
 </div>
 </section>
 <section class="section"><div class="wrap">
@@ -999,7 +999,8 @@ export const staticPages = [
 <ul>
 <li>Facts come from official sources or named reports, linked on the page.</li>
 <li>Anything we haven't confirmed is marked "to be verified."</li>
-<li>Every guide shows the date it was last reviewed. We re-check law pages every quarter and whenever a law changes.</li>
+<li>Every month we check the whole site: every outside link, the status of every law we cover, and the key figures (costs, thresholds and fees). We correct anything out of date and record the date. Last check: ${fmtDate(site.lastScan)}.</li>
+<li>Each guide also shows when it was written or last revised, and each place page shows when its law was last verified.</li>
 <li>We cover legal options only.</li>
 </ul>
 <p>Spotted an error or something out of date? <a href="/suggestions/">Send a suggestion</a>; you can stay anonymous.</p>

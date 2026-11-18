@@ -28,6 +28,13 @@ npm run serve   # preview at http://localhost:8080
 - `scripts/check.mjs`: fails the build if any page lacks the crisis line, a
   title or a description, or has a broken internal link.
 
+## Monthly accuracy check
+
+On the 1st of each month a scheduled check follows `docs/monthly-review.md`:
+it runs `npm run links` (every external source), re-checks laws and key
+figures, updates `src/data/review.json` (the "last checked" date shown on
+the site), and opens a pull request for review.
+
 ## Accessibility (WCAG 2.2 AA / Section 508)
 
 `npm run a11y` audits every built page with axe-core against the WCAG 2.0, 2.1

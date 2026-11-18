@@ -1,30 +1,465 @@
 {
   "_note": "Only facts checked against a source go in 'summary', 'since' and 'nonResidents'. Anything unchecked stays 'To be verified'. Update 'verified' whenever a reviewer re-checks a place.",
   "places": [
-    {"slug": "oregon", "name": "Oregon", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Death with Dignity Act", "since": "1997", "nonResidents": "Yes", "summary": "Oregon was the first US state to allow medical aid in dying. It no longer requires patients to be residents.", "verified": "2026-11-17", "sources": [{"label": "Oregon Health Authority", "url": "https://www.oregon.gov/oha/ph/providerpartnerresources/evaluationresearch/deathwithdignityact/pages/index.aspx"}, {"label": "Death with Dignity: Oregon", "url": "https://deathwithdignity.org/states/oregon/"}]},
-    {"slug": "washington", "name": "Washington", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Death with Dignity Act", "since": "2009", "nonResidents": "No, residents only", "summary": "Washington's law is modeled on Oregon's and is open to state residents.", "verified": "2026-11-17", "sources": [{"label": "Washington State Department of Health", "url": "https://doh.wa.gov/data-and-statistical-reports/health-statistics/death-dignity-act"}, {"label": "Death with Dignity: Washington", "url": "https://deathwithdignity.org/states/washington/"}]},
-    {"slug": "montana", "name": "Montana", "region": "us", "status": "legal", "statusLabel": "Allowed by court ruling", "law": "Baxter v. Montana (state Supreme Court)", "since": "2009", "nonResidents": "To be verified", "summary": "Montana has no aid-in-dying statute. A 2009 state Supreme Court ruling protects doctors who help a terminally ill patient who asks.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: Montana", "url": "https://deathwithdignity.org/states/montana/"}]},
-    {"slug": "vermont", "name": "Vermont", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Patient Choice and Control at the End of Life Act", "since": "2013", "nonResidents": "Yes", "summary": "Vermont no longer requires patients to be residents.", "verified": "2026-11-17", "sources": [{"label": "Vermont Department of Health", "url": "https://www.healthvermont.gov/systems/patient-choice-and-control-end-life"}, {"label": "Death with Dignity: Vermont", "url": "https://deathwithdignity.org/states/vermont/"}]},
-    {"slug": "california", "name": "California", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "End of Life Option Act", "since": "2016", "nonResidents": "No, residents only", "summary": "California's law is open to adult state residents with a terminal illness.", "verified": "2026-11-17", "sources": [{"label": "California Department of Public Health", "url": "https://www.cdph.ca.gov/Programs/CHSI/Pages/End-of-Life-Option-Act-.aspx"}, {"label": "Death with Dignity: California", "url": "https://deathwithdignity.org/states/california/"}]},
-    {"slug": "colorado", "name": "Colorado", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "End-of-Life Options Act", "since": "2016", "nonResidents": "No, residents only", "summary": "Colorado voters approved the law by ballot measure.", "verified": "2026-11-17", "sources": [{"label": "Colorado Department of Public Health and Environment", "url": "https://cdphe.colorado.gov/medical-aid-in-dying"}, {"label": "Death with Dignity: Colorado", "url": "https://deathwithdignity.org/states/colorado/"}]},
-    {"slug": "district-of-columbia", "name": "District of Columbia", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Death with Dignity Act", "since": "2017", "nonResidents": "No, residents only", "summary": "Washington, DC's law is open to District residents.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: District of Columbia", "url": "https://deathwithdignity.org/states/district-of-columbia/"}]},
-    {"slug": "hawaii", "name": "Hawaii", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Our Care, Our Choice Act", "since": "2019", "nonResidents": "No, residents only", "summary": "Hawaii's law is open to state residents.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: Hawaii", "url": "https://deathwithdignity.org/states/hawaii/"}]},
-    {"slug": "new-jersey", "name": "New Jersey", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Medical Aid in Dying for the Terminally Ill Act", "since": "2019", "nonResidents": "No, residents only", "summary": "New Jersey's law is open to state residents.", "verified": "2026-11-17", "sources": [{"label": "New Jersey Department of Health", "url": "https://www.nj.gov/health/advancedirective/maid/"}, {"label": "Death with Dignity: New Jersey", "url": "https://deathwithdignity.org/states/new-jersey/"}]},
-    {"slug": "maine", "name": "Maine", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Death with Dignity Act", "since": "2019", "nonResidents": "No, residents only", "summary": "Maine's law is open to state residents.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: Maine", "url": "https://deathwithdignity.org/states/maine/"}]},
-    {"slug": "new-mexico", "name": "New Mexico", "region": "us", "status": "legal", "statusLabel": "In effect", "law": "Elizabeth Whitefield End-of-Life Options Act", "since": "2021", "nonResidents": "No, residents only", "summary": "New Mexico's law is open to state residents.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: New Mexico", "url": "https://deathwithdignity.org/states/new-mexico/"}]},
-    {"slug": "delaware", "name": "Delaware", "region": "us", "status": "legal", "statusLabel": "Law signed May 20, 2025", "law": "Ron Silverio/Heather Block End-of-Life Options Law", "since": "2025 (signed)", "nonResidents": "No, residents only", "summary": "Delaware's governor signed the law on May 20, 2025. Check the effective date and whether providers are taking requests yet.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: Delaware", "url": "https://deathwithdignity.org/states/delaware/"}]},
-    {"slug": "new-york", "name": "New York", "region": "us", "status": "legal", "statusLabel": "In effect since Aug 5, 2026", "law": "Medical Aid in Dying Act", "since": "2026", "nonResidents": "No, residents only", "summary": "Governor Hochul signed the law on Feb 6, 2026. It took effect on Aug 5, 2026.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: New York", "url": "https://deathwithdignity.org/states/new-york/"}, {"label": "ElderLawAnswers", "url": "https://www.elderlawanswers.com/medical-aid-in-dying-and-estate-planning-21449"}]},
-    {"slug": "illinois", "name": "Illinois", "region": "us", "status": "legal", "statusLabel": "In effect from Sept 2026", "law": "Medical aid in dying law", "since": "2026", "nonResidents": "No, residents only", "summary": "Governor Pritzker signed the law on Dec 12, 2025. It was reported to take effect in September 2026.", "verified": "2026-11-17", "sources": [{"label": "Death with Dignity: Illinois", "url": "https://deathwithdignity.org/states/illinois/"}, {"label": "WUSF, June 2026", "url": "https://www.wusf.org/health-news-florida/2026-06-08/september-nearly-third-americans-will-live-states-legal-aid-dying"}]},
-
-    {"slug": "canada", "name": "Canada", "region": "world", "status": "legal", "statusLabel": "In effect", "law": "Medical assistance in dying (MAID), Criminal Code", "since": "2016", "nonResidents": "No; you must be eligible for Canadian public health coverage", "summary": "Canada allows medical assistance in dying nationwide. Visitors are not eligible.", "verified": "2026-11-17", "sources": [{"label": "Health Canada", "url": "https://www.canada.ca/en/health-canada/services/health-services-benefits/medical-assistance-dying.html"}]},
-    {"slug": "netherlands", "name": "Netherlands", "region": "world", "status": "legal", "statusLabel": "In effect", "law": "Termination of Life on Request and Assisted Suicide Act", "since": "2002", "nonResidents": "To be verified", "summary": "Euthanasia and assisted suicide are legal when strict due-care criteria are met. Regional review committees check every case.", "verified": "2026-11-17", "sources": [{"label": "Regional Euthanasia Review Committees", "url": "https://english.euthanasiecommissie.nl/"}]},
-    {"slug": "belgium", "name": "Belgium", "region": "world", "status": "legal", "statusLabel": "In effect", "law": "Law on euthanasia", "since": "2002", "nonResidents": "To be verified", "summary": "Belgium has allowed euthanasia since 2002.", "verified": null, "sources": []},
-    {"slug": "switzerland", "name": "Switzerland", "region": "world", "status": "legal", "statusLabel": "Assisted suicide permitted", "law": "Swiss Criminal Code, article 115", "since": "1942", "nonResidents": "Some organizations accept people from abroad", "summary": "Helping someone die by suicide is a crime in Switzerland only when the motive is selfish. Private organizations run the process, and some accept people from other countries.", "verified": "2026-11-17", "sources": [{"label": "Swissinfo", "url": "https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578"}, {"label": "Dignitas", "url": "http://www.dignitas.ch"}]},
-    {"slug": "spain", "name": "Spain", "region": "world", "status": "legal", "statusLabel": "In effect", "law": "Organic Law 3/2021 on euthanasia", "since": "2021", "nonResidents": "To be verified", "summary": "Spain has allowed euthanasia and assisted suicide since 2021.", "verified": null, "sources": []},
-    {"slug": "new-zealand", "name": "New Zealand", "region": "world", "status": "legal", "statusLabel": "In effect", "law": "End of Life Choice Act", "since": "2021", "nonResidents": "No; citizens and permanent residents only", "summary": "New Zealand's law took effect in November 2021 after a national referendum.", "verified": "2026-11-17", "sources": [{"label": "New Zealand Ministry of Health", "url": "https://www.health.govt.nz/regulation-legislation/assisted-dying"}]},
-    {"slug": "france", "name": "France", "region": "world", "status": "pending", "statusLabel": "Law passed, expected early 2027", "law": "Law no. 2026-794 on the right to aid in dying", "since": "2026 (passed)", "nonResidents": "To be verified", "summary": "The law was signed on Aug 18, 2026, after the Constitutional Council upheld it. It is not expected to take effect before early 2027.", "verified": "2026-11-17", "sources": [{"label": "Légifrance: Law no. 2026-794", "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054706877"}, {"label": "Santé.fr", "url": "https://www.sante.fr/la-loi-relative-au-droit-laide-mourir-definitivement-adoptee"}]},
-    {"slug": "uruguay", "name": "Uruguay", "region": "world", "status": "pending", "statusLabel": "Law passed; rollout to be confirmed", "law": "Muerte Digna law", "since": "2025 (passed)", "nonResidents": "No; adult citizens and residents only", "summary": "The Senate passed the law in October 2025. We have not yet confirmed when it took effect in practice.", "verified": "2026-11-17", "sources": [{"label": "Prensa Latina", "url": "https://www.prensa-latina.cu/2025/10/16/uruguay-ya-tiene-ley-de-muerte-digna-y-asistida/"}]},
-    {"slug": "england-and-wales", "name": "England and Wales", "region": "world", "status": "not-legal", "statusLabel": "Not legal; bill defeated Sept 2026", "law": "Terminally Ill Adults (End of Life) Bill", "since": "Not applicable", "nonResidents": "Not applicable", "summary": "Assisting a suicide remains a crime. The House of Commons voted the bill down on Sept 11, 2026.", "verified": "2026-11-17", "sources": [{"label": "AP via Local10, Sept 11, 2026", "url": "https://www.local10.com/news/world/2026/09/11/uk-lawmakers-vote-down-bill-to-allow-assisted-dying-in-england-and-wales/"}]}
+    {
+      "slug": "oregon",
+      "name": "Oregon",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Death with Dignity Act",
+      "since": "1997",
+      "nonResidents": "Yes",
+      "summary": "Oregon was the first US state to allow medical aid in dying. It no longer requires patients to be residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Oregon Health Authority",
+          "url": "https://www.oregon.gov/oha/ph/providerpartnerresources/evaluationresearch/deathwithdignityact/pages/index.aspx"
+        },
+        {
+          "label": "Death with Dignity: Oregon",
+          "url": "https://deathwithdignity.org/states/oregon/"
+        }
+      ]
+    },
+    {
+      "slug": "washington",
+      "name": "Washington",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Death with Dignity Act",
+      "since": "2009",
+      "nonResidents": "No, residents only",
+      "summary": "Washington's law is modeled on Oregon's and is open to state residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Washington State Department of Health",
+          "url": "https://doh.wa.gov/data-and-statistical-reports/health-statistics/death-dignity-act"
+        },
+        {
+          "label": "Death with Dignity: Washington",
+          "url": "https://deathwithdignity.org/states/washington/"
+        }
+      ]
+    },
+    {
+      "slug": "montana",
+      "name": "Montana",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "Allowed by court ruling",
+      "law": "Baxter v. Montana (state Supreme Court)",
+      "since": "2009",
+      "nonResidents": "To be verified",
+      "summary": "Montana has no aid-in-dying statute. A 2009 state Supreme Court ruling protects doctors who help a terminally ill patient who asks.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: Montana",
+          "url": "https://deathwithdignity.org/states/montana/"
+        }
+      ]
+    },
+    {
+      "slug": "vermont",
+      "name": "Vermont",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Patient Choice and Control at the End of Life Act",
+      "since": "2013",
+      "nonResidents": "Yes",
+      "summary": "Vermont no longer requires patients to be residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Vermont Department of Health",
+          "url": "https://www.healthvermont.gov/systems/patient-choice-and-control-end-life"
+        },
+        {
+          "label": "Death with Dignity: Vermont",
+          "url": "https://deathwithdignity.org/states/vermont/"
+        }
+      ]
+    },
+    {
+      "slug": "california",
+      "name": "California",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "End of Life Option Act",
+      "since": "2016",
+      "nonResidents": "No, residents only",
+      "summary": "California's law is open to adult state residents with a terminal illness.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "California Department of Public Health",
+          "url": "https://www.cdph.ca.gov/Programs/CHSI/Pages/End-of-Life-Option-Act-.aspx"
+        },
+        {
+          "label": "Death with Dignity: California",
+          "url": "https://deathwithdignity.org/states/california/"
+        }
+      ]
+    },
+    {
+      "slug": "colorado",
+      "name": "Colorado",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "End-of-Life Options Act",
+      "since": "2016",
+      "nonResidents": "No, residents only",
+      "summary": "Colorado voters approved the law by ballot measure.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Colorado Department of Public Health and Environment",
+          "url": "https://cdphe.colorado.gov/center-for-health-and-environmental-data/registries-and-vital-statistics/medical-aid-in-dying"
+        },
+        {
+          "label": "Death with Dignity: Colorado",
+          "url": "https://deathwithdignity.org/states/colorado/"
+        }
+      ]
+    },
+    {
+      "slug": "district-of-columbia",
+      "name": "District of Columbia",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Death with Dignity Act",
+      "since": "2017",
+      "nonResidents": "No, residents only",
+      "summary": "Washington, DC's law is open to District residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: District of Columbia",
+          "url": "https://deathwithdignity.org/states/district-of-columbia/"
+        }
+      ]
+    },
+    {
+      "slug": "hawaii",
+      "name": "Hawaii",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Our Care, Our Choice Act",
+      "since": "2019",
+      "nonResidents": "No, residents only",
+      "summary": "Hawaii's law is open to state residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: Hawaii",
+          "url": "https://deathwithdignity.org/states/hawaii/"
+        }
+      ]
+    },
+    {
+      "slug": "new-jersey",
+      "name": "New Jersey",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Medical Aid in Dying for the Terminally Ill Act",
+      "since": "2019",
+      "nonResidents": "No, residents only",
+      "summary": "New Jersey's law is open to state residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "New Jersey Department of Health",
+          "url": "https://www.nj.gov/health/advancedirective/maid/"
+        },
+        {
+          "label": "Death with Dignity: New Jersey",
+          "url": "https://deathwithdignity.org/states/new-jersey/"
+        }
+      ]
+    },
+    {
+      "slug": "maine",
+      "name": "Maine",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Death with Dignity Act",
+      "since": "2019",
+      "nonResidents": "No, residents only",
+      "summary": "Maine's law is open to state residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: Maine",
+          "url": "https://deathwithdignity.org/states/maine/"
+        }
+      ]
+    },
+    {
+      "slug": "new-mexico",
+      "name": "New Mexico",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Elizabeth Whitefield End-of-Life Options Act",
+      "since": "2021",
+      "nonResidents": "No, residents only",
+      "summary": "New Mexico's law is open to state residents.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: New Mexico",
+          "url": "https://deathwithdignity.org/states/new-mexico/"
+        }
+      ]
+    },
+    {
+      "slug": "delaware",
+      "name": "Delaware",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "Law signed May 20, 2025",
+      "law": "Ron Silverio/Heather Block End-of-Life Options Law",
+      "since": "2025 (signed)",
+      "nonResidents": "No, residents only",
+      "summary": "Delaware's governor signed the law on May 20, 2025. Check the effective date and whether providers are taking requests yet.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: Delaware",
+          "url": "https://deathwithdignity.org/states/delaware/"
+        }
+      ]
+    },
+    {
+      "slug": "new-york",
+      "name": "New York",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect since Aug 5, 2026",
+      "law": "Medical Aid in Dying Act",
+      "since": "2026",
+      "nonResidents": "No, residents only",
+      "summary": "Governor Hochul signed the law on Feb 6, 2026. It took effect on Aug 5, 2026.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: New York",
+          "url": "https://deathwithdignity.org/states/new-york/"
+        },
+        {
+          "label": "ElderLawAnswers",
+          "url": "https://www.elderlawanswers.com/medical-aid-in-dying-and-estate-planning-21449"
+        }
+      ]
+    },
+    {
+      "slug": "illinois",
+      "name": "Illinois",
+      "region": "us",
+      "status": "legal",
+      "statusLabel": "In effect from Sept 2026",
+      "law": "Medical aid in dying law",
+      "since": "2026",
+      "nonResidents": "No, residents only",
+      "summary": "Governor Pritzker signed the law on Dec 12, 2025. It was reported to take effect in September 2026.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Death with Dignity: Illinois",
+          "url": "https://deathwithdignity.org/states/illinois/"
+        },
+        {
+          "label": "WUSF, June 2026",
+          "url": "https://www.wusf.org/health-news-florida/2026-06-08/september-nearly-third-americans-will-live-states-legal-aid-dying"
+        }
+      ]
+    },
+    {
+      "slug": "canada",
+      "name": "Canada",
+      "region": "world",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Medical assistance in dying (MAID), Criminal Code",
+      "since": "2016",
+      "nonResidents": "No; you must be eligible for Canadian public health coverage",
+      "summary": "Canada allows medical assistance in dying nationwide. Visitors are not eligible.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Health Canada",
+          "url": "https://www.canada.ca/en/health-canada/services/health-services-benefits/medical-assistance-dying.html"
+        }
+      ]
+    },
+    {
+      "slug": "netherlands",
+      "name": "Netherlands",
+      "region": "world",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Termination of Life on Request and Assisted Suicide Act",
+      "since": "2002",
+      "nonResidents": "To be verified",
+      "summary": "Euthanasia and assisted suicide are legal when strict due-care criteria are met. Regional review committees check every case.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Regional Euthanasia Review Committees",
+          "url": "https://english.euthanasiecommissie.nl/"
+        }
+      ]
+    },
+    {
+      "slug": "belgium",
+      "name": "Belgium",
+      "region": "world",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Law on euthanasia",
+      "since": "2002",
+      "nonResidents": "To be verified",
+      "summary": "Belgium has allowed euthanasia since 2002.",
+      "verified": null,
+      "sources": []
+    },
+    {
+      "slug": "switzerland",
+      "name": "Switzerland",
+      "region": "world",
+      "status": "legal",
+      "statusLabel": "Assisted suicide permitted",
+      "law": "Swiss Criminal Code, article 115",
+      "since": "1942",
+      "nonResidents": "Some organizations accept people from abroad",
+      "summary": "Helping someone die by suicide is a crime in Switzerland only when the motive is selfish. Private organizations run the process, and some accept people from other countries.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Swissinfo",
+          "url": "https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578"
+        },
+        {
+          "label": "Dignitas",
+          "url": "http://www.dignitas.ch"
+        }
+      ]
+    },
+    {
+      "slug": "spain",
+      "name": "Spain",
+      "region": "world",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "Organic Law 3/2021 on euthanasia",
+      "since": "2021",
+      "nonResidents": "To be verified",
+      "summary": "Spain has allowed euthanasia and assisted suicide since 2021.",
+      "verified": null,
+      "sources": []
+    },
+    {
+      "slug": "new-zealand",
+      "name": "New Zealand",
+      "region": "world",
+      "status": "legal",
+      "statusLabel": "In effect",
+      "law": "End of Life Choice Act",
+      "since": "2021",
+      "nonResidents": "No; citizens and permanent residents only",
+      "summary": "New Zealand's law took effect in November 2021 after a national referendum.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "New Zealand Ministry of Health",
+          "url": "https://www.health.govt.nz/regulation-legislation/assisted-dying"
+        }
+      ]
+    },
+    {
+      "slug": "france",
+      "name": "France",
+      "region": "world",
+      "status": "pending",
+      "statusLabel": "Law passed, expected early 2027",
+      "law": "Law no. 2026-794 on the right to aid in dying",
+      "since": "2026 (passed)",
+      "nonResidents": "To be verified",
+      "summary": "The law was signed on Aug 18, 2026, after the Constitutional Council upheld it. It is not expected to take effect before early 2027.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Légifrance: Law no. 2026-794",
+          "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054706877"
+        },
+        {
+          "label": "Santé.fr",
+          "url": "https://www.sante.fr/la-loi-relative-au-droit-laide-mourir-definitivement-adoptee"
+        }
+      ]
+    },
+    {
+      "slug": "uruguay",
+      "name": "Uruguay",
+      "region": "world",
+      "status": "pending",
+      "statusLabel": "Law passed; rollout to be confirmed",
+      "law": "Muerte Digna law",
+      "since": "2025 (passed)",
+      "nonResidents": "No; adult citizens and residents only",
+      "summary": "The Senate passed the law in October 2025. We have not yet confirmed when it took effect in practice.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Prensa Latina",
+          "url": "https://www.prensa-latina.cu/2025/10/16/uruguay-ya-tiene-ley-de-muerte-digna-y-asistida/"
+        }
+      ]
+    },
+    {
+      "slug": "england-and-wales",
+      "name": "England and Wales",
+      "region": "world",
+      "status": "not-legal",
+      "statusLabel": "Not legal; bill defeated Sept 2026",
+      "law": "Terminally Ill Adults (End of Life) Bill",
+      "since": "Not applicable",
+      "nonResidents": "Not applicable",
+      "summary": "Assisting a suicide remains a crime. The House of Commons voted the bill down on Sept 11, 2026.",
+      "verified": "2026-11-17",
+      "sources": [
+        {
+          "label": "Al Jazeera, Sept 11, 2026",
+          "url": "https://www.aljazeera.com/news/2026/9/11/uk-lawmakers-vote-against-bill-to-legalise-assisted-dying"
+        },
+        {
+          "label": "The Pharmaceutical Journal",
+          "url": "https://pharmaceutical-journal.com/article/news/assisted-dying-bill-defeated-in-house-of-commons"
+        }
+      ]
+    }
   ],
-  "researching": ["Australia (each state)", "Luxembourg", "Colombia", "Ecuador", "Austria", "Germany", "Portugal", "Jersey", "Isle of Man", "Scotland"]
+  "researching": [
+    "Australia (each state)",
+    "Luxembourg",
+    "Colombia",
+    "Ecuador",
+    "Austria",
+    "Germany",
+    "Portugal",
+    "Jersey",
+    "Isle of Man",
+    "Scotland"
+  ]
 }
