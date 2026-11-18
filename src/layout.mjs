@@ -1,8 +1,14 @@
+import { readFileSync } from 'node:fs';
+
+// Date of the last whole-site accuracy check (updated monthly).
+const review = JSON.parse(readFileSync(new URL('./data/review.json', import.meta.url), 'utf8'));
+
 export const site = {
   name: 'End of Life Atlas',
   tagline: 'Every part of the end of life, explained',
   url: 'https://eolatlas.com',
   lastVerified: '2026-11-17',
+  lastScan: review.lastScan,
 };
 
 export const esc = (s) =>
@@ -100,7 +106,7 @@ ${body}
 <p>If you are thinking about suicide, call or text 988 in the US. Elsewhere: <a href="https://findahelpline.com">findahelpline.com</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.com · Information, not medical or legal advice.</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.com · Information, not medical or legal advice. · Whole site last checked for accuracy and broken links: ${fmtDate(site.lastScan)} (<a href="/about/#editorial">how</a>)</p>
 </div>
 </footer>
 </body>

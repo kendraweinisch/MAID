@@ -1,0 +1,56 @@
+# Monthly accuracy check
+
+Run on the 1st of every month (a scheduled Claude session does this
+automatically and opens a pull request). A person reviews and merges.
+
+## 1. Build and mechanical checks
+
+```bash
+npm test                 # build and internal checks
+npm run links            # every external source link
+npm run a11y             # WCAG 2.2 audit (see README for setup)
+```
+
+- Fix every BROKEN link: find the new address of the same source, or a
+  better source for the same fact. Never delete a fact's only source
+  without replacing it or removing the fact.
+- BLOCKED links usually mean the site refuses automated checks. Confirm a
+  few by search; list any you could not confirm in the pull request.
+
+## 2. Laws (src/data/places.json and the medical aid in dying pages)
+
+For every place, check for changes since the last scan: new laws, laws
+taking effect, court rulings, repeals, residency changes, and bills that
+passed or failed. Also check the "researching" list for countries that
+have legalized. When a place is confirmed unchanged or updated, set its
+`verified` date to today.
+
+Watch especially: France (law expected to take effect in 2027), Uruguay
+(rollout), Delaware (effective date), England and Wales, Scotland, Jersey
+and the Isle of Man, US state bills, and any new US states.
+
+## 3. Figures and rules that change
+
+| Page | What to re-check |
+|---|---|
+| What it costs | CareScout cost of care (new survey usually each spring), NFDA funeral medians and cremation rate, KFF and Dartmouth data years, Medicare hospice cost-sharing |
+| Wills, trusts and the paperwork | Federal estate tax threshold (IRS), state estate and inheritance tax lists (Tax Foundation), Canada (Ontario estate administration tax, provincial rule changes), UK (inheritance tax threshold, pensions from April 2027, lasting power of attorney fee) |
+| Property abroad | Mexico Will Month, EU succession rules, Canada and UK points |
+| Every choice for the body | States allowing human composting and water cremation, EPA and UK burial-at-sea rules |
+| Going to Switzerland | Approximate fees |
+| Finding help | Directory links still live |
+
+## 4. Rules for any change
+
+- No invented facts. Every new or changed fact needs a source on the page.
+- Prefer official sources (governments, regulators, statutes), then
+  established organizations, then reputable news.
+- Keep the voice: plain, international, nonjudgmental, honest.
+- Update `src/data/review.json` `lastScan` to the date of the check, and a
+  guide's `reviewed` date only when its text changed.
+
+## 5. Pull request
+
+Title: `Monthly accuracy check: <Month YYYY>`. In the description, list
+what changed (with sources), what was confirmed unchanged, blocked links
+that need a person to look, and anything uncertain.
