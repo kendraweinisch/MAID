@@ -79,7 +79,8 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
-- [ ] Set up corrections@, privacy@ and accessibility@ email addresses
+- [ ] Netlify: Forms > form notifications > add an email notification for the "suggestions" form
+- [ ] Analytics: create a free GoatCounter account and put its code in `GOATCOUNTER_CODE` in `netlify.toml`
 - [ ] Lawyer review of the whole site, especially the Switzerland and property-abroad pages
 - [ ] Turn on search indexing
 

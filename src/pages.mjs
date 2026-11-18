@@ -2,6 +2,11 @@ import { esc, fmtDate, site } from './layout.mjs';
 
 const MAID = '/medical-aid-in-dying';
 
+// Privacy-friendly analytics: on only when GOATCOUNTER_CODE is set at build time.
+const analyticsOn = Boolean(process.env.GOATCOUNTER_CODE);
+// The suggestions form works through Netlify Forms on the live site.
+const onNetlify = process.env.NETLIFY === 'true';
+
 /* ---------- shared pieces ---------- */
 
 const pill = (p) => `<span class="pill pill-${p.status}">${esc(p.statusLabel)}</span>`;
@@ -997,9 +1002,48 @@ export const staticPages = [
 <li>Every guide shows the date it was last reviewed. We re-check law pages every quarter and whenever a law changes.</li>
 <li>We cover legal options only.</li>
 </ul>
-<p>Spotted an error? Email corrections@eolatlas.com.</p>
+<p>Spotted an error or something out of date? <a href="/suggestions/">Send a suggestion</a>; you can stay anonymous.</p>
 <h2 id="reviewers">Our reviewers</h2>
 <p>We're appointing a physician experienced in end-of-life care and an attorney to review our guides. Their names will appear here and on each page they review.</p>
+</div></section>`,
+  },
+  {
+    path: '/suggestions/',
+    title: 'Send a suggestion',
+    description: 'Send a suggestion, correction or question to the person who runs End of Life Atlas. Anonymous if you like: your name and email are optional.',
+    body: `
+<section class="section"><div class="wrap prose">
+<h1>Send a suggestion</h1>
+<p class="lead" style="margin:20px 0">Spotted an error, missing something, or have an idea? Tell us here. You can stay anonymous: only the message is required.</p>
+<p class="small muted">Your message goes privately to the person who runs this site. Add your email only if you would like a reply. Please don't include medical details or anything you wouldn't want stored. This form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline</a>.</p>
+${onNetlify ? `<form class="form suggest-form" name="suggestions" method="POST" action="/suggestions/thanks/" data-netlify="true" netlify-honeypot="company">
+<input type="hidden" name="form-name" value="suggestions">
+<p hidden><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+<div class="field" style="flex-basis:100%"><label for="s-topic">What is it about?</label>
+<select id="s-topic" name="topic">
+<option>A suggestion or idea</option>
+<option>A correction or out-of-date information</option>
+<option>Something hard to use (accessibility)</option>
+<option>A privacy question</option>
+<option>Something else</option>
+</select></div>
+<div class="field" style="flex-basis:100%"><label for="s-message">Your message (required)</label><textarea id="s-message" name="message" rows="7" required></textarea></div>
+<div class="field" style="flex-basis:100%"><label for="s-page">Which page? (optional)</label><input id="s-page" name="page" type="text"></div>
+<div class="field"><label for="s-name">Your name (optional)</label><input id="s-name" name="name" type="text" autocomplete="name"></div>
+<div class="field"><label for="s-email">Your email (optional, only if you want a reply)</label><input id="s-email" name="email" type="email" autocomplete="email"></div>
+<button class="btn" type="submit">Send</button>
+</form>` : `<div class="notice"><strong>Note:</strong> the suggestions form works on the live site.</div>`}
+</div></section>`,
+  },
+  {
+    path: '/suggestions/thanks/',
+    title: 'Thank you',
+    description: 'Your suggestion was sent.',
+    body: `
+<section class="section"><div class="wrap prose">
+<h1>Thank you</h1>
+<p class="lead" style="margin:20px 0">Your message was sent. Every suggestion is read.</p>
+<p><a href="/">Back to the home page</a></p>
 </div></section>`,
   },
   {
@@ -1011,12 +1055,13 @@ export const staticPages = [
 <h1>Privacy</h1>
 <p class="lead" style="margin:20px 0">This is a sensitive subject, so we don't collect anything about you.</p>
 <ul>
-<li>There are no accounts, sign-ups, forms or email lists.</li>
-<li>We use no advertising, analytics or tracking cookies.</li>
+<li>There are no accounts and no email lists. We use no advertising or tracking cookies.</li>
+${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views with <a href="https://www.goatcounter.com/">GoatCounter</a>, which uses no cookies, does not collect personal information and does not track you across other sites. It tells us things like which pages are read and roughly which countries visitors come from.</li>' : ''}
+<li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, what you write is stored by our host, Netlify, and sent privately to the person who runs the site. Your name and email are optional.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
 <li>Like any website, the site's host (Netlify) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
 </ul>
-<p>Questions about privacy? Email privacy@eolatlas.com.</p>
+<p>Questions about privacy? <a href="/suggestions/">Send us a message</a>.</p>
 </div></section>`,
   },
   {
@@ -1044,7 +1089,7 @@ export const staticPages = [
 <h2>Known limitations</h2>
 <p>Some pages link to other organizations' websites and documents, which we can't make accessible ourselves.</p>
 <h2>Report a problem</h2>
-<p>If something on this site is hard to use, email accessibility@eolatlas.com and tell us the page and what happened. We'll reply within five business days and, where we can, give you the information in another way.</p>
+<p>If something on this site is hard to use, <a href="/suggestions/">send a message</a> and tell us the page and what happened. Where we can, we'll give you the information in another way.</p>
 </div></section>`,
   },
   {
