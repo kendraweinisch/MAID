@@ -1,6 +1,7 @@
 import { esc, fmtDate, site } from './layout.mjs';
 import { icons } from './icons.mjs';
-import { printCard } from './printables.mjs';
+import { printCard, dlPanel } from './printables.mjs';
+import { iconFor, linkCards, dirCard, infoCard } from './ui.mjs';
 import { journeyMeta } from './journeys.mjs';
 
 const MAID = '/medical-aid-in-dying';
@@ -72,10 +73,19 @@ const sourceList = (sources) =>
     ? `<h2 id="sources">Sources</h2><ul>${sources.map(([label, url]) => `<li><a href="${esc(url)}">${esc(label)}</a></li>`).join('')}</ul>`
     : '';
 
-const relatedCards = (items) =>
-  `<div class="grid grid-wide" style="margin-top:24px">${items
-    .map(([href, title, text]) => `<a class="card" href="${href}"><strong>${title}</strong><span class="muted small">${text}</span></a>`)
-    .join('')}</div>`;
+const relatedCards = (items) => linkCards(items);
+
+// Printables that go with each guide, shown as cards at the end of it.
+const GUIDE_PRINTABLES = {
+  '/plan-ahead/': [['plan-ahead', 'Plan-ahead worksheet'], ['funeral-planner', 'Funeral or celebration of life planner'], ['letters-to-leave', 'Letters to leave'], ['life-story', 'My life story']],
+  '/plan-ahead/talking-with-a-parent/': [['talking-with-a-parent', 'Talking with a parent about the end of life']],
+  '/plan-ahead/wills-and-trusts/': [['plan-ahead', 'Plan-ahead worksheet']],
+  '/plan-ahead/choices-for-the-body/': [['funeral-planner', 'Funeral or celebration of life planner']],
+  '/serious-illness/': [['questions-for-the-doctor', 'Questions for the doctor']],
+  '/last-weeks/': [['after-a-death', 'After a death: the first 24 hours']],
+  '/after-a-death/': [['after-a-death', 'After a death: the first 24 hours'], ['funeral-planner', 'Funeral or celebration of life planner'], ['eulogy', 'Writing a eulogy']],
+  '/grief/': [['remembering-someone', 'Someone I love: a remembering book'], ['remembering-grandparent', 'My grandparent: a remembering book'], ['remembering-pet', 'My pet: a remembering book']],
+};
 
 // A guide page: hero, "on this page" list, sections, sources and related links.
 function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVerified, sections, sources = [], related = [], crisis = false }) {
@@ -88,6 +98,7 @@ function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVe
     body: `
 <section class="page-hero">
 <div class="wrap prose">
+<div class="hero-icon">${iconFor(path)}</div>
 <p class="eyebrow">${eyebrow}</p>
 <h1>${title}</h1>
 <p class="lead" style="margin-top:20px">${lead}</p>
@@ -98,8 +109,9 @@ function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVe
 <div class="wrap prose">
 <nav class="toc card" aria-label="On this page"><strong>On this page</strong><ul>${toc}</ul></nav>
 ${sections.map((s) => `<h2 id="${s.id}">${s.h}</h2>\n${s.html}`).join('\n')}
-${sourceList(sources)}
+${GUIDE_PRINTABLES[path] ? `<h2 id="printables">Printables for this</h2>\n<div class="cards" style="margin-top:20px">${GUIDE_PRINTABLES[path].map(([slug, t]) => printCard(slug, t)).join('')}</div>` : ''}
 ${related.length ? `<h2 id="related">Related</h2>${relatedCards(related)}` : ''}
+${sourceList(sources)}
 </div>
 </section>`,
   };
@@ -118,7 +130,7 @@ function checklist({ path, title, description, lead, groups, note }) {
 <p class="eyebrow">Printable checklist</p>
 <h1>${title}</h1>
 <p class="lead" style="margin:20px 0">${lead}</p>
-<p class="no-print"><button class="btn" type="button" onclick="window.print()">Print this checklist</button></p>
+${dlPanel(path.split('/')[2])}
 ${groups
   .map(
     (g) => `<h2>${g.h}</h2>
@@ -199,14 +211,14 @@ ${journeyCards()}
 <p class="eyebrow">Contents</p>
 <h2 id="where-h">Where are you right now?</h2>
 <p class="sub" style="margin-bottom:32px">Start with what you’re facing. Each guide is short, plain and leads to the next step.</p>
-<ol class="contents">
-<li><a href="/plan-ahead/"><span class="c-num">01</span><span class="c-title">I want to plan ahead</span><span class="c-go">Read</span><span class="c-desc">Advance directives, a health care proxy, your wishes and your paperwork.</span></a></li>
-<li><a href="/serious-illness/"><span class="c-num">02</span><span class="c-title">Someone I love is seriously ill</span><span class="c-go">Read</span><span class="c-desc">Palliative care, hospice, care at home, and the questions to ask.</span></a></li>
-<li><a href="/last-weeks/"><span class="c-num">03</span><span class="c-title">Death may be weeks away</span><span class="c-go">Read</span><span class="c-desc">What to expect, comfort, being present, and saying goodbye.</span></a></li>
-<li><a href="/after-a-death/"><span class="c-num">04</span><span class="c-title">Someone has just died</span><span class="c-go">Read</span><span class="c-desc">The first 24 hours, the first week, funerals and paperwork.</span></a></li>
-<li><a href="/grief/"><span class="c-num">05</span><span class="c-title">I’m grieving</span><span class="c-go">Read</span><span class="c-desc">For adults, children and pets, and when to get more help.</span></a></li>
-<li><a href="${MAID}/"><span class="c-num">06</span><span class="c-title">I’m considering medical aid in dying</span><span class="c-go">Read</span><span class="c-desc">Where it’s legal, who qualifies and how the process works.</span></a></li>
-</ol>
+<div class="cards cards-stages">
+<a class="ocard stage-card" href="/plan-ahead/"><span class="stage-num">01</span>${iconFor('/plan-ahead/')}<strong>I want to plan ahead</strong><span class="muted small">Advance directives, a health care proxy, your wishes and your paperwork.</span></a>
+<a class="ocard stage-card" href="/serious-illness/"><span class="stage-num">02</span>${iconFor('/serious-illness/')}<strong>Someone I love is seriously ill</strong><span class="muted small">Palliative care, hospice, care at home, and the questions to ask.</span></a>
+<a class="ocard stage-card" href="/last-weeks/"><span class="stage-num">03</span>${iconFor('/last-weeks/')}<strong>Death may be weeks away</strong><span class="muted small">What to expect, comfort, being present, and saying goodbye.</span></a>
+<a class="ocard stage-card" href="/after-a-death/"><span class="stage-num">04</span>${iconFor('/after-a-death/')}<strong>Someone has just died</strong><span class="muted small">The first 24 hours, the first week, funerals and paperwork.</span></a>
+<a class="ocard stage-card" href="/grief/"><span class="stage-num">05</span>${iconFor('/grief/')}<strong>I’m grieving</strong><span class="muted small">For adults, children and pets, and when to get more help.</span></a>
+<a class="ocard stage-card" href="${MAID}/"><span class="stage-num">06</span>${iconFor('/medical-aid-in-dying/')}<strong>I’m considering medical aid in dying</strong><span class="muted small">Where it’s legal, who qualifies and how the process works.</span></a>
+</div>
 </div>
 </section>
 
@@ -627,13 +639,15 @@ export const guides = [
 <li><strong>Private insurance varies.</strong> Some plans in some states cover it; many don't. Ask the insurer in writing.</li>
 <li><strong>Ask for the full cost up front:</strong> the clinician visits, the medication, and any support at the bedside. Reported costs vary from a few hundred dollars for the medication alone to several thousand with clinicians' time included.</li>
 <li><strong>Switzerland</strong> is far more expensive; see <a href="/medical-aid-in-dying/switzerland/#costs">going to Switzerland</a>.</li></ul>` },
-      { id: 'lookup', h: 'Where to look up prices', html: `<ul>
-<li><a href="https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/">Dartmouth Atlas</a>: end-of-life care patterns by US hospital (2017 data).</li>
-<li><a href="https://www.medicare.gov/care-compare/?providerType=Hospice">Medicare Care Compare</a>: hospice quality ratings in the US.</li>
-<li><a href="https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency">Hospital price transparency</a>: every US hospital must post its prices, though the files are hard to use and not all hospitals comply. <a href="https://turquoise.health/">Turquoise Health</a> makes them searchable.</li>
-<li><a href="https://www.fairhealthconsumer.org/">FAIR Health Consumer</a>: typical costs of medical procedures in your area.</li>
-<li><a href="https://www.carescout.com/cost-of-care">CareScout</a>: care-home and home-care costs by area.</li>
-<li><a href="https://www.funerals.org/">Funeral Consumers Alliance</a>: local groups, some of which survey funeral prices.</li></ul>` },
+      { id: 'lookup', h: 'Where to look up prices', html: `<div class="cards cards-tight">
+${dirCard('https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/', 'Dartmouth Atlas', 'US · hospitals', 'End-of-life care patterns by hospital (2017 data).')}
+${dirCard('https://www.medicare.gov/care-compare/?providerType=Hospice', 'Medicare Care Compare', 'US · hospice', 'Quality ratings for hospices.')}
+${dirCard('https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency', 'Hospital price transparency', 'US · hospitals', 'Every hospital must post its prices; not all comply.')}
+${dirCard('https://turquoise.health/', 'Turquoise Health', 'US · hospitals', 'Makes hospital price files searchable.')}
+${dirCard('https://www.fairhealthconsumer.org/', 'FAIR Health Consumer', 'US · medical care', 'Typical costs of procedures in your area.')}
+${dirCard('https://www.carescout.com/cost-of-care', 'CareScout', 'US · care', 'Care-home and home-care costs by area.')}
+${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · funerals', 'Local groups, some of which survey funeral prices.')}
+</div>` },
       { id: 'save', h: 'Ways to lower costs', html: `<ul>
 <li>Ask about hospice early. It is covered by Medicare in the US, and free in many other countries.</li>
 <li>Get written, itemized prices from two or three funeral homes before you choose.</li>
@@ -879,11 +893,7 @@ export function maidHub(data) {
 <p>For most people, it is about how they would have to live their last weeks, not only about pain.</p>
 <p class="small muted">Source: <a href="https://www.oregon.gov/oha/ph/providerpartnerresources/evaluationresearch/deathwithdignityact/Documents/year28.pdf">Oregon Health Authority, 2025 Death with Dignity Act Data Summary (PDF)</a></p>
 </div>
-<div class="grid grid-wide" style="margin-bottom:56px">
-<a class="card" href="${MAID}/process/"><strong>How the process works</strong><span class="muted small">The steps, and why starting early matters.</span></a>
-<a class="card" href="${MAID}/families/"><strong>For families</strong><span class="muted small">Talking about it, the day itself, insurance and grief.</span></a>
-<a class="card" href="${MAID}/switzerland/"><strong>Going to Switzerland</strong><span class="muted small">For people whose country has no law, and the legal risks.</span></a>
-</div>
+<div style="margin-bottom:56px">${linkCards([[`${MAID}/process/`, 'How the process works', 'The steps, and why starting early matters.'], [`${MAID}/families/`, 'For families', 'Talking about it, the day itself, insurance and grief.'], [`${MAID}/switzerland/`, 'Going to Switzerland', 'For people whose country has no law, and the legal risks.'], ['/serious-illness/', 'Hospice and palliative care', 'Available whatever you decide.']])}</div>
 <h2>United States</h2>
 <p class="sub">Legal in ${us.length - 1} states and the District of Columbia. Only Oregon and Vermont accept people who live elsewhere.</p>
 ${placeTable(us, 'United States')}
@@ -928,11 +938,7 @@ ${p.status === 'not-legal' ? `<p>Helping someone die can be a crime here, includ
 <h2>Sources</h2>
 ${sources}
 <h2>Next steps</h2>
-<ul>
-<li><a href="${MAID}/process/">How the process works</a></li>
-<li><a href="/serious-illness/">Hospice and palliative care</a></li>
-<li><a href="${MAID}/families/">A guide for families</a></li>
-</ul>
+${linkCards([[`${MAID}/process/`, 'How the process works', 'The usual steps.'], ['/serious-illness/', 'Hospice and palliative care', 'Comfort care, whatever you decide.'], [`${MAID}/families/`, 'A guide for families', 'What to expect, and grief.'], ['/ask/', 'Ask a question', 'Answers from this site.']])}
 </div>
 </section>`,
   };
@@ -947,12 +953,13 @@ export const maidPages = [
     description: 'The usual steps for medical aid in dying in US states, and why starting early matters.',
     lead: "The process has several steps, and illness can move faster than paperwork. This is the usual shape in US states; details differ, so check your state's page.",
     sections: [
-      { id: 'steps', h: 'The usual steps', html: `<ol>
-<li><strong>First request.</strong> Tell your doctor you want to ask. Not every doctor, hospital or hospice takes part.</li>
-<li><strong>Second opinion.</strong> A second clinician confirms the diagnosis, prognosis and your ability to decide.</li>
-<li><strong>Waiting period.</strong> Most states require time between requests. Some shorten it for people near death.</li>
-<li><strong>Written request.</strong> A signed form, usually with witnesses, then the prescription.</li>
-<li><strong>Decide if and when.</strong> Having the prescription doesn't mean you must use it.</li></ol>` },
+      { id: 'steps', h: 'The usual steps', html: `<ol class="trail">
+<li class="stop"><span class="stop-n" aria-hidden="true">1</span><div class="stop-card"><h3>First request</h3><p>Tell your doctor you want to ask. Not every doctor, hospital or hospice takes part.</p></div></li>
+<li class="stop"><span class="stop-n" aria-hidden="true">2</span><div class="stop-card"><h3>Second opinion</h3><p>A second clinician confirms the diagnosis, prognosis and your ability to decide.</p></div></li>
+<li class="stop"><span class="stop-n" aria-hidden="true">3</span><div class="stop-card"><h3>Waiting period</h3><p>Most states require time between requests. Some shorten it for people near death.</p></div></li>
+<li class="stop"><span class="stop-n" aria-hidden="true">4</span><div class="stop-card"><h3>Written request</h3><p>A signed form, usually with witnesses, then the prescription.</p></div></li>
+<li class="stop"><span class="stop-n" aria-hidden="true">5</span><div class="stop-card"><h3>Decide if and when</h3><p>Having the prescription doesn't mean you must use it.</p></div></li>
+</ol>` },
       { id: 'early', h: 'Why starting early matters', html: `<p>Everyone who asks must be able to make and communicate their own decision at every step. If illness takes that ability away, the process stops. Starting the conversation early keeps the option open, even if you never use it.</p>` },
       { id: 'decline', h: "If your doctor won't take part", html: `<p>Doctors and hospices can decline. Ask for a referral to one who does. Hospice teams and local aid-in-dying advocacy groups often know which clinicians take part where you live.</p>` },
       { id: 'hospice', h: 'Alongside hospice', html: `<p>Many people who ask for medical aid in dying are also in hospice. <a href="/serious-illness/">Hospice and palliative care</a> remain available whatever you decide.</p>` },
@@ -1021,33 +1028,33 @@ export const staticPages = [
 <h1>Finding help near you</h1>
 <p class="lead" style="margin:20px 0">Independent directories, mostly run by nonprofits and governments. We don't list businesses, take payment for listings, or vet the providers in these directories, so ask questions before you choose.</p>
 <h2>Hospice and palliative care</h2>
-<ul>
-<li><a href="https://www.medicare.gov/care-compare/?providerType=Hospice">Medicare Care Compare: hospices</a> (US), with quality ratings</li>
-<li><a href="https://www.hospiceuk.org/">Hospice UK</a> (UK)</li>
-<li><a href="https://www.virtualhospice.ca/">Canadian Virtual Hospice</a> (Canada)</li>
-<li><a href="https://www.ehospice.com/">ehospice</a> (international news and services)</li>
-</ul>
+<div class="cards cards-tight">
+${dirCard('https://www.medicare.gov/care-compare/?providerType=Hospice', 'Medicare Care Compare', 'US', 'Find hospices, with quality ratings.')}
+${dirCard('https://www.hospiceuk.org/', 'Hospice UK', 'UK', 'Hospices and support across the UK.')}
+${dirCard('https://www.virtualhospice.ca/', 'Canadian Virtual Hospice', 'Canada', 'Information and support from palliative care experts.')}
+${dirCard('https://www.ehospice.com/', 'ehospice', 'International', 'News and services in palliative care worldwide.')}
+</div>
 <h2>Funerals and burial</h2>
-<ul>
-<li><a href="https://www.funerals.org/">Funeral Consumers Alliance</a> (US): nonprofit consumer groups, some of which survey local funeral prices</li>
-<li><a href="https://www.greenburialcouncil.org/">Green Burial Council</a>: certified green burial providers</li>
-</ul>
+<div class="cards cards-tight">
+${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US', 'Nonprofit consumer groups; some survey local funeral prices.')}
+${dirCard('https://www.greenburialcouncil.org/', 'Green Burial Council', 'US and beyond', 'Certified green burial providers and grounds.')}
+</div>
 <h2>End-of-life doulas</h2>
-<ul>
-<li><a href="https://www.nedalliance.org/">National End-of-Life Doula Alliance</a> (US)</li>
-<li><a href="https://www.inelda.org/">INELDA</a> (international directory)</li>
-</ul>
+<div class="cards cards-tight">
+${dirCard('https://www.nedalliance.org/', 'National End-of-Life Doula Alliance', 'US', 'A directory of end-of-life doulas.')}
+${dirCard('https://www.inelda.org/', 'INELDA', 'International', 'International End of Life Doula Association directory.')}
+</div>
 <h2>Grief support</h2>
-<ul>
-<li><a href="https://www.dougy.org/">The Dougy Center</a>: support for grieving children, with a program directory</li>
-<li><a href="https://www.compassionatefriends.org/">The Compassionate Friends</a>: for families after the death of a child</li>
-<li>Your local hospice: most offer free bereavement support, even if the person who died wasn't in their care.</li>
-</ul>
+<div class="cards cards-tight">
+${dirCard('https://www.dougy.org/', 'The Dougy Center', 'US', 'Support for grieving children, with a program directory.')}
+${dirCard('https://www.compassionatefriends.org/', 'The Compassionate Friends', 'US and beyond', 'For families after the death of a child.')}
+</div>
+<p>Your local hospice is another good start: most offer free bereavement support, even if the person who died wasn't in their care.</p>
 <h2>Medical aid in dying</h2>
-<ul>
-<li><a href="/medical-aid-in-dying/">Our medical aid in dying section</a>, with official sources for each place</li>
-<li><a href="https://wfrtds.org/">World Federation of Right to Die Societies</a>: member organizations by country</li>
-</ul>
+<div class="cards cards-tight">
+${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', 'International', 'Member organizations by country.')}
+<a class="ocard" href="/medical-aid-in-dying/">${iconFor('/medical-aid-in-dying/')}<strong>Our medical aid in dying section</strong><span class="muted small">Where it is legal, with official sources for each place.</span></a>
+</div>
 <h2>In a crisis</h2>
 <p>If you are thinking about suicide, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>
 </div></section>`,
@@ -1071,12 +1078,12 @@ export const staticPages = [
 <h2 id="why">Why this atlas exists</h2>
 <p>Planning for the end of life usually means piecing things together from doctors, lawyers, funeral homes, governments and advocacy groups. Each covers one part, often for one country, and some have something to sell or a position to promote. End of Life Atlas brings it together in one place.</p>
 <h2 id="principles">What we believe</h2>
-<ul>
-<li><strong>One place for all of it.</strong> From advance directives to grief, including the topics other sites avoid.</li>
-<li><strong>Without judgment.</strong> We explain every legal option, from every available treatment to comfort care, hospice and medical aid in dying, and we don't steer you toward any of them. The choice belongs to the person whose life it is.</li>
-<li><strong>International.</strong> People live, own homes and die across borders. We say which country a rule applies to, and we're adding more places.</li>
-<li><strong>Dignity.</strong> Every person deserves to die on their own terms, with their wishes respected, and every family deserves clear, honest information.</li>
-</ul>
+<div class="cards cards-tight">
+${infoCard('plan', 'One place for all of it', 'From advance directives to grief, including the topics other sites avoid.')}
+${infoCard('scale', 'Without judgment', "We explain every legal option and don't steer you toward any of them. The choice belongs to the person whose life it is.")}
+${infoCard('globe', 'International', 'People live, own homes and die across borders. We say which country a rule applies to.')}
+${infoCard('loved', 'Dignity', 'Every person deserves to die on their own terms, and every family deserves clear, honest information.')}
+</div>
 <h2 id="funding">How we're funded</h2>
 <p><strong>End of Life Atlas is a voluntary site, made only to share information.</strong> It has no business model and needs no funding, so there is no one to please except the people reading it, and no reason to favor any option, provider or point of view.</p>
 <p>There is no advertising, no sponsorship, no referral fees and nothing for sale. The guides and checklists are free.</p>
@@ -1214,6 +1221,9 @@ export const notFound = {
   body: `
 <section class="section"><div class="wrap prose">
 <h1>Page not found</h1>
-<p class="lead" style="margin:20px 0">That page doesn't exist. Try the <a href="/">home page</a> or the <a href="/checklists/">checklists</a>.</p>
+<p class="lead" style="margin:20px 0">That page doesn't exist, or it has moved. These may help:</p>
+</div>
+<div class="wrap" style="margin-top:8px">${journeyCards()}
+<div style="margin-top:24px">${linkCards([['/ask/', 'Ask a question', 'Answers from this site, in your own words.'], ['/checklists/', 'Free printables', 'Worksheets, checklists and remembering books.'], ['/', 'Home page', 'Every part of the end of life.', 'maid']])}</div>
 </div></section>`,
 };
