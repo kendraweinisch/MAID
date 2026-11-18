@@ -154,6 +154,7 @@ export function home(data) {
 <h1>Every part of the end of life, explained.</h1>
 <p class="lead">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
 <div class="actions"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></div>
+<p class="small" style="margin:16px 0 0">Or <a href="/ask/">ask a question</a> in your own words.</p>
 <p class="edition">Reviewed ${fmtDate(site.lastVerified)} · Free · No ads</p>
 </div>
 </div>
@@ -1030,7 +1031,7 @@ ${updatesForm('updates')}
 <p class="lead" style="margin:20px 0">This is a sensitive subject, so we collect as little as we can.</p>
 <ul>
 <li>We use no advertising or tracking cookies.</li>
-<li>Checklists and the place picker run in your browser and save nothing.</li>
+<li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
 <li>If you sign up for updates or services, we store your email and what you told us, and use them only for what you asked for.</li>
 <li>We never sell or share your information with advertisers or providers.</li>
 <li>Please don't send medical details through our forms.</li>
@@ -1065,6 +1066,33 @@ ${updatesForm('updates')}
 <h2>Report a problem</h2>
 <p>If something on this site is hard to use, email accessibility@eolatlas.com and tell us the page and what happened. We'll reply within five business days and, where we can, give you the information in another way.</p>
 </div></section>`,
+  },
+  {
+    path: '/ask/',
+    title: 'Ask a question',
+    description: 'Ask a question about the end of life and get answers drawn only from End of Life Atlas pages, with links to read more. Private: nothing is stored or sent.',
+    body: `
+<section class="section"><div class="wrap prose">
+<p class="eyebrow">Ask the Atlas</p>
+<h1>Ask a question</h1>
+<p class="lead" style="margin:20px 0">Type a question in your own words. Answers come only from this site's guides, with a link to read more.</p>
+<p class="small muted">Private: your questions stay in your browser and are not stored or sent anywhere. This is information, not medical or legal advice. If you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline</a>.</p>
+<form id="ask-form" class="form ask-form" role="search" aria-label="Ask the Atlas">
+<div class="field"><label for="ask-input">Your question</label><input id="ask-input" name="q" type="text" autocomplete="off" required></div>
+<button class="btn" type="submit">Ask</button>
+</form>
+<div class="ask-try"><span class="small muted">Try:</span>
+<button type="button" class="chip" data-ask="What should I do in the first 24 hours after someone dies?">First 24 hours after a death</button>
+<button type="button" class="chip" data-ask="How much does a funeral cost?">Funeral costs</button>
+<button type="button" class="chip" data-ask="Is euthanasia legal in Canada?">Euthanasia in Canada</button>
+<button type="button" class="chip" data-ask="What is a lasting power of attorney?">Lasting power of attorney</button>
+<button type="button" class="chip" data-ask="How do I help a child who is grieving?">Helping a grieving child</button>
+</div>
+<ol id="ask-log" class="ask-log" aria-live="polite" aria-label="Answers"></ol>
+<p class="no-print"><button id="ask-clear" type="button" class="btn btn-quiet">Clear answers</button></p>
+<noscript><p>The assistant needs JavaScript. You can still browse <a href="/#where">where to start</a>.</p></noscript>
+</div></section>
+<script src="/assistant.js" defer></script>`,
   },
   {
     path: '/thanks/',
