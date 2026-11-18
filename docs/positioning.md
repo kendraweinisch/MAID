@@ -1,5 +1,11 @@
 # End of Life Atlas: positioning
 
+## Why it exists
+
+People need a single place to get all the information about end-of-life
+planning, in a nonjudgmental, international tone that respects each person's
+right to die with dignity.
+
 ## The promise
 
 **Every part of the end of life, explained plainly, for where you live.**

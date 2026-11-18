@@ -147,42 +147,46 @@ export function home(data) {
     body: `
 <section class="hero">
 <div class="wrap">
-<div class="hero-main">
-<p class="eyebrow">A plain guide to the end of life</p>
+<div class="plate">
+<img class="plate-map" src="/images/atlas-map.svg" alt="" width="1200" height="620" fetchpriority="high">
+<div class="plate-title">
+<p class="eyebrow">An atlas for the end of life</p>
 <h1>Every part of the end of life, explained.</h1>
-<p class="lead" style="margin-top:24px">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
-<p style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></p>
+<p class="lead">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
+<div class="actions"><a class="btn" href="#where">Find where to start</a><a class="btn btn-quiet" href="/after-a-death/">Someone has just died</a></div>
+<p class="edition">Reviewed ${fmtDate(site.lastVerified)} · Free · No ads</p>
 </div>
-<div class="hero-art">
-<img src="/images/atlas-map.svg" alt="" width="800" height="640" fetchpriority="high">
 </div>
+<div class="hero-after"></div>
 </div>
 </section>
 
 <section class="band section-tight" aria-labelledby="trust-h">
 <div class="wrap">
-<h2 id="trust-h" class="sr-only">What makes this different</h2>
+<h2 id="trust-h" class="eyebrow">About this atlas</h2>
 <div class="trust-row">
-<div><strong>Organized by what you're facing</strong><span class="muted">Not by what someone wants to sell you.</span></div>
-<div><strong>Checked and dated</strong><span class="muted">Every guide shows when it was last reviewed and links its sources.</span></div>
-<div><strong>Nothing to sell inside the guide</strong><span class="muted">No funding, no ads, no referral fees. <a href="/about/#funding">How we're funded</a></span></div>
-<div><strong>Every option, including the hard ones</strong><span class="muted">Hospice, home funerals, green burial and medical aid in dying, covered plainly.</span></div>
+<div><strong>One place for all of it</strong><span class="muted">Planning, illness, dying, grief and the paperwork in between, including the hard topics.</span></div>
+<div><strong>Without judgment</strong><span class="muted">Every legal option, from full treatment to medical aid in dying, explained plainly. The choice is always yours.</span></div>
+<div><strong>Wherever you live</strong><span class="muted">The rules differ by country. We say where each one applies, and we keep adding places.</span></div>
+<div><strong>Checked, dated, nothing to sell</strong><span class="muted">Every guide shows its sources and review date. No funding, no ads. <a href="/about/#funding">How we're funded</a></span></div>
+</div>
 </div>
 </div>
 </section>
 
 <section id="where" class="section" aria-labelledby="where-h">
 <div class="wrap">
+<p class="eyebrow">Contents</p>
 <h2 id="where-h">Where are you right now?</h2>
-<p class="sub" style="margin-bottom:32px">Start with what you're facing. Each guide is short, plain and links to the next step.</p>
-<div class="grid">
-<a class="card stage" href="/plan-ahead/"><span class="stage-n">1</span><strong>I want to plan ahead</strong><span class="muted small">Advance directives, a health care proxy, your wishes and your paperwork.</span></a>
-<a class="card stage" href="/serious-illness/"><span class="stage-n">2</span><strong>Someone I love is seriously ill</strong><span class="muted small">Palliative care, hospice, care at home, and the questions to ask.</span></a>
-<a class="card stage" href="/last-weeks/"><span class="stage-n">3</span><strong>Death may be weeks away</strong><span class="muted small">What to expect, comfort, being present, and saying goodbye.</span></a>
-<a class="card stage" href="/after-a-death/"><span class="stage-n">4</span><strong>Someone has just died</strong><span class="muted small">The first 24 hours, the first week, funerals and paperwork.</span></a>
-<a class="card stage" href="/grief/"><span class="stage-n">5</span><strong>I'm grieving</strong><span class="muted small">For adults, children and pets, and when to get more help.</span></a>
-<a class="card stage" href="${MAID}/"><span class="stage-n">+</span><strong>I'm considering medical aid in dying</strong><span class="muted small">Where it's legal, who qualifies and how the process works.</span></a>
-</div>
+<p class="sub" style="margin-bottom:32px">Start with what you’re facing. Each guide is short, plain and leads to the next step.</p>
+<ol class="contents">
+<li><a href="/plan-ahead/"><span class="c-num">01</span><span class="c-title">I want to plan ahead</span><span class="c-go">Read</span><span class="c-desc">Advance directives, a health care proxy, your wishes and your paperwork.</span></a></li>
+<li><a href="/serious-illness/"><span class="c-num">02</span><span class="c-title">Someone I love is seriously ill</span><span class="c-go">Read</span><span class="c-desc">Palliative care, hospice, care at home, and the questions to ask.</span></a></li>
+<li><a href="/last-weeks/"><span class="c-num">03</span><span class="c-title">Death may be weeks away</span><span class="c-go">Read</span><span class="c-desc">What to expect, comfort, being present, and saying goodbye.</span></a></li>
+<li><a href="/after-a-death/"><span class="c-num">04</span><span class="c-title">Someone has just died</span><span class="c-go">Read</span><span class="c-desc">The first 24 hours, the first week, funerals and paperwork.</span></a></li>
+<li><a href="/grief/"><span class="c-num">05</span><span class="c-title">I’m grieving</span><span class="c-go">Read</span><span class="c-desc">For adults, children and pets, and when to get more help.</span></a></li>
+<li><a href="${MAID}/"><span class="c-num">06</span><span class="c-title">I’m considering medical aid in dying</span><span class="c-go">Read</span><span class="c-desc">Where it’s legal, who qualifies and how the process works.</span></a></li>
+</ol>
 </div>
 </section>
 
@@ -231,13 +235,13 @@ ${placeOptions(data.places)}
 
 <section class="section" aria-label="Services">
 <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px">
-<div class="card" style="flex:999 1 560px;min-width:0;padding:36px">
+<div class="card" style="flex:999 1 560px;min-width:0">
 <p class="eyebrow">Paid service</p>
 <h2>Want a person to help you through it?</h2>
 <p class="sub">A navigator helps you or your family make sense of the options: planning documents, choosing hospice, arranging a funeral, handling paperwork after a death, or medical aid in dying.</p>
 <a class="btn" href="/navigation/">About navigation sessions</a>
 </div>
-<div class="card" style="flex:1 1 300px;min-width:0;padding:36px">
+<div class="card" style="flex:1 1 300px;min-width:0">
 <p class="eyebrow">For organizations</p>
 <h2 style="font-size:30px">Hospices, employers and insurers</h2>
 <p class="muted">License our guides and checklists for your patients, employees or members, or train your staff.</p>
@@ -262,7 +266,7 @@ export const guides = [
       { id: 'directive', h: 'Write an advance directive', html: `<p>An advance directive is a legal document that says what medical care you want if you can't speak for yourself. It usually has two parts:</p>
 <ul><li><strong>A living will:</strong> the treatments you would and wouldn't want, such as breathing machines or tube feeding.</li>
 <li><strong>A health care power of attorney:</strong> the person who decides for you (your health care proxy or agent).</li></ul>
-<p>Each US state has its own form and its own rules about witnesses or notaries. Forms are free; you don't need a lawyer. Give copies to your proxy and your doctor, and keep the original where it can be found.</p>` },
+<p>The names, forms and rules differ by country. In the US, each state has its own form and rules about witnesses or notaries. In England and Wales, the equivalents are an advance decision and a lasting power of attorney for health and welfare. Forms are usually free, and you often don't need a lawyer. Give copies to your proxy and your doctor, and keep the original where it can be found.</p>` },
       { id: 'proxy', h: 'Choose your health care proxy', html: `<p>Pick someone who will follow your wishes even if they disagree, can stay calm under pressure, and can be reached quickly. Name a backup. Then tell them, in detail, what matters to you.</p>` },
       { id: 'talk', h: 'Have the conversation', html: `<p>The document matters less than the conversation behind it. Useful questions to talk through:</p>
 <ul><li>What would make life not worth living for you? What would you be willing to go through for more time?</li>
@@ -360,12 +364,12 @@ export const guides = [
     lead: 'A serious diagnosis brings a flood of decisions. These are the options most families wish they had heard about sooner.',
     sections: [
       { id: 'palliative', h: 'Palliative care: at any stage', html: `<p>Palliative care is specialist care for pain, symptoms and stress. You can have it at any stage of a serious illness, alongside treatment aimed at a cure. Ask for a palliative care referral early; many people only hear about it near the end.</p>` },
-      { id: 'hospice', h: 'Hospice: when the focus turns to comfort', html: `<p>Hospice is care focused on comfort when a cure is no longer the goal. In the US, Medicare covers hospice when a doctor certifies a life expectancy of six months or less if the illness runs its usual course. It includes the care team, comfort medications and equipment, usually at home.</p>
+      { id: 'hospice', h: 'Hospice: when the focus turns to comfort', html: `<p>Hospice is care focused on comfort when a cure is no longer the goal. It exists in most countries, though how it's organized and paid for differs. In the US, Medicare covers hospice when a doctor certifies a life expectancy of six months or less if the illness runs its usual course. It includes the care team, comfort medications and equipment, usually at home.</p>
 <ul><li>Choosing hospice usually means stopping treatment meant to cure the terminal illness, but not other care.</li>
 <li>You can leave hospice and go back to curative treatment if you change your mind.</li>
-<li>Many families say they wish they had started hospice sooner.</li></ul>` },
-      { id: 'polst', h: 'POLST: medical orders for now', html: `<p>An advance directive covers the future. A POLST form (also called MOLST, POST or MOST, depending on the state) is a medical order signed by a clinician for someone who is seriously ill now. It tells emergency crews and hospitals what treatment you want, such as whether to attempt CPR.</p>` },
-      { id: 'where', h: 'Where care happens', html: `<p>Care can happen at home with help from family, aides and a hospice team; in assisted living or a nursing home; or in an inpatient hospice. Ask what each option costs and what insurance or Medicaid covers before you decide.</p>` },
+<li>Many families say they wish they had known about hospice sooner.</li></ul>` },
+      { id: 'polst', h: 'Medical orders for now (POLST)', html: `<p>An advance directive covers the future. In the US, a POLST form (also called MOLST, POST or MOST, depending on the state) is a medical order signed by a clinician for someone who is seriously ill now. It tells emergency crews and hospitals what treatment you want, such as whether to attempt CPR. Other countries use similar forms, such as ReSPECT in the UK; ask the care team what is used where you live.</p>` },
+      { id: 'where', h: 'Where care happens', html: `<p>Care can happen at home with help from family, aides and a hospice team; in assisted living or a nursing home; or in an inpatient hospice. Ask what each option costs and what insurance or public programs cover before you decide.</p>` },
       { id: 'ask', h: 'Questions to ask the doctor', html: `<p>What is likely to happen next? What are the treatment options, and what would each one mean for my daily life? What would you do in my place? Bring someone to take notes.</p>
 <p><a href="/checklists/questions-for-the-doctor/">Print the full list of questions</a>.</p>` },
       { id: 'caregivers', h: 'If you are the caregiver', html: `<p>Caregiving is work. Ask for help with specific tasks, accept it when it's offered, and ask the care team about respite care, which gives family caregivers a break.</p>` },
@@ -387,13 +391,22 @@ export const guides = [
     title: 'The last weeks',
     eyebrow: 'Stage 3',
     description: 'What to expect in the last weeks and days of life, how to keep someone comfortable, end-of-life doulas, and saying goodbye.',
-    lead: 'Knowing what is normal near the end makes it less frightening, for the person who is dying and for the people with them.',
+    lead: 'Dying is often slower and harder than people expect. Knowing what it can really be like helps you prepare, ask for the right help, and decide what you want.',
     sections: [
-      { id: 'expect', h: 'What to expect', html: `<p>As death comes closer, many people sleep more, eat and drink less, and withdraw from conversation. Breathing may change and hands and feet may feel cool. These changes are usually a normal part of dying, not signs of suffering. The hospice team can explain what you are seeing.</p>` },
-      { id: 'comfort', h: 'Keeping someone comfortable', html: `<p>Comfort comes first: pain and breathlessness can be treated, so tell the care team about any sign of distress. Small things help too: moistening the lips, changing position, soft light, familiar voices and music.</p>` },
+      { id: 'honest', h: 'What dying can really be like', html: `<p>Some deaths are peaceful. Many are not, especially after a long illness. It helps to know what can happen, so that it doesn't come as a shock:</p>
+<ul>
+<li><strong>Wasting.</strong> People can lose a great deal of weight and muscle, until they look very different from the person you knew.</li>
+<li><strong>Exhaustion and dependence.</strong> Many need help to wash, eat, use the toilet and turn in bed. For someone who valued their independence, this can be the hardest part.</li>
+<li><strong>Pain and breathlessness.</strong> Both can usually be eased, but not always completely, and not always quickly.</li>
+<li><strong>Confusion and agitation.</strong> Delirium is common near the end. Someone may not recognize their family, or may be restless and distressed.</li>
+<li><strong>The last days.</strong> People sleep most of the time and stop eating and drinking. Breathing often changes, with long pauses or a rattling sound. That sound is usually more distressing to hear than to have.</li>
+</ul>
+<p>None of this means anyone has failed. It's what a body does as it shuts down. And it's reasonable to find it unbearable to watch, or to know you don't want it for yourself.</p>` },
+      { id: 'comfort', h: 'Easing suffering', html: `<p>Tell the care team about every sign of pain, breathlessness, agitation or fear, and ask again if it doesn't improve. Palliative care teams have more options than most people realize, including medication to calm agitation and, when suffering can't be eased any other way, sedation. Small things help too: moistening the lips, changing position, soft light, familiar voices and music.</p>` },
+      { id: 'dignity', h: 'Dignity, in their terms', html: `<p>Ask the person, while they can answer, what dignity means to them: who they want to help with personal care, what they don't want visitors to see, what they want to wear, what they never want done. Write it down and share it with the care team. Some people, knowing what the end may involve, choose to stop treatments, refuse food and drink near the end, or ask for <a href="/medical-aid-in-dying/">medical aid in dying</a> where it is legal. Others want every day they can have. Each is a legitimate choice.</p>` },
       { id: 'doulas', h: 'End-of-life doulas', html: `<p>An end-of-life doula gives non-medical support to the dying person and their family: planning the last days, sitting vigil, and helping afterward. They work alongside hospice, not instead of it.</p>` },
       { id: 'goodbye', h: 'Saying goodbye', html: `<p>Hearing is thought to be one of the last senses to fade, so keep talking. Many people find it helps to say five things: thank you, I love you, I forgive you, please forgive me, and goodbye. It's also fine to step out. Some people die when their family has just left the room.</p>` },
-      { id: 'prepare', h: 'Prepare for the moment of death', html: `<p>Decide in advance who to call. If the person is in hospice at home, call the hospice, not 911. Keep the <a href="/checklists/after-a-death/">first-24-hours checklist</a> nearby.</p>` },
+      { id: 'prepare', h: 'Prepare for the moment of death', html: `<p>Decide in advance who to call. If the person is in hospice at home, call the hospice, not emergency services. Keep the <a href="/checklists/after-a-death/">first-24-hours checklist</a> nearby.</p>` },
     ],
     sources: [
       ['National Institute on Aging: end of life', 'https://www.nia.nih.gov/health/end-of-life'],
@@ -414,7 +427,7 @@ export const guides = [
     lead: 'Very little has to happen in the first hours. This guide separates what is urgent from what can wait.',
     sections: [
       { id: 'first-hours', h: 'The first hours', html: `<ul><li><strong>Expected death at home with hospice:</strong> call the hospice. They will confirm the death and help with next steps.</li>
-<li><strong>Unexpected death:</strong> call 911.</li>
+<li><strong>Unexpected death:</strong> call your local emergency number (911 in the US and Canada, 999 in the UK, 112 across the EU).</li>
 <li><strong>In a hospital or care home:</strong> staff will guide you.</li></ul>
 <p>There is usually no rush to move the body. You can take time to sit, say goodbye, and call family.</p>
 <p><a href="/checklists/after-a-death/">Print the first-24-hours checklist</a>.</p>` },
@@ -424,18 +437,18 @@ export const guides = [
 <li><strong>Body donation:</strong> usually arranged in advance with a program.</li>
 <li><strong>Home funeral:</strong> most states allow families to care for their own dead; some require a funeral director for certain steps.</li></ul>
 <p>A service can happen weeks later, in any form you like.</p>` },
-      { id: 'rights', h: 'Your rights with funeral homes', html: `<p>In the US, the FTC Funeral Rule gives you the right to:</p>
+      { id: 'rights', h: 'Your rights with funeral homes', html: `<p>Wherever you are, ask for written, itemized prices before you agree to anything. In the US, the FTC Funeral Rule gives you the right to:</p>
 <ul><li>Get an itemized price list, in person, and prices by phone.</li>
 <li>Buy only the goods and services you want.</li>
 <li>Use a casket or urn bought elsewhere, without a handling fee.</li>
 <li>Refuse embalming in most cases. Ask what the law actually requires.</li></ul>
 <p>Prices vary widely. Calling two or three funeral homes can save thousands of dollars.</p>` },
       { id: 'first-month', h: 'The first month', html: `<ul><li>Find the will, and contact the executor named in it.</li>
-<li>Notify Social Security (the funeral home often does this), pension plans, insurers and banks.</li>
+<li>Notify the government pension or social security agency (in the US, Social Security; the funeral home often does this), other pension plans, insurers and banks.</li>
 <li>Claim life insurance and any benefits; ask about survivor benefits.</li>
 <li>Cancel or transfer utilities, subscriptions and accounts. Keep paying essential bills.</li>
 <li>Forward mail, secure the home and car, and look after pets.</li></ul>` },
-      { id: 'probate', h: 'Probate and the estate', html: `<p>Probate is the court process for settling an estate. Accounts with a named beneficiary and jointly owned property usually pass outside it, and every state has a simpler process for small estates. If the estate is large or complicated, talk to a probate lawyer.</p>
+      { id: 'probate', h: 'Probate and the estate', html: `<p>Probate is the legal process for settling an estate; its name and steps differ by country. Accounts with a named beneficiary and jointly owned property often pass outside it, and many places, including every US state, have a simpler process for small estates. If the estate is large or complicated, talk to a probate lawyer.</p>
 <p>If they owned property in another country, see <a href="/plan-ahead/property-abroad/#after">property abroad</a>.</p>` },
     ],
     sources: [
@@ -458,6 +471,8 @@ export const guides = [
     sections: [
       { id: 'normal', h: "What's normal", html: `<p>Sadness, numbness, anger, guilt, relief and trouble sleeping or concentrating are all common. Grief often comes in waves, set off by dates, places and songs. Relief after a long illness is normal too, and doesn't mean you loved them less.</p>` },
       { id: 'anticipatory', h: 'Grief before a death', html: `<p>Many people start grieving during a long illness. It's called anticipatory grief, and it's normal to feel it while also caring for someone.</p>` },
+      { id: 'witnessed', h: 'If you watched a hard death', html: `<p>Watching someone you love waste away, suffer or lose themselves can leave lasting images: intrusive memories, nightmares, or guilt about what you couldn't stop. That isn't a weakness, and it is worth talking to someone about, especially a grief counselor who understands trauma.</p>
+<p>Many people find that watching a death changes what they want for their own. If it has for you, write it down while it's clear: what you would want, what you would refuse, and who should speak for you. Our <a href="/plan-ahead/">plan-ahead guide</a> and <a href="/checklists/plan-ahead/">worksheet</a> can help.</p>` },
       { id: 'children', h: 'Helping children', html: `<ul><li>Use clear words: "died," not "went to sleep" or "we lost her," which can confuse or frighten.</li>
 <li>Answer questions honestly and simply; it's fine to say you don't know.</li>
 <li>Let children choose whether to take part in goodbyes and funerals.</li>
@@ -511,9 +526,9 @@ export const checklists = [
     description: 'A printable checklist for the first day after someone dies: who to call, and what can wait.',
     lead: 'Very little is urgent. Do these in order, and leave the rest for later.',
     groups: [
-      { h: 'Right away', items: ['Expected death with hospice: call the hospice. Unexpected death: call 911.', 'Take a moment. There is usually no rush to move the body.', 'Call one person to be with you.'] },
+      { h: 'Right away', items: ['Expected death with hospice: call the hospice. Unexpected death: call your local emergency number (911 in the US and Canada, 999 in the UK, 112 in the EU).', 'Take a moment. There is usually no rush to move the body.', 'Call one person to be with you.'] },
       { h: 'Within the day', items: ['Tell close family and friends, or ask someone to do it.', 'Choose a funeral home or cremation provider. Ask for the itemized price list.', 'Look for written wishes about the body and the funeral.', 'Arrange care for children and pets, and secure the home.'] },
-      { h: 'This can wait a few days', items: ['Order certified copies of the death certificate.', 'Find the will and contact the executor.', 'Notify Social Security, employers, banks and insurers.', 'Plan the service. It can happen weeks later.'] },
+      { h: 'This can wait a few days', items: ['Order certified copies of the death certificate.', 'Find the will and contact the executor.', 'Notify the social security or pension agency, employers, banks and insurers.', 'Plan the service. It can happen weeks later.'] },
     ],
     note: 'If you are struggling, you do not have to do this alone. Ask a friend, the hospice team or a navigator for help.',
   }),
@@ -551,6 +566,20 @@ export function maidHub(data) {
 </div>
 </section>
 <section class="section"><div class="wrap">
+<div class="prose" style="margin-bottom:48px">
+<h2>Why people ask</h2>
+<p>Oregon has published data on every person who has used its law since 1998. In 2025, the concerns people gave were:</p>
+<ul>
+<li>Losing their autonomy: 89%</li>
+<li>Being less able to do the things that made life enjoyable: 89%</li>
+<li>Losing their dignity: 65%</li>
+<li>Losing control of bodily functions: 53%</li>
+<li>Being a burden on family, friends or caregivers: 40%</li>
+<li>Inadequate pain control, or worry about it: 37%</li>
+</ul>
+<p>For most people, it is about how they would have to live their last weeks, not only about pain.</p>
+<p class="small muted">Source: <a href="https://www.oregon.gov/oha/ph/providerpartnerresources/evaluationresearch/deathwithdignityact/Documents/year28.pdf">Oregon Health Authority, 2025 Death with Dignity Act Data Summary (PDF)</a></p>
+</div>
 <div class="grid grid-wide" style="margin-bottom:56px">
 <a class="card" href="${MAID}/process/"><strong>How the process works</strong><span class="muted small">The steps, and why starting early matters.</span></a>
 <a class="card" href="${MAID}/families/"><strong>For families</strong><span class="muted small">Talking about it, the day itself, insurance and grief.</span></a>
@@ -749,7 +778,16 @@ ${updatesForm('updates')}
     body: `
 <section class="section"><div class="wrap prose">
 <h1>About End of Life Atlas</h1>
-<p class="lead" style="margin:20px 0">A plain, trustworthy guide to every part of the end of life, from planning ahead to grief, with the rules for where you live.</p>
+<p class="lead" style="margin:20px 0">A single place for everything about the end of life: plain, international, without judgment, and respectful of each person's right to die with dignity.</p>
+<h2 id="why">Why this atlas exists</h2>
+<p>Planning for the end of life usually means piecing things together from doctors, lawyers, funeral homes, governments and advocacy groups. Each covers one part, often for one country, and some have something to sell or a position to promote. End of Life Atlas brings it together in one place.</p>
+<h2 id="principles">What we believe</h2>
+<ul>
+<li><strong>One place for all of it.</strong> From advance directives to grief, including the topics other sites avoid.</li>
+<li><strong>Without judgment.</strong> We explain every legal option, from every available treatment to comfort care, hospice and medical aid in dying, and we don't steer you toward any of them. The choice belongs to the person whose life it is.</li>
+<li><strong>International.</strong> People live, own homes and die across borders. We say which country a rule applies to, and we're adding more places.</li>
+<li><strong>Dignity.</strong> Every person deserves to die on their own terms, with their wishes respected, and every family deserves clear, honest information.</li>
+</ul>
 <h2 id="funding">How we're funded</h2>
 <p><strong>End of Life Atlas currently has no funding.</strong> It is built and maintained independently, and it earns no money. The guides and checklists are free.</p>
 <p>We take no advertising, no referral fees and no payments from hospices, funeral homes, clinicians, pharmacies or assisted-dying organizations.</p>
