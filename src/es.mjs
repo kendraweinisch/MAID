@@ -366,7 +366,8 @@ const cuentas = esGuide({
 <li>Su bandeja de entrada: los correos de bienvenida, los recibos y los avisos de inicio de sesión muestran qué servicios usaban.</li>
 <li>Los extractos del banco y de las tarjetas, para las suscripciones y los pagos periódicos.</li>
 <li>Las aplicaciones de su teléfono y de su computadora.</li>
-</ul>` },
+</ul>
+<p>Para llevar la cuenta de cada una, use la <a href="/es/lista-cuentas-en-linea/">lista para imprimir</a>.</p>` },
     { id: 'conmemorar', h: '¿Convertirla en conmemorativa o cerrarla?', html: `<p>Algunos servicios, como Facebook, Instagram y LinkedIn, pueden convertir un perfil en conmemorativo en lugar de borrarlo. Un perfil conmemorativo sigue visible para que los amigos compartan recuerdos, pero nadie puede entrar en él. Cerrarlo lo elimina. Háblenlo primero en familia: a algunas personas les reconforta una página conmemorativa y a otras les duele. Si la persona dejó deseos sobre esto, respételos.</p>` },
     { id: 'redes', h: 'Redes sociales', html: `
 <h3>Facebook</h3>
@@ -406,8 +407,8 @@ const cuentas = esGuide({
 <p>Más en <a href="/es/planificar/#papeles">ponga sus papeles en orden</a>.</p>` },
   ],
   related: [
+    ['/es/lista-cuentas-en-linea/', 'Lista para imprimir', 'Para ir cuenta por cuenta, también en PDF.', 'printer'],
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Las primeras horas, el funeral y el primer mes.', 'afterdeath'],
-    ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Lista para imprimir.', 'printer'],
     ['/es/planificar/', 'Planificar con tiempo', 'Para sus propias cuentas.', 'plan'],
   ],
   sources: [
@@ -421,6 +422,69 @@ const cuentas = esGuide({
     ['PayPal: cuenta de un familiar fallecido (en inglés)', 'https://www.paypal.com/us/cshelp/article/how-do-i-close-the-paypal-account-of-a-deceased-relative-help220'],
   ],
 });
+
+const blankEs = '<span class="blank" aria-hidden="true"></span>';
+const FILAS = ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'Google (Gmail, Fotos, YouTube)', 'Apple (iCloud)', 'Microsoft (Outlook, Hotmail, OneDrive)', 'PayPal', '', '', '', '', '', ''];
+
+const listaCuentas = {
+  path: '/es/lista-cuentas-en-linea/',
+  title: 'Cerrar sus cuentas en línea',
+  seoTitle: 'Lista para cerrar las cuentas en línea de una persona fallecida (para imprimir)',
+  description: 'Una lista para imprimir para cerrar o convertir en conmemorativas las cuentas en línea de una persona que murió: qué guardar primero, dónde buscar, qué documentos necesita y una tabla para cada cuenta.',
+  body: `
+<section class="section">
+<div class="wrap prose">
+<p class="eyebrow">Lista para imprimir</p>
+<h1>Cerrar sus cuentas en línea</h1>
+<p class="lead" style="margin:20px 0">No hay prisa. Guarde primero lo que importa y luego vaya cuenta por cuenta. El proceso de cada empresa, con enlaces, está en nuestra guía: <a href="/es/cuentas-en-linea/">eolatlas.org/es/cuentas-en-linea</a>.</p>
+${dlPanelEs('lista-cuentas-en-linea')}
+<div class="no-print">${reviewNote}</div>
+<h2>Antes de cerrar nada</h2>
+<ul class="check">
+<li>Descargue o copie las fotos, los videos, los mensajes y los documentos que la familia quiera conservar.</li>
+<li>Mantenga activo su número de teléfono (allí llegan los códigos de acceso) hasta: ${blankEs}</li>
+<li>Mantenga activo su correo principal hasta que se cierren las demás cuentas.</li>
+<li>Avise al albacea de cualquier dinero en cuentas en línea: aplicaciones de pago, crédito en tiendas, tarjetas de regalo, monedas digitales.</li>
+<li>Hablen en familia de qué cuentas convertir en conmemorativas y cuáles cerrar. Sus deseos, si los dejó: ${blankEs}</li>
+</ul>
+<h2>Encuentre sus cuentas</h2>
+<ul class="check">
+<li>Gestor de contraseñas o lista escrita. Dónde está: ${blankEs}</li>
+<li>Revisé su bandeja de entrada: correos de bienvenida, recibos y avisos de inicio de sesión.</li>
+<li>Revisé los extractos del banco y de las tarjetas: suscripciones y pagos periódicos.</li>
+<li>Anoté las aplicaciones de su teléfono y su computadora.</li>
+</ul>
+<h2>Lo que puede necesitar</h2>
+<ul class="check">
+<li>Copias certificadas del certificado de defunción (cuántas: ${blankEs})</li>
+<li>Su propia identificación con foto</li>
+<li>Prueba de su autoridad, si es el albacea: el testamento o las cartas del tribunal</li>
+<li>Un enlace a la esquela o al aviso de defunción (algunos servicios lo aceptan como prueba)</li>
+<li>Para Apple: la clave de acceso, si usted es su contacto de legado</li>
+</ul>
+<div class="wb-page">
+<h2>Cada cuenta</h2>
+<p class="muted small">Decida: convertir en conmemorativa, cerrar o mantener por ahora. Anote la fecha en que envió la solicitud y marque cuando esté hecho.</p>
+<div class="table-box print-table" tabindex="0" role="region" aria-label="Cuentas para cerrar o convertir en conmemorativas"><table class="acct-table">
+<caption class="sr-only">Cuentas para cerrar o convertir en conmemorativas</caption>
+<thead><tr><th scope="col">Servicio</th><th scope="col">Su usuario o correo</th><th scope="col">Conmemorar, cerrar o mantener</th><th scope="col">Solicitud enviada</th><th scope="col">Hecho</th></tr></thead>
+<tbody>
+${FILAS.map((n) => `<tr><td>${n || '<span class="sr-only">Otro servicio</span>'}</td><td></td><td></td><td></td><td><span class="tick" aria-hidden="true"></span></td></tr>`).join('\n')}
+</tbody></table></div>
+</div>
+<h2>Suscripciones para cancelar</h2>
+<ul class="check">
+<li>Servicios de streaming: ${blankEs}</li>
+<li>Aplicaciones y membresías: ${blankEs}</li>
+<li>Almacenamiento en la nube: ${blankEs}</li>
+<li>Pedí al banco o al emisor de la tarjeta que detenga los pagos periódicos (fecha): ${blankEs}</li>
+<li>Guardé una lista de todo lo cancelado, para el albacea.</li>
+</ul>
+<p class="muted small">Información, no consejo legal. Las empresas cambian sus procesos; consulte la página de ayuda de cada una.</p>
+<p class="muted small print-only">De End of Life Atlas · eolatlas.org · Información, no consejo médico ni legal. Traducción pendiente de revisión; para avisar de un error: eolatlas.org/suggestions</p>
+</div>
+</section>`,
+};
 
 const primeras24 = {
   path: '/es/primeras-24-horas/',
@@ -635,7 +699,7 @@ ${linkCards([
     ['/es/senales-de-que-la-muerte-esta-cerca/', 'Señales de que la muerte está cerca', 'Qué esperar y qué ayuda.', 'lastweeks'],
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Lo urgente y lo que puede esperar.', 'afterdeath'],
     ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Una lista para imprimir, también en PDF.', 'printer'],
-    ['/es/cuentas-en-linea/', 'Cerrar sus cuentas en línea', 'Redes sociales, correo, nube y pagos.', 'key'],
+    ['/es/cuentas-en-linea/', 'Cerrar sus cuentas en línea', 'Redes sociales, correo, nube y pagos, con lista para imprimir.', 'key'],
     ['/es/duelo/', 'Duelo', 'Qué es normal, los niños, y cuándo pedir ayuda.', 'grief'],
     ['/es/preguntar/', 'Haga una pregunta', 'Respuestas de las páginas en español de este sitio.', 'ask'],
   ], 'cards')}
@@ -672,4 +736,4 @@ const preguntar = {
 <script src="/assistant.js" defer></script>`,
 };
 
-export const esPages = [inicio, ...esJourneys, planificar, directivas, paliativos, senales, despues, cuentas, primeras24, duelo, preguntar];
+export const esPages = [inicio, ...esJourneys, planificar, directivas, paliativos, senales, despues, cuentas, listaCuentas, primeras24, duelo, preguntar];
