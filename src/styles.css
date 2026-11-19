@@ -61,8 +61,11 @@ p { margin: 0 0 16px; }
 /* Masthead */
 .site-header { border-bottom: 4px double var(--ink); }
 .header-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; padding-top: 26px; padding-bottom: 22px; }
-.brand { font-family: var(--serif); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
-.brand span { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.brand { font-family: var(--serif); font-size: 30px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 14px; }
+.brand .logo-mark { width: 50px; height: 50px; flex: none; color: var(--ink); }
+.brand-text { display: flex; flex-direction: column; gap: 4px; line-height: 1.05; }
+.brand .brand-tag { font-family: var(--mono); font-size: 12px; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.brand:hover .brand-name { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
 .header-tools { display: flex; align-items: center; gap: 12px 20px; flex: 0 1 520px; min-width: 0; }
 .site-search { display: flex; flex: 1 1 auto; min-width: 0; }
 .lang-switch { font-family: var(--mono); font-size: 14px; letter-spacing: .04em; color: var(--ink); white-space: nowrap; padding: 12px 2px; }
@@ -184,7 +187,9 @@ tbody tr + tr { border-top: 1px solid var(--rule); }
   body { font-size: 18px; }
   .crisis { font-size: 13px; padding: 8px 16px; }
   .wrap, .wrap.section, .wrap.section-tight { padding-left: 18px; padding-right: 18px; }
-  .brand span { display: none; }
+  .brand .brand-tag { display: none; }
+  .brand .logo-mark { width: 40px; height: 40px; }
+  .brand { gap: 10px; }
   .nav { gap: 0 20px; padding-top: 2px; padding-bottom: 2px; }
   .nav a { padding: 8px 0; }
   .header-tools { flex: 1 1 100%; }

@@ -115,6 +115,7 @@ const INLINE = {
     ["a legal document that says what medical care you want if you can't speak for yourself", 'https://www.nia.nih.gov/health/advance-care-planning/advance-care-planning-advance-directives-health-care'],
   ],
   '/plan-ahead/choices-for-the-body/': [
+    ['Anatomists recommend a university medical school or a state anatomical program', 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
     ['The EPA must be told within 30 days', 'https://www.epa.gov/ocean-dumping/burial-sea'],
     ['needs a marine licence from the Marine Management Organisation', 'https://www.gov.uk/burial-at-sea'],
     ['it was legal in about 28 states as of January 2026', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
@@ -289,7 +290,7 @@ ${groups
   )
   .join('\n')}
 ${note ? `<p class="muted small">${note}</p>` : ''}
-<p class="muted small print-only">From End of Life Atlas · eolatlas.com · Information, not medical or legal advice.</p>
+<p class="muted small print-only">From End of Life Atlas · eolatlas.org · Information, not medical or legal advice.</p>
 </div>
 </section>`,
   };
@@ -497,7 +498,18 @@ export const guides = [
 <li><strong>Divide them</strong> among family members, so each can keep or scatter a part.</li>
 <li><strong>Keepsakes:</strong> small amounts can be made into jewelry, glass, or even lab-grown diamonds, or sent on a memorial spaceflight.</li></ul>` },
       { id: 'donation', h: 'Body and organ donation', html: `<p><strong>Organ and tissue donation</strong> can help others and is compatible with almost every option above, including an open-casket funeral. Register with your country or state donor registry and tell your family.</p>
-<p><strong>Whole-body donation</strong> to a medical school or research program is a different thing. It usually has to be arranged in advance, and many programs cover cremation afterward and return the ashes. Programs can decline a donation, for example because of certain illnesses or if an autopsy was done, so have a backup plan.</p>` },
+<p><strong>Whole-body donation</strong> to a medical school or research program is a different thing. It usually has to be arranged in advance, and many programs cover cremation afterward and return the ashes. Programs can decline a donation, for example because of certain illnesses or if an autopsy was done, so have a backup plan.</p>
+<p><strong>Choose the program carefully.</strong> In the US there is no single national registry for whole-body donation: you sign up with a program directly. Anatomists recommend a university medical school or a state anatomical program. Some private companies (sometimes called body brokers) also accept bodies, and only some states regulate them, so ask any program what happens to the body, whether parts may be sold, and when the ashes are returned. If you also want to be an organ donor, ask the program whether it accepts both.</p>
+<p><strong>Where to register or start:</strong></p>
+<div class="cards cards-tight">
+${dirCard('https://registerme.org/', 'Register Me (Donate Life America)', 'US · organ donation', 'Join the national organ, eye and tissue donor registry, or update your choice.')}
+${dirCard('https://www.organdonor.gov/', 'OrganDonor.gov', 'US · government', 'Official US information on organ, eye and tissue donation.')}
+${dirCard('https://funerals.org/get-help/making-decisions/body-organ-and-brain-donation/', 'Funeral Consumers Alliance: body donation', 'US · nonprofit', 'How whole-body, organ and brain donation work, and questions to ask a program.')}
+${dirCard('https://www.organdonation.nhs.uk/register-your-decision/', 'NHS Organ Donor Register', 'UK · organ donation', 'Record your decision to donate, or not.')}
+${dirCard('https://www.hta.gov.uk/donating-your-body', 'Human Tissue Authority: donating your body', 'UK · whole body', 'How body donation works in the UK, and the licensed medical schools to contact.')}
+${dirCard('https://www.organtissuedonation.ca/', 'Organ and tissue donation in Canada', 'Canada', 'Links to the donor registry in each province and territory.')}
+${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register on the Australian Organ Donor Register.')}
+</div>` },
       { id: 'home', h: 'A home funeral', html: `<p>Whatever the final choice, a family can care for the body at home for a day or more before burial or cremation: washing, dressing and sitting with them. Most US states allow families to do this; some require a funeral director for certain steps. End-of-life doulas can help.</p>` },
       { id: 'other', h: 'Other choices people ask about', html: `<p><strong>Cryonics</strong> preserves a body or brain at very low temperatures in the hope that future science could revive it. It is very expensive, offered by only a few organizations, and there is no evidence yet that revival is possible.</p>` },
       { id: 'greenest', h: 'Which choice is the most environmentally friendly?', html: `<p><strong>Natural (green) burial is generally the lowest-impact choice,</strong> especially in a conservation burial ground where the land is protected for good.</p>
@@ -534,6 +546,7 @@ export const guides = [
       ['GOV.UK: burial at sea', 'https://www.gov.uk/burial-at-sea'],
       ['Montana Legislature: background paper on natural organic reduction and alkaline hydrolysis (January 2026, PDF)', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
       ['Green Burial Council', 'https://www.greenburialcouncil.org/'],
+      ['American Association for Anatomy: a discussion on body donation', 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
       ['Funeral Consumers Alliance', 'https://www.funerals.org/'],
       ['Hedgehog: comparative life-cycle study for DELA', 'https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies'],
       ['Green Burial Council: environmental benefits and costs of disposition (PDF)', 'https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf'],

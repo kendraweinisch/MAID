@@ -19,7 +19,7 @@ out = PdfWriter()
 out.append(front, outline_item='Cover and contents')
 for slug in slugs:
     out.append(PdfReader(f'public/printables/{slug}.pdf'), outline_item=meta[slug]['title'].split(' | ')[0])
-out.add_metadata({'/Title': 'The End of Life Atlas binder', '/Author': 'End of Life Atlas (eolatlas.com)'})
+out.add_metadata({'/Title': 'The End of Life Atlas binder', '/Author': 'End of Life Atlas (eolatlas.org)'})
 out.compress_identical_objects()
 with open('public/printables/binder.pdf', 'wb') as f:
     out.write(f)

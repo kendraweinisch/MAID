@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Served at https://kendraweinisch.github.io/maid/ until eolatlas.com is connected.
+      # Served at https://kendraweinisch.github.io/maid/ until eolatlas.org is connected.
       # After connecting the domain, set the repository variable BASE_PATH to "/".
       BASE_PATH: ${{ vars.BASE_PATH || '/maid' }}
       # Set the repository variable SITE_INDEXABLE to "true" at launch.

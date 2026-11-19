@@ -70,7 +70,7 @@ const drawBox = (h = 260) => `<div class="draw-box" style="height:${h}px" aria-h
 const blank = '<span class="blank" aria-hidden="true"></span>';
 
 const printButton = `<p class="no-print"><button class="btn" type="button" onclick="window.print()">Print this</button></p>`;
-const footer = `<p class="muted small print-only">From End of Life Atlas · eolatlas.com · Free to print and share.</p>`;
+const footer = `<p class="muted small print-only">From End of Life Atlas · eolatlas.org · Free to print and share.</p>`;
 
 function page({ path, title, description, kind, lead, intro = '', body }) {
   return {
@@ -320,7 +320,7 @@ ${m ? `<div class="dl-panel no-print"><img src="/thumbs/binder.png" alt="" width
 <h2>Contents</h2>
 <p class="muted small">${total} pages. Fill in by hand. Skip anything that doesn't fit.</p>
 ${rows}
-<p class="muted small">Your state's advance directive form is not included, because each state has its own: find yours at eolatlas.com/plan-ahead/advance-directives/ and keep it in this binder.</p>
+<p class="muted small">Your state's advance directive form is not included, because each state has its own: find yours at eolatlas.org/plan-ahead/advance-directives/ and keep it in this binder.</p>
 </div>
 ${footer}
 </div>

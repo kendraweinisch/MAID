@@ -1,4 +1,4 @@
-# End of Life Atlas (eolatlas.com)
+# End of Life Atlas (eolatlas.org)
 
 A plain, trustworthy guide to every part of the end of life: planning ahead,
 serious illness, the last weeks, after a death, and grief. Medical aid in dying
@@ -74,19 +74,26 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 
 | Variable | Default | What it does |
 |---|---|---|
-| `BASE_PATH` | `/maid` | Sub-folder the site is served from. Set to `/` once eolatlas.com is connected. |
+| `BASE_PATH` | `/maid` | Sub-folder the site is served from. Set to `/` once eolatlas.org is connected. |
 | `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
 
-### Connecting eolatlas.com
+### Connecting eolatlas.org (Netlify, where the site runs now)
+
+1. Buy eolatlas.org (any registrar, or in Netlify: **Domain management > Add a domain**).
+2. In Netlify: **Domain management > Add a domain** > `eolatlas.org`, and make it the primary domain.
+3. Follow Netlify's DNS steps (use Netlify DNS, or add the records it shows at your registrar). HTTPS is set up automatically.
+4. When the site is ready for search engines, set `SITE_INDEXABLE = "true"` in `netlify.toml`.
+
+### Connecting eolatlas.org on GitHub Pages (the older setup)
 
 1. Buy the domain.
-2. **Settings > Pages > Custom domain**: enter `eolatlas.com`, then tick **Enforce HTTPS** once it's offered.
+2. **Settings > Pages > Custom domain**: enter `eolatlas.org`, then tick **Enforce HTTPS** once it's offered.
 3. At your domain registrar, add the DNS records GitHub shows (four `A` records for the bare domain, and a `CNAME` for `www` pointing to `kendraweinisch.github.io`).
 4. Set the `BASE_PATH` variable to `/` and re-run the workflow.
 
 ## Before launch
 
-- [ ] Register eolatlas.com (and eolatlas.org to redirect)
+- [ ] Register eolatlas.org (and eolatlas.com, if you want it, to redirect)
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date

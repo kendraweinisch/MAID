@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "End of Life Atlas (eolatlas.com): a neutral, current guide to medical aid in dying.",
+  "description": "End of Life Atlas (eolatlas.org): a neutral, current guide to medical aid in dying.",
   "scripts": {
     "build": "node build.mjs",
     "check": "node scripts/check.mjs",
