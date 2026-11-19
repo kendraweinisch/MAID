@@ -86,6 +86,7 @@ const GUIDE_PRINTABLES = {
   '/plan-ahead/choices-for-the-body/': [['funeral-planner', 'Funeral or celebration of life planner']],
   '/serious-illness/': [['questions-for-the-doctor', 'Questions for the doctor']],
   '/last-weeks/': [['after-a-death', 'After a death: the first 24 hours']],
+  '/after-a-death/digital-accounts/': [['online-accounts', 'Closing their online accounts']],
   '/after-a-death/': [['after-a-death', 'After a death: the first 24 hours'], ['funeral-planner', 'Funeral or celebration of life planner'], ['eulogy', 'Writing a eulogy']],
   '/grief/': [['remembering-someone', 'Someone I love: a remembering book'], ['remembering-grandparent', 'My grandparent: a remembering book'], ['remembering-pet', 'My pet: a remembering book']],
 };
@@ -475,7 +476,7 @@ ${printCard('plan-ahead', 'Plan-ahead worksheet')}
 ${printCard('funeral-planner', 'Funeral or celebration of life planner')}
 ${printCard('remembering-someone', 'Someone I love: a remembering book')}
 </div>
-<p style="margin-top:24px"><a class="btn btn-quiet" href="/checklists/">See all 11 printables</a> <a class="btn btn-quiet" href="/checklists/binder/">Get them all in one binder (PDF)</a></p>
+<p style="margin-top:24px"><a class="btn btn-quiet" href="/checklists/">See all 12 printables</a> <a class="btn btn-quiet" href="/checklists/binder/">Get them all in one binder (PDF)</a></p>
 </div>
 </section>
 

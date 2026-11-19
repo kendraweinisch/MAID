@@ -10,6 +10,7 @@ const CARD = {
   'questions-for-the-doctor': ['Serious illness', 'What to ask after a diagnosis, about comfort care and hospice.'],
   'after-a-death': ['After a death', 'Who to call first, what to do within the day, and what can wait.'],
   'eulogy': ['After a death', 'Prompts, a simple three-part shape, and space to draft.'],
+  'online-accounts': ['After a death', 'What to save first, where to look, and a table to track each account.'],
   'remembering-someone': ['For children', 'Drawing and writing pages about someone they love who died.'],
   'remembering-grandparent': ['For children', 'Family stories, memories and recipes from a grandparent.'],
   'remembering-pet': ['For children', 'Favorite moments, feelings and drawings for a pet who died.'],
@@ -41,6 +42,7 @@ export const PRINT_SEO = {
   'questions-for-the-doctor': 'Questions to ask the doctor after a serious diagnosis (free printable)',
   'after-a-death': 'What to do when someone dies: first 24 hours checklist (free printable)',
   'eulogy': 'How to write a eulogy: prompts and template (free printable)',
+  'online-accounts': "Checklist for closing a deceased person's online accounts (free printable)",
   'remembering-someone': "Children's grief workbook: a remembering book (free printable)",
   'remembering-grandparent': "Children's grief workbook for the death of a grandparent (free printable)",
   'remembering-pet': "Children's pet loss workbook (free printable)",
@@ -255,7 +257,7 @@ export const rememberingPet = workbook({
 export function printablesIndex(existing) {
   const groups = [
     ['Planning ahead', [existing.planAhead, funeralPlanner, parentConversation, lettersToLeave, lifeStory]],
-    ['Serious illness and after a death', [existing.doctor, existing.afterDeath, eulogyGuide]],
+    ['Serious illness and after a death', [existing.doctor, existing.afterDeath, eulogyGuide, onlineAccounts]],
     ['For children who are grieving', [rememberingSomeone, rememberingGrandparent, rememberingPet]],
   ];
   const cards = (list) =>
@@ -268,11 +270,66 @@ export function printablesIndex(existing) {
 <section class="section"><div class="wrap">
 <h1>Free printables</h1>
 <p class="lead" style="margin:20px 0 40px">Worksheets, checklists and remembering books. Free, no account, no email. Print them, fill them in by hand, and keep them where your family can find them.</p>
-<div class="card binder-promo"><p class="tag">Everything at once</p><h2 style="margin-top:4px"><a href="/checklists/binder/">The End of Life Atlas binder</a></h2><p class="muted">All eleven printables in one PDF, with a cover and contents page. Print it once and keep it in a binder.</p><p><a class="btn btn-small" href="/printables/binder.pdf" download>Download the binder (PDF)</a> <a class="small" href="/checklists/binder/">What's in it</a></p></div>
+<div class="card binder-promo"><p class="tag">Everything at once</p><h2 style="margin-top:4px"><a href="/checklists/binder/">The End of Life Atlas binder</a></h2><p class="muted">All twelve printables in one PDF, with a cover and contents page. Print it once and keep it in a binder.</p><p><a class="btn btn-small" href="/printables/binder.pdf" download>Download the binder (PDF)</a> <a class="small" href="/checklists/binder/">What's in it</a></p></div>
 ${groups.map(([h, list]) => `<h2>${h}</h2>${cards(list)}`).join('\n')}
 </div></section>`,
   };
 }
+
+
+/* ---------- closing online accounts ---------- */
+
+const ACCOUNT_ROWS = ['Facebook', 'Instagram', 'X (Twitter)', 'LinkedIn', 'Google (Gmail, Photos, YouTube)', 'Apple (iCloud)', 'Microsoft (Outlook, Hotmail, OneDrive)', 'PayPal', '', '', '', '', '', ''];
+
+export const onlineAccounts = page({
+  path: '/checklists/online-accounts/',
+  title: 'Closing their online accounts',
+  description: "A printable checklist for closing or memorializing a person's online accounts after they die: what to save first, where to find accounts, what you'll need, and a table to track each one.",
+  kind: 'Printable checklist',
+  lead: "There's no rush. Save what matters first, then work through each account. Each company's own request process, with links, is in our guide at <a href=\"/after-a-death/digital-accounts/\">eolatlas.org/after-a-death/digital-accounts</a>.",
+  body: `<h2>Before you close anything</h2>
+<ul class="check">
+<li>Download or copy the photos, videos, messages and documents the family wants to keep.</li>
+<li>Keep their phone number active (sign-in codes are sent there) until: ${blank}</li>
+<li>Keep their main email account active until the other accounts are closed.</li>
+<li>Tell the executor about any money in online accounts: payment apps, store credit, gift cards, digital currency.</li>
+<li>Talk as a family about which accounts to memorialize and which to close. Their wishes, if they left any: ${blank}</li>
+</ul>
+<h2>Find their accounts</h2>
+<ul class="check">
+<li>Password manager or written list. Where it is: ${blank}</li>
+<li>Searched their email inbox for welcome emails, receipts and sign-in alerts.</li>
+<li>Checked bank and card statements for subscriptions and recurring payments.</li>
+<li>Listed the apps on their phone and computer.</li>
+</ul>
+<h2>What you may need</h2>
+<ul class="check">
+<li>Certified copies of the death certificate (number needed: ${blank})</li>
+<li>Your own photo ID</li>
+<li>Proof of your authority, if you are the executor: the will, or letters from the court</li>
+<li>A link to the obituary or death notice (some services accept it as proof of death)</li>
+<li>For Apple: the access key, if you are their Legacy Contact</li>
+</ul>
+<div class="wb-page">
+<h2>Each account</h2>
+<p class="muted small">Decide: memorialize, close, or keep for now. Write the date you sent the request, and tick when it is done.</p>
+<div class="table-box print-table"><table class="acct-table">
+<caption class="sr-only">Accounts to close or memorialize</caption>
+<thead><tr><th scope="col">Service</th><th scope="col">Their username or email</th><th scope="col">Memorialize, close or keep</th><th scope="col">Request sent</th><th scope="col">Done</th></tr></thead>
+<tbody>
+${ACCOUNT_ROWS.map((name) => `<tr><td>${name || '<span class="sr-only">Another service</span>'}</td><td></td><td></td><td></td><td><span class="tick" aria-hidden="true"></span></td></tr>`).join('\n')}
+</tbody></table></div>
+</div>
+<h2>Subscriptions to cancel</h2>
+<ul class="check">
+<li>Streaming services: ${blank}</li>
+<li>Apps and memberships: ${blank}</li>
+<li>Cloud storage: ${blank}</li>
+<li>Asked the bank or card issuer to stop recurring payments (date): ${blank}</li>
+<li>Kept a list of everything cancelled, for the executor.</li>
+</ul>
+<p class="muted small">Information, not legal advice. Companies change their processes; check each one's help page.</p>`,
+});
 
 /* ---------- the whole binder ---------- */
 
@@ -280,7 +337,7 @@ ${groups.map(([h, list]) => `<h2>${h}</h2>${cards(list)}`).join('\n')}
 // scripts/make-binder.py joins the PDFs; page numbers come from printables-meta.json.
 export const BINDER = [
   ['Planning ahead', [['plan-ahead', 'Plan-ahead worksheet'], ['funeral-planner', 'Funeral or celebration of life planner'], ['talking-with-a-parent', 'Talking with a parent about the end of life'], ['letters-to-leave', 'Letters to leave'], ['life-story', 'My life story']]],
-  ['Serious illness and after a death', [['questions-for-the-doctor', 'Questions for the doctor'], ['after-a-death', 'After a death: the first 24 hours'], ['eulogy', 'Writing a eulogy']]],
+  ['Serious illness and after a death', [['questions-for-the-doctor', 'Questions for the doctor'], ['after-a-death', 'After a death: the first 24 hours'], ['eulogy', 'Writing a eulogy'], ['online-accounts', 'Closing their online accounts']]],
   ['For children who are grieving', [['remembering-someone', 'Someone I love: a remembering book'], ['remembering-grandparent', 'My grandparent: a remembering book'], ['remembering-pet', 'My pet: a remembering book']]],
 ];
 const BINDER_FRONT_PAGES = 2; // the cover and the contents page
@@ -328,4 +385,4 @@ ${footer}
   };
 }
 
-export const printables = [funeralPlanner, parentConversation, eulogyGuide, lettersToLeave, lifeStory, rememberingSomeone, rememberingGrandparent, rememberingPet];
+export const printables = [funeralPlanner, parentConversation, eulogyGuide, onlineAccounts, lettersToLeave, lifeStory, rememberingSomeone, rememberingGrandparent, rememberingPet];

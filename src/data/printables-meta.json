@@ -1,7 +1,7 @@
 {
   "plan-ahead": {
     "pages": 5,
-    "kb": 124,
+    "kb": 123,
     "title": "End-of-life planning worksheet (free printable) | End of Life Atlas"
   },
   "funeral-planner": {
@@ -39,6 +39,11 @@
     "kb": 132,
     "title": "How to write a eulogy: prompts and template (free printable) | End of Life Atlas"
   },
+  "online-accounts": {
+    "pages": 4,
+    "kb": 145,
+    "title": "Checklist for closing a deceased person's online accounts (free printable) | End of Life Atlas"
+  },
   "remembering-someone": {
     "pages": 6,
     "kb": 154,
@@ -60,8 +65,8 @@
     "title": "Qu\u00e9 hacer cuando alguien muere: lista de las primeras 24 horas (para imprimir) | End of Life Atlas"
   },
   "binder": {
-    "pages": 47,
-    "kb": 585,
+    "pages": 51,
+    "kb": 691,
     "title": "The End of Life Atlas binder | End of Life Atlas"
   }
 }
