@@ -41,6 +41,7 @@ const ES_ICONS = {
   '/es/cuidados-paliativos-y-hospicio/': { comparacion: 'scale', cuando: 'clock', polst: 'doc' },
   '/es/senales-de-que-la-muerte-esta-cerca/': { semanas: 'calendar', dias: 'clock', horas: 'lastweeks', ayuda: 'hand' },
   '/es/despues-de-una-muerte/': { 'primeras-horas': 'phone', certificados: 'doc', funeral: 'burial', derechos: 'shield', 'primer-mes': 'calendar', sucesion: 'wills' },
+  '/es/cuentas-en-linea/': { antes: 'shield', encontrar: 'check', conmemorar: 'loved', redes: 'people', correo: 'key', pagos: 'costs', suyas: 'plan' },
   '/es/duelo/': { normal: 'grief', antes: 'clock', 'muerte-dificil': 'hand', ninos: 'child', mascota: 'paw', apoyo: 'people', 'mas-ayuda': 'help' },
 };
 const ES_FACTS = {
@@ -54,6 +55,10 @@ const ES_FACTS = {
   '/es/despues-de-una-muerte/': {
     'primeras-horas': ['Con hospicio: llame al hospicio', 'Inesperada: número de emergencias', 'No hay prisa por mover el cuerpo'],
     derechos: ['Precios detallados', 'Compre solo lo que quiera', 'Ataúd o urna de otro lugar'],
+  },
+  '/es/cuentas-en-linea/': {
+    antes: ['Guarde primero fotos y mensajes', 'Mantenga activo su teléfono', 'Busque dinero'],
+    conmemorar: ['Facebook', 'Instagram', 'LinkedIn'],
   },
   '/es/duelo/': {
     normal: ['Tristeza', 'Entumecimiento', 'Rabia', 'Culpa', 'Alivio', 'Problemas para dormir'],
@@ -294,12 +299,14 @@ const despues = esGuide({
 <li>Avise a la agencia de pensiones o seguridad social del gobierno (en EE. UU., el Seguro Social; muchas veces lo hace la funeraria), a otros planes de pensiones, a las aseguradoras y a los bancos.</li>
 <li>Reclame el seguro de vida y cualquier beneficio; pregunte por los beneficios para sobrevivientes.</li>
 <li>Cancele o transfiera servicios, suscripciones y cuentas. Siga pagando las facturas esenciales.</li>
+<li>Cierre o convierta en conmemorativas sus redes sociales, su correo y otras cuentas en línea, después de guardar lo que la familia quiera conservar. Vea <a href="/es/cuentas-en-linea/">cerrar sus cuentas en línea</a>.</li>
 <li>Redirija el correo, asegure la casa y el auto, y cuide de las mascotas.</li></ul>` },
     { id: 'sucesion', h: 'La sucesión y el patrimonio', html: `<p>El proceso sucesorio (en EE. UU., probate) es el proceso legal para cerrar el patrimonio de una persona; su nombre y sus pasos cambian según el país. Las cuentas con un beneficiario nombrado y los bienes en propiedad conjunta suelen pasar fuera de él, y muchos lugares, entre ellos todos los estados de EE. UU., tienen un proceso más sencillo para patrimonios pequeños. Si el patrimonio es grande o complicado, hable con un abogado de sucesiones.</p>
 <p>Si tenía propiedades en otro país, vea ${enLink('/plan-ahead/property-abroad/', 'propiedades en el extranjero')}.</p>` },
   ],
   related: [
     ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Lista para imprimir.', 'printer'],
+    ['/es/cuentas-en-linea/', 'Cerrar sus cuentas en línea', 'Redes sociales, correo y pagos.', 'key'],
     ['/es/duelo/', 'Duelo', 'Qué es normal y cuándo pedir más ayuda.', 'grief'],
     ['/es/para-un-ser-querido/', 'Planifico para un ser querido', 'Un camino paso a paso.', 'loved'],
   ],
@@ -338,6 +345,82 @@ const duelo = esGuide({
 });
 
 /* ---------- printable: the first 24 hours ---------- */
+
+const cuentas = esGuide({
+  path: '/es/cuentas-en-linea/',
+  title: 'Cerrar sus cuentas en línea',
+  description: 'Cómo cerrar o convertir en conmemorativas las redes sociales, el correo y las cuentas en línea de alguien que murió: Facebook, Instagram, Google y Gmail, Apple e iCloud, Microsoft y Outlook, X, LinkedIn y PayPal.',
+  eyebrow: 'Después de una muerte',
+  icon: 'afterdeath',
+  lead: 'No hay prisa. Guarde primero lo que importa y luego use el proceso propio de cada empresa para cerrar o convertir sus cuentas en conmemorativas. Esto es lo que ofrece cada una y lo que va a necesitar.',
+  sections: [
+    { id: 'antes', h: 'Antes de cerrar nada', html: `<ul>
+<li><strong>Guarde lo que importa.</strong> Las fotos, los videos, los mensajes y los documentos pueden perderse para siempre cuando se cierra una cuenta. Descargue o copie primero lo que la familia quiera conservar.</li>
+<li><strong>Mantenga por ahora su número de teléfono y su correo principal.</strong> Muchas cuentas envían códigos de acceso a un teléfono o a un correo. Si se cancelan demasiado pronto, otras cuentas pueden quedar fuera de alcance.</li>
+<li><strong>Busque dinero.</strong> Las cuentas de pago, el crédito en tiendas, las tarjetas de regalo y las monedas digitales pertenecen al patrimonio. Avise al albacea.</li>
+<li><strong>Use el proceso oficial.</strong> Las empresas no dan contraseñas. Entrar como si fuera la persona puede ir en contra de las condiciones de la empresa, así que el proceso de solicitud de cada empresa es el camino más seguro.</li>
+</ul>` },
+    { id: 'encontrar', h: 'Encuentre sus cuentas', html: `<p>La mayoría de las personas tienen muchas más cuentas de las que su familia conoce. Dónde buscar:</p>
+<ul>
+<li>Un gestor de contraseñas, o una lista que hayan dejado.</li>
+<li>Su bandeja de entrada: los correos de bienvenida, los recibos y los avisos de inicio de sesión muestran qué servicios usaban.</li>
+<li>Los extractos del banco y de las tarjetas, para las suscripciones y los pagos periódicos.</li>
+<li>Las aplicaciones de su teléfono y de su computadora.</li>
+</ul>` },
+    { id: 'conmemorar', h: '¿Convertirla en conmemorativa o cerrarla?', html: `<p>Algunos servicios, como Facebook, Instagram y LinkedIn, pueden convertir un perfil en conmemorativo en lugar de borrarlo. Un perfil conmemorativo sigue visible para que los amigos compartan recuerdos, pero nadie puede entrar en él. Cerrarlo lo elimina. Háblenlo primero en familia: a algunas personas les reconforta una página conmemorativa y a otras les duele. Si la persona dejó deseos sobre esto, respételos.</p>` },
+    { id: 'redes', h: 'Redes sociales', html: `
+<h3>Facebook</h3>
+<p>Los amigos o la familia pueden pedir a Meta que convierta el perfil en conmemorativo. La familia directa o el albacea pueden pedir que se elimine, con prueba de la muerte. Si la persona eligió un contacto de legado, esa persona puede cuidar el perfil conmemorativo.</p>
+<p><a class="btn btn-small" href="https://www.facebook.com/help/contact/228813257197480?locale=es_LA">Facebook: cuenta conmemorativa o eliminación</a></p>
+<h3>Instagram</h3>
+<p>Instagram puede convertir una cuenta en conmemorativa si recibe prueba de la muerte, como una esquela. Solo la familia directa verificada puede pedir que se elimine, con documentos que demuestren el parentesco o su autoridad legal.</p>
+<p><a class="btn btn-small" href="https://help.instagram.com/264154560391256?locale=es_LA">Instagram: informar sobre la cuenta de una persona fallecida</a></p>
+<h3>X (Twitter)</h3>
+<p>X no convierte cuentas en conmemorativas ni da acceso a nadie. La familia directa o alguien que actúe en nombre del patrimonio puede pedir que se desactive la cuenta.</p>
+<p><a class="btn btn-small" href="https://help.x.com/en/rules-and-policies/contact-x-about-media-on-a-deceased-family-members-account" hreflang="en">X: usuarios fallecidos (en inglés)</a></p>
+<h3>LinkedIn</h3>
+<p>Cualquiera puede avisar de que un miembro ha muerto. Alguien con autoridad para actuar en nombre de la persona puede pedir que el perfil se convierta en conmemorativo o se cierre.</p>
+<p><a class="btn btn-small" href="https://www.linkedin.com/help/linkedin/ask/ts-rdmlp?lang=es">LinkedIn: solicitud sobre un miembro fallecido</a></p>` },
+    { id: 'correo', h: 'Correo, fotos y almacenamiento en la nube', html: `
+<h3>Google (Gmail, Google Fotos, YouTube)</h3>
+<p>La familia directa o un representante pueden pedir a Google que cierre la cuenta. En algunos casos Google puede entregar parte de su contenido, pero revisa cada solicitud y puede necesitar documentos legales, como una orden judicial. Nunca da contraseñas. Pida el contenido antes de cerrarla: una vez cerrada la cuenta, Google no puede entregar nada de ella.</p>
+<p><a class="btn btn-small" href="https://support.google.com/accounts/troubleshooter/6357590?hl=es">Google: solicitud sobre la cuenta de un usuario fallecido</a></p>
+<h3>Apple (iCloud, cuenta de Apple)</h3>
+<p>Si la persona le nombró contacto de legado, puede pedir acceso con su clave de acceso y un certificado de defunción. El acceso dura tres años y no incluye las películas, la música ni los libros comprados, ni las contraseñas y los datos de pago guardados. Sin contacto de legado, Apple suele pedir un certificado de defunción y puede pedir una orden judicial u otros documentos, según el país. Apple no puede desbloquear un dispositivo protegido con código.</p>
+<p><a class="btn btn-small" href="https://support.apple.com/es-us/102431">Apple: cuenta de un familiar fallecido</a></p>
+<h3>Microsoft (Outlook, Hotmail, OneDrive)</h3>
+<p>En general, Microsoft no entrega correos ni archivos a la familia sin un proceso legal válido, como una orden judicial, y ni siquiera así lo promete. Si nadie puede entrar, la cuenta acaba cerrándose por inactividad y se borran sus correos y archivos, así que guarde pronto lo importante si puede acceder.</p>
+<p><a class="btn btn-small" href="https://support.microsoft.com/es-es/topic/ebbd2860-917e-4b39-9913-212362da6b2f">Microsoft: cuando alguien ha fallecido</a></p>` },
+    { id: 'pagos', h: 'Cuentas de pago y suscripciones', html: `
+<h3>PayPal</h3>
+<p>Solo el albacea o el administrador del patrimonio puede cerrar la cuenta. PayPal pide documentos como una identificación con foto y una prueba de su autoridad, como el testamento o las cartas del tribunal. El saldo pasa al patrimonio.</p>
+<p><a class="btn btn-small" href="https://www.paypal.com/us/cshelp/article/how-do-i-close-the-paypal-account-of-a-deceased-relative-help220" hreflang="en">PayPal: cerrar la cuenta de un familiar fallecido (en inglés)</a></p>
+<h3>Suscripciones</h3>
+<p>Los servicios de streaming, las aplicaciones, las membresías y el almacenamiento en la nube suelen seguir cobrando a una tarjeta. Cancélelos con cada servicio, o pida al banco o al emisor de la tarjeta que detenga los pagos periódicos cuando le avise de la muerte. Guarde una lista de lo que canceló, para el albacea.</p>` },
+    { id: 'suyas', h: 'Cómo facilitárselo a su propia familia', html: `<p>Unos minutos ahora le ahorran meses a su familia:</p>
+<ul>
+<li><strong>Nombre contactos de legado.</strong> Facebook, Apple y Google le permiten elegir a alguien ahora. Con Google, configure el <a href="https://support.google.com/accounts/answer/3036546?hl=es">Administrador de cuentas inactivas</a>. Con Apple, <a href="https://support.apple.com/es-us/102631">agregue un contacto de legado</a>.</li>
+<li><strong>Deje por escrito sus deseos.</strong> Qué cuentas convertir en conmemorativas, cuáles cerrar y qué guardar.</li>
+<li><strong>Use un gestor de contraseñas con acceso de emergencia,</strong> y diga a una persona de confianza cómo llegar a él. Nunca ponga contraseñas en su testamento, que puede volverse un documento público.</li>
+</ul>
+<p>Más en <a href="/es/planificar/#papeles">ponga sus papeles en orden</a>.</p>` },
+  ],
+  related: [
+    ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Las primeras horas, el funeral y el primer mes.', 'afterdeath'],
+    ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Lista para imprimir.', 'printer'],
+    ['/es/planificar/', 'Planificar con tiempo', 'Para sus propias cuentas.', 'plan'],
+  ],
+  sources: [
+    ['Meta: política de cuentas conmemorativas (en inglés)', 'https://transparency.meta.com/policies/community-standards/memorialization/'],
+    ['Instagram: cuenta de una persona fallecida', 'https://help.instagram.com/264154560391256?locale=es_LA'],
+    ['X: usuarios fallecidos (en inglés)', 'https://help.x.com/en/rules-and-policies/contact-x-about-media-on-a-deceased-family-members-account'],
+    ['LinkedIn: miembro fallecido', 'https://www.linkedin.com/help/linkedin/ask/ts-rdmlp?lang=es'],
+    ['Google: cuenta de un usuario fallecido', 'https://support.google.com/accounts/troubleshooter/6357590?hl=es'],
+    ['Apple: cuenta de un familiar fallecido', 'https://support.apple.com/es-us/102431'],
+    ['Microsoft: cuando alguien ha fallecido', 'https://support.microsoft.com/es-es/topic/ebbd2860-917e-4b39-9913-212362da6b2f'],
+    ['PayPal: cuenta de un familiar fallecido (en inglés)', 'https://www.paypal.com/us/cshelp/article/how-do-i-close-the-paypal-account-of-a-deceased-relative-help220'],
+  ],
+});
 
 const primeras24 = {
   path: '/es/primeras-24-horas/',
@@ -469,7 +552,7 @@ const paraSerQuerido = {
         { id: 'first-day', t: 'Las primeras 24 horas', d: 'Muy poco es urgente. A quién llamar primero y qué puede esperar.', links: [['/es/despues-de-una-muerte/#primeras-horas', 'Las primeras horas'], ['/es/primeras-24-horas/', 'Lista para imprimir']] },
         { id: 'funeral', t: 'Organice el funeral o la despedida', d: 'Todas las opciones para el cuerpo, sus derechos con las funerarias y lo que cuesta.', links: [['/es/despues-de-una-muerte/#funeral', 'Funeral, entierro y cremación'], ['/es/despues-de-una-muerte/#derechos', 'Sus derechos']] },
         { id: 'eulogy', t: 'Escriba el elogio fúnebre', d: 'Una historia verdadera vale más que una lista de virtudes.', links: [E('/checklists/eulogy/', 'Escribir un elogio')] },
-        { id: 'estate', t: 'Ocúpese de los trámites y del patrimonio', d: 'Certificados de defunción, avisos a organismos y bancos, y la sucesión.', links: [['/es/despues-de-una-muerte/#primer-mes', 'El primer mes'], ['/es/despues-de-una-muerte/#sucesion', 'La sucesión']] },
+        { id: 'estate', t: 'Ocúpese de los trámites y del patrimonio', d: 'Certificados de defunción, avisos a organismos y bancos, cuentas en línea y la sucesión.', links: [['/es/despues-de-una-muerte/#primer-mes', 'El primer mes'], ['/es/cuentas-en-linea/', 'Sus cuentas en línea'], ['/es/despues-de-una-muerte/#sucesion', 'La sucesión']] },
       ],
     },
     {
@@ -552,6 +635,7 @@ ${linkCards([
     ['/es/senales-de-que-la-muerte-esta-cerca/', 'Señales de que la muerte está cerca', 'Qué esperar y qué ayuda.', 'lastweeks'],
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Lo urgente y lo que puede esperar.', 'afterdeath'],
     ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Una lista para imprimir, también en PDF.', 'printer'],
+    ['/es/cuentas-en-linea/', 'Cerrar sus cuentas en línea', 'Redes sociales, correo, nube y pagos.', 'key'],
     ['/es/duelo/', 'Duelo', 'Qué es normal, los niños, y cuándo pedir ayuda.', 'grief'],
     ['/es/preguntar/', 'Haga una pregunta', 'Respuestas de las páginas en español de este sitio.', 'ask'],
   ], 'cards')}
@@ -588,4 +672,4 @@ const preguntar = {
 <script src="/assistant.js" defer></script>`,
 };
 
-export const esPages = [inicio, ...esJourneys, planificar, directivas, paliativos, senales, despues, primeras24, duelo, preguntar];
+export const esPages = [inicio, ...esJourneys, planificar, directivas, paliativos, senales, despues, cuentas, primeras24, duelo, preguntar];
