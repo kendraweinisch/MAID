@@ -43,6 +43,7 @@ export const ES_PAIRS = {
   '/last-weeks/signs-death-is-near/': '/es/senales-de-que-la-muerte-esta-cerca/',
   '/after-a-death/': '/es/despues-de-una-muerte/',
   '/checklists/after-a-death/': '/es/primeras-24-horas/',
+  '/after-a-death/digital-accounts/': '/es/cuentas-en-linea/',
   '/grief/': '/es/duelo/',
   '/ask/': '/es/preguntar/',
 };
