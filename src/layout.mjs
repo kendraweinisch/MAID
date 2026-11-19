@@ -63,20 +63,22 @@ const navEs = [
   ['/es/planificar/', 'Planificar'],
   ['/es/enfermedad-grave/', 'Enfermedad grave'],
   ['/es/ultimas-semanas/', 'Últimas semanas'],
+  ['/es/muerte-medicamente-asistida/', 'Muerte asistida'],
   ['/es/despues-de-una-muerte/', 'Después de una muerte'],
   ['/es/duelo/', 'Duelo'],
-  ['/es/muerte-medicamente-asistida/', 'Muerte asistida'],
   ['/es/base-de-datos-de-costos/', 'Costos'],
+  ['/es/acerca/', 'Sobre nosotros'],
 ];
 
 const nav = [
   ['/plan-ahead/', 'Plan ahead'],
   ['/serious-illness/', 'Serious illness'],
   ['/last-weeks/', 'The last weeks'],
+  ['/medical-aid-in-dying/', 'Medical aid in dying'],
   ['/after-a-death/', 'After a death'],
   ['/grief/', 'Grief'],
-  ['/medical-aid-in-dying/', 'Medical aid in dying'],
   ['/what-it-costs/database/', 'Cost database'],
+  ['/about/', 'About us'],
 ];
 
 // Structured data (schema.org) so search engines understand each page.

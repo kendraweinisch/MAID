@@ -6,6 +6,14 @@ import { journeyMeta } from './journeys.mjs';
 
 const MAID = '/medical-aid-in-dying';
 
+// Counts shown on the About page, taken from the site's own data.
+import { readFileSync as readCounts } from 'node:fs';
+export const ABOUT_COUNTS = {
+  places: JSON.parse(readCounts(new URL('./data/places.json', import.meta.url), 'utf8')).places.length,
+  states: JSON.parse(readCounts(new URL('./data/advance-directives.json', import.meta.url), 'utf8')).states.length,
+  printables: readCounts(new URL('./data/printables.txt', import.meta.url), 'utf8').split('\n').filter((l) => l.trim()).length,
+};
+
 // Privacy-friendly analytics: on only when GOATCOUNTER_CODE is set at build time.
 const analyticsOn = Boolean(process.env.GOATCOUNTER_CODE);
 // The suggestions form sends email through Web3Forms (a form-to-email service).
@@ -231,6 +239,7 @@ const SECTION_ICONS = {
   '/medical-aid-in-dying/process/': { steps: 'steps', early: 'clock', decline: 'help', hospice: 'bed' },
   '/medical-aid-in-dying/families/': { talking: 'talk', day: 'calendar', insurance: 'doc', grief: 'grief' },
   '/medical-aid-in-dying/switzerland/': { why: 'scale', involves: 'steps', costs: 'costs', risk: 'shield' },
+  '/about/': { founder: 'self', covers: 'steps', for: 'people', principles: 'scale', not: 'shield', funding: 'costs', editorial: 'check', evidence: 'doc', reviewers: 'people', access: 'globe', help: 'hand', contact: 'talk', faq: 'ask' },
   '/grief/': { normal: 'grief', anticipatory: 'clock', witnessed: 'hand', children: 'child', pets: 'paw', support: 'people', 'more-help': 'help' },
 };
 
@@ -309,6 +318,7 @@ const SEO_TITLES = {
   '/what-it-costs/': 'How much does dying cost? Hospice, care homes and funeral costs',
   '/after-a-death/digital-accounts/': 'How to close a deceased person\'s Facebook, Instagram, Gmail, iCloud and other accounts',
   '/serious-illness/choices-near-the-end/': 'End-of-life choices: treatment, hospice, stopping treatment, POLST and medical aid in dying',
+  '/about/': 'About End of Life Atlas: who we are, how we check facts and how we are funded',
   '/medical-aid-in-dying/process/': 'How medical aid in dying (assisted suicide) works: steps and waiting periods',
   '/medical-aid-in-dying/families/': 'Medical aid in dying and euthanasia: a guide for families',
   '/medical-aid-in-dying/switzerland/': 'Assisted suicide in Switzerland for foreigners: how it works and costs',
@@ -1576,47 +1586,113 @@ ${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', '
 <p>If you are thinking about suicide, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>
 </div></section>`,
   },
-  {
+  guide({
     path: '/about/',
-    title: 'About End of Life Atlas',
-    description: 'How End of Life Atlas is funded, how we check facts, and who reviews our guides.',
-    body: `
-<section class="section"><div class="wrap prose">
-<h1>About End of Life Atlas</h1>
-<p class="lead" style="margin:20px 0">A single place for everything about the end of life: plain, international, without judgment, and respectful of each person's right to die with dignity.</p>
-<section class="founder-note" aria-labelledby="founder-h">
-<h2 id="founder-h">A note from the founder</h2>
+    title: 'About us',
+    eyebrow: 'About End of Life Atlas',
+    reviewed: '2026-11-19',
+    description: 'Who is behind End of Life Atlas, what it covers, who it is for, how it is funded, how we check facts, and how you can help.',
+    lead: "A single place for everything about the end of life: plain, international, without judgment, and respectful of each person's right to die with dignity. Free, with nothing to sell.",
+    glance: [
+      [String(ABOUT_COUNTS.places), 'Places covered on medical aid in dying, with official sources'],
+      [String(ABOUT_COUNTS.states), 'US state advance directive pages, with the official forms'],
+      [String(ABOUT_COUNTS.printables), 'Free printables, plus an all-in-one binder'],
+      ['2', 'Languages: English and Spanish'],
+    ],
+    sections: [
+      { id: 'founder', h: 'A note from the founder', html: `<div class="founder-note">
 <p>I built End of Life Atlas because I couldn't find one place that told the whole truth about the end of life.</p>
 <p>Anyone who has watched someone they love wither and die knows that most guides don't tell you what it's really like. They tell you what to do, or what to choose. I wanted something different: one place, for anyone in any country, that explains every option plainly, doesn't judge, and respects each person's right to die with dignity.</p>
 <p>I'm an expat, and I worry about my mom back in the United States. When you live far from the people you love, you can't just drive over and work things out. You need clear information about the rules where they are, and where you are. That's why this atlas covers more than one country, and why it will keep adding more.</p>
 <p>Whatever you're facing, and wherever you are, I hope you find what you need here, and that you feel respected while you look.</p>
 <p class="signature">KW</p>
-</section>
-<h2 id="why">Why this atlas exists</h2>
-<p>Planning for the end of life usually means piecing things together from doctors, lawyers, funeral homes, governments and advocacy groups. Each covers one part, often for one country, and some have something to sell or a position to promote. End of Life Atlas brings it together in one place.</p>
-<h2 id="principles">What we believe</h2>
-<div class="cards cards-tight">
+</div>` },
+      { id: 'covers', h: 'What the atlas covers', html: `<p>Every stage of the end of life, in the order people meet them:</p>
+<ul>
+<li><strong>Planning ahead:</strong> advance directives and <a href="/plan-ahead/advance-directives/">every state's official form</a>, choosing a health care proxy, <a href="/plan-ahead/wills-and-trusts/">wills, trusts and the paperwork</a>, <a href="/plan-ahead/property-abroad/">property abroad</a>, <a href="/plan-ahead/talking-with-a-parent/">talking with a parent</a> and <a href="/plan-ahead/choices-for-the-body/">every choice for the body</a>.</li>
+<li><strong>Serious illness:</strong> palliative care, hospice, medical orders such as POLST, and <a href="/serious-illness/choices-near-the-end/">every choice near the end of life</a>.</li>
+<li><strong>The last weeks:</strong> an honest account of what dying can be like, <a href="/last-weeks/signs-death-is-near/">the signs that death is near</a>, easing suffering and saying goodbye.</li>
+<li><strong>Medical aid in dying:</strong> <a href="/medical-aid-in-dying/">where it is legal</a>, place by place, how the process works, guidance for families, and going to Switzerland.</li>
+<li><strong>After a death:</strong> the first 24 hours, death certificates, funerals and your rights, <a href="/after-a-death/digital-accounts/">closing online accounts</a> and the estate.</li>
+<li><strong>Grief:</strong> what's normal, helping children, losing a pet, and when to get more help.</li>
+<li><strong>Costs:</strong> <a href="/what-it-costs/">what dying costs</a>, with sources, and a <a href="/what-it-costs/database/">guide to public cost databases</a>.</li>
+</ul>
+<p>Two step-by-step paths tie it together: <a href="/for-myself/">planning for yourself</a> and <a href="/for-someone-i-love/">planning for someone you love</a>.</p>` },
+      { id: 'for', h: 'Who it is for', html: `<ul>
+<li><strong>Anyone planning their own end of life,</strong> whether they are well or already ill.</li>
+<li><strong>Families and caregivers</strong> looking after a parent, partner, child or friend.</li>
+<li><strong>People who live far away</strong> from the person they're worried about, including across borders.</li>
+<li><strong>People who have just lost someone</strong> and need to know what to do next.</li>
+<li><strong>Professionals</strong> such as social workers, nurses, chaplains and doulas, who want a plain, free resource to share with families.</li>
+</ul>` },
+      { id: 'principles', h: 'What we believe', html: `<div class="cards cards-tight">
 ${infoCard('plan', 'One place for all of it', 'From advance directives to grief, including the topics other sites avoid.')}
 ${infoCard('scale', 'Without judgment', "We explain every legal option and don't steer you toward any of them. The choice belongs to the person whose life it is.")}
 ${infoCard('globe', 'International', 'People live, own homes and die across borders. We say which country a rule applies to.')}
 ${infoCard('loved', 'Dignity', 'Every person deserves to die on their own terms, and every family deserves clear, honest information.')}
-</div>
-<h2 id="funding">How we're funded</h2>
-<p><strong>End of Life Atlas is a voluntary site, made only to share information.</strong> It has no business model and needs no funding, so there is no one to please except the people reading it, and no reason to favor any option, provider or point of view.</p>
-<p>There is no advertising, no sponsorship, no referral fees and nothing for sale. The guides and checklists are free.</p>
-<h2 id="editorial">Editorial and review policy</h2>
-<ul>
-<li>Facts come from official sources or named reports, linked on the page.</li>
+${infoCard('lastweeks', 'Honest about death', "We describe what dying can really be like, because families who know what to expect are better able to prepare.")}
+${infoCard('doc', 'Plain language', 'Short sentences, everyday words, and the legal or medical term alongside when you will need it.')}
+</div>` },
+      { id: 'not', h: "What we don't do", html: `<ul>
+<li><strong>We don't give medical or legal advice.</strong> The atlas explains your options; your doctor and a lawyer can tell you what applies to you.</li>
+<li><strong>We don't sell anything,</strong> take referral fees, run ads or rank providers.</li>
+<li><strong>We don't take sides.</strong> Every full treatment, comfort care only and medical aid in dying, where it is legal, are all described the same way.</li>
+<li><strong>We cover legal options only.</strong></li>
+<li><strong>We don't collect your data.</strong> No accounts, no email lists and no tracking cookies. See <a href="/privacy/">privacy</a>.</li>
+</ul>` },
+      { id: 'funding', h: "How we're funded", html: `<p><strong>End of Life Atlas is a voluntary site, made only to share information.</strong> It has no business model and needs no funding, so there is no one to please except the people reading it, and no reason to favor any option, provider or point of view.</p>
+<p>There is no advertising, no sponsorship, no referral fees and nothing for sale. The guides, printables and app are free. We have no ties to the organizations we link to.</p>` },
+      { id: 'editorial', h: 'How we check facts', html: `<ul>
+<li>Facts come from official sources or named reports, linked on the sentence they support and listed at the end of each page.</li>
 <li>Anything we haven't confirmed is marked "to be verified."</li>
 <li>Every month we check the whole site: every outside link, the status of every law we cover, and the key figures (costs, thresholds and fees). We correct anything out of date and record the date. Last check: ${fmtDate(site.lastScan)}.</li>
-<li>Each guide also shows when it was written or last revised, and each place page shows when its law was last verified.</li>
-<li>We cover legal options only.</li>
+<li>Each guide shows when it was written or last revised, and each place page shows when its law was last verified.</li>
+<li>When we find a mistake, we fix it and update the page's date.</li>
 </ul>
-<p>Spotted an error or something out of date? <a href="/suggestions/">Send a suggestion</a>; you can stay anonymous.</p>
-<h2 id="reviewers">Our reviewers</h2>
-<p>We're appointing a physician experienced in end-of-life care and an attorney to review our guides. Their names will appear here and on each page they review.</p>
-</div></section>`,
-  },
+<p>Spotted an error or something out of date? <a href="/suggestions/">Send a suggestion</a>; you can stay anonymous.</p>` },
+      { id: 'evidence', h: 'Where our facts come from', html: `<p>In order of preference:</p>
+<ol class="mini-steps">
+<li>Governments, regulators and the text of laws.</li>
+<li>Established organizations, such as national health institutes, medical bodies and nonprofits.</li>
+<li>Reputable news reporting, when nothing official exists yet.</li>
+</ol>
+<p>Where sources disagree or the facts are still changing, we say so on the page rather than pick one.</p>` },
+      { id: 'reviewers', h: 'Our reviewers', html: `<p>We're appointing a physician experienced in end-of-life care and an attorney to review our guides. Their names will appear here and on each page they review.</p>` },
+      { id: 'access', h: 'Languages, accessibility and the app', html: `<ul>
+<li><strong>English and Spanish:</strong> every page is in both languages. Use the <a href="/es/" hreflang="es" lang="es">Español</a> button at the top of any page. The Spanish translations are pending review by a native speaker.</li>
+<li><strong>Accessible:</strong> we aim for WCAG 2.2 AA and test every page before each update. See <a href="/accessibility/">accessibility</a>.</li>
+<li><strong>Works offline:</strong> <a href="/app/">get the app</a> and the key guides work without a signal.</li>
+<li><strong>Prints cleanly:</strong> every printable comes as a PDF, and the binder puts them all in one.</li>
+</ul>` },
+      { id: 'help', h: 'How you can help', html: `<ul>
+<li><strong>Tell us what's missing or wrong.</strong> Corrections, out-of-date facts and sources we should know about all help. <a href="/suggestions/">Send a suggestion</a>.</li>
+<li><strong>Share it</strong> with a family facing these decisions, or with colleagues who support them.</li>
+<li><strong>Print and share the printables.</strong> They are free to print and share.</li>
+</ul>` },
+      { id: 'contact', h: 'Contact us', html: `<p>The best way to reach us is the <a href="/suggestions/">suggestions form</a>. Your name and email are optional; add your email only if you'd like a reply. The form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>` },
+      { id: 'faq', h: 'Questions people ask', html: `<h3>Is this medical or legal advice?</h3>
+<p>No. It is information to help you understand your options and ask better questions. Talk to your doctor and a lawyer about your own situation.</p>
+<h3>Does End of Life Atlas support medical aid in dying?</h3>
+<p>We don't take a position on it. We explain it the same way as every other legal option, and the choice belongs to the person whose life it is.</p>
+<h3>How current is the information?</h3>
+<p>The whole site is checked every month, and every page shows its dates. Laws change, so always confirm with the official source linked on the page.</p>
+<h3>Why does it cover other countries?</h3>
+<p>Because families live across borders. People own homes abroad, care for parents from far away and die in places with different rules.</p>
+<h3>Does it cost anything?</h3>
+<p>No. Everything is free, with no account and no email needed.</p>` },
+    ],
+    faq: [
+      ['Is End of Life Atlas medical or legal advice?', 'No. It is information to help you understand your options and ask better questions. Talk to your doctor and a lawyer about your own situation.'],
+      ['Does End of Life Atlas support medical aid in dying?', "No position is taken. It is explained the same way as every other legal option, and the choice belongs to the person whose life it is."],
+      ['How is End of Life Atlas funded?', 'It is a voluntary site with no business model: no advertising, sponsorship, referral fees or anything for sale.'],
+      ['Does End of Life Atlas cost anything?', 'No. Everything is free, with no account and no email needed.'],
+    ],
+    related: [
+      ['/for-myself/', "I'm planning for myself", 'A step-by-step path.'],
+      ['/for-someone-i-love/', "I'm planning for someone I love", 'A step-by-step path.'],
+      ['/suggestions/', 'Send a suggestion', 'Anonymous if you like.'],
+    ],
+  }),
   {
     path: '/suggestions/',
     title: 'Send a suggestion',

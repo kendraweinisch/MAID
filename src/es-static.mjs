@@ -4,7 +4,8 @@ import { readFileSync } from 'node:fs';
 import { esc, fmtDateEs, site, pair } from './layout.mjs';
 import { icons } from './icons.mjs';
 import { linkCards, dirCard, infoCard } from './ui.mjs';
-import { reviewNote } from './es.mjs';
+import { reviewNote, esGuide } from './es.mjs';
+import { ABOUT_COUNTS } from './pages.mjs';
 import { estado } from './es-names.mjs';
 
 const ad = JSON.parse(readFileSync(new URL('./data/advance-directives.json', import.meta.url), 'utf8'));
@@ -62,49 +63,110 @@ ${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', '
 </div></section>`,
 };
 
-const acerca = {
+const acerca = esGuide({
   path: '/es/acerca/',
-  title: 'Sobre End of Life Atlas',
-  description: 'Cómo se financia End of Life Atlas, cómo verificamos los datos y quién revisa nuestras guías.',
-  body: `
-<section class="section"><div class="wrap prose">
-<h1>Sobre End of Life Atlas</h1>
-<p class="lead" style="margin:20px 0">Un solo lugar para todo lo relacionado con el final de la vida: claro, internacional, sin juicios y respetuoso con el derecho de cada persona a morir con dignidad.</p>
-${reviewNote}
-<section class="founder-note" aria-labelledby="fundadora-h">
-<h2 id="fundadora-h">Una nota de quien lo creó</h2>
+  title: 'Sobre nosotros',
+  seoTitle: 'Sobre End of Life Atlas: quiénes somos, cómo verificamos los datos y cómo nos financiamos',
+  eyebrow: 'Sobre End of Life Atlas',
+  icon: 'scale',
+  reviewed: '2026-11-19',
+  description: 'Quién está detrás de End of Life Atlas, qué cubre, para quién es, cómo se financia, cómo verificamos los datos y cómo puede ayudar.',
+  lead: 'Un solo lugar para todo lo relacionado con el final de la vida: claro, internacional, sin juicios y respetuoso con el derecho de cada persona a morir con dignidad. Gratis, y sin nada que vender.',
+  glance: [
+    [String(ABOUT_COUNTS.places), 'Lugares cubiertos sobre la muerte médicamente asistida, con fuentes oficiales'],
+    [String(ABOUT_COUNTS.states), 'Páginas de directivas anticipadas de los estados de EE. UU., con los formularios oficiales'],
+    [String(ABOUT_COUNTS.printables), 'Hojas gratuitas para imprimir, más una carpeta con todas'],
+    ['2', 'Idiomas: español e inglés'],
+  ],
+  sections: [
+    { id: 'fundadora', h: 'Una nota de quien lo creó', icon: 'self', html: `<div class="founder-note">
 <p>Creé End of Life Atlas porque no encontraba un solo lugar que contara toda la verdad sobre el final de la vida.</p>
 <p>Quien ha visto a alguien que quiere consumirse y morir sabe que la mayoría de las guías no cuentan cómo es de verdad. Te dicen qué hacer, o qué elegir. Yo quería algo distinto: un solo lugar, para cualquier persona en cualquier país, que explique cada opción con claridad, no juzgue y respete el derecho de cada persona a morir con dignidad.</p>
 <p>Vivo en el extranjero, y me preocupo por mi madre en Estados Unidos. Cuando vives lejos de las personas que quieres, no puedes ir en coche a resolver las cosas. Necesitas información clara sobre las reglas de donde están ellas y de donde estás tú. Por eso este atlas cubre más de un país, y por eso seguirá añadiendo más.</p>
 <p>Sea lo que sea lo que está afrontando, y esté donde esté, espero que encuentre aquí lo que necesita, y que se sienta respetado mientras lo busca.</p>
 <p class="signature">KW</p>
-</section>
-<h2 id="por-que">Por qué existe este atlas</h2>
-<p>Planificar el final de la vida suele significar reunir piezas de médicos, abogados, funerarias, gobiernos y grupos de defensa. Cada uno cubre una parte, a menudo de un solo país, y algunos tienen algo que vender o una postura que promover. End of Life Atlas lo reúne en un solo lugar.</p>
-<h2 id="principios">Lo que creemos</h2>
-<div class="cards cards-tight">
+</div>` },
+    { id: 'cubre', h: 'Qué cubre el atlas', icon: 'steps', html: `<p>Cada etapa del final de la vida, en el orden en que la gente las vive:</p>
+<ul>
+<li><strong>Planificar:</strong> las directivas anticipadas y <a href="/es/directivas-anticipadas/">el formulario oficial de cada estado</a>, elegir a un representante, <a href="/es/testamentos-y-fideicomisos/">testamentos, fideicomisos y papeles</a>, <a href="/es/propiedades-en-el-extranjero/">propiedades en el extranjero</a>, <a href="/es/hablar-con-un-padre/">hablar con un padre</a> y <a href="/es/opciones-para-el-cuerpo/">todas las opciones para el cuerpo</a>.</li>
+<li><strong>La enfermedad grave:</strong> cuidados paliativos, hospicio, órdenes médicas como el POLST, y <a href="/es/opciones-cerca-del-final/">todas las opciones cerca del final de la vida</a>.</li>
+<li><strong>Las últimas semanas:</strong> un relato honesto de cómo puede ser morir, <a href="/es/senales-de-que-la-muerte-esta-cerca/">las señales de que la muerte está cerca</a>, aliviar el sufrimiento y la despedida.</li>
+<li><strong>La muerte médicamente asistida:</strong> <a href="/es/muerte-medicamente-asistida/">dónde es legal</a>, lugar por lugar, cómo funciona el proceso, orientación para familias e ir a Suiza.</li>
+<li><strong>Después de una muerte:</strong> las primeras 24 horas, los certificados de defunción, los funerales y sus derechos, <a href="/es/cuentas-en-linea/">cerrar las cuentas en línea</a> y el patrimonio.</li>
+<li><strong>El duelo:</strong> qué es normal, cómo ayudar a los niños, la pérdida de una mascota y cuándo pedir más ayuda.</li>
+<li><strong>Los costos:</strong> <a href="/es/lo-que-cuesta/">lo que cuesta morir</a>, con fuentes, y una <a href="/es/base-de-datos-de-costos/">guía de bases de datos públicas de costos</a>.</li>
+</ul>
+<p>Dos caminos paso a paso lo unen todo: <a href="/es/para-mi/">planificar para usted</a> y <a href="/es/para-un-ser-querido/">planificar para un ser querido</a>.</p>` },
+    { id: 'para-quien', h: 'Para quién es', icon: 'people', html: `<ul>
+<li><strong>Para cualquiera que planifique el final de su propia vida,</strong> esté bien o ya enfermo.</li>
+<li><strong>Para familias y cuidadores</strong> que cuidan de un padre, una pareja, un hijo o un amigo.</li>
+<li><strong>Para quienes viven lejos</strong> de la persona que les preocupa, incluso en otro país.</li>
+<li><strong>Para quienes acaban de perder a alguien</strong> y necesitan saber qué hacer ahora.</li>
+<li><strong>Para profesionales</strong> como trabajadores sociales, enfermeras, capellanes y doulas, que quieren un recurso claro y gratuito para compartir con las familias.</li>
+</ul>` },
+    { id: 'principios', h: 'Lo que creemos', icon: 'scale', html: `<div class="cards cards-tight">
 ${infoCard('plan', 'Todo en un solo lugar', 'De las directivas anticipadas al duelo, incluidos los temas que otros sitios evitan.')}
 ${infoCard('scale', 'Sin juicios', 'Explicamos cada opción legal y no le empujamos hacia ninguna. La decisión es de la persona cuya vida es.')}
 ${infoCard('globe', 'Internacional', 'Las personas viven, tienen casas y mueren entre fronteras. Decimos a qué país se aplica cada regla.')}
 ${infoCard('loved', 'Dignidad', 'Toda persona merece morir en sus propios términos, y toda familia merece información clara y honesta.')}
-</div>
-<h2 id="financiacion">Cómo nos financiamos</h2>
-<p><strong>End of Life Atlas es un sitio voluntario, hecho solo para compartir información.</strong> No tiene modelo de negocio ni necesita financiación, así que no hay nadie a quien complacer salvo a quienes lo leen, ni ninguna razón para favorecer una opción, un proveedor o un punto de vista.</p>
-<p>No hay publicidad, ni patrocinio, ni comisiones por recomendaciones, ni nada a la venta. Las guías y las listas son gratuitas.</p>
-<h2 id="editorial">Política editorial y de revisión</h2>
-<ul>
-<li>Los datos vienen de fuentes oficiales o de informes con nombre, enlazados en la página.</li>
+${infoCard('lastweeks', 'Honestidad sobre la muerte', 'Describimos cómo puede ser morir de verdad, porque las familias que saben qué esperar pueden prepararse mejor.')}
+${infoCard('doc', 'Lenguaje claro', 'Frases cortas, palabras de todos los días, y el término legal o médico al lado cuando lo va a necesitar.')}
+</div>` },
+    { id: 'no-hacemos', h: 'Lo que no hacemos', icon: 'shield', html: `<ul>
+<li><strong>No damos consejo médico ni legal.</strong> El atlas explica sus opciones; su médico y un abogado pueden decirle qué se aplica a su caso.</li>
+<li><strong>No vendemos nada,</strong> ni cobramos comisiones, ni ponemos anuncios, ni clasificamos proveedores.</li>
+<li><strong>No tomamos partido.</strong> Todos los tratamientos, solo los cuidados de alivio y la muerte médicamente asistida, donde es legal, se describen de la misma forma.</li>
+<li><strong>Solo cubrimos opciones legales.</strong></li>
+<li><strong>No recogemos sus datos.</strong> Sin cuentas, sin listas de correo y sin cookies de rastreo. Vea <a href="/es/privacidad/">privacidad</a>.</li>
+</ul>` },
+    { id: 'financiacion', h: 'Cómo nos financiamos', icon: 'costs', html: `<p><strong>End of Life Atlas es un sitio voluntario, hecho solo para compartir información.</strong> No tiene modelo de negocio ni necesita financiación, así que no hay nadie a quien complacer salvo a quienes lo leen, ni ninguna razón para favorecer una opción, un proveedor o un punto de vista.</p>
+<p>No hay publicidad, ni patrocinio, ni comisiones por recomendaciones, ni nada a la venta. Las guías, las hojas para imprimir y la app son gratuitas. No tenemos vínculos con las organizaciones que enlazamos.</p>` },
+    { id: 'editorial', h: 'Cómo verificamos los datos', icon: 'check', html: `<ul>
+<li>Los datos vienen de fuentes oficiales o de informes con nombre, enlazados en la frase que respaldan y listados al final de cada página.</li>
 <li>Lo que no hemos confirmado está marcado como "por verificar".</li>
 <li>Cada mes revisamos todo el sitio: cada enlace externo, la situación de cada ley que cubrimos y las cifras clave (costos, umbrales y tarifas). Corregimos lo que esté desactualizado y anotamos la fecha. Última revisión: ${fmtDateEs(site.lastScan)}.</li>
-<li>Cada guía muestra también cuándo se escribió o se revisó por última vez, y cada página de un lugar muestra cuándo se verificó su ley por última vez.</li>
-<li>Solo cubrimos opciones legales.</li>
+<li>Cada guía muestra cuándo se escribió o se revisó por última vez, y cada página de un lugar muestra cuándo se verificó su ley por última vez.</li>
+<li>Cuando encontramos un error, lo corregimos y actualizamos la fecha de la página.</li>
 <li>Las páginas en español traducen las páginas en inglés, con los mismos datos y fuentes, y están pendientes de revisión por un hablante nativo.</li>
 </ul>
-<p>¿Vio un error o algo desactualizado? <a href="/es/sugerencias/">Envíe una sugerencia</a>; puede quedar en el anonimato.</p>
-<h2 id="revisores">Nuestros revisores</h2>
-<p>Estamos nombrando a un médico con experiencia en el final de la vida y a un abogado para revisar nuestras guías. Sus nombres aparecerán aquí y en cada página que revisen.</p>
-</div></section>`,
-};
+<p>¿Vio un error o algo desactualizado? <a href="/es/sugerencias/">Envíe una sugerencia</a>; puede quedar en el anonimato.</p>` },
+    { id: 'fuentes-de-datos', h: 'De dónde vienen nuestros datos', icon: 'doc', html: `<p>En orden de preferencia:</p>
+<ol class="mini-steps">
+<li>Gobiernos, organismos reguladores y el texto de las leyes.</li>
+<li>Organizaciones reconocidas, como institutos nacionales de salud, organismos médicos y organizaciones sin fines de lucro.</li>
+<li>Periodismo de confianza, cuando todavía no existe nada oficial.</li>
+</ol>
+<p>Cuando las fuentes no coinciden o los datos aún están cambiando, lo decimos en la página en lugar de elegir una.</p>` },
+    { id: 'revisores', h: 'Nuestros revisores', icon: 'people', html: `<p>Estamos nombrando a un médico con experiencia en el final de la vida y a un abogado para revisar nuestras guías. Sus nombres aparecerán aquí y en cada página que revisen.</p>` },
+    { id: 'acceso', h: 'Idiomas, accesibilidad y la app', icon: 'globe', html: `<ul>
+<li><strong>Español e inglés:</strong> cada página está en los dos idiomas. Use el botón <a href="/" hreflang="en" lang="en">English</a> en la parte de arriba de cualquier página. Las traducciones al español están pendientes de revisión por un hablante nativo.</li>
+<li><strong>Accesible:</strong> buscamos cumplir las WCAG 2.2 AA y comprobamos cada página antes de cada actualización. Vea <a href="/es/accesibilidad/">accesibilidad</a>.</li>
+<li><strong>Funciona sin conexión:</strong> <a href="/es/app/">instale la app</a> y las guías clave funcionan sin señal.</li>
+<li><strong>Se imprime bien:</strong> cada hoja para imprimir viene en PDF, y la carpeta las reúne todas.</li>
+</ul>` },
+    { id: 'ayudar', h: 'Cómo puede ayudar', icon: 'hand', html: `<ul>
+<li><strong>Díganos qué falta o qué está mal.</strong> Las correcciones, los datos desactualizados y las fuentes que deberíamos conocer ayudan. <a href="/es/sugerencias/">Envíe una sugerencia</a>.</li>
+<li><strong>Compártalo</strong> con una familia que esté tomando estas decisiones, o con colegas que las acompañan.</li>
+<li><strong>Imprima y comparta las hojas.</strong> Son gratis para imprimir y compartir.</li>
+</ul>` },
+    { id: 'contacto', h: 'Contacto', icon: 'talk', html: `<p>La mejor forma de contactarnos es el <a href="/es/sugerencias/">formulario de sugerencias</a>. Su nombre y su correo son opcionales; añada su correo solo si quiere una respuesta. El formulario no se atiende para emergencias: si está en crisis, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://findahelpline.com">busque una línea de ayuda en su país</a>.</p>` },
+    { id: 'preguntas', h: 'Preguntas frecuentes', icon: 'ask', html: `<h3>¿Esto es consejo médico o legal?</h3>
+<p>No. Es información para ayudarle a entender sus opciones y a hacer mejores preguntas. Hable con su médico y con un abogado sobre su situación.</p>
+<h3>¿End of Life Atlas apoya la muerte médicamente asistida?</h3>
+<p>No tomamos postura. La explicamos igual que cualquier otra opción legal, y la decisión es de la persona cuya vida es.</p>
+<h3>¿Qué tan actual es la información?</h3>
+<p>Todo el sitio se revisa cada mes, y cada página muestra sus fechas. Las leyes cambian, así que confirme siempre con la fuente oficial enlazada en la página.</p>
+<h3>¿Por qué cubre otros países?</h3>
+<p>Porque las familias viven entre fronteras. Hay quien tiene una casa en el extranjero, cuida de sus padres desde lejos o muere en un lugar con otras reglas.</p>
+<h3>¿Cuesta algo?</h3>
+<p>No. Todo es gratis, sin cuenta y sin correo.</p>` },
+  ],
+  related: [
+    ['/es/para-mi/', 'Planifico para mí', 'Un camino paso a paso.', 'self'],
+    ['/es/para-un-ser-querido/', 'Planifico para un ser querido', 'Un camino paso a paso.', 'loved'],
+    ['/es/sugerencias/', 'Envíe una sugerencia', 'Anónimo si quiere.', 'talk'],
+  ],
+});
 
 const sugerencias = {
   path: '/es/sugerencias/',
