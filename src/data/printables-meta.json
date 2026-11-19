@@ -62,7 +62,12 @@
   "primeras-24-horas": {
     "pages": 2,
     "kb": 100,
-    "title": "Qu\u00e9 hacer cuando alguien muere: lista de las primeras 24 horas (para imprimir) | End of Life Atlas"
+    "title": "Qué hacer cuando alguien muere: lista de las primeras 24 horas (para imprimir) | End of Life Atlas"
+  },
+  "lista-cuentas-en-linea": {
+    "pages": 4,
+    "kb": 141,
+    "title": "Lista para cerrar las cuentas en línea de una persona fallecida (para imprimir) | End of Life Atlas"
   },
   "binder": {
     "pages": 51,

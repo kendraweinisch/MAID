@@ -44,6 +44,7 @@ export const ES_PAIRS = {
   '/after-a-death/': '/es/despues-de-una-muerte/',
   '/checklists/after-a-death/': '/es/primeras-24-horas/',
   '/after-a-death/digital-accounts/': '/es/cuentas-en-linea/',
+  '/checklists/online-accounts/': '/es/lista-cuentas-en-linea/',
   '/grief/': '/es/duelo/',
   '/ask/': '/es/preguntar/',
 };

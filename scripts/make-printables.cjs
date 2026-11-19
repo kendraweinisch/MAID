@@ -27,7 +27,7 @@ const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.svg':
   const browser = await chromium.launch();
   const meta = {};
   // Printables in other languages live outside /checklists/ and are not in the binder.
-  const OTHER = { 'primeras-24-horas': '/es/primeras-24-horas/' };
+  const OTHER = { 'primeras-24-horas': '/es/primeras-24-horas/', 'lista-cuentas-en-linea': '/es/lista-cuentas-en-linea/' };
   for (const slug of [...slugs, ...Object.keys(OTHER)]) {
     const url = `${base}${OTHER[slug] || `/checklists/${slug}/`}`;
     // PDF (tagged, so screen readers can read it)
