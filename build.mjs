@@ -8,6 +8,7 @@ import { buildSearchIndex } from './src/search-index.mjs';
 import { journeys } from './src/journeys.mjs';
 import { adPages } from './src/advance-directives.mjs';
 import { esPages } from './src/es.mjs';
+import { costPages } from './src/cost-database.mjs';
 
 const out = 'dist';
 // BASE_PATH serves the site from a sub-folder, e.g. "/maid" on username.github.io/maid/.
@@ -26,6 +27,7 @@ const pages = [
   ...journeys,
   ...guides,
   ...adPages,
+  ...costPages,
   printablesIndex({ planAhead: checklists[0], doctor: checklists[1], afterDeath: checklists[2] }),
   ...checklists,
   ...printables,
