@@ -28,6 +28,7 @@ const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.svg':
   const meta = {};
   // Printables in other languages live outside /checklists/ and are not in the binder.
   const OTHER = { 'primeras-24-horas': '/es/primeras-24-horas/', 'lista-cuentas-en-linea': '/es/lista-cuentas-en-linea/' };
+  for (const { slug, path } of JSON.parse(await readFile('dist/es-printables.json', 'utf8'))) OTHER[slug] = path;
   for (const slug of [...slugs, ...Object.keys(OTHER)]) {
     const url = `${base}${OTHER[slug] || `/checklists/${slug}/`}`;
     // PDF (tagged, so screen readers can read it)
@@ -63,6 +64,22 @@ const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.svg':
     await page.close(); await thumb.close();
     if (meta.binder === undefined) meta.binder = (JSON.parse(await readFile('src/data/printables-meta.json', 'utf8')).binder);
     if (!meta.binder) delete meta.binder;
+  }
+  // The Spanish binder's cover and contents (joined by make-binder.py --lang es).
+  {
+    const url = `${base}/es/imprimibles/carpeta/`;
+    const page = await browser.newPage();
+    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.emulateMedia({ media: 'print' });
+    await writeFile('dist/binder-front-es.pdf', await page.pdf({ format: 'Letter', margin: { top: '0.6in', bottom: '0.6in', left: '0.7in', right: '0.7in' }, tagged: true, printBackground: true }));
+    const thumb = await browser.newPage({ viewport: { width: 816, height: 1056 }, deviceScaleFactor: 0.45 });
+    await thumb.goto(url, { waitUntil: 'networkidle' });
+    await thumb.emulateMedia({ media: 'print' });
+    await thumb.addStyleTag({ content: 'body{background:#fff !important} .section{padding:56px 64px !important} .binder-cover{min-height:944px !important}' });
+    await thumb.screenshot({ path: 'public/thumbs/carpeta.png', clip: { x: 0, y: 0, width: 816, height: 1056 } });
+    await page.close(); await thumb.close();
+    const old = JSON.parse(await readFile('src/data/printables-meta.json', 'utf8'));
+    if (old.carpeta) meta.carpeta = old.carpeta;
   }
   await writeFile('src/data/printables-meta.json', JSON.stringify(meta, null, 2) + '\n');
   await browser.close();

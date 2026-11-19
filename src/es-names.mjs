@@ -1,0 +1,3 @@
+// Spanish names for US states, where they differ from the English.
+const ESTADO = { 'District of Columbia': 'Distrito de Columbia', Hawaii: 'Hawái', Louisiana: 'Luisiana', 'New Hampshire': 'Nuevo Hampshire', 'New Jersey': 'Nueva Jersey', 'New Mexico': 'Nuevo México', 'New York': 'Nueva York', 'North Carolina': 'Carolina del Norte', 'North Dakota': 'Dakota del Norte', Oregon: 'Oregón', Pennsylvania: 'Pensilvania', 'South Carolina': 'Carolina del Sur', 'South Dakota': 'Dakota del Sur', Tennessee: 'Tennessee', 'West Virginia': 'Virginia Occidental', Michigan: 'Míchigan', Minnesota: 'Minnesota', Mississippi: 'Misisipi', Missouri: 'Misuri', Kansas: 'Kansas' };
+export const estado = (name) => ESTADO[name] || name;

@@ -7,6 +7,7 @@ import { esc, fmtDateEs, site } from './layout.mjs';
 import { icons } from './icons.mjs';
 import { linkCards, cardifyLists } from './ui.mjs';
 import { journeyPage } from './journeys.mjs';
+import { estado } from './es-names.mjs';
 
 const ad = JSON.parse(readFileSync(new URL('./data/advance-directives.json', import.meta.url), 'utf8'));
 
@@ -30,7 +31,7 @@ export function dlPanelEs(slug) {
 </div>`;
 }
 
-export const reviewNote = `<p class="small muted es-note">Traducción pendiente de revisión por un hablante nativo. ¿Ve un error? <a href="/suggestions/">Díganos</a>.</p>`;
+export const reviewNote = `<p class="small muted es-note">Traducción pendiente de revisión por un hablante nativo. ¿Ve un error? <a href="/es/sugerencias/">Díganos</a>.</p>`;
 
 
 // The same section design as the English guides: an icon per section, key
@@ -105,7 +106,7 @@ export function esGuide({ path, title, description, eyebrow, lead, icon = 'plan'
 <p class="eyebrow">${eyebrow}</p>
 <h1>${title}</h1>
 <p class="lead" style="margin-top:20px">${lead}</p>
-<p class="small muted" style="margin:0">Revisión de exactitud: ${fmtDateEs(site.lastScan)} · <a href="/about/#editorial" hreflang="en">Cómo verificamos</a>${EN}</p>
+<p class="small muted" style="margin:0">Revisión de exactitud: ${fmtDateEs(site.lastScan)} · <a href="/es/acerca/#editorial">Cómo verificamos</a>${EN}</p>
 ${reviewNote}
 </div>
 </div>
@@ -138,15 +139,15 @@ const planificar = esGuide({
 <li><strong>Un poder para decisiones de salud:</strong> la persona que decide por usted (su representante o agente).</li></ul>
 <p>Los nombres, formularios y reglas cambian según el país. En EE. UU., cada estado tiene su propio formulario y sus reglas sobre testigos o notario. Los formularios suelen ser gratuitos y a menudo no necesita un abogado. <strong>Encuentre <a href="/es/directivas-anticipadas/">el formulario de su estado</a></strong>. Dé copias a su representante y a su médico, y guarde el original donde se pueda encontrar.</p>` },
     { id: 'representante', h: 'Elija a su representante', html: `<p>Elija a alguien que respete sus deseos aunque no esté de acuerdo, que mantenga la calma bajo presión y a quien se pueda localizar rápido. Nombre también a un suplente. Luego dígale, con detalle, qué es importante para usted.</p>` },
-    { id: 'persona', h: 'Nombre a una persona que sepa dónde está todo', html: `<p>Además de su representante y de su albacea, ayuda elegir a una persona de confianza que sepa dónde están sus documentos, contraseñas y deseos, y a quién llamar. Puede ser la misma persona. Dígaselo y anote su nombre en la ${enLink('/checklists/plan-ahead/', 'hoja de planificación')}.</p>` },
+    { id: 'persona', h: 'Nombre a una persona que sepa dónde está todo', html: `<p>Además de su representante y de su albacea, ayuda elegir a una persona de confianza que sepa dónde están sus documentos, contraseñas y deseos, y a quién llamar. Puede ser la misma persona. Dígaselo y anote su nombre en la ${`<a href="/es/imprimibles/planificacion/">hoja de planificación</a>`}.</p>` },
     { id: 'conversacion', h: 'Tenga la conversación', html: `<p>El documento importa menos que la conversación que hay detrás. Preguntas útiles:</p>
 <ul><li>¿Qué haría que la vida no valiera la pena para usted? ¿Qué estaría dispuesto a pasar para tener más tiempo?</li>
 <li>¿Dónde querría estar al final: en casa, en un hospicio, en un hospital?</li>
 <li>¿A quién quiere a su lado, y quién quiere que tome las decisiones?</li>
 <li>¿Qué quiere para su cuerpo y para su funeral?</li></ul>` },
     { id: 'papeles', h: 'Ponga sus papeles en orden', html: `<p>Las familias pierden semanas buscando cosas. Anote dónde están su testamento, sus pólizas de seguro, sus cuentas bancarias y de jubilación, la escritura o el contrato de alquiler, las contraseñas, y quién debe cuidar de sus hijos y mascotas. Ponga un beneficiario en las cuentas donde se pueda: esas cuentas suelen pasar fuera del proceso sucesorio (probate).</p>
-<p>Para saber qué hace cada documento y cómo cambian las reglas según el estado, vea ${enLink('/plan-ahead/wills-and-trusts/', 'testamentos, fideicomisos y papeles')}. ¿Tiene una casa en otro país? Puede necesitar un testamento allí también: vea ${enLink('/plan-ahead/property-abroad/', 'propiedades en el extranjero')}.</p>` },
-    { id: 'despues', h: 'Diga lo que quiere para después', html: `<p>Entierro, cremación, entierro ecológico o donación del cuerpo. Un servicio religioso, una celebración de vida, una fiesta o nada. Música, lecturas, quién debe hablar. Vea ${enLink('/plan-ahead/choices-for-the-body/', 'todas las opciones para el cuerpo')}. Dejarlo por escrito es un regalo para quien tenga que organizarlo. La donación del cuerpo normalmente hay que arreglarla con antelación con una facultad de medicina o un programa.</p>` },
+<p>Para saber qué hace cada documento y cómo cambian las reglas según el estado, vea ${`<a href="/es/testamentos-y-fideicomisos/">testamentos, fideicomisos y papeles</a>`}. ¿Tiene una casa en otro país? Puede necesitar un testamento allí también: vea ${`<a href="/es/propiedades-en-el-extranjero/">propiedades en el extranjero</a>`}.</p>` },
+    { id: 'despues', h: 'Diga lo que quiere para después', html: `<p>Entierro, cremación, entierro ecológico o donación del cuerpo. Un servicio religioso, una celebración de vida, una fiesta o nada. Música, lecturas, quién debe hablar. Vea ${`<a href="/es/opciones-para-el-cuerpo/">todas las opciones para el cuerpo</a>`}. Dejarlo por escrito es un regalo para quien tenga que organizarlo. La donación del cuerpo normalmente hay que arreglarla con antelación con una facultad de medicina o un programa.</p>` },
     { id: 'revisar', h: 'Revíselo cada pocos años', html: `<p>Vuelva a mirarlo después de un diagnóstico nuevo, un divorcio o una muerte en la familia, o cada pocos años de todos modos. Actualice los documentos y cuéntele a su representante qué cambió.</p>` },
   ],
   related: [
@@ -158,7 +159,7 @@ const planificar = esGuide({
 });
 
 const stateCards = ad.states
-  .map((s) => `<a class="ocard state-card" href="/plan-ahead/advance-directives/${s.slug}/" hreflang="en"><strong>${esc(s.name)}</strong><span class="muted small">Formularios del estado</span></a>`)
+  .map((s) => `<a class="ocard state-card" href="/es/directivas-anticipadas/${s.slug}/"><strong>${esc(estado(s.name))}</strong><span class="muted small">Formularios del estado</span></a>`)
   .join('');
 
 const directivas = {
@@ -186,7 +187,7 @@ ${reviewNote}
 <h2 id="que-es">Qué es una directiva anticipada</h2>
 <p>Es un documento legal que dice qué atención médica quiere si usted no puede hablar por sí mismo. Tiene dos partes: <strong>instrucciones</strong> (el testamento vital) y <strong>la persona que decide por usted</strong> (su representante, agente o apoderado para decisiones de salud). Más en <a href="/es/planificar/#directiva">planificar con tiempo</a>.</p>
 <h2 id="estados">Elija su estado</h2>
-<p>Las páginas de cada estado y la mayoría de los formularios oficiales están en inglés. Algunos estados publican su formulario también en español, entre ellos Oregón y Wisconsin (en sus páginas oficiales, enlazadas desde la página de cada estado).</p>
+<p>La mayoría de los formularios oficiales están en inglés. Algunos estados publican su formulario también en español, entre ellos Oregón y Wisconsin (en sus páginas oficiales, enlazadas desde la página de cada estado).</p>
 </div>
 <div class="wrap">
 <div class="cards cards-tight state-grid" style="margin-top:20px">${stateCards}</div>
@@ -235,7 +236,7 @@ const paliativos = esGuide({
   related: [
     ['/es/senales-de-que-la-muerte-esta-cerca/', 'Señales de que la muerte está cerca', 'Qué esperar y qué ayuda.', 'lastweeks'],
     ['/es/directivas-anticipadas/', 'Directivas anticipadas por estado', 'Formularios gratuitos.', 'plan'],
-    ['/serious-illness/', 'Serious illness (en inglés)', 'La guía completa, en inglés.', 'illness'],
+    ['/es/enfermedad-grave/', 'Enfermedad grave', 'La guía completa.', 'illness'],
   ],
   sources: [
     ['Medicare: beneficio de hospicio (en inglés)', 'https://www.medicare.gov/coverage/hospice-care'],
@@ -267,7 +268,7 @@ const senales = esGuide({
   related: [
     ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Lista para imprimir.', 'printer'],
     ['/es/cuidados-paliativos-y-hospicio/', 'Cuidados paliativos y hospicio', 'La diferencia, y cuándo pedirlos.', 'illness'],
-    ['/last-weeks/', 'The last weeks (en inglés)', 'Lo que es morir de verdad, en inglés.', 'lastweeks'],
+    ['/es/ultimas-semanas/', 'Las últimas semanas', 'Cómo puede ser morir de verdad.', 'lastweeks'],
   ],
   sources: [['National Institute on Aging: el final de la vida (en inglés)', 'https://www.nia.nih.gov/health/end-of-life']],
 });
@@ -289,13 +290,13 @@ const despues = esGuide({
 <li><strong>Cremación:</strong> con o sin ceremonia. La cremación directa, sin ceremonia antes, suele ser la que menos cuesta.</li>
 <li><strong>Donación del cuerpo:</strong> normalmente se arregla con antelación con un programa.</li>
 <li><strong>Funeral en casa:</strong> la mayoría de los estados permiten a las familias cuidar de sus propios muertos; algunos exigen un director de funeraria para ciertos pasos.</li></ul>
-<p>Hay muchas más opciones, como la cremación con agua, el compostaje humano, el entierro en el mar o ser plantado bajo un árbol: vea ${enLink('/plan-ahead/choices-for-the-body/', 'todas las opciones para el cuerpo')}. La ceremonia puede hacerse semanas después, de la forma que usted quiera.</p>` },
+<p>Hay muchas más opciones, como la cremación con agua, el compostaje humano, el entierro en el mar o ser plantado bajo un árbol: vea ${`<a href="/es/opciones-para-el-cuerpo/">todas las opciones para el cuerpo</a>`}. La ceremonia puede hacerse semanas después, de la forma que usted quiera.</p>` },
     { id: 'derechos', h: 'Sus derechos con las funerarias', html: `<p>Esté donde esté, pida precios por escrito y detallados antes de aceptar nada. En EE. UU., la <a class="src-link" href="https://consumidor.ftc.gov/articulos/la-regla-sobre-funerales">Regla sobre Funerales de la FTC</a> le da derecho a:</p>
 <ul><li>Recibir una lista de precios detallada en persona, y precios por teléfono.</li>
 <li>Comprar solo los productos y servicios que quiera.</li>
 <li>Usar un ataúd o una urna comprados en otro lugar, sin cargo por manejo.</li>
 <li>Rechazar el embalsamamiento en la mayoría de los casos. Pregunte qué exige realmente la ley.</li></ul>
-<p>Los precios varían mucho. Llamar a dos o tres funerarias puede ahorrar miles de dólares. Vea ${enLink('/what-it-costs/', 'lo que cuesta')}.</p>` },
+<p>Los precios varían mucho. Llamar a dos o tres funerarias puede ahorrar miles de dólares. Vea ${`<a href="/es/lo-que-cuesta/">lo que cuesta</a>`}.</p>` },
     { id: 'primer-mes', h: 'El primer mes', html: `<ul><li>Busque el testamento y contacte al albacea que nombra.</li>
 <li>Avise a la agencia de pensiones o seguridad social del gobierno (en EE. UU., el Seguro Social; muchas veces lo hace la funeraria), a otros planes de pensiones, a las aseguradoras y a los bancos.</li>
 <li>Reclame el seguro de vida y cualquier beneficio; pregunte por los beneficios para sobrevivientes.</li>
@@ -303,7 +304,7 @@ const despues = esGuide({
 <li>Cierre o convierta en conmemorativas sus redes sociales, su correo y otras cuentas en línea, después de guardar lo que la familia quiera conservar. Vea <a href="/es/cuentas-en-linea/">cerrar sus cuentas en línea</a>.</li>
 <li>Redirija el correo, asegure la casa y el auto, y cuide de las mascotas.</li></ul>` },
     { id: 'sucesion', h: 'La sucesión y el patrimonio', html: `<p>El proceso sucesorio (en EE. UU., probate) es el proceso legal para cerrar el patrimonio de una persona; su nombre y sus pasos cambian según el país. Las cuentas con un beneficiario nombrado y los bienes en propiedad conjunta suelen pasar fuera de él, y muchos lugares, entre ellos todos los estados de EE. UU., tienen un proceso más sencillo para patrimonios pequeños. Si el patrimonio es grande o complicado, hable con un abogado de sucesiones.</p>
-<p>Si tenía propiedades en otro país, vea ${enLink('/plan-ahead/property-abroad/', 'propiedades en el extranjero')}.</p>` },
+<p>Si tenía propiedades en otro país, vea ${`<a href="/es/propiedades-en-el-extranjero/">propiedades en el extranjero</a>`}.</p>` },
   ],
   related: [
     ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Lista para imprimir.', 'printer'],
@@ -340,7 +341,7 @@ const duelo = esGuide({
   ],
   related: [
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Lo urgente y lo que puede esperar.', 'afterdeath'],
-    ['/checklists/remembering-someone/', 'Libro para recordar (en inglés)', 'Para niños en duelo, para imprimir.', 'printer'],
+    ['/es/imprimibles/recordar-a-alguien/', 'Libro para recordar', 'Para niños en duelo, para imprimir.', 'printer'],
   ],
   sources: [['988 Suicide & Crisis Lifeline: ayuda en español', 'https://988lifeline.org/es/home/']],
 });
@@ -553,23 +554,23 @@ const paraMi = {
       stops: [
         { id: 'matters', t: 'Piense en lo que le importa', d: 'Qué haría que la vida no valiera la pena, qué estaría dispuesto a pasar para tener más tiempo, y dónde querría estar al final.', links: [['/es/planificar/#conversacion', 'Preguntas para pensar']] },
         { id: 'people', t: 'Elija a sus personas', d: 'Un representante para decisiones de salud, un suplente, un albacea, y una persona que sepa dónde está todo.', links: [['/es/planificar/#representante', 'Elegir representante'], ['/es/planificar/#persona', 'La persona de confianza']] },
-        { id: 'body', t: 'Decida qué pasará con su cuerpo', d: 'Entierro, cremación, entierro ecológico, bajo un árbol, en el mar, compostaje, donación y más.', links: [E('/plan-ahead/choices-for-the-body/', 'Todas las opciones')] },
-        { id: 'gathering', t: 'Planifique la despedida', d: 'Un funeral, una celebración de vida, una fiesta o nada. Música, palabras y personas.', links: [E('/checklists/funeral-planner/', 'Planificador de funeral')] },
+        { id: 'body', t: 'Decida qué pasará con su cuerpo', d: 'Entierro, cremación, entierro ecológico, bajo un árbol, en el mar, compostaje, donación y más.', links: [['/es/opciones-para-el-cuerpo/', 'Todas las opciones']] },
+        { id: 'gathering', t: 'Planifique la despedida', d: 'Un funeral, una celebración de vida, una fiesta o nada. Música, palabras y personas.', links: [['/es/imprimibles/funeral/', 'Planificador de funeral']] },
       ],
     },
     {
       h: 'Déjelo por escrito',
       stops: [
         { id: 'medical', t: 'Escriba sus deseos médicos', d: 'Una directiva anticipada y un poder para decisiones de salud, en el formulario de su estado o país.', links: [['/es/directivas-anticipadas/', 'El formulario de su estado'], ['/es/planificar/#directiva', 'Directivas anticipadas']] },
-        { id: 'will', t: 'Haga un testamento y los documentos del dinero', d: 'Un testamento, un poder financiero y beneficiarios al día. Las reglas cambian según el estado y el país.', links: [E('/plan-ahead/wills-and-trusts/', 'Testamentos y papeles'), E('/plan-ahead/property-abroad/', 'Propiedades en el extranjero')] },
-        { id: 'words', t: 'Deje sus palabras', d: 'Cartas para las personas que quiere, y la historia de su vida contada por usted.', links: [E('/checklists/letters-to-leave/', 'Cartas para dejar')] },
-        { id: 'one-place', t: 'Ponga todo en un solo lugar', d: 'Dónde están sus documentos, sus cuentas, su vida digital y a quién llamar.', links: [['/es/planificar/#papeles', 'Sus papeles en orden'], E('/checklists/plan-ahead/', 'Hoja de planificación')] },
+        { id: 'will', t: 'Haga un testamento y los documentos del dinero', d: 'Un testamento, un poder financiero y beneficiarios al día. Las reglas cambian según el estado y el país.', links: [['/es/testamentos-y-fideicomisos/', 'Testamentos y papeles'], ['/es/propiedades-en-el-extranjero/', 'Propiedades en el extranjero']] },
+        { id: 'words', t: 'Deje sus palabras', d: 'Cartas para las personas que quiere, y la historia de su vida contada por usted.', links: [['/es/imprimibles/cartas/', 'Cartas para dejar']] },
+        { id: 'one-place', t: 'Ponga todo en un solo lugar', d: 'Dónde están sus documentos, sus cuentas, su vida digital y a quién llamar.', links: [['/es/planificar/#papeles', 'Sus papeles en orden'], ['/es/imprimibles/planificacion/', 'Hoja de planificación']] },
       ],
     },
     {
       h: 'Compártalo y manténgalo al día',
       stops: [
-        { id: 'costs', t: 'Sepa lo que puede costar', d: 'Los cuidados, los funerales y las opciones que cuestan menos.', links: [E('/what-it-costs/', 'Lo que cuesta')] },
+        { id: 'costs', t: 'Sepa lo que puede costar', d: 'Los cuidados, los funerales y las opciones que cuestan menos.', links: [['/es/lo-que-cuesta/', 'Lo que cuesta']] },
         { id: 'tell', t: 'Cuénteselo a su familia', d: 'Dé copias a su representante y a su albacea, y hablen de lo que decidió.', links: [['/es/planificar/#conversacion', 'La conversación']] },
         { id: 'ill', t: 'Si se enferma gravemente', d: 'Cuidados paliativos, hospicio, órdenes médicas y todas las opciones cerca del final.', links: [['/es/cuidados-paliativos-y-hospicio/', 'Paliativos y hospicio'], ['/es/muerte-medicamente-asistida/', 'Muerte médicamente asistida']] },
         { id: 'review', t: 'Revíselo cada pocos años', d: 'Y después de un matrimonio, un divorcio, un nacimiento, una muerte, una mudanza o un diagnóstico.', links: [['/es/planificar/#revisar', 'Mantenerlo al día']] },
@@ -589,25 +590,25 @@ const paraSerQuerido = {
     {
       h: 'Mientras está bien',
       stops: [
-        { id: 'talk', t: 'Empiece la conversación', d: 'Formas suaves de preguntarle qué quiere, con espacio para anotar sus respuestas.', links: [['/es/planificar/#conversacion', 'Preguntas para hablar'], E('/plan-ahead/talking-with-a-parent/', 'Hablar con un padre')] },
+        { id: 'talk', t: 'Empiece la conversación', d: 'Formas suaves de preguntarle qué quiere, con espacio para anotar sus respuestas.', links: [['/es/planificar/#conversacion', 'Preguntas para hablar'], ['/es/hablar-con-un-padre/', 'Hablar con un padre']] },
         { id: 'documents', t: 'Ayúdele a poner sus documentos en orden', d: 'Una directiva anticipada, un testamento, poderes y una lista de dónde está todo.', links: [['/es/directivas-anticipadas/', 'Directivas anticipadas por estado'], ['/es/planificar/#papeles', 'Papeles en orden']] },
-        { id: 'far', t: 'Si vive lejos', d: 'Videollamadas, ayuda local, copias de los papeles clave, y ser su representante a distancia.', links: [E('/plan-ahead/talking-with-a-parent/#far', 'Cuando vive lejos')] },
+        { id: 'far', t: 'Si vive lejos', d: 'Videollamadas, ayuda local, copias de los papeles clave, y ser su representante a distancia.', links: [['/es/hablar-con-un-padre/#lejos', 'Cuando vive lejos']] },
       ],
     },
     {
       h: 'Si está gravemente enfermo',
       stops: [
         { id: 'comfort-care', t: 'Pregunte pronto por los cuidados de alivio', d: 'Los cuidados paliativos pueden empezar en cualquier etapa. Muchas familias desearían haber sabido antes del hospicio.', links: [['/es/cuidados-paliativos-y-hospicio/', 'Paliativos y hospicio']] },
-        { id: 'appointments', t: 'Vaya preparado a las citas', d: 'Qué preguntar, y alguien que tome notas.', links: [E('/checklists/questions-for-the-doctor/', 'Preguntas para el médico')] },
-        { id: 'caregiver', t: 'Cuídese como cuidador', d: 'Pida ayuda concreta, y pida cuidados de relevo.', links: [E('/serious-illness/#caregivers', 'Si usted cuida')] },
-        { id: 'choices', t: 'Respete sus decisiones', d: 'Todos los tratamientos, solo cuidados de alivio, o la muerte médicamente asistida donde es legal: la decisión es suya.', links: [E('/serious-illness/#choices', 'Opciones cerca del final'), ['/es/muerte-medicamente-asistida/familias/', 'Para familias']] },
+        { id: 'appointments', t: 'Vaya preparado a las citas', d: 'Qué preguntar, y alguien que tome notas.', links: [['/es/imprimibles/preguntas-para-el-medico/', 'Preguntas para el médico']] },
+        { id: 'caregiver', t: 'Cuídese como cuidador', d: 'Pida ayuda concreta, y pida cuidados de relevo.', links: [['/es/enfermedad-grave/#cuidador', 'Si usted cuida']] },
+        { id: 'choices', t: 'Respete sus decisiones', d: 'Todos los tratamientos, solo cuidados de alivio, o la muerte médicamente asistida donde es legal: la decisión es suya.', links: [['/es/opciones-cerca-del-final/', 'Opciones cerca del final'], ['/es/muerte-medicamente-asistida/familias/', 'Para familias']] },
       ],
     },
     {
       h: 'En las últimas semanas',
       stops: [
         { id: 'expect', t: 'Sepa qué esperar', d: 'Las señales de que la muerte está cerca, para que no le tomen por sorpresa.', links: [['/es/senales-de-que-la-muerte-esta-cerca/', 'Señales de que la muerte está cerca']] },
-        { id: 'suffering', t: 'Alivie el sufrimiento y proteja su dignidad', d: 'Insista al equipo médico sobre el dolor y la angustia, y pregúntele qué significa para él o ella la dignidad.', links: [['/es/senales-de-que-la-muerte-esta-cerca/#ayuda', 'Lo que ayuda'], E('/last-weeks/#dignity', 'La dignidad')] },
+        { id: 'suffering', t: 'Alivie el sufrimiento y proteja su dignidad', d: 'Insista al equipo médico sobre el dolor y la angustia, y pregúntele qué significa para él o ella la dignidad.', links: [['/es/senales-de-que-la-muerte-esta-cerca/#ayuda', 'Lo que ayuda'], ['/es/ultimas-semanas/#dignidad', 'La dignidad']] },
         { id: 'moment', t: 'Prepárese para el momento de la muerte', d: 'A quién llamar, y la lista a mano.', links: [['/es/primeras-24-horas/', 'Lista de las primeras 24 horas']] },
       ],
     },
@@ -616,7 +617,7 @@ const paraSerQuerido = {
       stops: [
         { id: 'first-day', t: 'Las primeras 24 horas', d: 'Muy poco es urgente. A quién llamar primero y qué puede esperar.', links: [['/es/despues-de-una-muerte/#primeras-horas', 'Las primeras horas'], ['/es/primeras-24-horas/', 'Lista para imprimir']] },
         { id: 'funeral', t: 'Organice el funeral o la despedida', d: 'Todas las opciones para el cuerpo, sus derechos con las funerarias y lo que cuesta.', links: [['/es/despues-de-una-muerte/#funeral', 'Funeral, entierro y cremación'], ['/es/despues-de-una-muerte/#derechos', 'Sus derechos']] },
-        { id: 'eulogy', t: 'Escriba el elogio fúnebre', d: 'Una historia verdadera vale más que una lista de virtudes.', links: [E('/checklists/eulogy/', 'Escribir un elogio')] },
+        { id: 'eulogy', t: 'Escriba el elogio fúnebre', d: 'Una historia verdadera vale más que una lista de virtudes.', links: [['/es/imprimibles/elogio/', 'Escribir un elogio']] },
         { id: 'estate', t: 'Ocúpese de los trámites y del patrimonio', d: 'Certificados de defunción, avisos a organismos y bancos, cuentas en línea y la sucesión.', links: [['/es/despues-de-una-muerte/#primer-mes', 'El primer mes'], ['/es/cuentas-en-linea/', 'Sus cuentas en línea'], ['/es/despues-de-una-muerte/#sucesion', 'La sucesión']] },
       ],
     },
@@ -624,8 +625,8 @@ const paraSerQuerido = {
       h: 'Duelo',
       stops: [
         { id: 'your-grief', t: 'Su propio duelo', d: 'Qué es normal, el duelo antes de la muerte, y después de presenciar una muerte difícil.', links: [['/es/duelo/', 'Duelo']] },
-        { id: 'children', t: 'Cómo ayudar a los niños', d: 'Palabras sencillas, respuestas honestas, y libros para recordar que pueden llenar juntos.', links: [['/es/duelo/#ninos', 'Ayudar a los niños'], E('/checklists/remembering-someone/', 'Libros para recordar')] },
-        { id: 'support', t: 'Busque apoyo', d: 'Servicios de duelo del hospicio, grupos de duelo y consejeros.', links: [['/es/duelo/#apoyo', 'Dónde encontrar apoyo'], E('/finding-help/', 'Ayuda cerca de usted')] },
+        { id: 'children', t: 'Cómo ayudar a los niños', d: 'Palabras sencillas, respuestas honestas, y libros para recordar que pueden llenar juntos.', links: [['/es/duelo/#ninos', 'Ayudar a los niños'], ['/es/imprimibles/recordar-a-alguien/', 'Libros para recordar']] },
+        { id: 'support', t: 'Busque apoyo', d: 'Servicios de duelo del hospicio, grupos de duelo y consejeros.', links: [['/es/duelo/#apoyo', 'Dónde encontrar apoyo'], ['/es/encontrar-ayuda/', 'Ayuda cerca de usted']] },
       ],
     },
   ],
@@ -703,9 +704,14 @@ ${linkCards([
     ['/es/cuentas-en-linea/', 'Cerrar sus cuentas en línea', 'Redes sociales, correo, nube y pagos, con lista para imprimir.', 'key'],
     ['/es/duelo/', 'Duelo', 'Qué es normal, los niños, y cuándo pedir ayuda.', 'grief'],
     ['/es/muerte-medicamente-asistida/', 'Muerte médicamente asistida', 'Dónde es legal la eutanasia y el suicidio asistido, y cómo funciona.', 'maid'],
+    ['/es/enfermedad-grave/', 'Enfermedad grave', 'Cuidados paliativos, hospicio y POLST.', 'illness'],
+    ['/es/ultimas-semanas/', 'Las últimas semanas', 'Cómo puede ser morir de verdad.', 'lastweeks'],
+    ['/es/testamentos-y-fideicomisos/', 'Testamentos y fideicomisos', 'Qué hace cada documento, por estado y país.', 'wills'],
+    ['/es/opciones-para-el-cuerpo/', 'Opciones para el cuerpo', 'Del entierro al compostaje humano.', 'tree'],
+    ['/es/lo-que-cuesta/', 'Lo que cuesta', 'Cuidados, hospicio y funerales, con fuentes.', 'costs'],
+    ['/es/imprimibles/', 'Hojas para imprimir', 'Doce hojas y una carpeta, gratis.', 'printer'],
     ['/es/preguntar/', 'Haga una pregunta', 'Respuestas de las páginas en español de este sitio.', 'ask'],
   ], 'cards')}
-<div class="notice" style="margin-top:48px"><p style="margin:0"><strong>Solo en inglés por ahora:</strong> ${enLink('/serious-illness/choices-near-the-end/', 'las opciones cerca del final de la vida')}, ${enLink('/plan-ahead/wills-and-trusts/', 'testamentos y fideicomisos')}, ${enLink('/what-it-costs/database/', 'la base de datos de costos')}, ${enLink('/plan-ahead/choices-for-the-body/', 'las opciones para el cuerpo')} y ${enLink('/checklists/', 'las demás hojas para imprimir')}.</p></div>
 </div>
 </section>`,
 };

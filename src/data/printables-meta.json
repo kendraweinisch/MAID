@@ -62,16 +62,71 @@
   "primeras-24-horas": {
     "pages": 2,
     "kb": 100,
-    "title": "Qué hacer cuando alguien muere: lista de las primeras 24 horas (para imprimir) | End of Life Atlas"
+    "title": "Qu\u00e9 hacer cuando alguien muere: lista de las primeras 24 horas (para imprimir) | End of Life Atlas"
   },
   "lista-cuentas-en-linea": {
     "pages": 4,
     "kb": 141,
-    "title": "Lista para cerrar las cuentas en línea de una persona fallecida (para imprimir) | End of Life Atlas"
+    "title": "Lista para cerrar las cuentas en l\u00ednea de una persona fallecida (para imprimir) | End of Life Atlas"
+  },
+  "planificacion": {
+    "pages": 5,
+    "kb": 133,
+    "title": "Hoja de planificaci\u00f3n para el final de la vida (para imprimir) | End of Life Atlas"
+  },
+  "preguntas-para-el-medico": {
+    "pages": 2,
+    "kb": 94,
+    "title": "Preguntas para el m\u00e9dico despu\u00e9s de un diagn\u00f3stico grave (para imprimir) | End of Life Atlas"
+  },
+  "funeral": {
+    "pages": 3,
+    "kb": 113,
+    "title": "Lista para planificar un funeral o una celebraci\u00f3n de vida (para imprimir) | End of Life Atlas"
+  },
+  "hablar-con-un-padre": {
+    "pages": 6,
+    "kb": 153,
+    "title": "Preguntas para hacer a sus padres sobre sus deseos al final de la vida (para imprimir) | End of Life Atlas"
+  },
+  "elogio": {
+    "pages": 4,
+    "kb": 140,
+    "title": "C\u00f3mo escribir un elogio f\u00fanebre: preguntas y plantilla (para imprimir) | End of Life Atlas"
+  },
+  "cartas": {
+    "pages": 4,
+    "kb": 128,
+    "title": "Cartas para dejar a sus seres queridos: preguntas (para imprimir) | End of Life Atlas"
+  },
+  "mi-historia": {
+    "pages": 4,
+    "kb": 123,
+    "title": "Escriba su propia historia de vida y su esquela (para imprimir) | End of Life Atlas"
+  },
+  "recordar-a-alguien": {
+    "pages": 6,
+    "kb": 162,
+    "title": "Cuaderno de duelo para ni\u00f1os: un libro para recordar (para imprimir) | End of Life Atlas"
+  },
+  "recordar-a-un-abuelo": {
+    "pages": 5,
+    "kb": 165,
+    "title": "Cuaderno de duelo para ni\u00f1os por la muerte de un abuelo o una abuela (para imprimir) | End of Life Atlas"
+  },
+  "recordar-a-una-mascota": {
+    "pages": 4,
+    "kb": 148,
+    "title": "Cuaderno para ni\u00f1os por la muerte de una mascota (para imprimir) | End of Life Atlas"
   },
   "binder": {
     "pages": 51,
     "kb": 659,
     "title": "The End of Life Atlas binder | End of Life Atlas"
+  },
+  "carpeta": {
+    "pages": 51,
+    "kb": 688,
+    "title": "La carpeta de End of Life Atlas | End of Life Atlas"
   }
 }

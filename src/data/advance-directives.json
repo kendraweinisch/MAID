@@ -194,7 +194,8 @@
     }
    ],
    "registry": "The Idaho Department of Health and Welfare keeps a registry where you can file your directive.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Idaho.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Idaho.pdf",
+   "registryEs": "El Departamento de Salud y Bienestar de Idaho tiene un registro donde puede inscribir su directiva."
   },
   {
    "code": "IL",
@@ -284,7 +285,8 @@
     }
    ],
    "registry": "The Louisiana Secretary of State keeps a registry for living will declarations. Filing is optional and there is a fee.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Louisiana.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Louisiana.pdf",
+   "registryEs": "La Secretaría de Estado de Luisiana tiene un registro de declaraciones de testamento vital. Inscribirla es opcional y tiene un costo."
   },
   {
    "code": "ME",
@@ -398,7 +400,8 @@
     }
    ],
    "registry": "The Montana Attorney General runs an End-of-Life Registry where you can store your directive online.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Montana.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Montana.pdf",
+   "registryEs": "La Fiscalía General de Montana tiene un registro del final de la vida donde puede guardar su directiva en línea."
   },
   {
    "code": "NE",
@@ -428,7 +431,8 @@
     }
    ],
    "registry": "The Nevada Secretary of State runs the Nevada Lockbox, a free registry for advance directives.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Nevada.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Nevada.pdf",
+   "registryEs": "La Secretaría de Estado de Nevada tiene el Nevada Lockbox, un registro gratuito de directivas anticipadas."
   },
   {
    "code": "NH",
@@ -508,7 +512,8 @@
     }
    ],
    "registry": "The North Carolina Secretary of State keeps an Advance Health Care Directive Registry. Filing is optional.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/NorthCarolina.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/NorthCarolina.pdf",
+   "registryEs": "La Secretaría de Estado de Carolina del Norte tiene un registro de directivas anticipadas de salud. Inscribirla es opcional."
   },
   {
    "code": "ND",
@@ -693,7 +698,8 @@
     }
    ],
    "registry": "Vermont has a free Advance Directive Registry. Vermont has no required form.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Vermont.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Vermont.pdf",
+   "registryEs": "Vermont tiene un registro gratuito de directivas anticipadas. Vermont no exige un formulario concreto."
   },
   {
    "code": "VA",
@@ -713,7 +719,8 @@
     }
    ],
    "registry": "Virginia has a state Advance Health Care Directive Registry.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Virginia.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/Virginia.pdf",
+   "registryEs": "Virginia tiene un registro estatal de directivas anticipadas de salud."
   },
   {
    "code": "WA",
@@ -748,7 +755,8 @@
     }
    ],
    "registry": "West Virginia has an e-Directive Registry, run by the West Virginia Center for End-of-Life Care.",
-   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/WestVirginia.pdf"
+   "caringinfo": "https://www.caringinfo.org/wp-content/uploads/WestVirginia.pdf",
+   "registryEs": "Virginia Occidental tiene un registro electrónico de directivas, a cargo del West Virginia Center for End-of-Life Care."
   },
   {
    "code": "WI",
