@@ -82,7 +82,7 @@ const lovedOne = {
         { id: 'first-day', t: 'The first 24 hours', d: 'Very little is urgent. Who to call first, and what can wait.', links: [['/after-a-death/#first-hours', 'The first hours'], ['/checklists/after-a-death/', 'Printable checklist']] },
         { id: 'funeral', t: 'Arrange the funeral or gathering', d: 'Every option for the body, your rights with funeral homes, and what it costs.', links: [['/plan-ahead/choices-for-the-body/', 'Every choice for the body'], ['/checklists/funeral-planner/', 'Funeral planner'], ['/what-it-costs/#funeral', 'Funeral costs']] },
         { id: 'eulogy', t: 'Write the eulogy', d: 'One true story beats a list of qualities.', links: [['/checklists/eulogy/', 'Writing a eulogy']] },
-        { id: 'estate', t: 'Handle the paperwork and the estate', d: 'Death certificates, notifying agencies and banks, and probate.', links: [['/after-a-death/#first-month', 'The first month'], ['/after-a-death/#probate', 'Probate and the estate']] },
+        { id: 'estate', t: 'Handle the paperwork and the estate', d: 'Death certificates, notifying agencies and banks, online accounts, and probate.', links: [['/after-a-death/#first-month', 'The first month'], ['/after-a-death/digital-accounts/', 'Their online accounts'], ['/after-a-death/#probate', 'Probate and the estate']] },
       ],
     },
     {
