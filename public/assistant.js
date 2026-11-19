@@ -68,6 +68,7 @@
     funeraria: 'funeraria funeral', velorio: 'funeral', entierro: 'entierro funeral', cremacion: 'cremacion funeral', certificado: 'certificados defuncion',
     nino: 'ninos', hijo: 'ninos', hija: 'ninos', perro: 'mascota', gato: 'mascota', mama: 'padre', papa: 'padre', madre: 'padre',
     facebook: 'facebook cuentas linea', instagram: 'instagram cuentas linea', gmail: 'google correo cuentas linea', correo: 'correo cuentas linea', redes: 'redes sociales cuentas linea', 'redes sociales': 'redes sociales cuentas linea', icloud: 'apple icloud cuentas', contrasena: 'contrasena cuentas linea', contrasenas: 'contrasena cuentas linea',
+    testamento: 'testamento testamentos albacea', herencia: 'herencia sucesion testamento', mexico: 'mexico fideicomiso notario', fideicomiso: 'fideicomiso', costo: 'cuesta costos precio', precio: 'cuesta costos precio', cuesta: 'cuesta costos', funeral: 'funeral funeraria entierro cremacion', imprimir: 'imprimir lista hoja', hoja: 'hoja imprimir',
     duelo: 'duelo', luto: 'duelo', eutanasia: 'eutanasia muerte asistida', 'suicidio asistido': 'suicidio asistido muerte', suiza: 'suiza dignitas pegasos', 'muerte digna': 'muerte digna asistida', dolor: 'dolor alivio'
   };
   if (ES) SYNONYMS = SYNONYMS_ES;

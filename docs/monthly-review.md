@@ -45,15 +45,14 @@ and the Isle of Man, US state bills, and any new US states.
 
 ## 4. Spanish pages
 
-The Spanish pages in `src/es.mjs` translate the English pages listed in
-`ES_PAIRS` (`src/layout.mjs`). If one of those English pages changed this
+Every English page has a Spanish pair (`src/es*.mjs`). If one of those English pages changed this
 month, make the same change in Spanish. Spanish translations are marked as
 pending native-speaker review until a reviewer has read them.
 
 ## 5. Printables
 
 If any printable's text changed, regenerate the PDFs and thumbnails:
-`npm run build && node scripts/make-printables.cjs && python3 scripts/make-binder.py` (the last step rebuilds the all-in-one binder; it needs the pypdf package), and commit them.
+`npm run build && node scripts/make-printables.cjs && python3 scripts/make-binder.py && python3 scripts/make-binder.py --lang es` (the last steps rebuild the English and Spanish binders; they need the pypdf package), and commit them. Change English and Spanish printables together.
 
 ## 6. Rules for any change
 

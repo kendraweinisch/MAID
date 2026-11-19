@@ -9,6 +9,11 @@ import { journeys } from './src/journeys.mjs';
 import { adPages } from './src/advance-directives.mjs';
 import { esPages } from './src/es.mjs';
 import { esMaidPages } from './src/es-maid.mjs';
+import { esBatch2 } from './src/es-batch2.mjs';
+import { esBatch3a } from './src/es-batch3a.mjs';
+import { esBatch3b } from './src/es-batch3b.mjs';
+import { esPrintPages, ES_PRINTABLES, ES_BINDER } from './src/es-print.mjs';
+import { esStaticPages } from './src/es-static.mjs';
 import { costPages } from './src/cost-database.mjs';
 
 const out = 'dist';
@@ -39,6 +44,11 @@ const pages = [
   ...staticPages,
   ...esPages,
   ...esMaidPages,
+  ...esBatch2,
+  ...esBatch3a,
+  ...esBatch3b,
+  ...esPrintPages,
+  ...esStaticPages,
 ];
 
 await rm(out, { recursive: true, force: true });
@@ -55,6 +65,9 @@ const isEs = (p) => p.path.startsWith('/es/');
 await writeFile(join(out, 'search-index.json'), JSON.stringify(buildSearchIndex(pages.filter((p) => !isEs(p)), (p) => p.body)));
 await writeFile(join(out, 'search-index-es.json'), JSON.stringify(buildSearchIndex(pages.filter(isEs), (p) => p.body)));
 await cp('public', out, { recursive: true });
+// Lists for the PDF scripts: Spanish printables, and the Spanish binder's order.
+await writeFile(join(out, 'es-printables.json'), JSON.stringify(ES_PRINTABLES.map(({ slug, path }) => ({ slug, path }))));
+await writeFile(join(out, 'es-binder.json'), JSON.stringify(ES_BINDER.flatMap(([, l]) => l.map(([slug]) => slug))));
 
 const urls = pages.filter((p) => p.path !== '/thanks/').map((p) => `<url><loc>${site.url}${p.path}</loc></url>`).join('\n');
 await writeFile(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);

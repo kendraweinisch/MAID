@@ -60,12 +60,12 @@ export function pair(en, es) {
 
 const navEs = [
   ['/es/planificar/', 'Planificar'],
-  ['/es/directivas-anticipadas/', 'Directivas'],
-  ['/es/cuidados-paliativos-y-hospicio/', 'Paliativos'],
-  ['/es/senales-de-que-la-muerte-esta-cerca/', 'Los últimos días'],
+  ['/es/enfermedad-grave/', 'Enfermedad grave'],
+  ['/es/ultimas-semanas/', 'Últimas semanas'],
   ['/es/despues-de-una-muerte/', 'Después de una muerte'],
   ['/es/duelo/', 'Duelo'],
   ['/es/muerte-medicamente-asistida/', 'Muerte asistida'],
+  ['/es/base-de-datos-de-costos/', 'Costos'],
 ];
 
 const nav = [
@@ -142,7 +142,7 @@ const ES_FOOTER = `<footer class="site-footer">
 <div>
 <div class="footer-brand">${site.name}</div>
 <p>Información, no consejo médico ni legal. Hable con su médico y con un abogado sobre su situación.</p>
-<p class="small">Traducción al español pendiente de revisión por un hablante nativo. Si ve un error, <a href="/suggestions/">díganos</a>.</p>
+<p class="small">Traducción al español pendiente de revisión por un hablante nativo. Si ve un error, <a href="/es/sugerencias/">díganos</a>.</p>
 </div>
 <div>
 <h2>Empiece aquí</h2>
@@ -154,12 +154,17 @@ const ES_FOOTER = `<footer class="site-footer">
 </ul>
 </div>
 <div>
-<h2>En inglés</h2>
+<h2>Sobre el atlas</h2>
 <ul>
+<li><a href="/es/acerca/#financiacion">Cómo nos financiamos</a></li>
+<li><a href="/es/acerca/#editorial">Política editorial</a></li>
+<li><a href="/es/encontrar-ayuda/">Ayuda cerca de usted</a></li>
+<li><a href="/es/lo-que-cuesta/">Lo que cuesta</a></li>
+<li><a href="/es/privacidad/">Privacidad</a></li>
+<li><a href="/es/accesibilidad/">Accesibilidad</a></li>
+<li><a href="/es/sugerencias/">Envíe una sugerencia</a></li>
+<li><a href="/es/imprimibles/">Hojas para imprimir</a></li>
 <li><a href="/" lang="en">Full site in English</a></li>
-<li><a href="/medical-aid-in-dying/" lang="en">Medical aid in dying</a></li>
-<li><a href="/checklists/" lang="en">Printables</a></li>
-<li><a href="/about/" lang="en">About</a></li>
 </ul>
 </div>
 <div>

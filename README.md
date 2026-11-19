@@ -105,7 +105,7 @@ unlink its repository.
 
 ## Spanish
 
-Spanish pages live under `/es/` and are built from `src/es.mjs`. Each one is
+Every page has a Spanish version under `/es/`, built from `src/es*.mjs`. Each one is
 paired with its English page in `ES_PAIRS` (`src/layout.mjs`), which drives
 the hreflang tags and the English/Español switch in the header. The Ask
 assistant uses `search-index-es.json` on Spanish pages. Translations are
@@ -120,4 +120,4 @@ by `src/advance-directives.mjs`.
 ## The binder
 
 `/checklists/binder/` and `public/printables/binder.pdf`: every printable in
-one PDF. Rebuild with `node scripts/make-printables.cjs && python3 scripts/make-binder.py`.
+one PDF, and the Spanish binder at `/es/imprimibles/carpeta/` (`carpeta.pdf`). Rebuild with `node scripts/make-printables.cjs && python3 scripts/make-binder.py && python3 scripts/make-binder.py --lang es`.
