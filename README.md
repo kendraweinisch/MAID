@@ -70,7 +70,7 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 |---|---|---|
 | `BASE_PATH` | `/MAID` | Sub-folder the site is served from. Set to `/` once eolatlas.org is connected. |
 | `SITE_PUBLIC_URL` | `https://kendraweinisch.github.io/MAID` | The site's public address (used after a suggestion is sent). Set to `https://eolatlas.org` once connected. |
-| `FORMS_ACCESS_KEY` | (empty) | Web3Forms access key for the suggestions form. Get one free at web3forms.com with the email that should receive suggestions. Without it, the form shows "being set up". |
+| `FORMS_ACCESS_KEY` | the site's Web3Forms key | Web3Forms access key for the suggestions form (public by design). To change where suggestions go, get a new key at web3forms.com and set this variable. |
 | `GOATCOUNTER_CODE` | `eolatlas` | GoatCounter analytics code. |
 | `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
 
@@ -93,7 +93,7 @@ unlink its repository.
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
-- [ ] Suggestions form: get a free Web3Forms access key and save it as the `FORMS_ACCESS_KEY` repository variable
+- [x] Suggestions form: Web3Forms key added (in `.github/workflows/pages.yml`)
 - [ ] Analytics: confirm the GoatCounter account for `eolatlas` (or set `GOATCOUNTER_CODE`)
 - [ ] Lawyer review of the whole site, especially the Switzerland and property-abroad pages
 - [ ] Turn on search indexing
