@@ -55,41 +55,37 @@ Run it before merging changes. Rules to keep: real headings and labels, the
 focus outline in `styles.css`, `lang="es"` (or other) on foreign words, and no
 information carried by color alone. The public statement is `/accessibility/`.
 
-## Deploy on Netlify (current host)
+## Deploy on GitHub Pages (current host, free for this public repo)
 
-Netlify builds from `netlify.toml` (build `node build.mjs`, publish `dist`) and
- Search indexing stays off until `SITE_INDEXABLE` is set to
-`"true"` in `netlify.toml`.
+`.github/workflows/pages.yml` builds, checks and publishes the site every time
+`main` changes. The first time:
 
-## Deploy on GitHub Pages (alternative, free for this public repo)
-
-`.github/workflows/pages.yml` builds, checks and publishes the site. It runs
-only when started by hand while Netlify is the host.
-
-1. Merge the site into `main`.
-2. In the repo: **Settings > Pages > Build and deployment > Source: GitHub Actions**.
-3. The site appears at https://kendraweinisch.github.io/maid/
+1. In the repo: **Settings > Pages > Build and deployment > Source: GitHub Actions**.
+2. Re-run the latest "Deploy to GitHub Pages" workflow (**Actions** tab), or merge any change.
+3. The site appears at https://kendraweinisch.github.io/MAID/
 
 Settings live in **Settings > Secrets and variables > Actions > Variables**:
 
 | Variable | Default | What it does |
 |---|---|---|
-| `BASE_PATH` | `/maid` | Sub-folder the site is served from. Set to `/` once eolatlas.org is connected. |
+| `BASE_PATH` | `/MAID` | Sub-folder the site is served from. Set to `/` once eolatlas.org is connected. |
+| `SITE_PUBLIC_URL` | `https://kendraweinisch.github.io/MAID` | The site's public address (used after a suggestion is sent). Set to `https://eolatlas.org` once connected. |
+| `FORMS_ACCESS_KEY` | (empty) | Web3Forms access key for the suggestions form. Get one free at web3forms.com with the email that should receive suggestions. Without it, the form shows "being set up". |
+| `GOATCOUNTER_CODE` | `eolatlas` | GoatCounter analytics code. |
 | `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
 
-### Connecting eolatlas.org (Netlify, where the site runs now)
-
-1. Buy eolatlas.org (any registrar, or in Netlify: **Domain management > Add a domain**).
-2. In Netlify: **Domain management > Add a domain** > `eolatlas.org`, and make it the primary domain.
-3. Follow Netlify's DNS steps (use Netlify DNS, or add the records it shows at your registrar). HTTPS is set up automatically.
-4. When the site is ready for search engines, set `SITE_INDEXABLE = "true"` in `netlify.toml`.
-
-### Connecting eolatlas.org on GitHub Pages (the older setup)
+### Connecting eolatlas.org
 
 1. Buy the domain.
 2. **Settings > Pages > Custom domain**: enter `eolatlas.org`, then tick **Enforce HTTPS** once it's offered.
 3. At your domain registrar, add the DNS records GitHub shows (four `A` records for the bare domain, and a `CNAME` for `www` pointing to `kendraweinisch.github.io`).
-4. Set the `BASE_PATH` variable to `/` and re-run the workflow.
+4. Set `BASE_PATH` to `/` and `SITE_PUBLIC_URL` to `https://eolatlas.org`, then re-run the workflow.
+
+### Netlify (the previous host)
+
+`netlify.toml` still works if you ever move back. Netlify Forms are no longer
+used. To stop Netlify building on every merge, remove the site in Netlify or
+unlink its repository.
 
 ## Before launch
 
@@ -97,8 +93,8 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
-- [ ] Netlify: Forms > form notifications > add an email notification for the "suggestions" form
-- [ ] Analytics: create a free GoatCounter account and put its code in `GOATCOUNTER_CODE` in `netlify.toml`
+- [ ] Suggestions form: get a free Web3Forms access key and save it as the `FORMS_ACCESS_KEY` repository variable
+- [ ] Analytics: confirm the GoatCounter account for `eolatlas` (or set `GOATCOUNTER_CODE`)
 - [ ] Lawyer review of the whole site, especially the Switzerland and property-abroad pages
 - [ ] Turn on search indexing
 
