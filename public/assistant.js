@@ -68,7 +68,7 @@
     funeraria: 'funeraria funeral', velorio: 'funeral', entierro: 'entierro funeral', cremacion: 'cremacion funeral', certificado: 'certificados defuncion',
     nino: 'ninos', hijo: 'ninos', hija: 'ninos', perro: 'mascota', gato: 'mascota', mama: 'padre', papa: 'padre', madre: 'padre',
     facebook: 'facebook cuentas linea', instagram: 'instagram cuentas linea', gmail: 'google correo cuentas linea', correo: 'correo cuentas linea', redes: 'redes sociales cuentas linea', 'redes sociales': 'redes sociales cuentas linea', icloud: 'apple icloud cuentas', contrasena: 'contrasena cuentas linea', contrasenas: 'contrasena cuentas linea',
-    duelo: 'duelo', luto: 'duelo', eutanasia: 'muerte asistida', 'suicidio asistido': 'muerte asistida', dolor: 'dolor alivio'
+    duelo: 'duelo', luto: 'duelo', eutanasia: 'eutanasia muerte asistida', 'suicidio asistido': 'suicidio asistido muerte', suiza: 'suiza dignitas pegasos', 'muerte digna': 'muerte digna asistida', dolor: 'dolor alivio'
   };
   if (ES) SYNONYMS = SYNONYMS_ES;
   var CRISIS_ES = /\b(matarme|suicidarme|quitarme la vida|quiero morir(me)?|no quiero vivir|hacerme da(n|ñ)o|suicid(io|a))\b/i;
