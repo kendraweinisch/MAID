@@ -151,6 +151,7 @@ const ES_FOOTER = `<footer class="site-footer">
 <li><a href="/es/para-mi/">Planifico para mí</a></li>
 <li><a href="/es/para-un-ser-querido/">Planifico para un ser querido</a></li>
 <li><a href="/es/preguntar/">Haga una pregunta</a></li>
+<li><a href="/es/app/">Instale la app (funciona sin conexión)</a></li>
 <li><a href="/es/primeras-24-horas/">Después de una muerte: las primeras 24 horas</a></li>
 </ul>
 </div>
@@ -213,6 +214,12 @@ ${alternates}
 <meta property="og:locale" content="${es ? 'es_US' : 'en_US'}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="${es ? '/manifest-es.webmanifest' : '/manifest.webmanifest'}">
+<meta name="theme-color" content="#F5F0E6">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="EOL Atlas">
+<script src="/app.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap">
@@ -269,6 +276,7 @@ ${es ? ES_FOOTER : `<footer class="site-footer">
 <li><a href="/for-myself/">Planning for myself</a></li>
 <li><a href="/for-someone-i-love/">Planning for someone I love</a></li>
 <li><a href="/ask/">Ask a question</a></li>
+<li><a href="/app/">Get the app (works offline)</a></li>
 </ul>
 <h2 style="margin-top:24px">Printables</h2>
 <ul>

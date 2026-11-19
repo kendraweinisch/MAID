@@ -163,6 +163,7 @@ const privacidad = {
 <li>No hay cuentas ni listas de correo. No usamos cookies de publicidad ni de rastreo.</li>
 ${analyticsOn ? '<li><strong>Estadísticas de visitas:</strong> contamos las páginas vistas con <a href="https://www.goatcounter.com/">GoatCounter</a>, que no usa cookies, no recoge información personal y no le sigue por otros sitios. Nos dice cosas como qué páginas se leen y, de forma aproximada, de qué países vienen las visitas.</li>' : ''}
 <li><strong>Sugerencias:</strong> si usa el <a href="/es/sugerencias/">formulario de sugerencias</a>, su mensaje se envía por correo a la persona que lleva el sitio, a través de <a href="https://web3forms.com/">Web3Forms</a>, un servicio que convierte formularios en correos. Su nombre y su correo son opcionales.</li>
+<li><strong>La app:</strong> si <a href="/es/app/">instala la app</a> o usa el sitio sin conexión, las páginas que abre se guardan solo en su dispositivo, para que funcionen sin conexión. No se nos envía nada.</li>
 <li>Las listas, el buscador de lugares y el asistente de preguntas funcionan en su navegador y no guardan nada. Las preguntas que escribe no se guardan ni se envían a ningún lugar.</li>
 <li>Como cualquier sitio web, el servicio que aloja el sitio (GitHub Pages) guarda registros técnicos habituales, como las direcciones IP, para que el sitio funcione y esté protegido, y las fuentes tipográficas se cargan desde Google Fonts, que también ve su dirección IP. No usamos esto para identificarle ni seguirle.</li>
 </ul>
