@@ -121,3 +121,12 @@ by `src/advance-directives.mjs`.
 
 `/checklists/binder/` and `public/printables/binder.pdf`: every printable in
 one PDF, and the Spanish binder at `/es/imprimibles/carpeta/` (`carpeta.pdf`). Rebuild with `node scripts/make-printables.cjs && python3 scripts/make-binder.py && python3 scripts/make-binder.py --lang es`.
+
+## The app (installable, works offline)
+
+The site is an installable web app. `public/manifest.webmanifest` and
+`public/manifest-es.webmanifest` describe it; `public/app.js` registers the
+service worker and shows "Install the app" buttons where browsers offer it;
+`build.mjs` writes `dist/sw.js` on every build, with the pages saved for
+offline use (`PRECACHE`). Keep `PRECACHE` and the lists in
+`src/app-pages.mjs` in step. Icons are made by `scripts/make-logo-images.cjs`.

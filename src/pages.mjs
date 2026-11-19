@@ -1670,6 +1670,7 @@ ${formKey ? `<form class="form suggest-form" method="POST" action="https://api.w
 <li>There are no accounts and no email lists. We use no advertising or tracking cookies.</li>
 ${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views with <a href="https://www.goatcounter.com/">GoatCounter</a>, which uses no cookies, does not collect personal information and does not track you across other sites. It tells us things like which pages are read and roughly which countries visitors come from.</li>' : ''}
 <li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, your message is sent by email to the person who runs the site, through <a href="https://web3forms.com/">Web3Forms</a>, a form-to-email service. Your name and email are optional.</li>
+<li><strong>The app:</strong> if you <a href="/app/">install the app</a> or use the site offline, pages you open are saved on your device only, so they work without a connection. Nothing is sent to us.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
 <li>Like any website, the site's host (GitHub Pages) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
 </ul>
