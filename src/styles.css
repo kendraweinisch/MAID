@@ -458,3 +458,5 @@ a.src-link { text-decoration-style: dotted; text-decoration-thickness: 1.5px; }
 .pill::before { content: ""; position: absolute; left: 0; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; background: currentColor; }
 /* Alternating section backgrounds: a soft tint only, no outline */
 .guide-body .g-sec:nth-of-type(even) { box-shadow: none; }
+/* Notices: a tinted panel with a rule on the left, not a bordered box */
+.notice { border: 0 !important; border-left: 4px solid var(--accent) !important; }

@@ -32,6 +32,55 @@ function dlPanelEs(slug) {
 
 const reviewNote = `<p class="small muted es-note">Traducción pendiente de revisión por un hablante nativo. ¿Ve un error? <a href="/suggestions/">Díganos</a>.</p>`;
 
+
+// The same section design as the English guides: an icon per section, key
+// facts as a line of text, and "at a glance" figures. Every fact below is
+// stated in that section's own text.
+const ES_ICONS = {
+  '/es/planificar/': { directiva: 'doc', representante: 'people', persona: 'key', conversacion: 'talk', papeles: 'check', despues: 'tree', revisar: 'calendar' },
+  '/es/cuidados-paliativos-y-hospicio/': { comparacion: 'scale', cuando: 'clock', polst: 'doc' },
+  '/es/senales-de-que-la-muerte-esta-cerca/': { semanas: 'calendar', dias: 'clock', horas: 'lastweeks', ayuda: 'hand' },
+  '/es/despues-de-una-muerte/': { 'primeras-horas': 'phone', certificados: 'doc', funeral: 'burial', derechos: 'shield', 'primer-mes': 'calendar', sucesion: 'wills' },
+  '/es/duelo/': { normal: 'grief', antes: 'clock', 'muerte-dificil': 'hand', ninos: 'child', mascota: 'paw', apoyo: 'people', 'mas-ayuda': 'help' },
+};
+const ES_FACTS = {
+  '/es/planificar/': {
+    directiva: ['Dos partes: sus deseos y quién decide', 'Normalmente gratis', 'A menudo sin abogado'],
+    revisar: ['Tras un diagnóstico, un divorcio o una muerte', 'O cada pocos años'],
+  },
+  '/es/cuidados-paliativos-y-hospicio/': {
+    cuando: ['Paliativos: en cuanto haya dolor o angustia', 'Hospicio: cuando el tratamiento ya no ayuda', 'Puede volver al tratamiento'],
+  },
+  '/es/despues-de-una-muerte/': {
+    'primeras-horas': ['Con hospicio: llame al hospicio', 'Inesperada: número de emergencias', 'No hay prisa por mover el cuerpo'],
+    derechos: ['Precios detallados', 'Compre solo lo que quiera', 'Ataúd o urna de otro lugar'],
+  },
+  '/es/duelo/': {
+    normal: ['Tristeza', 'Entumecimiento', 'Rabia', 'Culpa', 'Alivio', 'Problemas para dormir'],
+    ninos: ['Palabras claras', 'Respuestas honestas', 'Ellos deciden si participan'],
+  },
+};
+const ES_GLANCE = {
+  '/es/planificar/': [['2 partes', 'Una directiva anticipada: sus deseos, y quién decide por usted'], ['Gratis', 'Los formularios suelen ser gratuitos, a menudo sin abogado'], ['Cada pocos años', 'Revísela, y después de cualquier cambio importante']],
+  '/es/despues-de-una-muerte/': [['1 llamada', 'Al hospicio, o a emergencias si la muerte fue inesperada'], ['Sin prisa', 'Normalmente hay tiempo para estar y despedirse'], ['Varias', 'Copias certificadas del certificado de defunción']],
+  '/es/cuidados-paliativos-y-hospicio/': [['Cualquier etapa', 'Cuándo pueden empezar los cuidados paliativos'], ['6 meses', 'En EE. UU., esperanza de vida para el hospicio'], ['Reversible', 'Se puede dejar el hospicio y volver al tratamiento']],
+};
+
+const esChips = (list) => (list && list.length ? `<ul class="fact-chips" aria-label="Datos clave">${list.map((c) => `<li>${c}</li>`).join('')}</ul>` : '');
+const esGlance = (list) =>
+  list && list.length
+    ? `<div class="glance" role="list" aria-label="De un vistazo">${list.map(([big, label]) => `<div class="glance-card" role="listitem"><strong>${big}</strong><span>${label}</span></div>`).join('')}</div>`
+    : '';
+function esSection(path, s, i) {
+  const icon = (ES_ICONS[path] || {})[s.id];
+  const badge = icon ? `<span class="sec-icon" aria-hidden="true">${icons[icon]}</span>` : `<span class="h-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>`;
+  return `<section class="g-sec" aria-labelledby="${s.id}">
+<h2 id="${s.id}" class="num-h${icon ? ' has-icon' : ''}">${badge}<span class="h-text">${s.h}</span></h2>
+${esChips((ES_FACTS[path] || {})[s.id])}
+${cardifyLists(s.html)}
+</section>`;
+}
+
 function esGuide({ path, title, description, eyebrow, lead, icon = 'plan', reviewed, sections, related = [], sources = [], crisis = false, faq = [] }) {
   const toc = sections.map((s) => `<li><a href="#${s.id}">${s.h}</a></li>`).join('');
   return {
@@ -59,7 +108,8 @@ ${reviewNote}
 <div class="wrap guide-layout">
 <nav class="toc card" aria-label="En esta página"><strong>En esta página</strong><ul>${toc}</ul></nav>
 <div class="prose guide-body">
-${sections.map((s, i) => `<h2 id="${s.id}" class="num-h"><span class="h-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>${s.h}</h2>\n${cardifyLists(s.html)}`).join('\n')}
+${esGlance(ES_GLANCE[path])}
+${sections.map((s, i) => esSection(path, s, i)).join('\n')}
 ${related.length ? `<h2 id="relacionado">Relacionado</h2>${linkCards(related)}` : ''}
 ${sources.length ? `<h2 id="fuentes">Fuentes</h2><ul>${sources.map(([l, u]) => `<li><a href="${esc(u)}">${esc(l)}</a></li>`).join('')}</ul>` : ''}
 </div>
@@ -451,30 +501,61 @@ const inicio = {
   title: 'End of Life Atlas en español',
   description: 'Información clara y sin juicios sobre el final de la vida: directivas anticipadas, cuidados paliativos y hospicio, los últimos días, qué hacer después de una muerte y el duelo.',
   body: `
-<section class="page-hero">
-<div class="wrap prose">
-<p class="eyebrow">En español</p>
-<h1>El final de la vida, explicado</h1>
-<p class="lead" style="margin-top:20px">Un solo lugar, gratuito y sin juicios, para entender el final de la vida: planificar, los cuidados, los últimos días, lo que hay que hacer después y el duelo. Para usted, o para alguien a quien quiere.</p>
-${reviewNote}
+<section class="hero">
+<div class="wrap">
+<div class="plate">
+<img class="plate-map" src="/images/atlas-map.svg" alt="" width="1200" height="620" fetchpriority="high">
+<div class="plate-title">
+<p class="eyebrow">Un atlas para el final de la vida</p>
+<h1>El final de la vida, explicado.</h1>
+<p class="lead">Planificar con tiempo, los cuidados, los últimos días, qué hacer después de una muerte y el duelo. Qué saber, qué preguntar y cuáles son las reglas donde usted vive.</p>
+<div class="actions"><a class="btn" href="/es/para-mi/">Planifico para mí</a><a class="btn btn-quiet" href="/es/para-un-ser-querido/">Planifico para un ser querido</a></div>
+<p class="small" style="margin:14px 0 0">¿Alguien acaba de morir? <a href="/es/primeras-24-horas/">Las primeras 24 horas</a>.</p>
+<p class="small" style="margin:6px 0 0">O <a href="/es/preguntar/">haga una pregunta</a> con sus propias palabras.</p>
+<p class="edition">Revisado ${fmtDateEs(site.lastScan)} · Gratis · Sin anuncios</p>
+</div>
+</div>
+<div class="hero-after"></div>
 </div>
 </section>
-<section class="section">
+
+<section class="section" aria-labelledby="quien-h">
 <div class="wrap">
-<h2>Por dónde empezar</h2>
-<div class="cards cards-two" style="margin-top:20px">${jcard(paraMi)}${jcard(paraSerQuerido)}</div>
-<h2 style="margin-top:56px">Las guías en español</h2>
+<p class="eyebrow">Empiece aquí</p>
+<h2 id="quien-h">¿Para quién planifica?</h2>
+<p class="sub" style="margin-bottom:28px">Elija un camino. Cada uno le lleva paso a paso, en un orden lógico, a las guías y hojas que necesita.</p>
+<div class="cards cards-two">${jcard(paraMi)}${jcard(paraSerQuerido)}</div>
+<div style="margin-top:28px">${reviewNote}</div>
+</div>
+</section>
+
+<section class="band section-tight" aria-labelledby="atlas-h">
+<div class="wrap">
+<h2 id="atlas-h" class="eyebrow">Sobre este atlas</h2>
+<div class="trust-row">
+<div><strong>Todo en un solo lugar</strong><span class="muted">Planificar, la enfermedad, la muerte, el duelo y los trámites, incluidos los temas difíciles.</span></div>
+<div><strong>Sin juicios</strong><span class="muted">Todas las opciones legales, desde todos los tratamientos hasta la muerte médicamente asistida, explicadas con claridad. La decisión es siempre suya.</span></div>
+<div><strong>Donde usted viva</strong><span class="muted">Las reglas cambian según el país. Decimos dónde se aplica cada una.</span></div>
+<div><strong>Revisado, fechado y sin nada que vender</strong><span class="muted">Cada guía muestra sus fuentes y su fecha de revisión. Un sitio voluntario, sin modelo de negocio, así que sin sesgos.</span></div>
+</div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="guias-h">
+<div class="wrap">
+<p class="eyebrow">Las guías en español</p>
+<h2 id="guias-h">Por dónde empezar</h2>
 ${linkCards([
     ['/es/planificar/', 'Planificar con tiempo', 'Directivas anticipadas, su representante y la conversación.', 'plan'],
-    ['/es/directivas-anticipadas/', 'Directivas anticipadas por estado', 'Formularios oficiales y gratuitos de los 50 estados.', 'plan'],
+    ['/es/directivas-anticipadas/', 'Directivas anticipadas por estado', 'Formularios oficiales y gratuitos de los 50 estados.', 'doc'],
     ['/es/cuidados-paliativos-y-hospicio/', 'Cuidados paliativos y hospicio', 'La diferencia, y cuándo pedirlos.', 'illness'],
     ['/es/senales-de-que-la-muerte-esta-cerca/', 'Señales de que la muerte está cerca', 'Qué esperar y qué ayuda.', 'lastweeks'],
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Lo urgente y lo que puede esperar.', 'afterdeath'],
     ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Una lista para imprimir, también en PDF.', 'printer'],
     ['/es/duelo/', 'Duelo', 'Qué es normal, los niños, y cuándo pedir ayuda.', 'grief'],
     ['/es/preguntar/', 'Haga una pregunta', 'Respuestas de las páginas en español de este sitio.', 'ask'],
-  ])}
-<div class="notice" style="margin-top:48px"><p style="margin:0"><strong>Solo en inglés por ahora:</strong> ${enLink('/medical-aid-in-dying/', 'la muerte médicamente asistida y la eutanasia')}, ${enLink('/plan-ahead/wills-and-trusts/', 'testamentos y fideicomisos')}, ${enLink('/what-it-costs/', 'los costos')}, ${enLink('/plan-ahead/choices-for-the-body/', 'las opciones para el cuerpo')} y ${enLink('/checklists/', 'las demás hojas para imprimir')}.</p></div>
+  ], 'cards')}
+<div class="notice" style="margin-top:48px"><p style="margin:0"><strong>Solo en inglés por ahora:</strong> ${enLink('/medical-aid-in-dying/', 'la muerte médicamente asistida y la eutanasia')}, ${enLink('/serious-illness/choices-near-the-end/', 'las opciones cerca del final de la vida')}, ${enLink('/plan-ahead/wills-and-trusts/', 'testamentos y fideicomisos')}, ${enLink('/what-it-costs/database/', 'la base de datos de costos')}, ${enLink('/plan-ahead/choices-for-the-body/', 'las opciones para el cuerpo')} y ${enLink('/checklists/', 'las demás hojas para imprimir')}.</p></div>
 </div>
 </section>`,
 };
