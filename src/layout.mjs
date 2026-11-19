@@ -33,6 +33,7 @@ export const fmtDateEs = (iso) =>
 // because the link text names the site.
 const LOGO_MARK = '<svg class="logo-mark" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M15.5 27a8.5 8.5 0 0 1 17 0z" fill="var(--accent)"/><path d="M24 12.5v3M14.5 16.5l2 2M33.5 16.5l-2 2" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/><path d="M4 27h40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M8.5 33.5Q24 37 39.5 33.5M14 39.5Q24 42 34 39.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 
+const GLOBE_ICON = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg>';
 const SEARCH_ICON = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>';
 
 // English pages that have a Spanish version (used for hreflang and the language switch).
@@ -187,8 +188,8 @@ export function layout(page) {
     ? `<link rel="alternate" hreflang="en" href="${site.url}${enPath}">\n<link rel="alternate" hreflang="es" href="${site.url}${esPath}">\n<link rel="alternate" hreflang="x-default" href="${site.url}${enPath}">`
     : '';
   const langSwitch = es
-    ? `<a class="lang-switch" href="${enPath || '/'}" hreflang="en" lang="en">English</a>`
-    : `<a class="lang-switch" href="${esPath || '/es/'}" hreflang="es" lang="es">Español</a>`;
+    ? `<a class="lang-switch" href="${enPath || '/'}" hreflang="en" lang="en">${GLOBE_ICON}<span>English</span></a>`
+    : `<a class="lang-switch" href="${esPath || '/es/'}" hreflang="es" lang="es">${GLOBE_ICON}<span>Español</span></a>`;
   const links = (es ? navEs : nav)
     .map(([href, label]) => `<a href="${href}"${path.startsWith(href) ? ' aria-current="page"' : ''}>${label}</a>`)
     .join('\n');
