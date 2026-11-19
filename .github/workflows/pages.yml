@@ -28,8 +28,8 @@ jobs:
       SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
       # GoatCounter analytics code (the part before .goatcounter.com).
       GOATCOUNTER_CODE: ${{ vars.GOATCOUNTER_CODE || 'eolatlas' }}
-      # Web3Forms access key for the suggestions form (public, not a secret).
-      FORMS_ACCESS_KEY: ${{ vars.FORMS_ACCESS_KEY }}
+      # Web3Forms access key for the suggestions form (public by design, not a secret).
+      FORMS_ACCESS_KEY: ${{ vars.FORMS_ACCESS_KEY || '67c55111-e8a0-4ff4-b07e-d3ed82eb1532' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
