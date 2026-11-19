@@ -8,8 +8,11 @@ const MAID = '/medical-aid-in-dying';
 
 // Privacy-friendly analytics: on only when GOATCOUNTER_CODE is set at build time.
 const analyticsOn = Boolean(process.env.GOATCOUNTER_CODE);
-// The suggestions form works through Netlify Forms on the live site.
-const onNetlify = process.env.NETLIFY === 'true';
+// The suggestions form sends email through Web3Forms (a form-to-email service).
+// Its public access key comes from the FORMS_ACCESS_KEY repository variable.
+const formKey = process.env.FORMS_ACCESS_KEY || '';
+// The public address of the site, for the page shown after sending.
+const publicUrl = (process.env.SITE_PUBLIC_URL || site.url).replace(/\/$/, '');
 
 /* ---------- shared pieces ---------- */
 
@@ -1533,9 +1536,12 @@ ${infoCard('loved', 'Dignity', 'Every person deserves to die on their own terms,
 <h1>Send a suggestion</h1>
 <p class="lead" style="margin:20px 0">Spotted an error, missing something, or have an idea? Tell us here. You can stay anonymous: only the message is required.</p>
 <p class="small muted">Your message goes privately to the person who runs this site. Add your email only if you would like a reply. Please don't include medical details or anything you wouldn't want stored. This form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline</a>.</p>
-${onNetlify ? `<form class="form suggest-form" name="suggestions" method="POST" action="/suggestions/thanks/" data-netlify="true" netlify-honeypot="company">
-<input type="hidden" name="form-name" value="suggestions">
-<p hidden><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+${formKey ? `<form class="form suggest-form" method="POST" action="https://api.web3forms.com/submit">
+<input type="hidden" name="access_key" value="${esc(formKey)}">
+<input type="hidden" name="subject" value="End of Life Atlas: a new suggestion">
+<input type="hidden" name="from_name" value="End of Life Atlas suggestions">
+<input type="hidden" name="redirect" value="${publicUrl}/suggestions/thanks/">
+<p hidden><label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1"></label></p>
 <div class="field" style="flex-basis:100%"><label for="s-topic">What is it about?</label>
 <select id="s-topic" name="topic">
 <option>A suggestion or idea</option>
@@ -1549,7 +1555,7 @@ ${onNetlify ? `<form class="form suggest-form" name="suggestions" method="POST" 
 <div class="field"><label for="s-name">Your name (optional)</label><input id="s-name" name="name" type="text" autocomplete="name"></div>
 <div class="field"><label for="s-email">Your email (optional, only if you want a reply)</label><input id="s-email" name="email" type="email" autocomplete="email"></div>
 <button class="btn" type="submit">Send</button>
-</form>` : `<div class="notice"><strong>Note:</strong> the suggestions form works on the live site.</div>`}
+</form>` : `<div class="notice"><strong>The suggestions form is being set up.</strong> Please check back soon.</div>`}
 </div></section>`,
   },
   {
@@ -1574,9 +1580,9 @@ ${onNetlify ? `<form class="form suggest-form" name="suggestions" method="POST" 
 <ul>
 <li>There are no accounts and no email lists. We use no advertising or tracking cookies.</li>
 ${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views with <a href="https://www.goatcounter.com/">GoatCounter</a>, which uses no cookies, does not collect personal information and does not track you across other sites. It tells us things like which pages are read and roughly which countries visitors come from.</li>' : ''}
-<li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, what you write is stored by our host, Netlify, and sent privately to the person who runs the site. Your name and email are optional.</li>
+<li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, your message is sent by email to the person who runs the site, through <a href="https://web3forms.com/">Web3Forms</a>, a form-to-email service. Your name and email are optional.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
-<li>Like any website, the site's host (Netlify) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
+<li>Like any website, the site's host (GitHub Pages) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
 </ul>
 <p>Questions about privacy? <a href="/suggestions/">Send us a message</a>.</p>
 </div></section>`,

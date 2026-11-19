@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
-# Manual only: the site is hosted on Netlify. To use GitHub Pages instead,
-# add back:  push: { branches: [main] }
+# Builds and publishes the site every time main changes (and on demand).
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,11 +19,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Served at https://kendraweinisch.github.io/maid/ until eolatlas.org is connected.
-      # After connecting the domain, set the repository variable BASE_PATH to "/".
-      BASE_PATH: ${{ vars.BASE_PATH || '/maid' }}
+      # Served at https://kendraweinisch.github.io/MAID/ until eolatlas.org is connected.
+      # After connecting the domain, set the repository variable BASE_PATH to "/"
+      # and SITE_PUBLIC_URL to "https://eolatlas.org".
+      BASE_PATH: ${{ vars.BASE_PATH || '/MAID' }}
+      SITE_PUBLIC_URL: ${{ vars.SITE_PUBLIC_URL || 'https://kendraweinisch.github.io/MAID' }}
       # Set the repository variable SITE_INDEXABLE to "true" at launch.
       SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
+      # GoatCounter analytics code (the part before .goatcounter.com).
+      GOATCOUNTER_CODE: ${{ vars.GOATCOUNTER_CODE || 'eolatlas' }}
+      # Web3Forms access key for the suggestions form (public, not a secret).
+      FORMS_ACCESS_KEY: ${{ vars.FORMS_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
