@@ -323,7 +323,7 @@ ${dlPanelEs('primeras-24-horas')}
 <li>Planifique la ceremonia. Puede hacerse semanas después.</li>
 </ul>
 <p class="muted small">Si le está costando, no tiene que hacerlo solo. Pida ayuda a un amigo, a un familiar o al equipo del hospicio.</p>
-<p class="muted small print-only">De End of Life Atlas · eolatlas.com · Información, no consejo médico ni legal. Traducción pendiente de revisión; para avisar de un error: eolatlas.com/suggestions</p>
+<p class="muted small print-only">De End of Life Atlas · eolatlas.org · Información, no consejo médico ni legal. Traducción pendiente de revisión; para avisar de un error: eolatlas.org/suggestions</p>
 </div>
 </section>`,
 };

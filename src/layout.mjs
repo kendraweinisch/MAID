@@ -6,7 +6,7 @@ const review = JSON.parse(readFileSync(new URL('./data/review.json', import.meta
 export const site = {
   name: 'End of Life Atlas',
   tagline: 'Every part of the end of life, explained',
-  url: 'https://eolatlas.com',
+  url: 'https://eolatlas.org',
   lastVerified: '2026-11-17',
   lastScan: review.lastScan,
 };
@@ -25,6 +25,10 @@ export const fmtDate = (iso) =>
 
 export const fmtDateEs = (iso) =>
   iso ? new Date(iso + 'T12:00:00Z').toLocaleDateString('es-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : 'sin verificar';
+
+// The logo mark: a globe (the atlas) with the sun on the horizon. Decorative here,
+// because the link text names the site.
+const LOGO_MARK = '<svg class="logo-mark" aria-hidden="true" focusable="false" viewBox="0 0 48 48"><circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M15.5 27a8.5 8.5 0 0 1 17 0z" fill="var(--accent)"/><path d="M24 12.5v3M14.5 16.5l2 2M33.5 16.5l-2 2" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/><path d="M4 27h40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M8.5 33.5Q24 37 39.5 33.5M14 39.5Q24 42 34 39.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 
 const SEARCH_ICON = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>';
 
@@ -66,7 +70,7 @@ const nav = [
 // Structured data (schema.org) so search engines understand each page.
 function jsonLd(page, fullTitle) {
   const url = site.url + page.path;
-  const org = { '@type': 'Organization', name: site.name, url: site.url };
+  const org = { '@type': 'Organization', name: site.name, url: site.url, logo: site.url + '/logo.png' };
   const items = [];
   if (page.path === '/') {
     items.push({ '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url, description: page.description, inLanguage: page.path.startsWith('/es/') ? 'es' : 'en', publisher: org });
@@ -150,7 +154,7 @@ const ES_FOOTER = `<footer class="site-footer">
 <p>Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español). En otros países: <a href="https://findahelpline.com">findahelpline.com</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.com · Información imparcial, no consejo médico ni legal. · Revisión de todo el sitio: ${fmtDateEs(site.lastScan)}</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.org · Información imparcial, no consejo médico ni legal. · Revisión de todo el sitio: ${fmtDateEs(site.lastScan)}</p>
 </div>
 </footer>`;
 
@@ -184,8 +188,12 @@ ${alternates}
 <meta property="og:url" content="${site.url}${path}">
 <meta property="og:site_name" content="${site.name}">
 <meta property="og:type" content="website">
+<meta property="og:image" content="${site.url}/og-image.png">
+<meta property="og:image:alt" content="End of Life Atlas logo: a globe with the sun on the horizon">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="${es ? 'es_US' : 'en_US'}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;display=swap">
@@ -197,7 +205,7 @@ ${jsonLd(page, fullTitle)}
 <a class="skip-link" href="#main">${t.skip}</a>
 ${crisis ? `<div class="crisis" role="note">${t.crisis}</div>\n` : ''}<header class="site-header">
 <div class="wrap header-top">
-<a class="brand" href="${es ? '/es/' : '/'}">${site.name} <span>${t.tagline}</span></a>
+<a class="brand" href="${es ? '/es/' : '/'}">${LOGO_MARK}<span class="brand-text"><span class="brand-name">${site.name}</span> <span class="brand-tag">${t.tagline}</span></span></a>
 <div class="header-tools">
 <form class="site-search" role="search" action="${t.searchAction}" method="get">
 <label class="sr-only" for="site-search-q">${t.search}</label>
@@ -257,7 +265,7 @@ ${es ? ES_FOOTER : `<footer class="site-footer">
 <p>If you are thinking about suicide, call or text 988 in the US. Elsewhere: <a href="https://findahelpline.com">findahelpline.com</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.com · Unbiased information, not medical or legal advice. · Whole site last checked for accuracy and broken links: ${fmtDate(site.lastScan)} (<a href="/about/#editorial">how</a>)</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.org · Unbiased information, not medical or legal advice. · Whole site last checked for accuracy and broken links: ${fmtDate(site.lastScan)} (<a href="/about/#editorial">how</a>)</p>
 </div>
 </footer>`}
 </body>

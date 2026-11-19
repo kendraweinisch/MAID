@@ -36,7 +36,7 @@ const myself = {
       stops: [
         { id: 'costs', t: 'Know what it may cost', d: 'Care, funerals and the choices that cost less.', links: [['/what-it-costs/', 'What it costs']] },
         { id: 'tell', t: 'Tell your family', d: 'Give copies to your proxy and executor, and talk through what you decided.', links: [['/plan-ahead/#talk', 'Having the conversation']] },
-        { id: 'ill', t: 'If you become seriously ill', d: 'Palliative care, hospice, medical orders, questions for your doctor, and every choice near the end.', links: [['/serious-illness/', 'Serious illness'], ['/checklists/questions-for-the-doctor/', 'Questions for the doctor'], [`${MAID}/`, 'Medical aid in dying']] },
+        { id: 'ill', t: 'If you become seriously ill', d: 'Palliative care, hospice, medical orders, questions for your doctor, and every choice near the end.', links: [['/serious-illness/', 'Serious illness'], ['/serious-illness/choices-near-the-end/', 'Choices near the end'], ['/checklists/questions-for-the-doctor/', 'Questions for the doctor']] },
         { id: 'review', t: 'Review it every few years', d: 'And after a marriage, divorce, birth, death, move or diagnosis.', links: [['/plan-ahead/#review', 'Keeping it current']] },
       ],
     },
@@ -65,7 +65,7 @@ const lovedOne = {
         { id: 'comfort-care', t: 'Ask about comfort care early', d: 'Palliative care can start at any stage. Many families wish they had known about hospice sooner.', links: [['/serious-illness/#palliative', 'Palliative care'], ['/serious-illness/#hospice', 'Hospice']] },
         { id: 'appointments', t: 'Go to appointments prepared', d: 'What to ask, and someone to take notes.', links: [['/checklists/questions-for-the-doctor/', 'Questions for the doctor']] },
         { id: 'caregiver', t: 'Look after yourself as a caregiver', d: 'Ask for specific help, and for respite care.', links: [['/serious-illness/#caregivers', 'If you are the caregiver']] },
-        { id: 'choices', t: 'Respect their choices', d: 'Every treatment, comfort care only, or medical aid in dying where it is legal: the choice is theirs.', links: [['/serious-illness/#choices', 'Choices near the end'], [`${MAID}/families/`, 'Medical aid in dying: for families']] },
+        { id: 'choices', t: 'Respect their choices', d: 'Every treatment, comfort care only, or medical aid in dying where it is legal: the choice is theirs.', links: [['/serious-illness/choices-near-the-end/', 'Choices near the end'], [`${MAID}/families/`, 'Medical aid in dying: for families']] },
       ],
     },
     {

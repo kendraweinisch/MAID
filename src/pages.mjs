@@ -1,7 +1,7 @@
 import { esc, fmtDate, site } from './layout.mjs';
 import { icons } from './icons.mjs';
 import { printCard, dlPanel, PRINT_SEO } from './printables.mjs';
-import { iconFor, linkCards, dirCard, infoCard, cardifyLists } from './ui.mjs';
+import { iconFor, linkCard, linkCards, dirCard, infoCard, cardifyLists } from './ui.mjs';
 import { journeyMeta } from './journeys.mjs';
 
 const MAID = '/medical-aid-in-dying';
@@ -115,6 +115,7 @@ const INLINE = {
     ["a legal document that says what medical care you want if you can't speak for yourself", 'https://www.nia.nih.gov/health/advance-care-planning/advance-care-planning-advance-directives-health-care'],
   ],
   '/plan-ahead/choices-for-the-body/': [
+    ['Anatomists recommend a university medical school or a state anatomical program', 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
     ['The EPA must be told within 30 days', 'https://www.epa.gov/ocean-dumping/burial-sea'],
     ['needs a marine licence from the Marine Management Organisation', 'https://www.gov.uk/burial-at-sea'],
     ['it was legal in about 28 states as of January 2026', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
@@ -165,6 +166,10 @@ const INLINE = {
     ['Medicare covers hospice when a doctor certifies a life expectancy of six months or less', 'https://www.medicare.gov/coverage/hospice-care'],
     ['a POLST form', 'https://polst.org/'],
   ],
+  '/serious-illness/choices-near-the-end/': [
+    ['a POLST form', 'https://polst.org/'],
+    ['Hospice provides this', 'https://www.medicare.gov/coverage/hospice-care'],
+  ],
   '/after-a-death/': [
     ['the FTC Funeral Rule', 'https://consumer.ftc.gov/articles/ftc-funeral-rule'],
   ],
@@ -202,6 +207,84 @@ const GLANCE = {
   '/serious-illness/': [['Any stage', 'When palliative care can start'], ['6 months', 'US hospice eligibility: life expectancy or less'], ['Reversible', 'You can leave hospice and resume treatment']],
 };
 
+
+// An icon for each section of a guide (falls back to a section number).
+const SECTION_ICONS = {
+  '/plan-ahead/': { directive: 'doc', proxy: 'people', steward: 'key', talk: 'talk', paperwork: 'check', wishes: 'tree', review: 'calendar' },
+  '/plan-ahead/choices-for-the-body/': { overview: 'steps', traditional: 'burial', entombment: 'mausoleum', green: 'green', tree: 'tree', cremation: 'cremation', water: 'water', composting: 'compost', sea: 'sea', ashes: 'ashes', donation: 'donation', home: 'home', other: 'ask', greenest: 'green', choose: 'scale' },
+  '/plan-ahead/wills-and-trusts/': { set: 'check', will: 'wills', valid: 'doc', spouses: 'people', trusts: 'shield', probate: 'steps', poa: 'hand', taxes: 'costs', digital: 'key', canada: 'globe', uk: 'globe', australia: 'globe', lawyer: 'scale', keep: 'calendar' },
+  '/plan-ahead/property-abroad/': { short: 'check', why: 'ask', mexico: 'globe', 'costa-rica': 'globe', canada: 'globe', uk: 'globe', europe: 'globe', taxes: 'costs', checklist: 'steps', after: 'afterdeath' },
+  '/plan-ahead/talking-with-a-parent/': { start: 'talk', what: 'ask', resist: 'hand', far: 'phone' },
+  '/what-it-costs/': { short: 'check', medical: 'illness', hospice: 'bed', care: 'home', funeral: 'burial', maid: 'maid', lookup: 'help', save: 'shield' },
+  '/last-weeks/signs-death-is-near/': { weeks: 'calendar', days: 'clock', hours: 'lastweeks', help: 'hand' },
+  '/serious-illness/hospice-vs-palliative-care/': { compare: 'scale', when: 'clock' },
+  '/serious-illness/choices-near-the-end/': { all: 'scale', treatment: 'illness', comfort: 'hand', stopping: 'shield', orders: 'doc', sedation: 'lastweeks', eating: 'water', maid: 'maid', where: 'home', decide: 'people' },
+  '/after-a-death/death-certificates/': { count: 'check', order: 'doc', abroad: 'globe' },
+  '/serious-illness/': { palliative: 'hand', hospice: 'bed', polst: 'doc', where: 'home', ask: 'ask', caregivers: 'people', choices: 'scale' },
+  '/last-weeks/': { honest: 'lastweeks', comfort: 'hand', dignity: 'shield', doulas: 'people', goodbye: 'loved', prepare: 'check' },
+  '/after-a-death/': { 'first-hours': 'phone', certificates: 'doc', options: 'burial', rights: 'shield', 'first-month': 'calendar', probate: 'wills' },
+  '/medical-aid-in-dying/process/': { steps: 'steps', early: 'clock', decline: 'help', hospice: 'bed' },
+  '/medical-aid-in-dying/families/': { talking: 'talk', day: 'calendar', insurance: 'doc', grief: 'grief' },
+  '/medical-aid-in-dying/switzerland/': { why: 'scale', involves: 'steps', costs: 'costs', risk: 'shield' },
+  '/grief/': { normal: 'grief', anticipatory: 'clock', witnessed: 'hand', children: 'child', pets: 'paw', support: 'people', 'more-help': 'help' },
+};
+
+// Key facts shown as chips under a section heading. Each is stated in that section's text.
+const SECTION_FACTS = {
+  '/plan-ahead/choices-for-the-body/': {
+    traditional: ['Usually the most expensive', 'Embalming rarely required by law', 'Vaults are a cemetery rule'],
+    entombment: ['Above ground', 'A niche for ashes costs much less than a crypt'],
+    green: ['No embalming', 'No concrete vault', 'Some grounds are nature reserves'],
+    tree: ['Woodland burial', 'Tree urns for ashes', 'Memorial forests'],
+    cremation: ['Most common choice in the US', 'Direct cremation costs least'],
+    water: ['Far less energy than flame', 'About 28 US states (Jan 2026)'],
+    composting: ['Soil in about 1 to 2 months', '14 US states (Jan 2026)'],
+    sea: ['US: 3+ nautical miles out', 'Tell the EPA within 30 days', 'UK: marine licence for a body'],
+    ashes: ['Keep', 'Bury', 'Scatter', 'Plant', 'Divide', 'Keepsakes'],
+    donation: ['Organ donation fits almost any choice', 'Whole-body donation: arrange in advance'],
+    home: ['Allowed in most US states', 'Doulas can help'],
+  },
+  '/plan-ahead/': {
+    directive: ['Two parts: wishes and a decision-maker', 'Usually free', 'Often no lawyer needed'],
+    review: ['After a diagnosis, divorce or death', 'Or every few years'],
+  },
+  '/serious-illness/choices-near-the-end/': {
+    comfort: ['Hospice', 'You can change your mind'],
+    orders: ['POLST, MOLST, POST or MOST', 'ReSPECT in the UK'],
+    maid: ['Terminal illness', 'Rules differ by place'],
+    decide: ['The person who is ill', 'Then their proxy'],
+  },
+  '/serious-illness/': {
+    palliative: ['Any stage', 'Alongside treatment'],
+    hospice: ['Comfort-focused', 'US: life expectancy of 6 months or less', 'You can leave it'],
+    polst: ['A medical order', 'For serious illness now'],
+  },
+  '/after-a-death/': {
+    'first-hours': ['Hospice: call the hospice', 'Unexpected: emergency number', 'No rush to move the body'],
+    rights: ['Itemized prices', 'Buy only what you want', 'Bring your own casket or urn'],
+  },
+  '/grief/': {
+    normal: ['Sadness', 'Numbness', 'Anger', 'Guilt', 'Relief', 'Trouble sleeping'],
+    children: ['Clear words', 'Honest answers', 'Their choice to take part'],
+  },
+  '/last-weeks/': {
+    comfort: ['Report every sign of distress', "Ask again if it doesn't improve", 'Sedation when nothing else works'],
+    goodbye: ['Thank you', 'I love you', 'I forgive you', 'Please forgive me', 'Goodbye'],
+  },
+};
+
+const chips = (list) => (list && list.length ? `<ul class="fact-chips" aria-label="Key facts">${list.map((c) => `<li>${c}</li>`).join('')}</ul>` : '');
+
+function sectionBlock(path, s, i) {
+  const icon = (SECTION_ICONS[path] || {})[s.id];
+  const badge = icon ? `<span class="sec-icon" aria-hidden="true">${icons[icon]}</span>` : `<span class="h-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>`;
+  return `<section class="g-sec" aria-labelledby="${s.id}">
+<h2 id="${s.id}" class="num-h${icon ? ' has-icon' : ''}">${badge}<span class="h-text">${s.h}</span></h2>
+${chips((SECTION_FACTS[path] || {})[s.id])}
+${s.html}
+</section>`;
+}
+
 // A guide page: hero, "on this page" list, sections, sources and related links.
 // Search-friendly page titles: the words people actually search, kept accurate.
 const SEO_TITLES = {
@@ -215,6 +298,7 @@ const SEO_TITLES = {
   '/after-a-death/': 'What to do when someone dies: the first hours, funeral and estate',
   '/grief/': "Grief: what's normal, helping a grieving child, and pet loss",
   '/what-it-costs/': 'How much does dying cost? Hospice, care homes and funeral costs',
+  '/serious-illness/choices-near-the-end/': 'End-of-life choices: treatment, hospice, stopping treatment, POLST and medical aid in dying',
   '/medical-aid-in-dying/process/': 'How medical aid in dying (assisted suicide) works: steps and waiting periods',
   '/medical-aid-in-dying/families/': 'Medical aid in dying and euthanasia: a guide for families',
   '/medical-aid-in-dying/switzerland/': 'Assisted suicide in Switzerland for foreigners: how it works and costs',
@@ -257,7 +341,7 @@ function guide({ path, title, description, eyebrow, lead, reviewed = site.lastVe
 <nav class="toc card" aria-label="On this page"><strong>On this page</strong><ul>${toc}</ul></nav>
 <div class="prose guide-body">
 ${glanceCards(glance)}
-${sections.map((s, i) => `<h2 id="${s.id}" class="num-h"><span class="h-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>${s.h}</h2>\n${s.html}`).join('\n')}
+${sections.map((s, i) => sectionBlock(path, s, i)).join('\n')}
 ${GUIDE_PRINTABLES[path] ? `<h2 id="printables">Printables for this</h2>\n<div class="cards" style="margin-top:20px">${GUIDE_PRINTABLES[path].map(([slug, t]) => printCard(slug, t)).join('')}</div>` : ''}
 ${related.length ? `<h2 id="related">Related</h2>${relatedCards(related)}` : ''}
 ${sourceList(sources)}
@@ -289,7 +373,7 @@ ${groups
   )
   .join('\n')}
 ${note ? `<p class="muted small">${note}</p>` : ''}
-<p class="muted small print-only">From End of Life Atlas · eolatlas.com · Information, not medical or legal advice.</p>
+<p class="muted small print-only">From End of Life Atlas · eolatlas.org · Information, not medical or legal advice.</p>
 </div>
 </section>`,
   };
@@ -497,22 +581,30 @@ export const guides = [
 <li><strong>Divide them</strong> among family members, so each can keep or scatter a part.</li>
 <li><strong>Keepsakes:</strong> small amounts can be made into jewelry, glass, or even lab-grown diamonds, or sent on a memorial spaceflight.</li></ul>` },
       { id: 'donation', h: 'Body and organ donation', html: `<p><strong>Organ and tissue donation</strong> can help others and is compatible with almost every option above, including an open-casket funeral. Register with your country or state donor registry and tell your family.</p>
-<p><strong>Whole-body donation</strong> to a medical school or research program is a different thing. It usually has to be arranged in advance, and many programs cover cremation afterward and return the ashes. Programs can decline a donation, for example because of certain illnesses or if an autopsy was done, so have a backup plan.</p>` },
+<p><strong>Whole-body donation</strong> to a medical school or research program is a different thing. It usually has to be arranged in advance, and many programs cover cremation afterward and return the ashes. Programs can decline a donation, for example because of certain illnesses or if an autopsy was done, so have a backup plan.</p>
+<p><strong>Choose the program carefully.</strong> In the US there is no single national registry for whole-body donation: you sign up with a program directly. Anatomists recommend a university medical school or a state anatomical program. Some private companies (sometimes called body brokers) also accept bodies, and only some states regulate them, so ask any program what happens to the body, whether parts may be sold, and when the ashes are returned. If you also want to be an organ donor, ask the program whether it accepts both.</p>
+<p><strong>Where to register or start:</strong></p>
+<div class="cards cards-tight">
+${dirCard('https://registerme.org/', 'Register Me (Donate Life America)', 'US · organ donation', 'Join the national organ, eye and tissue donor registry, or update your choice.')}
+${dirCard('https://www.organdonor.gov/', 'OrganDonor.gov', 'US · government', 'Official US information on organ, eye and tissue donation.')}
+${dirCard('https://funerals.org/get-help/making-decisions/body-organ-and-brain-donation/', 'Funeral Consumers Alliance: body donation', 'US · nonprofit', 'How whole-body, organ and brain donation work, and questions to ask a program.')}
+${dirCard('https://www.organdonation.nhs.uk/register-your-decision/', 'NHS Organ Donor Register', 'UK · organ donation', 'Record your decision to donate, or not.')}
+${dirCard('https://www.hta.gov.uk/donating-your-body', 'Human Tissue Authority: donating your body', 'UK · whole body', 'How body donation works in the UK, and the licensed medical schools to contact.')}
+${dirCard('https://www.organtissuedonation.ca/', 'Organ and tissue donation in Canada', 'Canada', 'Links to the donor registry in each province and territory.')}
+${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register on the Australian Organ Donor Register.')}
+</div>` },
       { id: 'home', h: 'A home funeral', html: `<p>Whatever the final choice, a family can care for the body at home for a day or more before burial or cremation: washing, dressing and sitting with them. Most US states allow families to do this; some require a funeral director for certain steps. End-of-life doulas can help.</p>` },
       { id: 'other', h: 'Other choices people ask about', html: `<p><strong>Cryonics</strong> preserves a body or brain at very low temperatures in the hope that future science could revive it. It is very expensive, offered by only a few organizations, and there is no evidence yet that revival is possible.</p>` },
       { id: 'greenest', h: 'Which choice is the most environmentally friendly?', html: `<p><strong>Natural (green) burial is generally the lowest-impact choice,</strong> especially in a conservation burial ground where the land is protected for good.</p>
 <p>A life-cycle study for DELA, a Dutch funeral provider, compared the climate impact of each method per person:</p>
-<div class="table-box" tabindex="0" role="region" aria-label="Climate impact by method"><table style="min-width:420px">
-<caption class="sr-only">Climate impact of each method, per person</caption>
-<thead><tr><th scope="col">Method</th><th scope="col">Climate impact (kg CO₂ equivalent)</th></tr></thead>
-<tbody>
-<tr><td>Natural burial</td><td>40</td></tr>
-<tr><td>Electric cremation</td><td>45</td></tr>
-<tr><td>Human composting</td><td>47</td></tr>
-<tr><td>Water cremation (resomation)</td><td>118</td></tr>
-<tr><td>Traditional burial with a stone monument</td><td>120</td></tr>
-<tr><td>Gas cremation</td><td>181</td></tr>
-</tbody></table></div>
+<ul class="bars" aria-label="Climate impact of each method, per person, in kilograms of CO₂ equivalent">
+<li class="bar-best"><div class="bar-label"><span>Natural burial</span><strong>40 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:22%"></div></div></li>
+<li><div class="bar-label"><span>Electric cremation</span><strong>45 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:25%"></div></div></li>
+<li><div class="bar-label"><span>Human composting</span><strong>47 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:26%"></div></div></li>
+<li><div class="bar-label"><span>Water cremation (resomation)</span><strong>118 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:65%"></div></div></li>
+<li><div class="bar-label"><span>Traditional burial with a stone monument</span><strong>120 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:66%"></div></div></li>
+<li><div class="bar-label"><span>Gas cremation</span><strong>181 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:100%"></div></div></li>
+</ul>
 <p class="small muted">Source: <a href="https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies">Hedgehog, comparative life-cycle study for DELA</a> (Netherlands). The <a href="https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf">Green Burial Council</a> also finds flame cremation has the highest carbon footprint, and notes it releases mercury.</p>
 <p>The ranking depends on local conditions. An electric cremator run on clean power does far better than a gas one. Figures for newer methods like water cremation and human composting vary between studies, and many published claims come from the companies that offer them. A traditional burial's footprint also grows with embalming, a concrete vault and the land it uses.</p>
 <p><strong>Ways to lower the impact, whatever you choose:</strong></p>
@@ -534,6 +626,7 @@ export const guides = [
       ['GOV.UK: burial at sea', 'https://www.gov.uk/burial-at-sea'],
       ['Montana Legislature: background paper on natural organic reduction and alkaline hydrolysis (January 2026, PDF)', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
       ['Green Burial Council', 'https://www.greenburialcouncil.org/'],
+      ['American Association for Anatomy: a discussion on body donation', 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
       ['Funeral Consumers Alliance', 'https://www.funerals.org/'],
       ['Hedgehog: comparative life-cycle study for DELA', 'https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies'],
       ['Green Burial Council: environmental benefits and costs of disposition (PDF)', 'https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf'],
@@ -857,6 +950,46 @@ ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · fune
     ],
   }),
   guide({
+    path: '/serious-illness/choices-near-the-end/',
+    title: 'Choices near the end of life',
+    eyebrow: 'Serious illness',
+    reviewed: '2026-11-19',
+    description: 'Every choice near the end of life: every treatment, comfort care only, stopping a treatment, CPR and medical orders, sedation, stopping eating and drinking, medical aid in dying, and where to be.',
+    lead: 'There is no single right way to face the end of life. These are the choices people make, side by side, without judgment. The person who is ill gets to choose.',
+    sections: [
+      { id: 'all', h: 'The choices, side by side', html: `<div class="cards cards-tight">
+${linkCard('#treatment', 'Every treatment available', 'Try everything that might help.', icons.illness)}
+${linkCard('#comfort', 'Comfort care only', 'Palliative care and hospice.', icons.hand)}
+${linkCard('#stopping', 'Stopping a treatment', 'When it no longer helps, or is no longer wanted.', icons.shield)}
+${linkCard('#orders', 'CPR and medical orders', 'Write down what should happen in an emergency.', icons.doc)}
+${linkCard('#sedation', 'When suffering can\'t be eased', 'Palliative sedation.', icons.lastweeks)}
+${linkCard('#eating', 'Stopping eating and drinking', 'A choice some people make near the end.', icons.water)}
+${linkCard('#maid', 'Medical aid in dying', 'Where it is legal.', icons.maid)}
+${linkCard('#where', 'Where to be', 'Home, a hospice or a hospital.', icons.home)}
+</div>
+<p>These can be combined and changed. Someone can try a treatment, then move to comfort care; or have hospice care and, where it is legal, also ask about medical aid in dying.</p>` },
+      { id: 'treatment', h: 'Every treatment available', html: `<p>Some people want every treatment that might give them more time, including new or experimental ones. That is a legitimate choice. Before each decision, ask what is likely to happen with and without it, and what it would mean for daily life. Palliative care can be added at any stage, alongside treatment, to ease symptoms. See <a href="/serious-illness/#ask">questions to ask the doctor</a>.</p>` },
+      { id: 'comfort', h: 'Comfort care only', html: `<p>When a cure is no longer the goal, or the burdens of treatment outweigh the benefits, care can focus entirely on comfort. Hospice provides this, usually at home. Choosing hospice usually means stopping treatment meant to cure the terminal illness, but not other care, and you can leave hospice and go back to treatment if you change your mind. See <a href="/serious-illness/hospice-vs-palliative-care/">hospice vs palliative care</a>.</p>` },
+      { id: 'stopping', h: 'Stopping a treatment', html: `<p>Some people decide to stop a treatment, such as dialysis, a breathing machine or a feeding tube, when it no longer helps or is no longer wanted. This is different from medical aid in dying. Ask the care team what to expect after stopping, and how comfort will be kept. If the person can't speak for themselves, their <a href="/plan-ahead/#proxy">health care proxy</a> and <a href="/plan-ahead/advance-directives/">advance directive</a> guide the decision.</p>` },
+      { id: 'orders', h: 'CPR and medical orders', html: `<p>An advance directive covers the future. For someone who is seriously ill now, a POLST form (also called MOLST, POST or MOST in some US states) is a medical order signed by a clinician. It tells emergency crews and hospitals what treatment the person wants, such as whether to attempt CPR. Other countries use similar forms, such as ReSPECT in the UK. Ask the care team what is used where the person lives. More on <a href="/serious-illness/#polst">medical orders</a>.</p>` },
+      { id: 'sedation', h: "When suffering can't be eased", html: `<p>Tell the care team about every sign of pain, breathlessness, agitation or fear, and ask again if it doesn't improve. Palliative care teams have more options than most people realize, including medication to calm agitation and, when suffering can't be eased any other way, sedation. See <a href="/last-weeks/#comfort">easing suffering</a>.</p>` },
+      { id: 'eating', h: 'Stopping eating and drinking', html: `<p>Near the end, most people naturally eat and drink less, and forcing food or fluids can cause discomfort. Some people, knowing what the end may involve, also choose to refuse food and drink. If this is being considered, talk it through with the care team and the family first, so everyone knows what to expect. See <a href="/last-weeks/#dignity">dignity, in their terms</a>.</p>` },
+      { id: 'maid', h: 'Medical aid in dying, where it is legal', html: `<p>In some places, an adult with a terminal illness who can make their own decisions can ask a doctor for medication to end their life peacefully. The rules, the waiting periods and who qualifies differ by place, and it is not legal in most of the world. See <a href="${MAID}/">where it is legal</a>, <a href="${MAID}/process/">how the process works</a> and <a href="${MAID}/families/">a guide for families</a>.</p>` },
+      { id: 'where', h: 'Where to be at the end', html: `<p>Care can happen at home with help from family, aides and a hospice team; in assisted living or a nursing home; or in an inpatient hospice. Ask what each option costs and what insurance or public programs cover before you decide. See <a href="/what-it-costs/">what it costs</a>.</p>` },
+      { id: 'decide', h: 'Who decides', html: `<p>The person who is ill. If they can no longer decide, the person they named as their health care proxy decides, guided by what they said they wanted. That is why writing it down and talking it through matter. Start with <a href="/plan-ahead/">plan ahead</a> and <a href="/plan-ahead/advance-directives/">your state's advance directive form</a>.</p>` },
+    ],
+    sources: [
+      ['National POLST', 'https://polst.org/'],
+      ['Medicare: hospice care coverage', 'https://www.medicare.gov/coverage/hospice-care'],
+      ['National Institute on Aging: end of life', 'https://www.nia.nih.gov/health/end-of-life'],
+    ],
+    related: [
+      ['/serious-illness/', 'Serious illness', 'The full guide.'],
+      ['/last-weeks/', 'The last weeks', 'What dying can really be like.'],
+      ['/checklists/questions-for-the-doctor/', 'Questions for the doctor', 'Printable, for appointments.'],
+    ],
+  }),
+  guide({
     path: '/serious-illness/hospice-vs-palliative-care/',
     title: 'Hospice vs palliative care',
     eyebrow: 'Serious illness',
@@ -935,7 +1068,8 @@ ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · fune
       { id: 'ask', h: 'Questions to ask the doctor', html: `<p>What is likely to happen next? What are the treatment options, and what would each one mean for my daily life? What would you do in my place? Bring someone to take notes.</p>
 <p><a href="/checklists/questions-for-the-doctor/">Print the full list of questions</a>.</p>` },
       { id: 'caregivers', h: 'If you are the caregiver', html: `<p>Caregiving is work. Ask for help with specific tasks, accept it when it's offered, and ask the care team about respite care, which gives family caregivers a break.</p>` },
-      { id: 'choices', h: 'Choices near the end of life', html: `<p>Some people want every treatment available. Some choose comfort care only. In some places, people who are terminally ill can also ask for <a href="${MAID}/">medical aid in dying</a>. All of these are legitimate choices, and the person who is ill gets to make them.</p>` },
+      { id: 'choices', h: 'Choices near the end of life', html: `<p>Some people want every treatment available. Some choose comfort care only. In some places, people who are terminally ill can also ask for <a href="${MAID}/">medical aid in dying</a>. All of these are legitimate choices, and the person who is ill gets to make them.</p>
+${linkCards([['/serious-illness/choices-near-the-end/', 'Every choice near the end of life', 'Treatment, comfort care, stopping treatment, medical orders, sedation, medical aid in dying, and where to be.', 'scale']], 'cards cards-two')}` },
     ],
     sources: [
       ['Medicare: hospice care coverage', 'https://www.medicare.gov/coverage/hospice-care'],
@@ -1150,13 +1284,13 @@ export function maidHub(data) {
 <li><strong>Why so many names?</strong> Some people feel "suicide" doesn't fit someone who is already dying and choosing how; others use the word plainly. This site uses the term each place's law uses, and describes them all without judgment.</li></ul>
 <h2>Why people ask</h2>
 <p>Oregon has published data on every person who has used its law since 1998. In 2025, the concerns people gave were:</p>
-<ul>
-<li>Losing their autonomy: 89%</li>
-<li>Being less able to do the things that made life enjoyable: 89%</li>
-<li>Losing their dignity: 65%</li>
-<li>Losing control of bodily functions: 53%</li>
-<li>Being a burden on family, friends or caregivers: 40%</li>
-<li>Inadequate pain control, or worry about it: 37%</li>
+<ul class="bars bars-plain" aria-label="Concerns people gave, Oregon, 2025, percent of people">
+<li><div class="bar-label"><span>Losing their autonomy</span><strong>89%</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:89%"></div></div></li>
+<li><div class="bar-label"><span>Being less able to do the things that made life enjoyable</span><strong>89%</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:89%"></div></div></li>
+<li><div class="bar-label"><span>Losing their dignity</span><strong>65%</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:65%"></div></div></li>
+<li><div class="bar-label"><span>Losing control of bodily functions</span><strong>53%</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:53%"></div></div></li>
+<li><div class="bar-label"><span>Being a burden on family, friends or caregivers</span><strong>40%</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:40%"></div></div></li>
+<li><div class="bar-label"><span>Inadequate pain control, or worry about it</span><strong>37%</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:37%"></div></div></li>
 </ul>
 <p>For most people, it is about how they would have to live their last weeks, not only about pain.</p>
 <p class="small muted">Source: <a href="https://www.oregon.gov/oha/ph/providerpartnerresources/evaluationresearch/deathwithdignityact/Documents/year28.pdf">Oregon Health Authority, 2025 Death with Dignity Act Data Summary (PDF)</a></p>
@@ -1321,6 +1455,13 @@ ${dirCard('https://www.ehospice.com/', 'ehospice', 'International', 'News and se
 <div class="cards cards-tight">
 ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US', 'Nonprofit consumer groups; some survey local funeral prices.')}
 ${dirCard('https://www.greenburialcouncil.org/', 'Green Burial Council', 'US and beyond', 'Certified green burial providers and grounds.')}
+</div>
+<h2>Body and organ donation</h2>
+<div class="cards">
+${dirCard('https://registerme.org/', 'Register Me (Donate Life America)', 'US', 'The national organ, eye and tissue donor registry.')}
+${dirCard('https://www.hta.gov.uk/donating-your-body', 'Human Tissue Authority', 'UK', 'Donating your body to a medical school.')}
+${dirCard('https://www.organtissuedonation.ca/', 'Organ and tissue donation', 'Canada', 'Donor registries by province and territory.')}
+${linkCard('/plan-ahead/choices-for-the-body/#donation', 'Choosing a body donation program', 'What to ask, and every registry we list.', icons.donation)}
 </div>
 <h2>End-of-life doulas</h2>
 <div class="cards cards-tight">
