@@ -313,7 +313,7 @@ export const onlineAccounts = page({
 <div class="wb-page">
 <h2>Each account</h2>
 <p class="muted small">Decide: memorialize, close, or keep for now. Write the date you sent the request, and tick when it is done.</p>
-<div class="table-box print-table"><table class="acct-table">
+<div class="table-box print-table" tabindex="0" role="region" aria-label="Accounts to close or memorialize"><table class="acct-table">
 <caption class="sr-only">Accounts to close or memorialize</caption>
 <thead><tr><th scope="col">Service</th><th scope="col">Their username or email</th><th scope="col">Memorialize, close or keep</th><th scope="col">Request sent</th><th scope="col">Done</th></tr></thead>
 <tbody>
