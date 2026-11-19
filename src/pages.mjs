@@ -222,6 +222,7 @@ const SECTION_ICONS = {
   '/last-weeks/signs-death-is-near/': { weeks: 'calendar', days: 'clock', hours: 'lastweeks', help: 'hand' },
   '/serious-illness/hospice-vs-palliative-care/': { compare: 'scale', when: 'clock' },
   '/serious-illness/choices-near-the-end/': { all: 'scale', treatment: 'illness', comfort: 'hand', stopping: 'shield', orders: 'doc', sedation: 'lastweeks', eating: 'water', maid: 'maid', where: 'home', decide: 'people' },
+  '/after-a-death/digital-accounts/': { first: 'shield', find: 'check', memorialize: 'loved', social: 'people', email: 'key', money: 'costs', yours: 'plan' },
   '/after-a-death/death-certificates/': { count: 'check', order: 'doc', abroad: 'globe' },
   '/serious-illness/': { palliative: 'hand', hospice: 'bed', polst: 'doc', where: 'home', ask: 'ask', caregivers: 'people', choices: 'scale' },
   '/last-weeks/': { honest: 'lastweeks', comfort: 'hand', dignity: 'shield', doulas: 'people', goodbye: 'loved', prepare: 'check' },
@@ -250,6 +251,10 @@ const SECTION_FACTS = {
   '/plan-ahead/': {
     directive: ['Two parts: wishes and a decision-maker', 'Usually free', 'Often no lawyer needed'],
     review: ['After a diagnosis, divorce or death', 'Or every few years'],
+  },
+  '/after-a-death/digital-accounts/': {
+    first: ['Save photos and messages first', 'Keep their phone number active', 'Look for money'],
+    memorialize: ['Facebook', 'Instagram', 'LinkedIn'],
   },
   '/serious-illness/choices-near-the-end/': {
     comfort: ['Hospice', 'You can change your mind'],
@@ -301,6 +306,7 @@ const SEO_TITLES = {
   '/after-a-death/': 'What to do when someone dies: the first hours, funeral and estate',
   '/grief/': "Grief: what's normal, helping a grieving child, and pet loss",
   '/what-it-costs/': 'How much does dying cost? Hospice, care homes and funeral costs',
+  '/after-a-death/digital-accounts/': 'How to close a deceased person\'s Facebook, Instagram, Gmail, iCloud and other accounts',
   '/serious-illness/choices-near-the-end/': 'End-of-life choices: treatment, hospice, stopping treatment, POLST and medical aid in dying',
   '/medical-aid-in-dying/process/': 'How medical aid in dying (assisted suicide) works: steps and waiting periods',
   '/medical-aid-in-dying/families/': 'Medical aid in dying and euthanasia: a guide for families',
@@ -688,7 +694,8 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
 <li><strong>Federal estate tax</strong> only applies to estates over $15 million in 2026, so most families owe none.</li>
 <li><strong>State estate tax:</strong> 12 states and the District of Columbia have one, some starting at much lower amounts; Oregon's starts at $1 million.</li>
 <li><strong>State inheritance tax</strong> (paid by the person who inherits): Kentucky, Maryland, Nebraska, New Jersey and Pennsylvania. Spouses are usually exempt, and often children too. Maryland has both taxes.</li></ul>` },
-      { id: 'digital', h: 'Your digital life', html: `<p>Many accounts let you name someone now: <a href="https://support.apple.com/en-us/102631">Apple Legacy Contact</a>, <a href="https://support.google.com/accounts/answer/3036546">Google Inactive Account Manager</a> and <a href="https://www.facebook.com/help/1568013990080948">Facebook legacy contact</a>. A password manager with emergency access helps too. Never write passwords in your will, which can become a public record.</p>` },
+      { id: 'digital', h: 'Your digital life', html: `<p>Many accounts let you name someone now: <a href="https://support.apple.com/en-us/102631">Apple Legacy Contact</a>, <a href="https://support.google.com/accounts/answer/3036546">Google Inactive Account Manager</a> and <a href="https://www.facebook.com/help/1568013990080948">Facebook legacy contact</a>. A password manager with emergency access helps too. Never write passwords in your will, which can become a public record.</p>
+<p>When someone has died, see <a href="/after-a-death/digital-accounts/">closing their online accounts</a>.</p>` },
       { id: 'canada', h: 'In Canada', html: `<p>Wills and estates are governed by each province and territory, so the rules depend on where you live.</p>
 <ul>
 <li><strong>Making a valid will:</strong> a typed will must be signed in front of two witnesses who are present together. Most provinces also accept a will written entirely in your own handwriting and signed, without witnesses; British Columbia and Prince Edward Island generally do not, though a BC court can sometimes accept one.</li>
@@ -1023,6 +1030,84 @@ ${linkCard('#where', 'Where to be', 'Home, a hospice or a hospital.', icons.home
     ],
   }),
   guide({
+    path: '/after-a-death/digital-accounts/',
+    title: 'Closing their online accounts',
+    eyebrow: 'After a death',
+    reviewed: '2026-11-19',
+    description: 'How to close or memorialize the social media, email and online accounts of someone who has died: Facebook, Instagram, Google and Gmail, Apple and iCloud, Microsoft and Outlook, X, LinkedIn and PayPal.',
+    lead: "There's no rush. Save what matters first, then use each company's own process to close or memorialize their accounts. Here is what each one offers, and what you will need.",
+    sections: [
+      { id: 'first', h: 'Before you close anything', html: `<ul>
+<li><strong>Save what matters.</strong> Photos, videos, messages and documents can be lost for good when an account is closed. Download or copy what the family wants to keep first.</li>
+<li><strong>Keep their phone number and main email for now.</strong> Many accounts send sign-in codes to a phone or email. If those are cancelled too early, other accounts can become impossible to reach.</li>
+<li><strong>Look for money.</strong> Payment accounts, store credit, gift cards and digital currency belong to the estate. Tell the executor.</li>
+<li><strong>Use the official process.</strong> Companies don't give out passwords. Signing in as the person can go against a company's terms, so each company's own request process is the safest route.</li>
+</ul>` },
+      { id: 'find', h: 'Find their accounts', html: `<p>Most people have far more accounts than their family knows about. Places to look:</p>
+<ul>
+<li>A password manager, or a list they left. Check their <a href="/checklists/plan-ahead/">plan-ahead worksheet</a> if they filled one in.</li>
+<li>Their email inbox: welcome emails, receipts and sign-in alerts show which services they used.</li>
+<li>Bank and card statements, for subscriptions and recurring payments.</li>
+<li>The apps on their phone and computer.</li>
+</ul>` },
+      { id: 'memorialize', h: 'Memorialize or close?', html: `<p>Some services, including Facebook, Instagram and LinkedIn, can turn a profile into a memorial instead of deleting it. A memorialized profile stays visible so friends can share memories, but no one can sign in to it. Closing removes it. Talk it through as a family first: some people find comfort in a memorial page, and others find it painful. If the person left wishes about this, follow them.</p>` },
+      { id: 'social', h: 'Social media', html: `
+<h3>Facebook</h3>
+<p>Friends or family can ask Meta to memorialize the profile. Immediate family or the executor can ask for it to be removed instead, with proof of death. If the person chose a legacy contact, that person can look after a memorialized profile.</p>
+<p><a class="btn btn-small" href="https://www.facebook.com/help/contact/228813257197480">Facebook: memorialize or remove an account</a></p>
+<h3>Instagram</h3>
+<p>Instagram can memorialize an account when given proof of death, such as an obituary. Only verified immediate family can ask for it to be removed, with documents showing the relationship or their legal authority.</p>
+<p><a class="btn btn-small" href="https://help.instagram.com/264154560391256">Instagram: report a deceased person's account</a></p>
+<h3>X (Twitter)</h3>
+<p>X doesn't memorialize accounts or give anyone access. Immediate family or someone acting for the estate can ask for the account to be deactivated.</p>
+<p><a class="btn btn-small" href="https://help.x.com/en/rules-and-policies/contact-x-about-media-on-a-deceased-family-members-account">X: deceased users</a></p>
+<h3>LinkedIn</h3>
+<p>Anyone can report that a member has died. Someone with authority to act for the person can ask for the profile to be memorialized or closed.</p>
+<p><a class="btn btn-small" href="https://www.linkedin.com/help/linkedin/ask/ts-rdmlp">LinkedIn: deceased member request</a></p>` },
+      { id: 'email', h: 'Email, photos and cloud storage', html: `
+<h3>Google (Gmail, Google Photos, YouTube)</h3>
+<p>Immediate family or a representative can ask Google to close the account. In some cases Google may provide some of its contents, but it reviews each request and may need legal documents, such as a court order. It never gives out passwords. Ask for the contents before closing: once an account is closed, Google can't provide anything from it.</p>
+<p><a class="btn btn-small" href="https://support.google.com/accounts/troubleshooter/6357590">Google: request about a deceased user's account</a></p>
+<h3>Apple (iCloud, Apple Account)</h3>
+<p>If the person named you as a Legacy Contact, you can request access with their access key and a death certificate. Access lasts three years, and doesn't include purchased films, music or books, or saved passwords and payment details. Without a Legacy Contact, Apple usually needs a death certificate and may need a court order or other documents, depending on the country. Apple can't unlock a device protected by a passcode.</p>
+<p><a class="btn btn-small" href="https://support.apple.com/102431">Apple: deceased family member's account</a></p>
+<h3>Microsoft (Outlook, Hotmail, OneDrive)</h3>
+<p>Microsoft generally won't release email or files to family without valid legal process, such as a court order, and even then doesn't promise to. If no one can sign in, the account is eventually closed for inactivity and its email and files deleted, so save anything important early if you can reach it.</p>
+<p><a class="btn btn-small" href="https://support.microsoft.com/en-us/topic/ebbd2860-917e-4b39-9913-212362da6b2f">Microsoft: when someone has died</a></p>` },
+      { id: 'money', h: 'Payment accounts and subscriptions', html: `
+<h3>PayPal</h3>
+<p>Only the executor or administrator of the estate can close the account. PayPal asks for documents such as a photo ID and proof of their authority, like the will or letters from the court. Any balance goes to the estate.</p>
+<p><a class="btn btn-small" href="https://www.paypal.com/us/cshelp/article/how-do-i-close-the-paypal-account-of-a-deceased-relative-help220">PayPal: closing a deceased relative's account</a></p>
+<h3>Subscriptions</h3>
+<p>Streaming services, apps, memberships and cloud storage often keep charging a card. Cancel them with each service, or ask the bank or card issuer to stop recurring payments once you tell them about the death. Keep a list of what you cancelled, for the executor.</p>` },
+      { id: 'yours', h: 'Making it easier for your own family', html: `<p>A few minutes now saves your family months:</p>
+<ul>
+<li><strong>Name legacy contacts.</strong> Facebook, Apple and Google all let you choose someone now: a <a href="https://www.facebook.com/help/1568013990080948">Facebook legacy contact</a>. With Google, set up the <a href="https://support.google.com/accounts/answer/3036546">Inactive Account Manager</a>. With Apple, <a href="https://support.apple.com/102631">add a Legacy Contact</a>.</li>
+<li><strong>Write down your wishes.</strong> Which accounts to memorialize, which to close, and what to save.</li>
+<li><strong>Use a password manager with emergency access,</strong> and tell one trusted person how to reach it. Never put passwords in your will, which can become a public record.</li>
+</ul>
+<p>More in <a href="/plan-ahead/wills-and-trusts/#digital">your digital life</a>, and write it all down on the <a href="/checklists/plan-ahead/">plan-ahead worksheet</a>.</p>` },
+    ],
+    sources: [
+      ['Meta: memorialization policy', 'https://transparency.meta.com/policies/community-standards/memorialization/'],
+      ['Facebook: memorialization and removal requests', 'https://www.facebook.com/help/contact/228813257197480'],
+      ['Instagram: report a deceased person\'s account', 'https://help.instagram.com/264154560391256'],
+      ['X: deceased users', 'https://help.x.com/en/rules-and-policies/contact-x-about-media-on-a-deceased-family-members-account'],
+      ['LinkedIn: deceased member request', 'https://www.linkedin.com/help/linkedin/ask/ts-rdmlp'],
+      ['Google: request regarding a deceased user\'s account', 'https://support.google.com/accounts/troubleshooter/6357590'],
+      ['Google: Inactive Account Manager', 'https://support.google.com/accounts/answer/3036546'],
+      ['Apple: request access to a deceased family member\'s Apple Account', 'https://support.apple.com/102431'],
+      ['Apple: add a Legacy Contact', 'https://support.apple.com/102631'],
+      ['Microsoft: accessing Outlook.com, OneDrive and other services when someone has died', 'https://support.microsoft.com/en-us/topic/ebbd2860-917e-4b39-9913-212362da6b2f'],
+      ['PayPal: closing a deceased relative\'s account', 'https://www.paypal.com/us/cshelp/article/how-do-i-close-the-paypal-account-of-a-deceased-relative-help220'],
+    ],
+    related: [
+      ['/after-a-death/', 'After a death', 'The first hours, the funeral and the first month.'],
+      ['/after-a-death/death-certificates/', 'How many death certificates?', 'Many of these requests need one.'],
+      ['/plan-ahead/wills-and-trusts/#digital', 'Your digital life', 'Plan your own accounts now.'],
+    ],
+  }),
+  guide({
     path: '/after-a-death/death-certificates/',
     title: 'How many death certificates do you need?',
     eyebrow: 'After a death',
@@ -1148,6 +1233,7 @@ ${linkCards([['/serious-illness/choices-near-the-end/', 'Every choice near the e
 <li>Notify the government pension or social security agency (in the US, Social Security; the funeral home often does this), other pension plans, insurers and banks.</li>
 <li>Claim life insurance and any benefits; ask about survivor benefits.</li>
 <li>Cancel or transfer utilities, subscriptions and accounts. Keep paying essential bills.</li>
+<li>Close or memorialize their social media, email and other online accounts, after saving what the family wants to keep. See <a href="/after-a-death/digital-accounts/">closing their online accounts</a>.</li>
 <li>Forward mail, secure the home and car, and look after pets.</li></ul>` },
       { id: 'probate', h: 'Probate and the estate', html: `<p>Probate is the legal process for settling an estate; its name and steps differ by country. Accounts with a named beneficiary and jointly owned property often pass outside it, and many places, including every US state, have a simpler process for small estates. If the estate is large or complicated, talk to a probate lawyer.</p>
 <p>To make things easier for your own family, see <a href="/plan-ahead/wills-and-trusts/#probate">passing things on without probate</a>.</p>
@@ -1159,6 +1245,7 @@ ${linkCards([['/serious-illness/choices-near-the-end/', 'Every choice near the e
     ],
     related: [
       ['/checklists/after-a-death/', 'First-24-hours checklist', 'Printable.'],
+      ['/after-a-death/digital-accounts/', 'Closing their online accounts', 'Social media, email, cloud storage and payments.'],
       ['/grief/', 'Grief', 'What to expect, and when to get more help.'],
     ],
   }),
