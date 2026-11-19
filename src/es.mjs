@@ -661,6 +661,7 @@ const inicio = {
 <div class="actions"><a class="btn" href="/es/para-mi/">Planifico para mí</a><a class="btn btn-quiet" href="/es/para-un-ser-querido/">Planifico para un ser querido</a></div>
 <p class="small" style="margin:14px 0 0">¿Alguien acaba de morir? <a href="/es/primeras-24-horas/">Las primeras 24 horas</a>.</p>
 <p class="small" style="margin:6px 0 0">O <a href="/es/preguntar/">haga una pregunta</a> con sus propias palabras.</p>
+<p class="small" style="margin:6px 0 0"><a href="/es/app/">Instale la app</a>: es gratis, y las guías clave funcionan sin conexión.</p>
 <p class="small" style="margin:6px 0 0" lang="en">Also in English: <a href="/" hreflang="en">read in English</a>.</p>
 <p class="edition">Revisado ${fmtDateEs(site.lastScan)} · Gratis · Sin anuncios</p>
 </div>
