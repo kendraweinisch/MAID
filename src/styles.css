@@ -394,3 +394,32 @@ a.src-link { text-decoration-style: dotted; text-decoration-thickness: 1.5px; }
 .mini-steps li { counter-increment: ms; position: relative; margin: 0; padding: 12px 14px 12px 50px; background: #EAF0F6; font-size: 16px; line-height: 1.45; }
 .mini-steps li::before { content: counter(ms); position: absolute; left: 14px; top: 11px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--mono); font-size: 14px; display: grid; place-items: center; }
 @media (max-width: 1099px) { .toc.toc-wide-only { display: none !important; } }
+
+/* ---------- Guide sections as panels ---------- */
+.g-sec { margin: 0 0 18px; padding: 4px 0 8px; }
+.guide-body .g-sec h2 { margin-top: 44px; }
+.num-h.has-icon { align-items: center; }
+.sec-icon { flex: none; width: 52px; height: 52px; display: grid; place-items: center; background: #EAF0F6; border: 1.5px solid var(--ink); color: var(--accent-text); }
+.sec-icon .icon { width: 32px; height: 32px; }
+.fact-chips { list-style: none; padding: 0 !important; margin: 4px 0 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.guide-body .fact-chips li, .fact-chips li { margin: 0; padding: 5px 12px; padding-left: 12px !important; background: #E4ECF4; color: var(--ink); border: 1px solid #B9CADB; font-family: var(--mono); font-size: 13px; letter-spacing: .02em; line-height: 1.4; }
+.guide-body .fact-chips li::before { display: none; }
+/* Alternate panels get a soft background to break up long pages */
+.guide-body .g-sec:nth-of-type(even) { background: #FBF8F1; box-shadow: 0 0 0 1px var(--rule); padding: 2px 24px 14px; margin-left: -24px; margin-right: -24px; }
+@media (max-width: 760px) { .guide-body .g-sec:nth-of-type(even) { margin-left: -16px; margin-right: -16px; padding: 2px 16px 12px; } .sec-icon { width: 44px; height: 44px; } .sec-icon .icon { width: 26px; height: 26px; } }
+
+/* Bar chart (climate impact) */
+.bars { list-style: none; padding: 0 !important; margin: 18px 0 8px; display: grid; gap: 10px; }
+.guide-body .bars li { padding-left: 0 !important; margin: 0; }
+.guide-body .bars li::before { display: none; }
+.bar-label { display: flex; justify-content: space-between; gap: 12px; font-size: 16px; margin-bottom: 4px; }
+.bar-label strong { font-family: var(--mono); font-weight: 500; font-size: 14px; white-space: nowrap; }
+.bar-track { height: 14px; background: var(--rule); }
+.bar-fill { height: 100%; background: var(--accent); }
+.bar-best .bar-fill { background: #2F6F4E; }
+
+/* Timeline (signs that death is near) */
+.timeline .g-sec { position: relative; padding-left: 0; }
+@media print { .guide-body .g-sec:nth-of-type(even) { background: none; box-shadow: none; margin: 0; padding: 0; } .sec-icon { background: none; } }
+.bars-plain { list-style: none; padding: 0; }
+.bars-plain li { margin: 0; }
