@@ -423,3 +423,38 @@ a.src-link { text-decoration-style: dotted; text-decoration-thickness: 1.5px; }
 @media print { .guide-body .g-sec:nth-of-type(even) { background: none; box-shadow: none; margin: 0; padding: 0; } .sec-icon { background: none; } }
 .bars-plain { list-style: none; padding: 0; }
 .bars-plain li { margin: 0; }
+
+/* ---------- Nothing that isn't clickable should look like a button ----------
+   Bordered boxes are reserved for links and controls. Information uses type,
+   thin rules and color instead. */
+
+/* Key facts: a plain line of text with small markers */
+.fact-chips { gap: 4px 18px; margin: 2px 0 14px; }
+.guide-body .fact-chips li, .fact-chips li { background: none; border: 0; padding: 0 0 0 14px !important; position: relative; font-family: var(--mono); font-size: 13px; color: var(--muted); letter-spacing: .02em; }
+.guide-body .fact-chips li::before, .fact-chips li::before { display: block !important; content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); transform: none; }
+
+/* Lists of bold terms: text blocks with a thin rule, not cards */
+.prose ul.point-grid { gap: 18px 28px; }
+.prose ul.point-grid li { background: none; border: 0; border-left: 3px solid var(--accent); padding: 2px 0 2px 16px; }
+
+/* Static info cards (principles, facts): icon and text, no box */
+.ocard-static { background: none !important; border: 0 !important; box-shadow: none !important; padding: 4px 0 !important; transform: none !important; }
+
+/* At a glance: big figures over a thin rule, not dark blocks */
+.glance-card { background: none; color: var(--ink); padding: 14px 0 4px; border-top: 3px solid var(--accent); }
+.glance-card strong { color: var(--accent-text); }
+.glance-card span { color: var(--muted); }
+
+/* Section icons: just the icon */
+.sec-icon { background: none; border: 0; width: 40px; height: 40px; }
+.sec-icon .icon { width: 36px; height: 36px; }
+
+/* Numbered steps: number and text, no tinted box */
+.mini-steps li { background: none; padding: 4px 0 4px 40px; }
+.mini-steps li::before { left: 0; top: 3px; }
+
+/* Status labels: colored text with a dot, not a box */
+.pill { border: 0 !important; background: none !important; padding: 0 0 0 14px !important; position: relative; }
+.pill::before { content: ""; position: absolute; left: 0; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; background: currentColor; }
+/* Alternating section backgrounds: a soft tint only, no outline */
+.guide-body .g-sec:nth-of-type(even) { box-shadow: none; }
