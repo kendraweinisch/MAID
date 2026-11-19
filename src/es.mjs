@@ -10,13 +10,13 @@ import { journeyPage } from './journeys.mjs';
 
 const ad = JSON.parse(readFileSync(new URL('./data/advance-directives.json', import.meta.url), 'utf8'));
 
-const EN = ' <span class="muted small">(en inglés)</span>';
-const enLink = (href, text) => `<a href="${href}" hreflang="en">${text}</a>${EN}`;
+export const EN = ' <span class="muted small">(en inglés)</span>';
+export const enLink = (href, text) => `<a href="${href}" hreflang="en">${text}</a>${EN}`;
 
 const META = JSON.parse(readFileSync(new URL('./data/printables-meta.json', import.meta.url), 'utf8'));
 
 // Download panel for a Spanish printable: a picture of the page and buttons.
-function dlPanelEs(slug) {
+export function dlPanelEs(slug) {
   const m = META[slug];
   if (!m) return `<p class="no-print"><button class="btn" type="button" onclick="window.print()">Imprimir esta página</button></p>`;
   return `<div class="dl-panel no-print">
@@ -30,7 +30,7 @@ function dlPanelEs(slug) {
 </div>`;
 }
 
-const reviewNote = `<p class="small muted es-note">Traducción pendiente de revisión por un hablante nativo. ¿Ve un error? <a href="/suggestions/">Díganos</a>.</p>`;
+export const reviewNote = `<p class="small muted es-note">Traducción pendiente de revisión por un hablante nativo. ¿Ve un error? <a href="/suggestions/">Díganos</a>.</p>`;
 
 
 // The same section design as the English guides: an icon per section, key
@@ -77,20 +77,21 @@ const esGlance = (list) =>
     ? `<div class="glance" role="list" aria-label="De un vistazo">${list.map(([big, label]) => `<div class="glance-card" role="listitem"><strong>${big}</strong><span>${label}</span></div>`).join('')}</div>`
     : '';
 function esSection(path, s, i) {
-  const icon = (ES_ICONS[path] || {})[s.id];
+  const icon = s.icon || (ES_ICONS[path] || {})[s.id];
   const badge = icon ? `<span class="sec-icon" aria-hidden="true">${icons[icon]}</span>` : `<span class="h-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>`;
   return `<section class="g-sec" aria-labelledby="${s.id}">
 <h2 id="${s.id}" class="num-h${icon ? ' has-icon' : ''}">${badge}<span class="h-text">${s.h}</span></h2>
-${esChips((ES_FACTS[path] || {})[s.id])}
+${esChips(s.facts || (ES_FACTS[path] || {})[s.id])}
 ${cardifyLists(s.html)}
 </section>`;
 }
 
-function esGuide({ path, title, description, eyebrow, lead, icon = 'plan', reviewed, sections, related = [], sources = [], crisis = false, faq = [] }) {
+export function esGuide({ path, title, description, eyebrow, lead, icon = 'plan', reviewed, sections, related = [], sources = [], crisis = false, faq = [], glance, seoTitle }) {
   const toc = sections.map((s) => `<li><a href="#${s.id}">${s.h}</a></li>`).join('');
   return {
     path,
     title,
+    seoTitle,
     description,
     crisis,
     faq,
@@ -113,7 +114,7 @@ ${reviewNote}
 <div class="wrap guide-layout">
 <nav class="toc card" aria-label="En esta página"><strong>En esta página</strong><ul>${toc}</ul></nav>
 <div class="prose guide-body">
-${esGlance(ES_GLANCE[path])}
+${esGlance(glance || ES_GLANCE[path])}
 ${sections.map((s, i) => esSection(path, s, i)).join('\n')}
 ${related.length ? `<h2 id="relacionado">Relacionado</h2>${linkCards(related)}` : ''}
 ${sources.length ? `<h2 id="fuentes">Fuentes</h2><ul>${sources.map(([l, u]) => `<li><a href="${esc(u)}">${esc(l)}</a></li>`).join('')}</ul>` : ''}
@@ -570,7 +571,7 @@ const paraMi = {
       stops: [
         { id: 'costs', t: 'Sepa lo que puede costar', d: 'Los cuidados, los funerales y las opciones que cuestan menos.', links: [E('/what-it-costs/', 'Lo que cuesta')] },
         { id: 'tell', t: 'Cuénteselo a su familia', d: 'Dé copias a su representante y a su albacea, y hablen de lo que decidió.', links: [['/es/planificar/#conversacion', 'La conversación']] },
-        { id: 'ill', t: 'Si se enferma gravemente', d: 'Cuidados paliativos, hospicio, órdenes médicas y todas las opciones cerca del final.', links: [['/es/cuidados-paliativos-y-hospicio/', 'Paliativos y hospicio'], E('/medical-aid-in-dying/', 'Muerte médicamente asistida')] },
+        { id: 'ill', t: 'Si se enferma gravemente', d: 'Cuidados paliativos, hospicio, órdenes médicas y todas las opciones cerca del final.', links: [['/es/cuidados-paliativos-y-hospicio/', 'Paliativos y hospicio'], ['/es/muerte-medicamente-asistida/', 'Muerte médicamente asistida']] },
         { id: 'review', t: 'Revíselo cada pocos años', d: 'Y después de un matrimonio, un divorcio, un nacimiento, una muerte, una mudanza o un diagnóstico.', links: [['/es/planificar/#revisar', 'Mantenerlo al día']] },
       ],
     },
@@ -599,7 +600,7 @@ const paraSerQuerido = {
         { id: 'comfort-care', t: 'Pregunte pronto por los cuidados de alivio', d: 'Los cuidados paliativos pueden empezar en cualquier etapa. Muchas familias desearían haber sabido antes del hospicio.', links: [['/es/cuidados-paliativos-y-hospicio/', 'Paliativos y hospicio']] },
         { id: 'appointments', t: 'Vaya preparado a las citas', d: 'Qué preguntar, y alguien que tome notas.', links: [E('/checklists/questions-for-the-doctor/', 'Preguntas para el médico')] },
         { id: 'caregiver', t: 'Cuídese como cuidador', d: 'Pida ayuda concreta, y pida cuidados de relevo.', links: [E('/serious-illness/#caregivers', 'Si usted cuida')] },
-        { id: 'choices', t: 'Respete sus decisiones', d: 'Todos los tratamientos, solo cuidados de alivio, o la muerte médicamente asistida donde es legal: la decisión es suya.', links: [E('/serious-illness/#choices', 'Opciones cerca del final'), E('/medical-aid-in-dying/families/', 'Para familias')] },
+        { id: 'choices', t: 'Respete sus decisiones', d: 'Todos los tratamientos, solo cuidados de alivio, o la muerte médicamente asistida donde es legal: la decisión es suya.', links: [E('/serious-illness/#choices', 'Opciones cerca del final'), ['/es/muerte-medicamente-asistida/familias/', 'Para familias']] },
       ],
     },
     {
@@ -701,9 +702,10 @@ ${linkCards([
     ['/es/primeras-24-horas/', 'Las primeras 24 horas', 'Una lista para imprimir, también en PDF.', 'printer'],
     ['/es/cuentas-en-linea/', 'Cerrar sus cuentas en línea', 'Redes sociales, correo, nube y pagos, con lista para imprimir.', 'key'],
     ['/es/duelo/', 'Duelo', 'Qué es normal, los niños, y cuándo pedir ayuda.', 'grief'],
+    ['/es/muerte-medicamente-asistida/', 'Muerte médicamente asistida', 'Dónde es legal la eutanasia y el suicidio asistido, y cómo funciona.', 'maid'],
     ['/es/preguntar/', 'Haga una pregunta', 'Respuestas de las páginas en español de este sitio.', 'ask'],
   ], 'cards')}
-<div class="notice" style="margin-top:48px"><p style="margin:0"><strong>Solo en inglés por ahora:</strong> ${enLink('/medical-aid-in-dying/', 'la muerte médicamente asistida y la eutanasia')}, ${enLink('/serious-illness/choices-near-the-end/', 'las opciones cerca del final de la vida')}, ${enLink('/plan-ahead/wills-and-trusts/', 'testamentos y fideicomisos')}, ${enLink('/what-it-costs/database/', 'la base de datos de costos')}, ${enLink('/plan-ahead/choices-for-the-body/', 'las opciones para el cuerpo')} y ${enLink('/checklists/', 'las demás hojas para imprimir')}.</p></div>
+<div class="notice" style="margin-top:48px"><p style="margin:0"><strong>Solo en inglés por ahora:</strong> ${enLink('/serious-illness/choices-near-the-end/', 'las opciones cerca del final de la vida')}, ${enLink('/plan-ahead/wills-and-trusts/', 'testamentos y fideicomisos')}, ${enLink('/what-it-costs/database/', 'la base de datos de costos')}, ${enLink('/plan-ahead/choices-for-the-body/', 'las opciones para el cuerpo')} y ${enLink('/checklists/', 'las demás hojas para imprimir')}.</p></div>
 </div>
 </section>`,
 };

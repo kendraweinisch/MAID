@@ -23,7 +23,7 @@ For every place, check for changes since the last scan: new laws, laws
 taking effect, court rulings, repeals, residency changes, and bills that
 passed or failed. Also check the "researching" list for countries that
 have legalized. When a place is confirmed unchanged or updated, set its
-`verified` date to today.
+`verified` date to today. Update the Spanish wording under `es` too.
 
 Watch especially: France (law expected to take effect in 2027), Uruguay
 (rollout), Delaware (effective date), England and Wales, Scotland, Jersey

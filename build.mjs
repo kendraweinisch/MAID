@@ -8,6 +8,7 @@ import { buildSearchIndex } from './src/search-index.mjs';
 import { journeys } from './src/journeys.mjs';
 import { adPages } from './src/advance-directives.mjs';
 import { esPages } from './src/es.mjs';
+import { esMaidPages } from './src/es-maid.mjs';
 import { costPages } from './src/cost-database.mjs';
 
 const out = 'dist';
@@ -37,6 +38,7 @@ const pages = [
   ...data.places.map(placePage),
   ...staticPages,
   ...esPages,
+  ...esMaidPages,
 ];
 
 await rm(out, { recursive: true, force: true });

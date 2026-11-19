@@ -23,6 +23,9 @@ export const fmtDate = (iso) =>
     ? new Date(iso + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
     : 'Not yet verified';
 
+export const fmtDateEsShort = (iso) =>
+  iso ? new Date(iso + 'T12:00:00Z').toLocaleDateString('es-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).replace('.', '') : 'sin verificar';
+
 export const fmtDateEs = (iso) =>
   iso ? new Date(iso + 'T12:00:00Z').toLocaleDateString('es-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : 'sin verificar';
 
@@ -49,14 +52,20 @@ export const ES_PAIRS = {
   '/ask/': '/es/preguntar/',
 };
 const EN_PAIRS = Object.fromEntries(Object.entries(ES_PAIRS).map(([en, es]) => [es, en]));
+// Spanish modules register their pages here, so each page knows its pair.
+export function pair(en, es) {
+  ES_PAIRS[en] = es;
+  EN_PAIRS[es] = en;
+}
 
 const navEs = [
   ['/es/planificar/', 'Planificar'],
-  ['/es/directivas-anticipadas/', 'Directivas anticipadas'],
-  ['/es/cuidados-paliativos-y-hospicio/', 'Paliativos y hospicio'],
+  ['/es/directivas-anticipadas/', 'Directivas'],
+  ['/es/cuidados-paliativos-y-hospicio/', 'Paliativos'],
   ['/es/senales-de-que-la-muerte-esta-cerca/', 'Los últimos días'],
   ['/es/despues-de-una-muerte/', 'Después de una muerte'],
   ['/es/duelo/', 'Duelo'],
+  ['/es/muerte-medicamente-asistida/', 'Muerte asistida'],
 ];
 
 const nav = [
@@ -100,6 +109,8 @@ const SECTION_NAMES = {
   '/grief/': 'Grief',
   '/medical-aid-in-dying/': 'Medical aid in dying',
   '/medical-aid-in-dying/places/': 'Where it is legal',
+  '/es/muerte-medicamente-asistida/': 'Muerte médicamente asistida',
+  '/es/muerte-medicamente-asistida/lugares/': 'Lugares',
   '/plan-ahead/advance-directives/': 'Advance directives by state',
   '/what-it-costs/': 'What it costs',
   '/checklists/': 'Printables',

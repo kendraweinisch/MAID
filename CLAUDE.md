@@ -14,6 +14,8 @@ material.
 - New printable: add the Spanish printable too, and its PDF via the `OTHER`
   list in `scripts/make-printables.cjs`.
 - Changed English text: make the same change to its Spanish pair.
+- Data with reader-facing text (such as `src/data/places.json`) keeps the
+  Spanish wording beside the English, under `es`. Update both together.
 - Spanish search: add Spanish synonyms in `public/assistant.js` when you add
   English ones.
 - Use "usted", keep the same facts and sources, link to a company's or
