@@ -422,6 +422,7 @@ export function home(data) {
 <div class="actions"><a class="btn" href="/for-myself/">I'm planning for myself</a><a class="btn btn-quiet" href="/for-someone-i-love/">I'm planning for someone I love</a></div>
 <p class="small" style="margin:14px 0 0">Has someone just died? <a href="/checklists/after-a-death/">The first 24 hours</a>.</p>
 <p class="small" style="margin:6px 0 0">Or <a href="/ask/">ask a question</a> in your own words.</p>
+<p class="small" style="margin:6px 0 0" lang="es">También en español: <a href="/es/" hreflang="es">leer en español</a>.</p>
 <p class="edition">Last checked ${fmtDate(site.lastScan)} · Free · No ads</p>
 </div>
 </div>
