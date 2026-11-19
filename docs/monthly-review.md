@@ -39,6 +39,7 @@ and the Isle of Man, US state bills, and any new US states.
 | Every choice for the body | States allowing human composting and water cremation, EPA and UK burial-at-sea rules |
 | Going to Switzerland | Approximate fees |
 | Finding help | Directory links still live |
+| Cost database (`src/cost-database.mjs`) | Every source still live and still free; descriptions still accurate; new public cost tools worth adding |
 | Advance directives by state (`src/data/advance-directives.json`) | Every official form link and CaringInfo link still live; new state forms (several states, such as Utah in 2026, are moving to the Uniform Health-Care Decisions Act). Update `verified` |
 
 ## 4. Spanish pages

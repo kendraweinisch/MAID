@@ -762,7 +762,7 @@ export const guides = [
 <li><strong>It depends most on where you live.</strong> In countries with public health systems, such as the UK and Canada, most medical and hospice care is free or largely covered. In the US, costs depend on insurance and on which kind of care is needed.</li>
 <li><strong>The biggest out-of-pocket costs are usually not medical.</strong> Paid care at home or in a care home, and the funeral, are what most families pay for themselves.</li>
 <li><strong>Prices vary widely,</strong> even between nearby hospitals and funeral homes. Asking for written, itemized prices is the single best way to save money.</li></ul>
-<p>Figures below are US national medians unless we say otherwise. Your area may be much higher or lower.</p>` },
+<p>Figures below are US national medians unless we say otherwise. Your area may be much higher or lower. To look up prices yourself, use the <a href="/what-it-costs/database/">cost database</a>.</p>` },
       { id: 'medical', h: 'Medical care in the last year of life', html: `<p>In the US, about a quarter of Medicare spending on people aged 65 and over goes to care in their last year of life, according to KFF's analysis of 2014 data, the most recent it has published. Much of that is hospital and intensive care.</p>
 <p>How much care people get near the end varies a great deal between hospitals. The <a href="https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/">Dartmouth Atlas</a> compares US hospitals on Medicare spending, hospital and intensive-care days and hospice use in patients' last two years of life. Its hospital data is from 2017, so use it to compare patterns, not today's prices.</p>` },
       { id: 'hospice', h: 'Hospice and palliative care', html: `<ul>
@@ -799,7 +799,8 @@ ${dirCard('https://turquoise.health/', 'Turquoise Health', 'US · hospitals', 'M
 ${dirCard('https://www.fairhealthconsumer.org/', 'FAIR Health Consumer', 'US · medical care', 'Typical costs of procedures in your area.')}
 ${dirCard('https://www.carescout.com/cost-of-care', 'CareScout', 'US · care', 'Care-home and home-care costs by area.')}
 ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · funerals', 'Local groups, some of which survey funeral prices.')}
-</div>` },
+</div>
+<p style="margin-top:18px"><a class="btn btn-quiet" href="/what-it-costs/database/">See the full cost database: every source, by what you want to find out</a></p>` },
       { id: 'save', h: 'Ways to lower costs', html: `<ul>
 <li>Ask about hospice early. It is covered by Medicare in the US, and free in many other countries.</li>
 <li>Get written, itemized prices from two or three funeral homes before you choose.</li>

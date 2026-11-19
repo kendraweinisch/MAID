@@ -382,3 +382,10 @@ a.src-link { text-decoration-style: dotted; text-decoration-thickness: 1.5px; }
   .glance-card { background: #fff; color: #000; border: 1px solid #000; }
   .glance-card span { color: #000; }
 }
+
+/* Cost database */
+.task-grid { margin: 24px 0 8px; }
+.mini-steps { counter-reset: ms; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 10px; margin: 16px 0 0; }
+.mini-steps li { counter-increment: ms; position: relative; margin: 0; padding: 12px 14px 12px 50px; background: #EAF0F6; font-size: 16px; line-height: 1.45; }
+.mini-steps li::before { content: counter(ms); position: absolute; left: 14px; top: 11px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--mono); font-size: 14px; display: grid; place-items: center; }
+@media (max-width: 1099px) { .toc.toc-wide-only { display: none !important; } }

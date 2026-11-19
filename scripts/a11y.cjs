@@ -49,6 +49,8 @@ async function pages(dir, out = []) {
         const out = [];
         if (document.documentElement.scrollWidth > window.innerWidth + 1) out.push(`sideways scroll (${document.documentElement.scrollWidth}px wide)`);
         for (const el of document.querySelectorAll('a[href], button, input:not([type="hidden"]), select, textarea')) {
+          // Elements that aren't rendered at all (display: none) are skipped by the keyboard anyway.
+          if (el.checkVisibility && !el.checkVisibility()) continue;
           const r = el.getBoundingClientRect();
           const hidden = r.width === 0 || r.height === 0 || r.right < 0 || getComputedStyle(el).visibility === 'hidden';
           if (hidden && el.tabIndex >= 0 && !el.classList.contains('skip-link') && !el.closest('[hidden]')) out.push(`focusable but invisible: ${el.outerHTML.slice(0, 80)}`);
