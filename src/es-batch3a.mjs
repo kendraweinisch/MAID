@@ -119,10 +119,10 @@ export const testamentos = esGuide({
 export const extranjero = esGuide({
   path: '/es/propiedades-en-el-extranjero/',
   title: 'Testamentos cuando tiene propiedades en el extranjero',
-  seoTitle: 'Testamentos para expatriados: propiedades en México, Canadá, el Reino Unido y Europa',
+  seoTitle: 'Testamentos para expatriados: propiedades en México, Costa Rica, Canadá, el Reino Unido y Europa',
   eyebrow: 'Planificar',
   icon: 'globe',
-  description: 'Qué revisar si tiene una casa en otro país: testamentos locales, fideicomisos en México, Canadá, el Reino Unido, España, Portugal, Francia e Italia, y los impuestos.',
+  description: 'Qué revisar si tiene una casa en otro país: testamentos locales, fideicomisos en México, Costa Rica, Canadá, el Reino Unido, España, Portugal, Francia e Italia, y los impuestos.',
   lead: 'Si tiene una casa en otro país, su testamento de casa puede no bastar. Esto es lo que hay que revisar, con notas sobre los países donde más a menudo tienen propiedades los expatriados.',
   sections: [
     { id: 'resumen', h: 'En pocas palabras', icon: 'check', html: `<ul>
@@ -136,6 +136,11 @@ export const extranjero = esGuide({
 <li><strong>Un testamento mexicano.</strong> A los expatriados se les suele aconsejar hacer un testamento mexicano, un testamento público abierto, ante un notario público mexicano, en español. Cubre los bienes fuera del fideicomiso, como las cuentas bancarias y los autos.</li>
 <li><strong>Usar un testamento de EE. UU.</strong> Un testamento de EE. UU. puede ser válido en México, pero los herederos suelen tener que cerrarlo primero en EE. UU. y luego hacerlo reconocer en México, lo que es lento y caro.</li>
 <li><strong>El Mes del Testamento.</strong> Cada septiembre es el Mes del Testamento. Es una campaña nacional hecha con los estados: ${L('https://www.gob.mx/testamento', 'los notarios ofrecen descuentos de hasta el 50 % en un testamento')}, y asesoría gratuita.</li></ul>` },
+    { id: 'costa-rica', h: 'Costa Rica', icon: 'globe', html: `<ul>
+<li><strong>Un testamento ante notario.</strong> ${L('https://www.tse.go.cr/pdf/normativa/codigonotarial.pdf', 'Un testamento puede hacerse ante un notario público costarricense')}. Si usted no habla español, la ley exige intérpretes, así que pida al notario que los consiga.</li>
+<li><strong>Un testamento cerrado.</strong> También puede entregar su testamento a un notario en un sobre cerrado. Usted, el notario y dos testigos firman el acta, y el sobre se le devuelve.</li>
+<li><strong>La sucesión.</strong> Un notario puede tramitar la sucesión en lugar de un tribunal, con o sin testamento, pero ${L('https://www.tse.go.cr/pdf/normativa/codigonotarial.pdf', 'solo si ninguno de los herederos ni de los demás interesados es menor de edad o incapaz')}. Si alguien pide al notario que no siga, se opone por escrito o surge un conflicto, el notario debe pasar el caso al tribunal.</li>
+<li><strong>Pida asesoría local</strong> a un notario o abogado costarricense sobre cómo está a su nombre la propiedad y quién la heredaría.</li></ul>` },
     { id: 'canada', h: 'Canadá', icon: 'globe', html: `<ul>
 <li><strong>Sin impuesto sobre la herencia, pero con ganancias de capital.</strong> Canadá no tiene impuesto sobre la herencia ni sobre el patrimonio. En cambio, la muerte cuenta como si vendiera sus bienes a valor de mercado, así que puede deberse impuesto sobre las ganancias de capital por una cabaña o una propiedad de alquiler canadiense en su última declaración.</li>
 <li><strong>Un certificado antes de pagar a los herederos.</strong> Antes de entregar los bienes a los herederos, el albacea puede pedir ${L('https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html', 'un certificado de autorización de la Agencia Tributaria de Canadá')}. Confirma que los impuestos debidos están pagados, así que el albacea no responde personalmente por ellos más tarde.</li>
@@ -166,6 +171,7 @@ export const extranjero = esGuide({
   sources: [
     ['American Bar Association: propiedad extranjera en la zona restringida de México (2026)' + EN, 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
     ['Gobierno de México: Mes del Testamento', 'https://www.gob.mx/testamento'],
+    ['Código Notarial de Costa Rica, publicado por el Tribunal Supremo de Elecciones (PDF)', 'https://www.tse.go.cr/pdf/normativa/codigonotarial.pdf'],
     ['Agencia Tributaria de Canadá: cómo pedir un certificado de autorización' + EN, 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html'],
     ['Ontario: impuesto sobre la administración de sucesiones (en francés)', 'https://www.ontario.ca/fr/page/impot-sur-ladministration-des-successions'],
     ['GOV.UK: cómo funciona el impuesto sobre la herencia' + EN, 'https://www.gov.uk/inheritance-tax'],
