@@ -19,7 +19,7 @@ const exists = async (p) => stat(p).then(() => true, () => false);
 const problems = [];
 for (const f of files) {
   const html = await readFile(f, 'utf8');
-  if (!html.includes('988') || !html.includes('findahelpline.com')) problems.push(`${f}: missing crisis line`);
+  if (!html.includes('988') || !html.includes('befrienders.org/find-support-now/')) problems.push(`${f}: missing crisis line`);
   if (/medical-aid-in-dying|grief/.test(f) && !html.includes('class="crisis"')) problems.push(`${f}: missing crisis bar`);
   if (!/<title>[^<]+<\/title>/.test(html)) problems.push(`${f}: missing title`);
   if (!/<meta name="description" content="[^"]+"/.test(html)) problems.push(`${f}: missing description`);

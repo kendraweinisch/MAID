@@ -2,7 +2,7 @@
 // linking to the official form (or the law that sets it out) and a free
 // state-specific form from CaringInfo. Data: src/data/advance-directives.json.
 import { readFileSync } from 'node:fs';
-import { esc, fmtDate, site } from './layout.mjs';
+import { esc, fmtDate, site, sourcesNote } from './layout.mjs';
 import { icons } from './icons.mjs';
 import { linkCards } from './ui.mjs';
 
@@ -128,6 +128,7 @@ ${linkCards([
       ['/serious-illness/', 'Serious illness', 'Palliative care, hospice and POLST.', 'illness'],
     ])}
 <h2 id="sources">Sources</h2>
+${sourcesNote()}
 <ul>
 <li><a href="https://www.nia.nih.gov/health/advance-care-planning/advance-care-planning-advance-directives-health-care">National Institute on Aging: advance care planning</a></li>
 <li><a href="https://www.caringinfo.org/planning/advance-directives/by-state/">CaringInfo: advance directive forms by state</a></li>

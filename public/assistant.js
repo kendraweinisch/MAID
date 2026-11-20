@@ -14,13 +14,13 @@
     you: 'Usted preguntó', atlas: 'Del Atlas', here: 'Esto dice el sitio:',
     none: 'No encontré eso en las páginas en español. Pruebe otras palabras, vea <a href="' + base + '/es/">las guías en español</a> o <a href="' + base + '/ask/" hreflang="en">pregunte en inglés</a>.',
     support: 'También puede leer sobre <a href="' + base + '/es/duelo/#mas-ayuda">cuándo pedir más ayuda</a>.',
-    crisis: '<p><strong>Si está pensando en quitarse la vida, merece apoyo ahora mismo.</strong> En EE. UU., llame o envíe un mensaje de texto al <strong>988</strong> (hay atención en español). En otros países, <a href="https://findahelpline.com">busque una línea de ayuda</a>. Si tiene una enfermedad terminal y quiere entender sus opciones legales, la información de abajo puede ayudar, y hablarlo antes con alguien nunca está de más.</p>',
+    crisis: '<p><strong>Si está pensando en quitarse la vida, merece apoyo ahora mismo.</strong> En EE. UU., llame o envíe un mensaje de texto al <strong>988</strong> (hay atención en español). En otros países, <a href="https://befrienders.org/find-support-now/">busque una línea de ayuda</a>. Si tiene una enfermedad terminal y quiere entender sus opciones legales, la información de abajo puede ayudar, y hablarlo antes con alguien nunca está de más.</p>',
     failed: 'Lo siento, el asistente no pudo cargarse. Puede ver las guías.'
   } : {
     you: 'You asked', atlas: 'From the Atlas', here: 'Here is what this site says:',
     none: 'I couldn’t find that on this site. Try different words, browse <a href="' + base + '/#where">where to start</a>, or see <a href="' + base + '/finding-help/">finding help near you</a>.',
     support: 'You can also read about <a href="' + base + '/grief/#more-help">when to get more help</a>, or find <a href="' + base + '/finding-help/">support near you</a>.',
-    crisis: '<p><strong>If you are thinking about ending your life, you deserve support right now.</strong> In the US, call or text <strong>988</strong>. Elsewhere, <a href="https://findahelpline.com">find a helpline in your country</a>. If you are facing a terminal illness and want to understand your legal options, the information below may help, and talking it through with someone first is never a bad step.</p>',
+    crisis: '<p><strong>If you are thinking about ending your life, you deserve support right now.</strong> In the US, call or text <strong>988</strong>. Elsewhere, <a href="https://befrienders.org/find-support-now/">find a helpline in your country</a>. If you are facing a terminal illness and want to understand your legal options, the information below may help, and talking it through with someone first is never a bad step.</p>',
     failed: 'Sorry, the assistant could not load. Please browse the guides instead.'
   };
   var form = document.getElementById('ask-form');

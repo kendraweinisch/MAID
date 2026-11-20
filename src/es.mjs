@@ -3,7 +3,7 @@
 // every page. When an English page changes, update its Spanish pair (see
 // ES_PAIRS in layout.mjs).
 import { readFileSync } from 'node:fs';
-import { esc, fmtDateEs, site } from './layout.mjs';
+import { esc, fmtDateEs, site, sourcesNoteEs } from './layout.mjs';
 import { icons } from './icons.mjs';
 import { linkCards, cardifyLists } from './ui.mjs';
 import { journeyPage } from './journeys.mjs';
@@ -118,7 +118,7 @@ ${reviewNote}
 ${esGlance(glance || ES_GLANCE[path])}
 ${sections.map((s, i) => esSection(path, s, i)).join('\n')}
 ${related.length ? `<h2 id="relacionado">Relacionado</h2>${linkCards(related)}` : ''}
-${sources.length ? `<h2 id="fuentes">Fuentes</h2><ul>${sources.map(([l, u]) => `<li><a href="${esc(u)}">${esc(l)}</a></li>`).join('')}</ul>` : ''}
+${sources.length ? `<h2 id="fuentes">Fuentes</h2>${sourcesNoteEs(sources.map(([, u]) => u))}<ul>${sources.map(([l, u]) => `<li><a href="${esc(u)}">${esc(l)}</a></li>`).join('')}</ul>` : ''}
 </div>
 </div>
 </section>`,
@@ -205,6 +205,7 @@ ${reviewNote}
 <h2 id="polst">No es lo mismo que un POLST</h2>
 <p>La directiva anticipada es para el futuro. Si alguien está gravemente enfermo ahora, pregunte al equipo médico por un POLST (también llamado MOLST, POST o MOST): una orden médica que siguen los servicios de emergencia. Vea <a href="/es/cuidados-paliativos-y-hospicio/">cuidados paliativos y hospicio</a>.</p>
 <h2 id="fuentes">Fuentes</h2>
+${sourcesNoteEs()}
 <ul><li><a href="https://www.nia.nih.gov/health/advance-care-planning/advance-care-planning-advance-directives-health-care">National Institute on Aging (en inglés)</a></li><li><a href="https://www.caringinfo.org/planning/advance-directives/by-state/">CaringInfo: formularios por estado (en inglés)</a></li></ul>
 <p class="small muted">Información, no consejo legal. Las instrucciones del propio formulario son la última palabra.</p>
 </div>
@@ -337,7 +338,7 @@ const duelo = esGuide({
 <li>Avise a su escuela y a las demás personas que los cuidan.</li></ul>` },
     { id: 'mascota', h: 'Cuando muere una mascota', html: `<p>Perder una mascota es una pérdida real, y el duelo por un animal puede ser tan fuerte como por una persona. Para los niños, a menudo es su primera experiencia con la muerte; ayuda el mismo lenguaje honesto.</p>` },
     { id: 'apoyo', h: 'Dónde encontrar apoyo', html: `<p>Los hospicios ofrecen apoyo en el duelo a las familias, normalmente durante cerca de un año después de una muerte, muchas veces gratis. También ayudan los grupos de duelo, los consejeros y las comunidades de fe.</p>` },
-    { id: 'mas-ayuda', h: 'Cuándo pedir más ayuda', html: `<p>Hable con un médico o un consejero si el duelo sigue siendo tan intenso que no puede con la vida diaria durante muchos meses, o si está bebiendo o usando drogas para sobrellevarlo. Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (<a class="src-link" href="https://988lifeline.org/es/home/">hay atención en español</a>), o <a href="https://findahelpline.com">busque una línea de ayuda en su país</a>.</p>` },
+    { id: 'mas-ayuda', h: 'Cuándo pedir más ayuda', html: `<p>Hable con un médico o un consejero si el duelo sigue siendo tan intenso que no puede con la vida diaria durante muchos meses, o si está bebiendo o usando drogas para sobrellevarlo. Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (<a class="src-link" href="https://988lifeline.org/es/home/">hay atención en español</a>), o <a href="https://befrienders.org/find-support-now/">busque una línea de ayuda en su país</a>.</p>` },
   ],
   related: [
     ['/es/despues-de-una-muerte/', 'Después de una muerte', 'Lo urgente y lo que puede esperar.', 'afterdeath'],
@@ -648,6 +649,7 @@ const jcard = (j) => `<a class="jcard" href="${j.path}">
 const inicio = {
   path: '/es/',
   title: 'End of Life Atlas en español',
+  crisis: true,
   description: 'Información clara y sin juicios sobre el final de la vida: directivas anticipadas, cuidados paliativos y hospicio, los últimos días, qué hacer después de una muerte y el duelo.',
   body: `
 <section class="hero">
@@ -727,7 +729,7 @@ const preguntar = {
 <p class="eyebrow">Pregúntele al Atlas</p>
 <h1>Haga una pregunta</h1>
 <p class="lead" style="margin:20px 0">Escriba su pregunta con sus propias palabras. Las respuestas salen solo de las guías en español de este sitio, con un enlace para leer más.</p>
-<p class="small muted">Privado: sus preguntas se quedan en su navegador y no se guardan ni se envían. Esto es información, no consejo médico ni legal. Si está en crisis, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://findahelpline.com">busque una línea de ayuda</a>.</p>
+<p class="small muted">Privado: sus preguntas se quedan en su navegador y no se guardan ni se envían. Esto es información, no consejo médico ni legal. Si está en crisis, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://befrienders.org/find-support-now/">busque una línea de ayuda</a>.</p>
 <form id="ask-form" class="form ask-form" role="search" aria-label="Pregúntele al Atlas">
 <div class="field"><label for="ask-input">Su pregunta</label><input id="ask-input" name="q" type="text" autocomplete="off" required></div>
 <button class="btn" type="submit">Preguntar</button>

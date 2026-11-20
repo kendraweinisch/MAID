@@ -37,7 +37,7 @@ export const cuerpo = esGuide({
   icon: 'tree',
   description: 'Todas las opciones para el cuerpo después de la muerte: entierro tradicional, mausoleos, entierro ecológico, bajo un árbol, cremación, cremación con agua, compostaje humano, entierro en el mar, las cenizas y la donación.',
   lead: 'Hay muchas más opciones que el entierro o la cremación. Aquí está cada una, cómo funciona y dónde está permitida, para que pueda elegir la que le corresponde.',
-  glance: [['11', 'Opciones que cubrimos aquí, del entierro al compostaje'], ['40 kg', 'CO₂e del entierro natural, el menor en el estudio de DELA'], ['14 estados', 'Permitían el compostaje humano en enero de 2026']],
+  glance: [['11', 'Opciones que cubrimos aquí, del entierro al compostaje'], ['~28 estados', 'Permitían la cremación con agua en enero de 2026'], ['14 estados', 'Permitían el compostaje humano en enero de 2026']],
   sections: [
     { id: 'resumen', h: 'De un vistazo', icon: 'steps', html: `${tarjetas}
 <p>Casi cualquiera de estas puede ir con un funeral, una celebración de vida, un funeral en casa o ninguna ceremonia. Anote su elección en el <a href="/es/imprimibles/funeral/">planificador de funeral</a>.</p>` },
@@ -80,16 +80,7 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Inscríb
     { id: 'en-casa', h: 'Un funeral en casa', icon: 'home', facts: ['Permitido en la mayoría de los estados', 'Las doulas pueden ayudar'], html: `<p>Sea cual sea la elección final, una familia puede cuidar del cuerpo en casa durante un día o más antes del entierro o la cremación: lavarlo, vestirlo y acompañarlo. La mayoría de los estados de EE. UU. permiten a las familias hacerlo; algunos exigen un director de funeraria para ciertos pasos. Las doulas del final de la vida pueden ayudar.</p>` },
     { id: 'otras', h: 'Otras opciones por las que pregunta la gente', icon: 'ask', html: `<p><strong>La criónica</strong> conserva un cuerpo o un cerebro a temperaturas muy bajas con la esperanza de que la ciencia del futuro pueda revivirlo. Es muy cara, la ofrecen muy pocas organizaciones y aún no hay pruebas de que revivir sea posible.</p>` },
     { id: 'ecologica', h: '¿Qué opción es la más ecológica?', icon: 'green', html: `<p><strong>El entierro natural (ecológico) suele ser la opción de menor impacto,</strong> sobre todo en un terreno de conservación donde la tierra está protegida para siempre.</p>
-<p>${L('https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies', 'Un estudio de ciclo de vida para DELA')}, una funeraria neerlandesa, comparó el impacto climático de cada método por persona:</p>
-<ul class="bars" aria-label="Impacto climático de cada método, por persona, en kilogramos de CO₂ equivalente">
-${barra('Entierro natural', 40, true)}
-${barra('Cremación eléctrica', 45)}
-${barra('Compostaje humano', 47)}
-${barra('Cremación con agua (resomación)', 118)}
-${barra('Entierro tradicional con lápida de piedra', 120)}
-${barra('Cremación a gas', 181)}
-</ul>
-<p class="small muted">Fuente: <a href="https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies">Hedgehog, estudio comparativo de ciclo de vida para DELA</a> (Países Bajos, en inglés). El <a href="https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf">Green Burial Council</a> también concluye que la cremación con llama tiene la mayor huella de carbono, y señala que libera mercurio.</p>
+<p>Una <a href="https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf">revisión del Green Burial Council</a> (en inglés), una organización sin fines de lucro, concluye que la cremación con llama tiene la mayor huella de carbono de los métodos habituales, y señala que además libera mercurio.</p>
 <p>La clasificación depende de las condiciones locales. Un crematorio eléctrico con energía limpia sale mucho mejor que uno de gas. Las cifras de los métodos nuevos, como la cremación con agua y el compostaje humano, cambian entre estudios, y muchas afirmaciones publicadas vienen de las empresas que los ofrecen. La huella de un entierro tradicional también aumenta con el embalsamamiento, la bóveda de concreto y el terreno que ocupa.</p>
 <p><strong>Formas de reducir el impacto, elija lo que elija:</strong></p>
 <ul><li>No embalsame.</li>
@@ -111,7 +102,6 @@ ${barra('Cremación a gas', 181)}
     ['Green Burial Council' + EN, 'https://www.greenburialcouncil.org/'],
     ['American Association for Anatomy: sobre la donación del cuerpo' + EN, 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
     ['Funeral Consumers Alliance' + EN, 'https://www.funerals.org/'],
-    ['Hedgehog: estudio comparativo de ciclo de vida para DELA' + EN, 'https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies'],
     ['Green Burial Council: beneficios y costos ambientales de cada opción (PDF)' + EN, 'https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf'],
   ],
   related: [
@@ -130,7 +120,7 @@ export const cuesta = esGuide({
   icon: 'costs',
   description: 'Lo que cuesta el final de la vida: la atención médica, el hospicio, los cuidados en casa y en residencias, los funerales y la muerte médicamente asistida, con cifras con fuente y dónde consultar precios.',
   lead: 'Casi nadie le dice con claridad lo que cuesta morir. Esto es lo que pudimos confirmar, con la fuente y la fecha de cada cifra, y dónde consultar los precios usted mismo.',
-  glance: [['~25 %', 'Del gasto de Medicare en mayores de 65 años va al último año de vida (2014)'], ['355 $/día', 'Mediana en EE. UU. de una habitación privada en un hogar de ancianos (2025)'], ['8.300 $', 'Mediana en EE. UU. de un funeral con velatorio y entierro (2023)']],
+  glance: [['~25 %', 'Del gasto de Medicare en mayores de 65 años va al último año de vida (2014)'], ['100 días', 'Lo máximo que Medicare paga en un hogar de ancianos'], ['8.300 $', 'Mediana en EE. UU. de un funeral con velatorio y entierro (2023)']],
   sections: [
     { id: 'resumen', h: 'En pocas palabras', icon: 'check', html: `<ul>
 <li><strong>Depende sobre todo de dónde vive.</strong> En los países con sistemas públicos de salud, como el Reino Unido y Canadá, la mayor parte de la atención médica y del hospicio es gratuita o está muy cubierta. En EE. UU., los costos dependen del seguro y del tipo de atención que se necesite.</li>
@@ -143,22 +133,12 @@ export const cuesta = esGuide({
 <li><strong>EE. UU., Medicare:</strong> el hospicio está cubierto. ${L('https://www.medicare.gov/coverage/hospice-care', 'Puede pagar hasta 5 dólares por cada receta')} para el alivio del dolor y los síntomas, y el 5 % del importe aprobado por Medicare para el relevo en un centro. Medicare no paga el alojamiento ni la comida si la persona vive en un hogar de ancianos u otro centro.</li>
 <li><strong>Reino Unido:</strong> el hospicio es gratuito para los pacientes. La mayoría de los hospicios son organizaciones benéficas.</li>
 <li><strong>Canadá:</strong> los cuidados paliativos los cubren los planes de salud provinciales, aunque algunos cuidados en casa pueden costar aparte.</li></ul>` },
-    { id: 'cuidados', h: 'Cuidados en casa y en residencias', icon: 'home', html: `<p>Este suele ser el mayor gasto, y en EE. UU. Medicare no paga los cuidados personales a largo plazo. Medicaid puede pagarlos, para personas con pocos ingresos y ahorros. Costos medianos nacionales en 2025:</p>
-<div class="table-box" tabindex="0" role="region" aria-label="Costos medianos de los cuidados a largo plazo en EE. UU., 2025"><table style="min-width:520px">
-<caption class="sr-only">Costos medianos de los cuidados a largo plazo en EE. UU., 2025</caption>
-<thead><tr><th scope="col">Tipo de cuidado</th><th scope="col">Costo mediano</th><th scope="col">Por año</th></tr></thead>
-<tbody>
-${fila('Hogar de ancianos, habitación privada', '355 $ al día', '129.575 $')}
-${fila('Hogar de ancianos, habitación compartida', '315 $ al día', '114.975 $')}
-${fila('Residencia asistida', '6.200 $ al mes', '74.400 $')}
-${fila('Cuidador pagado en casa (44 horas a la semana)', '35 $ la hora', '80.080 $')}
-${fila('Centro de día para adultos (5 días a la semana)', '95 $ al día', '24.700 $')}
-</tbody></table></div>
-<p class="small muted">Fuente: <a href="https://investor.genworth.com/news-events/press-releases/detail/1054">CareScout 2025 Cost of Care Survey</a>, publicada el 2 de marzo de 2026 (en inglés). Consulte su zona con la <a href="https://www.carescout.com/cost-of-care">calculadora de costos de CareScout</a>.</p>` },
+    { id: 'cuidados', h: 'Cuidados en casa y en residencias', icon: 'home', html: `<p>Este suele ser el mayor gasto que pagan las familias. En EE. UU., ${L('https://acl.gov/ltc/costs-and-who-pays/who-pays-long-term-care', 'Medicare solo paga cuidados especializados o de rehabilitación')}, y como máximo 100 días en un hogar de ancianos. No paga la ayuda con las tareas diarias, como bañarse y vestirse, que es la mayor parte de los cuidados a largo plazo. Medicaid puede pagarlos, para personas con pocos ingresos y ahorros.</p>
+<p>Los precios cambian mucho de un lugar a otro, así que pida a cada proveedor una lista de tarifas por escrito. Su Agencia local para Personas Mayores, que puede encontrar con el <a href="https://eldercare.acl.gov/">Eldercare Locator</a> (en inglés), puede ayudarle a encontrar cuidados y formas de pagarlos.</p>` },
     { id: 'funeral', h: 'Funerales, entierro y cremación', icon: 'burial', html: `<ul>
 <li><strong>Funeral con velatorio y entierro:</strong> unos 8.300 dólares de mediana, o unos 9.995 con una bóveda.</li>
 <li><strong>Funeral con velatorio y cremación:</strong> unos 6.280 dólares de mediana.</li></ul>
-<p class="small muted">Fuente: estudio de listas de precios de 2023 de la National Funeral Directors Association, según lo publicado por <a href="https://www.kiplinger.com/retirement/estate-planning/the-cost-of-dying-burial-and-cremation-prices-by-state">Kiplinger</a> (en inglés). Cubren solo la funeraria, no la parcela, la lápida, las flores ni la esquela.</p>
+<p class="small muted">Fuente: <a href="https://content.nfda.org/news/media-center/nfda-news-releases/id/8134/2023-nfda-general-price-list-study-shows-inflation-increasing-faster-than-the-cost-of-a-funeral">estudio de listas de precios de 2023 de la National Funeral Directors Association</a> (en inglés). Cubren solo la funeraria, no la parcela, la lápida, las flores ni la esquela.</p>
 <p>La cremación directa o el entierro directo (sin velatorio ni ceremonia antes) suelen costar mucho menos, y se puede celebrar una reunión más tarde en cualquier lugar. La cremación es ahora la opción más común en EE. UU.; ${L('https://nfda.org/news/statistics', 'la NFDA proyectó una tasa de cremación del 63,4 % para 2025')}. En EE. UU., tiene derecho a precios detallados según la Regla sobre Funerales de la FTC; vea <a href="/es/despues-de-una-muerte/#derechos">sus derechos con las funerarias</a>.</p>` },
     { id: 'muerte-asistida', h: 'Muerte médicamente asistida', icon: 'maid', html: `<ul>
 <li><strong>Los programas federales de EE. UU. no pagan.</strong> ${L('https://www.law.cornell.edu/uscode/text/42/chapter-138', 'Una ley federal de 1997 prohíbe usar fondos federales para pagarla')}, así que Medicare, el VA y la parte federal de Medicaid no cubren el medicamento ni las consultas médicas relacionadas.</li>
@@ -170,7 +150,7 @@ ${dirCard('https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medi
 ${dirCard('https://www.medicare.gov/care-compare/?providerType=Hospice', 'Medicare Care Compare', 'EE. UU. · hospicio', 'Calificaciones de calidad de los hospicios.')}
 ${dirCard('https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency', 'Transparencia de precios hospitalarios', 'EE. UU. · hospitales', 'Todo hospital debe publicar sus precios; no todos cumplen.')}
 ${dirCard('https://www.fairhealthconsumer.org/', 'FAIR Health Consumer', 'EE. UU. · atención médica', 'Costos habituales de los procedimientos en su zona.')}
-${dirCard('https://www.carescout.com/cost-of-care', 'CareScout', 'EE. UU. · cuidados', 'Costos de residencias y cuidados en casa por zona.')}
+${dirCard('https://eldercare.acl.gov/', 'Eldercare Locator', 'EE. UU. · cuidados', 'Su Agencia local para Personas Mayores, para encontrar cuidados y formas de pagarlos.')}
 ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'EE. UU. · funerales', 'Grupos locales, algunos de los cuales encuestan precios de funerales.')}
 </div>
 <p style="margin-top:18px"><a class="btn btn-quiet" href="/es/base-de-datos-de-costos/">Vea la base de datos de costos completa: cada fuente, según lo que quiera saber</a></p>` },
@@ -186,8 +166,8 @@ ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'EE. UU. ·
     ['KFF: el gasto de Medicare al final de la vida (datos de 2014)' + EN, 'https://www.kff.org/medicare/medicare-spending-at-the-end-of-life/'],
     ['Dartmouth Atlas: atención al final de la vida por hospital' + EN, 'https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/'],
     ['Medicare: cobertura del hospicio' + EN, 'https://www.medicare.gov/coverage/hospice-care'],
-    ['CareScout 2025 Cost of Care Survey (comunicado de Genworth, marzo de 2026)' + EN, 'https://investor.genworth.com/news-events/press-releases/detail/1054'],
-    ['Kiplinger: el costo de morir (cita el estudio de 2023 de la NFDA)' + EN, 'https://www.kiplinger.com/retirement/estate-planning/the-cost-of-dying-burial-and-cremation-prices-by-state'],
+    ['Administración para la Vida Comunitaria: quién paga los cuidados a largo plazo' + EN, 'https://acl.gov/ltc/costs-and-who-pays/who-pays-long-term-care'],
+    ['NFDA: estudio de listas de precios de 2023' + EN, 'https://content.nfda.org/news/media-center/nfda-news-releases/id/8134/2023-nfda-general-price-list-study-shows-inflation-increasing-faster-than-the-cost-of-a-funeral'],
     ['Estadísticas de la NFDA (tasa de cremación)' + EN, 'https://nfda.org/news/statistics'],
     ['Código de EE. UU., 42 U.S.C. capítulo 138: restricción de fondos para el suicidio asistido' + EN, 'https://www.law.cornell.edu/uscode/text/42/chapter-138'],
     ['CMS: transparencia de precios hospitalarios' + EN, 'https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency'],
@@ -204,7 +184,6 @@ const TAREAS = [
     ['https://www.fairhealthconsumer.org/', 'FAIR Health Consumer', 'EE. UU. · gratis', 'Estimaciones de costos de miles de servicios médicos, dentales y de centros, basadas en reclamaciones a seguros y a Medicare, por código postal.'],
     ['https://www.medicare.gov/procedure-price-lookup/', 'Medicare Procedure Price Lookup', 'EE. UU. · Medicare', 'Lo que paga Medicare y lo que usted puede deber por procedimientos ambulatorios, en departamentos de hospital y centros quirúrgicos.'],
     ['https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency', 'Transparencia de precios hospitalarios (CMS)', 'EE. UU. · hospitales', 'Todo hospital de EE. UU. debe publicar sus precios, incluidas las tarifas negociadas. No todos cumplen.'],
-    ['https://turquoise.health/', 'Turquoise Health', 'EE. UU. · hospitales', 'Permite buscar en los archivos de precios publicados por los hospitales.'],
   ] },
   { id: 'comparar-hospitales', h: 'Comparar hospitales cerca del final de la vida', icon: 'illness', intro: 'Los hospitales cambian mucho en cuántos cuidados intensivos, cuántos días de hospital y cuánto hospicio reciben sus pacientes en los últimos meses de vida.', steps: ['Busque los hospitales cercanos en el Dartmouth Atlas.', 'Compare los días de cuidados intensivos y el uso del hospicio en los últimos seis meses a dos años de vida.', 'Úselo para preguntar al equipo por su enfoque, no como precios de hoy.'], cards: [
     ['https://www.dartmouthatlas.org/', 'Dartmouth Atlas of Health Care', 'EE. UU. · investigación', 'Patrones de atención al final de la vida y gasto de Medicare por hospital y región. Datos por hospital de 2017.'],
@@ -216,13 +195,14 @@ const TAREAS = [
     ['https://www.medicare.gov/care-compare/?providerType=Hospice', 'Care Compare: hospicios', 'EE. UU. · Medicare', 'Medidas de calidad y encuestas a familias de los hospicios certificados por Medicare.'],
     ['https://www.medicare.gov/care-compare/?providerType=NursingHome', 'Care Compare: hogares de ancianos', 'EE. UU. · Medicare', 'Calificaciones, inspecciones y personal de los hogares de ancianos.'],
   ] },
-  { id: 'largo-plazo', h: 'Consultar el costo de los cuidados a largo plazo', icon: 'home', intro: 'Los cuidados pagados en casa, las residencias asistidas y los hogares de ancianos suelen ser los mayores gastos que pagan las familias.', steps: ['Busque el costo mediano en la zona de la persona.', 'Revise qué cubre Medicaid u otros programas donde vive.', 'Pida a cada proveedor una lista de tarifas por escrito.'], cards: [
-    ['https://www.carescout.com/cost-of-care', 'CareScout: costo de los cuidados', 'EE. UU. · gratis', 'Costos medianos de los cuidados en casa, los centros de día, las residencias asistidas y los hogares de ancianos, por zona.'],
+  { id: 'largo-plazo', h: 'Consultar el costo de los cuidados a largo plazo', icon: 'home', intro: 'Los cuidados pagados en casa, las residencias asistidas y los hogares de ancianos suelen ser los mayores gastos que pagan las familias.', steps: ['Pida a dos o tres proveedores cercanos a la persona una lista de tarifas por escrito.', 'Revise qué cubren Medicare, Medicaid u otros programas donde vive.', 'Pregunte a la Agencia local para Personas Mayores por ayuda con los costos.'], cards: [
+    ['https://acl.gov/ltc/costs-and-who-pays/who-pays-long-term-care', 'Quién paga los cuidados a largo plazo (ACL)', 'EE. UU. · gobierno', 'Qué pagan Medicare, Medicaid, los seguros y los ahorros, según la Administración para la Vida Comunitaria (en inglés).'],
+    ['https://eldercare.acl.gov/', 'Eldercare Locator', 'EE. UU. · gobierno', 'Encuentre su Agencia local para Personas Mayores, que ayuda a encontrar cuidados y a pagarlos.'],
   ] },
   { id: 'funerales', h: 'Comparar costos de funerales', icon: 'afterdeath', intro: 'No hay una base de datos pública completa de precios de funerarias. Llamar sigue siendo la mejor forma, y en EE. UU. las funerarias deben dar los precios por teléfono.', steps: ['Llame a dos o tres funerarias y pida sus precios detallados.', 'Vea si un grupo local de consumidores ha encuestado precios cerca de usted.', 'Compare con las cifras nacionales.'], cards: [
     ['https://www.funerals.org/', 'Funeral Consumers Alliance', 'EE. UU. · sin fines de lucro', 'Consejos para consumidores y grupos locales, algunos de los cuales encuestan precios de funerales.'],
-    ['https://nfda.org/news/statistics', 'Estadísticas de la NFDA', 'EE. UU. · sector', 'Precios medianos nacionales de los funerales y tasas de cremación, de la asociación de directores de funerarias.'],
-    ['https://www.sunlife.co.uk/funeral-costs/', 'SunLife Cost of Dying report', 'Reino Unido · anual', 'El costo medio de un funeral en el Reino Unido, publicado cada año.'],
+    ['https://nfda.org/news/statistics', 'Estadísticas de la NFDA', 'EE. UU. · asociación', 'Precios medianos nacionales de los funerales y tasas de cremación, de la asociación de directores de funerarias.'],
+    ['https://www.moneyhelper.org.uk/en/family-and-care/death-and-bereavement/how-much-does-a-funeral-cost', 'MoneyHelper: cuánto cuesta un funeral', 'Reino Unido · con respaldo público', 'Costos habituales de un funeral en el Reino Unido y dónde pedir ayuda para pagarlo, del servicio MoneyHelper, respaldado por el gobierno (en inglés).'],
   ], after: 'Sus derechos al contratar un funeral en EE. UU.: <a href="/es/despues-de-una-muerte/#derechos">la Regla sobre Funerales de la FTC</a>.' },
   { id: 'ayuda-factura', h: 'Conseguir ayuda con una factura', icon: 'help', intro: 'Las facturas de hospital a menudo pueden reducirse. Muchos hospitales perdonan facturas según los ingresos, y en EE. UU. la ley limita las facturas sorpresa por atención fuera de la red.', steps: ['Pida una factura detallada y revísela línea por línea.', 'Pregunte al hospital por su política de ayuda financiera (atención caritativa).', 'Si algo parece incorrecto, pida ayuda.'], cards: [
     ['https://dollarfor.org/', 'Dollar For', 'EE. UU. · sin fines de lucro', 'Ayuda gratuita para pedir que le perdonen las facturas de hospital según sus ingresos.'],

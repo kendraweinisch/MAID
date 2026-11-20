@@ -335,15 +335,15 @@
       "since": "2026",
       "nonResidents": "No, residents only",
       "summary": "Governor Hochul signed the law on Feb 6, 2026. It took effect on Aug 5, 2026.",
-      "verified": "2026-11-17",
+      "verified": "2026-11-20",
       "sources": [
         {
           "label": "Death with Dignity: New York",
           "url": "https://deathwithdignity.org/states/new-york/"
         },
         {
-          "label": "ElderLawAnswers",
-          "url": "https://www.elderlawanswers.com/medical-aid-in-dying-and-estate-planning-21449"
+          "label": "Governor of New York: Hochul signs the Medical Aid in Dying Act",
+          "url": "https://www.governor.ny.gov/news/governor-hochul-signs-medical-aid-dying-act-new-york-state-law"
         }
       ],
       "es": {
@@ -463,11 +463,15 @@
       "since": "1942",
       "nonResidents": "Some organizations accept people from abroad",
       "summary": "Helping someone die by suicide is a crime in Switzerland only when the motive is selfish. Private organizations run the process, and some accept people from other countries.",
-      "verified": "2026-11-17",
+      "verified": "2026-11-20",
       "sources": [
         {
-          "label": "Swissinfo",
-          "url": "https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578"
+          "label": "Swiss Federal Office of Justice: the various forms of euthanasia",
+          "url": "https://www.bj.admin.ch/en/the-various-forms-of-euthanasia"
+        },
+        {
+          "label": "Swiss Criminal Code, article 115 (Fedlex)",
+          "url": "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/en"
         },
         {
           "label": "Dignitas",
@@ -561,24 +565,28 @@
       "name": "Uruguay",
       "region": "world",
       "status": "pending",
-      "statusLabel": "Law passed; rollout to be confirmed",
-      "law": "Muerte Digna law",
-      "since": "2025 (passed)",
+      "statusLabel": "Law passed; regulations issued April 2026",
+      "law": "Law 20.431 (Muerte Digna)",
+      "since": "2025 (enacted)",
       "nonResidents": "No; adult citizens and residents only",
-      "summary": "The Senate passed the law in October 2025. We have not yet confirmed when it took effect in practice.",
-      "verified": "2026-11-17",
+      "summary": "Law 20.431 was enacted in October 2025. The government presented its regulations in April 2026. We have not yet confirmed how widely it is available in practice.",
+      "verified": "2026-11-20",
       "sources": [
         {
-          "label": "Prensa Latina",
-          "url": "https://www.prensa-latina.cu/2025/10/16/uruguay-ya-tiene-ley-de-muerte-digna-y-asistida/"
+          "label": "IMPO (official legal register): Law 20.431",
+          "url": "https://www.impo.com.uy/bases/leyes/20431-2025"
+        },
+        {
+          "label": "Presidency of Uruguay: regulations for the Muerte Digna law",
+          "url": "https://www.gub.uy/presidencia/comunicacion/publicaciones/presentacion-reglamentacion-ley-muerte-digna"
         }
       ],
       "es": {
         "name": "Uruguay",
-        "statusLabel": "Ley aprobada; aplicación por confirmar",
-        "since": "2025 (aprobada)",
+        "statusLabel": "Ley aprobada; reglamentada en abril de 2026",
+        "since": "2025 (promulgada)",
         "nonResidents": "No; solo ciudadanos y residentes adultos",
-        "summary": "El Senado aprobó la ley en octubre de 2025. Aún no hemos confirmado cuándo empezó a aplicarse en la práctica."
+        "summary": "La Ley 20.431 se promulgó en octubre de 2025. El gobierno presentó su reglamentación en abril de 2026. Aún no hemos confirmado cuán disponible está en la práctica."
       }
     },
     {
@@ -590,16 +598,16 @@
       "law": "Terminally Ill Adults (End of Life) Bill",
       "since": "Not applicable",
       "nonResidents": "Not applicable",
-      "summary": "Assisting a suicide remains a crime. The House of Commons voted the bill down on Sept 11, 2026.",
-      "verified": "2026-11-17",
+      "summary": "Assisting a suicide remains a crime. The House of Commons voted the bill down on Sept 11, 2026, by 286 votes to 270.",
+      "verified": "2026-11-20",
       "sources": [
         {
-          "label": "Al Jazeera, Sept 11, 2026",
-          "url": "https://www.aljazeera.com/news/2026/9/11/uk-lawmakers-vote-against-bill-to-legalise-assisted-dying"
+          "label": "UK Parliament, Hansard: Commons debate, Sept 11, 2026",
+          "url": "https://hansard.parliament.uk/Commons/2026-09-11/debates/4C64BB03-23BC-41DF-8837-50F7BD082F9C/TerminallyIllAdults(EndOfLife)Bill"
         },
         {
-          "label": "The Pharmaceutical Journal",
-          "url": "https://pharmaceutical-journal.com/article/news/assisted-dying-bill-defeated-in-house-of-commons"
+          "label": "UK Parliament: Commons vote (division 2428)",
+          "url": "https://votes.parliament.uk/Votes/Commons/Division/2428"
         }
       ],
       "es": {
@@ -607,7 +615,7 @@
         "statusLabel": "No es legal; proyecto rechazado en septiembre de 2026",
         "since": "No corresponde",
         "nonResidents": "No corresponde",
-        "summary": "Ayudar a un suicidio sigue siendo delito. La Cámara de los Comunes rechazó el proyecto de ley el 11 de septiembre de 2026."
+        "summary": "Ayudar a un suicidio sigue siendo delito. La Cámara de los Comunes rechazó el proyecto de ley el 11 de septiembre de 2026, por 286 votos contra 270."
       }
     }
   ],

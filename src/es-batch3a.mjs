@@ -31,14 +31,14 @@ export const testamentos = esGuide({
     { id: 'validez', h: 'Que un testamento sea válido: lo que cambia según el estado', icon: 'doc', html: `<ul>
 <li><strong>En todo EE. UU.:</strong> debe ser adulto y estar en su sano juicio, y el testamento debe estar por escrito y firmado.</li>
 <li><strong>Testigos:</strong> la mayoría de los estados exigen dos testigos adultos, mejor si son personas que no heredan nada en el testamento.</li>
-<li><strong>Testamentos a mano:</strong> ${L('https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html', 'cerca de la mitad de los estados aceptan un testamento escrito por completo a mano')} y firmado, incluso sin testigos. El resto no.</li>
+<li><strong>Testamentos a mano:</strong> ${L('https://www.law.cornell.edu/wex/holographic_will', 'algunos estados aceptan un testamento escrito por completo a mano')} y firmado, incluso sin testigos. Otros no, así que revise las reglas de su estado antes de confiar en uno.</li>
 <li><strong>Declaración notarial "autoprobatoria":</strong> la mayoría de los estados permiten añadirla, para que no haya que buscar a los testigos después. Vale la pena.</li>
 <li><strong>Testamentos electrónicos:</strong> por ahora solo se permiten en pocos estados.</li>
 <li><strong>Luisiana es distinta.</strong> Sigue un sistema de derecho civil, con sus propios formatos de testamento y reglas limitadas de herencia forzosa para hijos pequeños o con discapacidad.</li></ul>
 <p>Si se muda, un testamento válido en un estado suele aceptarse en otro, pero hágalo revisar, porque las reglas sobre los bienes y el cónyuge cambian.</p>
 <p>Fuera de EE. UU., las reglas son otras: vea Canadá, el Reino Unido y Australia más abajo, y <a href="/es/propiedades-en-el-extranjero/">testamentos cuando tiene propiedades en el extranjero</a>.</p>` },
     { id: 'conyuges', h: 'Parejas casadas: bienes gananciales y derechos del cónyuge', icon: 'people', html: `<ul>
-<li>${L('https://www.nerdwallet.com/estate-planning/learn/community-property', 'Nueve estados con régimen de bienes gananciales')} (Arizona, California, Idaho, Luisiana, Nevada, Nuevo México, Texas, Washington y Wisconsin) suelen considerar que lo ganado durante el matrimonio pertenece por mitades a cada cónyuge. Por testamento solo puede dejar su propia mitad.</li>
+<li>${L('https://www.irs.gov/publications/p555', 'Nueve estados con régimen de bienes gananciales')} (Arizona, California, Idaho, Luisiana, Nevada, Nuevo México, Texas, Washington y Wisconsin) suelen considerar que lo ganado durante el matrimonio pertenece por mitades a cada cónyuge. Por testamento solo puede dejar su propia mitad.</li>
 <li>En la mayoría de los demás estados, el cónyuge sobreviviente puede reclamar una parte del patrimonio (una "parte electiva") aunque el testamento le deje menos.</li></ul>` },
     { id: 'fideicomisos', h: 'Fideicomisos', icon: 'shield', html: `<p>Un <strong>fideicomiso en vida revocable</strong> guarda sus bienes mientras usted vive, bajo su control, y los pasa a sus beneficiarios sin proceso sucesorio.</p>
 <ul><li><strong>Ventajas:</strong> evita la sucesión para lo que está en el fideicomiso, mantiene la privacidad y puede facilitar el manejo si usted deja de poder hacerlo.</li>
@@ -59,8 +59,8 @@ export const testamentos = esGuide({
 <p>Cuando alguien ha muerto, vea <a href="/es/cuentas-en-linea/">cerrar sus cuentas en línea</a>.</p>` },
     { id: 'canada', h: 'En Canadá', icon: 'globe', html: `<p>Los testamentos y las sucesiones dependen de cada provincia y territorio, así que las reglas dependen de dónde vive.</p>
 <ul>
-<li><strong>Un testamento válido:</strong> ${L('https://www.canadianlawyermag.com/practice-areas/trusts-and-estates/how-to-craft-valid-wills-in-canada/381456', 'un testamento escrito a máquina debe firmarse ante dos testigos presentes a la vez')}. La mayoría de las provincias también aceptan un testamento escrito por completo a mano y firmado, sin testigos; Columbia Británica y la Isla del Príncipe Eduardo, en general, no, aunque un tribunal de Columbia Británica a veces puede aceptarlo.</li>
-<li><strong>Quebec es distinta.</strong> Sigue un sistema de derecho civil. Un testamento hecho ante notario (testamento notarial) ${L('https://canadalife.com/investing-saving/estate-planning/wills-101-what-is-will/types-of-wills.html', 'no necesita proceso sucesorio')}; los testamentos a mano y con testigos sí deben ser verificados por un tribunal o un notario.</li>
+<li><strong>Un testamento válido:</strong> las reglas las fija cada provincia. En Ontario, por ejemplo, ${L('https://stepstojustice.ca/steps/wills-and-powers-of-attorney/1-decide-how-you-want-make-your-will/', 'un testamento formal se firma ante dos testigos')}, que también lo firman, y un testamento escrito por completo a mano y firmado no necesita testigos. Revise las reglas de su provincia.</li>
+<li><strong>Quebec es distinta.</strong> Sigue un sistema de derecho civil. Un testamento hecho ante notario (testamento notarial) ${L('https://www.quebec.ca/en/justice-and-civil-status/wills-estate/wills/forms-will/notarial-will', 'no necesita proceso sucesorio')}; los testamentos a mano y con testigos sí deben ser verificados por un tribunal o un notario.</li>
 <li><strong>El matrimonio:</strong> en algunas provincias, casarse anula un testamento anterior. En otras, como Ontario (desde 2022) y Columbia Británica, no. Compruebe la suya y revise su testamento cuando se case o se separe.</li>
 <li><strong>Las tasas sucesorias cambian mucho.</strong> ${L('https://www.ontario.ca/page/estate-administration-tax', 'Ontario cobra 15 dólares por cada 1.000')} del valor de un patrimonio por encima de 50.000 (1,5 %). Algunas provincias cobran mucho menos, y un testamento notarial de Quebec evita la sucesión.</li>
 <li><strong>Beneficiarios:</strong> en la mayoría de las provincias puede nombrar un beneficiario en un RRSP, un RRIF o una TFSA para que pase fuera del testamento; Quebec lo permite sobre todo con productos de seguros.</li>
@@ -96,10 +96,10 @@ export const testamentos = esGuide({
     ['Tax Foundation: impuestos estatales sobre el patrimonio y la herencia' + EN, 'https://taxfoundation.org/data/all/state/estate-inheritance-taxes/'],
     ['AARP: estados con impuestos sobre el patrimonio y la herencia' + EN, 'https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/'],
     ['IRS: impuesto sobre el patrimonio' + EN, 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
-    ['Nolo: ¿son válidos los testamentos a mano?' + EN, 'https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html'],
-    ['NerdWallet: estados con bienes gananciales' + EN, 'https://www.nerdwallet.com/estate-planning/learn/community-property'],
-    ['Canadian Lawyer: qué hace válido un testamento en Canadá' + EN, 'https://www.canadianlawyermag.com/practice-areas/trusts-and-estates/how-to-craft-valid-wills-in-canada/381456'],
-    ['Canada Life: tipos de testamento, incluido Quebec' + EN, 'https://canadalife.com/investing-saving/estate-planning/wills-101-what-is-will/types-of-wills.html'],
+    ['Facultad de Derecho de Cornell, Legal Information Institute: testamento ológrafo' + EN, 'https://www.law.cornell.edu/wex/holographic_will'],
+    ['IRS, Publicación 555: bienes gananciales' + EN, 'https://www.irs.gov/publications/p555'],
+    ['Steps to Justice (CLEO, Ontario): cómo hacer su testamento' + EN, 'https://stepstojustice.ca/steps/wills-and-powers-of-attorney/1-decide-how-you-want-make-your-will/'],
+    ['Québec.ca: testamento notarial' + EN, 'https://www.quebec.ca/en/justice-and-civil-status/wills-estate/wills/forms-will/notarial-will'],
     ['Ontario: Estate Administration Tax' + EN, 'https://www.ontario.ca/page/estate-administration-tax'],
     ['GOV.UK: hacer un testamento' + EN, 'https://www.gov.uk/make-will'],
     ['GOV.UK: poder permanente (lasting power of attorney)' + EN, 'https://www.gov.uk/power-of-attorney'],
@@ -119,10 +119,10 @@ export const testamentos = esGuide({
 export const extranjero = esGuide({
   path: '/es/propiedades-en-el-extranjero/',
   title: 'Testamentos cuando tiene propiedades en el extranjero',
-  seoTitle: 'Testamentos para expatriados: propiedades en México, Costa Rica, Canadá, el Reino Unido y Europa',
+  seoTitle: 'Testamentos para expatriados: propiedades en México, Canadá, el Reino Unido y Europa',
   eyebrow: 'Planificar',
   icon: 'globe',
-  description: 'Qué revisar si tiene una casa en otro país: testamentos locales, fideicomisos en México, Costa Rica, Canadá, el Reino Unido, España, Portugal, Francia e Italia, y los impuestos.',
+  description: 'Qué revisar si tiene una casa en otro país: testamentos locales, fideicomisos en México, Canadá, el Reino Unido, España, Portugal, Francia e Italia, y los impuestos.',
   lead: 'Si tiene una casa en otro país, su testamento de casa puede no bastar. Esto es lo que hay que revisar, con notas sobre los países donde más a menudo tienen propiedades los expatriados.',
   sections: [
     { id: 'resumen', h: 'En pocas palabras', icon: 'check', html: `<ul>
@@ -135,15 +135,11 @@ export const extranjero = esGuide({
 <li><strong>Propiedad en fideicomiso.</strong> Los extranjeros suelen tener las propiedades cerca de la costa o de las fronteras (la "zona restringida") ${L('https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/', 'a través de un fideicomiso bancario')}. Usted nombra beneficiarios sustitutos en el propio fideicomiso, y es el fideicomiso, no su testamento, el que decide quién recibe esa propiedad. Mantenga esos beneficiarios al día.</li>
 <li><strong>Un testamento mexicano.</strong> A los expatriados se les suele aconsejar hacer un testamento mexicano, un testamento público abierto, ante un notario público mexicano, en español. Cubre los bienes fuera del fideicomiso, como las cuentas bancarias y los autos.</li>
 <li><strong>Usar un testamento de EE. UU.</strong> Un testamento de EE. UU. puede ser válido en México, pero los herederos suelen tener que cerrarlo primero en EE. UU. y luego hacerlo reconocer en México, lo que es lento y caro.</li>
-<li><strong>El Mes del Testamento.</strong> Cada septiembre es el Mes del Testamento. ${L('https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/', 'Los notarios rebajan sus honorarios por los testamentos, a menudo hasta la mitad')}. Los descuentos y las fechas cambian según el estado.</li></ul>` },
-    { id: 'costa-rica', h: 'Costa Rica', icon: 'globe', html: `<ul>
-<li>${L('https://aglegal.com/costa-rica-wills-foreigners/', 'Los testamentos se hacen ante notario, en español, y pueden limitarse a sus bienes en Costa Rica')}.</li>
-<li>Las propiedades a su nombre normalmente pasan por la sucesión costarricense, incluso con testamento. Cuando los herederos están de acuerdo y ninguno es menor de edad, un notario puede tramitarla en lugar de un tribunal.</li>
-<li>Algunos extranjeros tienen la propiedad a través de una sociedad costarricense. Eso cambia cómo se hereda, así que pida asesoría local antes de crear una.</li></ul>` },
+<li><strong>El Mes del Testamento.</strong> Cada septiembre es el Mes del Testamento. Es una campaña nacional hecha con los estados: ${L('https://www.gob.mx/testamento', 'los notarios ofrecen descuentos de hasta el 50 % en un testamento')}, y asesoría gratuita.</li></ul>` },
     { id: 'canada', h: 'Canadá', icon: 'globe', html: `<ul>
 <li><strong>Sin impuesto sobre la herencia, pero con ganancias de capital.</strong> Canadá no tiene impuesto sobre la herencia ni sobre el patrimonio. En cambio, la muerte cuenta como si vendiera sus bienes a valor de mercado, así que puede deberse impuesto sobre las ganancias de capital por una cabaña o una propiedad de alquiler canadiense en su última declaración.</li>
-<li><strong>Un certificado antes de pagar a los herederos.</strong> El albacea del patrimonio de un no residente suele ${L('https://www.osullivanlaw.com/wp-content/uploads/2026/04/Advisory-11-Cross-border-Canada-U.S.-estate-administration-highlights.pdf', 'necesitar un certificado de autorización de la Agencia Tributaria de Canadá')} antes de entregar la propiedad canadiense a los herederos. Si la propiedad se vende, el comprador retiene parte del precio hasta que se emita otro certificado.</li>
-<li><strong>Sucesión en la provincia.</strong> La resolución de un tribunal de EE. UU. no suele bastar por sí sola. La provincia donde está la propiedad emite su propia resolución, a menudo solo después de terminar la sucesión en EE. UU. Las reglas y las tasas cambian según la provincia: ${L('https://www.mondaq.com/canada/wills-intestacy-estate-planning/685076/cross-border-canada-us-estate-administration-highlights', 'Ontario emite una resolución auxiliar y puede exigir una fianza')}, y Quebec tiene otro sistema legal, con testamentos notariales.</li>
+<li><strong>Un certificado antes de pagar a los herederos.</strong> Antes de entregar los bienes a los herederos, el albacea puede pedir ${L('https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html', 'un certificado de autorización de la Agencia Tributaria de Canadá')}. Confirma que los impuestos debidos están pagados, así que el albacea no responde personalmente por ellos más tarde.</li>
+<li><strong>Sucesión en la provincia.</strong> La resolución de un tribunal de EE. UU. no suele bastar por sí sola. La provincia donde está la propiedad emite su propia resolución, a menudo solo después de terminar la sucesión en EE. UU. Las reglas y las tasas cambian según la provincia: ${L('https://www.ontario.ca/fr/page/impot-sur-ladministration-des-successions', 'Ontario emite un certificado de nombramiento auxiliar')}, y Quebec tiene otro sistema legal, con testamentos notariales.</li>
 <li><strong>Un testamento canadiense.</strong> Pregunte a un abogado canadiense si un testamento aparte para su propiedad canadiense le facilitaría las cosas a su albacea.</li></ul>` },
     { id: 'reino-unido', h: 'Reino Unido', icon: 'globe', html: `<ul>
 <li><strong>${L('https://www.gov.uk/inheritance-tax', 'El impuesto británico sobre la herencia se aplica a las propiedades en el Reino Unido')}</strong>, sea cual sea su nacionalidad o dónde viva. El tipo estándar es del 40 % sobre el valor por encima del umbral de 325.000 libras. Algunos legados, como al cónyuge o a una organización benéfica, pueden estar exentos; pregunte cómo se aplican las reglas a su caso.</li>
@@ -169,10 +165,9 @@ export const extranjero = esGuide({
   ],
   sources: [
     ['American Bar Association: propiedad extranjera en la zona restringida de México (2026)' + EN, 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
-    ['Vive USA: el Mes del Testamento de septiembre de 2026 en México', 'https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/'],
-    ['AG Legal: testamentos en Costa Rica para propietarios extranjeros' + EN, 'https://aglegal.com/costa-rica-wills-foreigners/'],
-    ['O’Sullivan Estate Lawyers: sucesiones transfronterizas Canadá–EE. UU. (abril de 2026, PDF)' + EN, 'https://www.osullivanlaw.com/wp-content/uploads/2026/04/Advisory-11-Cross-border-Canada-U.S.-estate-administration-highlights.pdf'],
-    ['Mondaq: sucesiones transfronterizas Canadá–EE. UU.' + EN, 'https://www.mondaq.com/canada/wills-intestacy-estate-planning/685076/cross-border-canada-us-estate-administration-highlights'],
+    ['Gobierno de México: Mes del Testamento', 'https://www.gob.mx/testamento'],
+    ['Agencia Tributaria de Canadá: cómo pedir un certificado de autorización' + EN, 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html'],
+    ['Ontario: impuesto sobre la administración de sucesiones (en francés)', 'https://www.ontario.ca/fr/page/impot-sur-ladministration-des-successions'],
     ['GOV.UK: cómo funciona el impuesto sobre la herencia' + EN, 'https://www.gov.uk/inheritance-tax'],
     ['GOV.UK: solicitar la sucesión' + EN, 'https://www.gov.uk/applying-for-probate'],
     ['IRS: impuesto sobre el patrimonio (umbrales de declaración)' + EN, 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],

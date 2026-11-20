@@ -127,7 +127,7 @@ const EN_UI = {
   searchBtn: 'Search',
   searchAction: '/ask/',
   navLabel: 'Main',
-  crisis: 'If you are thinking about suicide or are in crisis, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>. You are not alone.',
+  crisis: 'If you are thinking about suicide or are in crisis, call or text <strong>988</strong> in the US, or <a href="https://befrienders.org/find-support-now/">find a helpline in your country</a>. You are not alone.',
 };
 const ES_UI = {
   tagline: 'El final de la vida, explicado',
@@ -136,7 +136,7 @@ const ES_UI = {
   searchBtn: 'Buscar',
   searchAction: '/es/preguntar/',
   navLabel: 'Principal',
-  crisis: 'Si está pensando en el suicidio o está en crisis, llame o envíe un mensaje de texto al <strong>988</strong> en EE. UU. (hay atención en español), o <a href="https://findahelpline.com">busque una línea de ayuda en su país</a>. No está solo.',
+  crisis: 'Si está pensando en el suicidio o está en crisis, llame o envíe un mensaje de texto al <strong>988</strong> en EE. UU. (hay atención en español), o <a href="https://befrienders.org/find-support-now/">busque una línea de ayuda en su país</a>. No está solo.',
 };
 
 const ES_FOOTER = `<footer class="site-footer">
@@ -173,10 +173,10 @@ const ES_FOOTER = `<footer class="site-footer">
 </div>
 <div>
 <h2>¿En crisis?</h2>
-<p>Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español). En otros países: <a href="https://findahelpline.com">findahelpline.com</a></p>
+<p>Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español). En otros países: <a href="https://befrienders.org/find-support-now/">Befrienders Worldwide</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.org · Información imparcial, no consejo médico ni legal. · Revisión de todo el sitio: ${fmtDateEs(site.lastScan)}</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.org · Información imparcial, no consejo médico ni legal. · <a href="/es/acerca/#fuentes-de-datos">Fuentes: solo gobiernos, organizaciones sin fines de lucro y universidades</a> · Revisión de todo el sitio: ${fmtDateEs(site.lastScan)}</p>
 </div>
 </footer>`;
 
@@ -291,13 +291,19 @@ ${es ? ES_FOOTER : `<footer class="site-footer">
 </div>
 <div>
 <h2>In crisis?</h2>
-<p>If you are thinking about suicide, call or text 988 in the US. Elsewhere: <a href="https://findahelpline.com">findahelpline.com</a></p>
+<p>If you are thinking about suicide, call or text 988 in the US. Elsewhere: <a href="https://befrienders.org/find-support-now/">Befrienders Worldwide</a></p>
 </div>
 </div>
-<p class="legal">© 2026 ${site.name} · eolatlas.org · Unbiased information, not medical or legal advice. · Whole site last checked for accuracy and broken links: ${fmtDate(site.lastScan)} (<a href="/about/#editorial">how</a>)</p>
+<p class="legal">© 2026 ${site.name} · eolatlas.org · Unbiased information, not medical or legal advice. · <a href="/about/#evidence">Sources: governments, nonprofits and universities only</a> · Whole site last checked for accuracy and broken links: ${fmtDate(site.lastScan)} (<a href="/about/#editorial">how</a>)</p>
 </div>
 </footer>`}
 </body>
 </html>
 `;
 }
+
+// A line under every source list saying what kinds of sources we use.
+const COMPANY_HELP = /(^|\.)(support\.google|support\.apple|support\.microsoft|help\.x|help\.instagram|facebook|linkedin|paypal|transparency\.meta)\.com/;
+const hasCompanyHelp = (urls) => urls.some((u) => { try { return COMPANY_HELP.test(new URL(u).hostname); } catch { return false; } });
+export const sourcesNote = (urls = []) => `<p class="small muted sources-note">All our sources are governments, nonprofits and universities${hasCompanyHelp(urls) ? ", plus each company's own help pages for closing an account" : ''}. <a href="/about/#evidence">How we choose sources</a>.</p>`;
+export const sourcesNoteEs = (urls = []) => `<p class="small muted sources-note">Todas nuestras fuentes son gobiernos, organizaciones sin fines de lucro y universidades${hasCompanyHelp(urls) ? ', además de las páginas de ayuda de cada empresa para cerrar una cuenta' : ''}. <a href="/es/acerca/#fuentes-de-datos">Cómo elegimos las fuentes</a>.</p>`;
