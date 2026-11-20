@@ -2,7 +2,7 @@
 // one page per place). Same facts and sources as the English pages; the
 // Spanish wording for each place lives in src/data/places.json under "es".
 import { readFileSync } from 'node:fs';
-import { esc, fmtDateEs, fmtDateEsShort, site, pair } from './layout.mjs';
+import { esc, fmtDateEs, fmtDateEsShort, site, pair, sourcesNoteEs } from './layout.mjs';
 import { linkCards } from './ui.mjs';
 import { esGuide, enLink, reviewNote } from './es.mjs';
 
@@ -139,6 +139,7 @@ ${p.status === 'not-legal' ? `<p>Ayudar a alguien a morir puede ser delito aquí
 <div class="notice"><strong>Detalles que aún estamos verificando:</strong> los plazos de espera, cuántos profesionales deben estar de acuerdo, las reglas de autoadministración, los costos habituales y la cobertura de los seguros. Hasta que estén comprobados, confírmelos con las fuentes oficiales de abajo o con su médico.</div>
 ${reviewNote}
 <h2>Fuentes</h2>
+${sourcesNoteEs()}
 ${sources}
 <h2>Siguientes pasos</h2>
 ${linkCards([
@@ -215,10 +216,10 @@ const suiza = esGuide({
 <li>Una revisión de su caso, y una evaluación de un médico suizo antes de aprobar nada.</li>
 <li>Viajar a Suiza mientras todavía puede viajar.</li>
 <li>Los arreglos para después: la cremación en Suiza o el traslado del cuerpo a casa.</li></ul>` },
-    { id: 'costos', h: 'Costos aproximados', icon: 'costs', html: `<p>Según noticias publicadas, Dignitas cuesta unos 7.500 francos suizos, o de 10.500 a 11.000 con los servicios funerarios y administrativos, más las cuotas de socio. Pegasos cuesta, <a class="src-link" href="https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578">según lo publicado</a>, unos 10.000 francos con todo incluido. El viaje, el alojamiento y los informes médicos son aparte. Confirme las tarifas actuales con cada organización; algunas las reducen para personas con pocos recursos.</p>` },
+    { id: 'costos', h: 'Costos aproximados', icon: 'costs', html: `<p>Cada organización fija sus propias tarifas, y el total suele llegar a miles de francos suizos. Pida por escrito el importe completo y actual: la cuota de socio, la evaluación del médico, la cremación y los trámites. El viaje, el alojamiento y los informes médicos de su país aumentan el costo. Pregunte también si reducen las tarifas a personas con pocos recursos.</p>` },
     { id: 'riesgo', h: 'Riesgo legal para familiares y amigos', icon: 'shield', html: `<p>A sus acompañantes se les aplica la ley del país donde viven, no solo la ley suiza. En algunos países, como Inglaterra y Gales, ayudar a alguien a viajar para morir puede investigarse como ayuda al suicidio. Hable con un abogado de su país antes de planificar el viaje.</p>` },
   ],
-  sources: [['Swissinfo: Pegasos (en inglés)', 'https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578']],
+  sources: [['Oficina Federal de Justicia de Suiza: las distintas formas de eutanasia (en inglés)', 'https://www.bj.admin.ch/en/the-various-forms-of-euthanasia'], ['Código Penal suizo (Fedlex), artículo 115 (en inglés)', 'https://www.fedlex.admin.ch/eli/cc/54/757_781_799/en']],
   related: [
     [`${MAID_ES}/proceso/`, 'Cómo funciona el proceso', 'Los pasos habituales.', 'steps'],
     [`${MAID_ES}/`, 'Dónde es legal', 'Todos los lugares que cubrimos.', 'maid'],

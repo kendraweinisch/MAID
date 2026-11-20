@@ -28,7 +28,6 @@ ${reviewNote}
 ${dirCard('https://www.medicare.gov/care-compare/?providerType=Hospice', 'Medicare Care Compare', 'EE. UU.', 'Encuentre hospicios, con calificaciones de calidad.')}
 ${dirCard('https://www.hospiceuk.org/', 'Hospice UK', 'Reino Unido', 'Hospicios y apoyo en todo el Reino Unido.')}
 ${dirCard('https://www.virtualhospice.ca/', 'Canadian Virtual Hospice', 'Canadá', 'Información y apoyo de expertos en cuidados paliativos.')}
-${dirCard('https://www.ehospice.com/', 'ehospice', 'Internacional', 'Noticias y servicios de cuidados paliativos en el mundo.')}
 </div>
 <h2>Funerales y entierro</h2>
 <div class="cards cards-tight">
@@ -59,7 +58,7 @@ ${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', '
 <a class="ocard" href="${MAID_ES}/">${icons.maid}<strong>Nuestra sección sobre la muerte médicamente asistida</strong><span class="muted small">Dónde es legal, con fuentes oficiales de cada lugar.</span></a>
 </div>
 <h2>En una crisis</h2>
-<p>Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://findahelpline.com">busque una línea de ayuda en su país</a>.</p>
+<p>Si está pensando en el suicidio, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://befrienders.org/find-support-now/">busque una línea de ayuda en su país</a>.</p>
 </div></section>`,
 };
 
@@ -80,29 +79,29 @@ const acerca = esGuide({
   ],
   sections: [
     { id: 'fundadora', h: 'Una nota de quien lo creó', icon: 'self', html: `<div class="founder-note">
-<p>Creé End of Life Atlas porque no encontraba un solo lugar que contara toda la verdad sobre el final de la vida.</p>
-<p>Quien ha visto a alguien que quiere consumirse y morir sabe que la mayoría de las guías no cuentan cómo es de verdad. Te dicen qué hacer, o qué elegir. Yo quería algo distinto: un solo lugar, para cualquier persona en cualquier país, que explique cada opción con claridad, no juzgue y respete el derecho de cada persona a morir con dignidad.</p>
+<p>Creé End of Life Atlas para reunir en un solo lugar la información confiable sobre el final de la vida, sin juicios ni sesgos.</p>
+<p>Quien ha visto a alguien que quiere consumirse y morir sabe lo dispersa que está esa información, y qué pocas guías cuentan cómo es de verdad. Muchas te dicen qué hacer, o te empujan hacia una opción. Yo quería algo distinto: un solo lugar, para cualquier persona en cualquier país, que reúna lo que publican los gobiernos, las organizaciones sin fines de lucro y las universidades, explique cada opción con claridad y respete el derecho de cada persona a morir con dignidad.</p>
 <p>Vivo en el extranjero, y me preocupo por mi madre en Estados Unidos. Cuando vives lejos de las personas que quieres, no puedes ir en coche a resolver las cosas. Necesitas información clara sobre las reglas de donde están ellas y de donde estás tú. Por eso este atlas cubre más de un país, y por eso seguirá añadiendo más.</p>
 <p>Sea lo que sea lo que está afrontando, y esté donde esté, espero que encuentre aquí lo que necesita, y que se sienta respetado mientras lo busca.</p>
 <p class="signature">KW</p>
 </div>` },
     { id: 'cubre', h: 'Qué cubre el atlas', icon: 'steps', html: `<p>Cada etapa del final de la vida, en el orden en que la gente las vive:</p>
 <ul>
-<li><strong>Planificar:</strong> las directivas anticipadas y <a href="/es/directivas-anticipadas/">el formulario oficial de cada estado</a>, elegir a un representante, <a href="/es/testamentos-y-fideicomisos/">testamentos, fideicomisos y papeles</a>, <a href="/es/propiedades-en-el-extranjero/">propiedades en el extranjero</a>, <a href="/es/hablar-con-un-padre/">hablar con un padre</a> y <a href="/es/opciones-para-el-cuerpo/">todas las opciones para el cuerpo</a>.</li>
-<li><strong>La enfermedad grave:</strong> cuidados paliativos, hospicio, órdenes médicas como el POLST, y <a href="/es/opciones-cerca-del-final/">todas las opciones cerca del final de la vida</a>.</li>
-<li><strong>Las últimas semanas:</strong> un relato honesto de cómo puede ser morir, <a href="/es/senales-de-que-la-muerte-esta-cerca/">las señales de que la muerte está cerca</a>, aliviar el sufrimiento y la despedida.</li>
-<li><strong>La muerte médicamente asistida:</strong> <a href="/es/muerte-medicamente-asistida/">dónde es legal</a>, lugar por lugar, cómo funciona el proceso, orientación para familias e ir a Suiza.</li>
-<li><strong>Después de una muerte:</strong> las primeras 24 horas, los certificados de defunción, los funerales y sus derechos, <a href="/es/cuentas-en-linea/">cerrar las cuentas en línea</a> y el patrimonio.</li>
-<li><strong>El duelo:</strong> qué es normal, cómo ayudar a los niños, la pérdida de una mascota y cuándo pedir más ayuda.</li>
-<li><strong>Los costos:</strong> <a href="/es/lo-que-cuesta/">lo que cuesta morir</a>, con fuentes, y una <a href="/es/base-de-datos-de-costos/">guía de bases de datos públicas de costos</a>.</li>
+<li><strong><a href="/es/planificar/">Planificar</a>:</strong> <a href="/es/directivas-anticipadas/">las directivas anticipadas y el formulario oficial de cada estado</a>, <a href="/es/planificar/#representante">elegir a un representante</a>, <a href="/es/testamentos-y-fideicomisos/">testamentos, fideicomisos y papeles</a>, <a href="/es/propiedades-en-el-extranjero/">propiedades en el extranjero</a>, <a href="/es/hablar-con-un-padre/">hablar con un padre</a> y <a href="/es/opciones-para-el-cuerpo/">todas las opciones para el cuerpo</a>.</li>
+<li><strong><a href="/es/enfermedad-grave/">La enfermedad grave</a>:</strong> <a href="/es/enfermedad-grave/#paliativos">cuidados paliativos</a>, <a href="/es/cuidados-paliativos-y-hospicio/">hospicio</a>, <a href="/es/enfermedad-grave/#polst">órdenes médicas como el POLST</a>, y <a href="/es/opciones-cerca-del-final/">todas las opciones cerca del final de la vida</a>.</li>
+<li><strong><a href="/es/ultimas-semanas/">Las últimas semanas</a>:</strong> <a href="/es/ultimas-semanas/#realidad">un relato honesto de cómo puede ser morir</a>, <a href="/es/senales-de-que-la-muerte-esta-cerca/">las señales de que la muerte está cerca</a>, <a href="/es/ultimas-semanas/#alivio">aliviar el sufrimiento</a> y <a href="/es/ultimas-semanas/#despedida">la despedida</a>.</li>
+<li><strong><a href="/es/muerte-medicamente-asistida/">La muerte médicamente asistida</a>:</strong> <a href="/es/muerte-medicamente-asistida/">dónde es legal</a>, lugar por lugar, <a href="/es/muerte-medicamente-asistida/proceso/">cómo funciona el proceso</a>, <a href="/es/muerte-medicamente-asistida/familias/">orientación para familias</a> e <a href="/es/muerte-medicamente-asistida/suiza/">ir a Suiza</a>.</li>
+<li><strong><a href="/es/despues-de-una-muerte/">Después de una muerte</a>:</strong> <a href="/es/primeras-24-horas/">las primeras 24 horas</a>, <a href="/es/certificados-de-defuncion/">los certificados de defunción</a>, <a href="/es/despues-de-una-muerte/#derechos">los funerales y sus derechos</a>, <a href="/es/cuentas-en-linea/">cerrar las cuentas en línea</a> y <a href="/es/despues-de-una-muerte/#sucesion">el patrimonio</a>.</li>
+<li><strong><a href="/es/duelo/">El duelo</a>:</strong> <a href="/es/duelo/#normal">qué es normal</a>, <a href="/es/duelo/#ninos">cómo ayudar a los niños</a>, <a href="/es/duelo/#mascota">la pérdida de una mascota</a> y <a href="/es/duelo/#mas-ayuda">cuándo pedir más ayuda</a>.</li>
+<li><strong><a href="/es/lo-que-cuesta/">Los costos</a>:</strong> <a href="/es/lo-que-cuesta/">lo que cuesta morir</a>, con fuentes, y una <a href="/es/base-de-datos-de-costos/">guía de bases de datos públicas de costos</a>.</li>
 </ul>
 <p>Dos caminos paso a paso lo unen todo: <a href="/es/para-mi/">planificar para usted</a> y <a href="/es/para-un-ser-querido/">planificar para un ser querido</a>.</p>` },
     { id: 'para-quien', h: 'Para quién es', icon: 'people', html: `<ul>
-<li><strong>Para cualquiera que planifique el final de su propia vida,</strong> esté bien o ya enfermo.</li>
-<li><strong>Para familias y cuidadores</strong> que cuidan de un padre, una pareja, un hijo o un amigo.</li>
-<li><strong>Para quienes viven lejos</strong> de la persona que les preocupa, incluso en otro país.</li>
-<li><strong>Para quienes acaban de perder a alguien</strong> y necesitan saber qué hacer ahora.</li>
-<li><strong>Para profesionales</strong> como trabajadores sociales, enfermeras, capellanes y doulas, que quieren un recurso claro y gratuito para compartir con las familias.</li>
+<li><strong><a href="/es/para-mi/">Para cualquiera que planifique el final de su propia vida</a>,</strong> esté bien o ya enfermo.</li>
+<li><strong><a href="/es/para-un-ser-querido/">Para familias y cuidadores</a></strong> que cuidan de un padre, una pareja, un hijo o un amigo.</li>
+<li><strong><a href="/es/hablar-con-un-padre/#lejos">Para quienes viven lejos</a></strong> de la persona que les preocupa, incluso <a href="/es/propiedades-en-el-extranjero/">en otro país</a>.</li>
+<li><strong><a href="/es/primeras-24-horas/">Para quienes acaban de perder a alguien</a></strong> y necesitan saber qué hacer ahora.</li>
+<li><strong><a href="/es/imprimibles/">Para profesionales</a></strong> como trabajadores sociales, enfermeras, capellanes y doulas, que quieren un recurso claro y gratuito para compartir con las familias.</li>
 </ul>` },
     { id: 'principios', h: 'Lo que creemos', icon: 'scale', html: `<div class="cards cards-tight">
 ${infoCard('plan', 'Todo en un solo lugar', 'De las directivas anticipadas al duelo, incluidos los temas que otros sitios evitan.')}
@@ -114,15 +113,17 @@ ${infoCard('doc', 'Lenguaje claro', 'Frases cortas, palabras de todos los días,
 </div>` },
     { id: 'no-hacemos', h: 'Lo que no hacemos', icon: 'shield', html: `<ul>
 <li><strong>No damos consejo médico ni legal.</strong> El atlas explica sus opciones; su médico y un abogado pueden decirle qué se aplica a su caso.</li>
-<li><strong>No vendemos nada,</strong> ni cobramos comisiones, ni ponemos anuncios, ni clasificamos proveedores.</li>
+<li><strong>No vendemos nada,</strong> ni cobramos comisiones, ni ponemos anuncios, ni enlazamos a empresas, ni clasificamos proveedores.</li>
 <li><strong>No tomamos partido.</strong> Todos los tratamientos, solo los cuidados de alivio y la muerte médicamente asistida, donde es legal, se describen de la misma forma.</li>
 <li><strong>Solo cubrimos opciones legales.</strong></li>
 <li><strong>No recogemos sus datos.</strong> Sin cuentas, sin listas de correo y sin cookies de rastreo. Vea <a href="/es/privacidad/">privacidad</a>.</li>
 </ul>` },
-    { id: 'financiacion', h: 'Cómo nos financiamos', icon: 'costs', html: `<p><strong>End of Life Atlas es un sitio voluntario, hecho solo para compartir información.</strong> No tiene modelo de negocio ni necesita financiación, así que no hay nadie a quien complacer salvo a quienes lo leen, ni ninguna razón para favorecer una opción, un proveedor o un punto de vista.</p>
-<p>No hay publicidad, ni patrocinio, ni comisiones por recomendaciones, ni nada a la venta. Las guías, las hojas para imprimir y la app son gratuitas. No tenemos vínculos con las organizaciones que enlazamos.</p>` },
+    { id: 'financiacion', h: 'Cómo nos financiamos', icon: 'costs', html: `<p><strong>End of Life Atlas es un proyecto sin fines de lucro y no recibe financiación de ningún tipo.</strong></p>
+<p>No hay publicidad, ni patrocinio, ni enlaces de afiliados, ni comisiones por recomendaciones, ni nada a la venta. Las guías, las hojas para imprimir y la app son gratuitas para todos.</p>
+<p>No tenemos vínculos con las organizaciones gubernamentales y sin fines de lucro que enlazamos, y no enlazamos a empresas privadas. La única excepción es la página de ayuda de una empresa sobre cómo cerrar la cuenta de una persona, porque solo la empresa puede explicar su propio proceso. No recogemos ni vendemos su información personal.</p>
+<p>Como nadie paga por él, el atlas solo responde ante quienes lo leen, y no tiene ninguna razón para favorecer una opción, un proveedor o un punto de vista.</p>` },
     { id: 'editorial', h: 'Cómo verificamos los datos', icon: 'check', html: `<ul>
-<li>Los datos vienen de fuentes oficiales o de informes con nombre, enlazados en la frase que respaldan y listados al final de cada página.</li>
+<li>Los datos vienen de gobiernos, organizaciones sin fines de lucro y universidades, enlazados en la frase que respaldan y listados al final de cada página. Vea <a href="#fuentes-de-datos">de dónde vienen nuestros datos</a>.</li>
 <li>Lo que no hemos confirmado está marcado como "por verificar".</li>
 <li>Cada mes revisamos todo el sitio: cada enlace externo, la situación de cada ley que cubrimos y las cifras clave (costos, umbrales y tarifas). Corregimos lo que esté desactualizado y anotamos la fecha. Última revisión: ${fmtDateEs(site.lastScan)}.</li>
 <li>Cada guía muestra cuándo se escribió o se revisó por última vez, y cada página de un lugar muestra cuándo se verificó su ley por última vez.</li>
@@ -130,12 +131,13 @@ ${infoCard('doc', 'Lenguaje claro', 'Frases cortas, palabras de todos los días,
 <li>Las páginas en español traducen las páginas en inglés, con los mismos datos y fuentes, y están pendientes de revisión por un hablante nativo.</li>
 </ul>
 <p>¿Vio un error o algo desactualizado? <a href="/es/sugerencias/">Envíe una sugerencia</a>; puede quedar en el anonimato.</p>` },
-    { id: 'fuentes-de-datos', h: 'De dónde vienen nuestros datos', icon: 'doc', html: `<p>En orden de preferencia:</p>
+    { id: 'fuentes-de-datos', h: 'De dónde vienen nuestros datos', icon: 'doc', html: `<p><strong>Todas las fuentes de este sitio son gobiernos, organizaciones sin fines de lucro o universidades.</strong> En EE. UU., eso quiere decir sitios web .gov, .org y .edu. Los organismos oficiales de otros países suelen usar otras direcciones, como gob.mx en México, el NHS (nhs.uk) en el Reino Unido o el gobierno suizo (admin.ch).</p>
+<p>En orden de preferencia:</p>
 <ol class="mini-steps">
 <li>Gobiernos, organismos reguladores y el texto de las leyes.</li>
-<li>Organizaciones reconocidas, como institutos nacionales de salud, organismos médicos y organizaciones sin fines de lucro.</li>
-<li>Periodismo de confianza, cuando todavía no existe nada oficial.</li>
+<li>Organizaciones sin fines de lucro y universidades: organismos médicos y profesionales, institutos de investigación, organizaciones benéficas y servicios de asistencia legal.</li>
 </ol>
+<p>No usamos empresas, sitios de venta ni noticias como fuentes. La única excepción es la guía para <a href="/es/cuentas-en-linea/">cerrar cuentas en línea</a>, que enlaza a las páginas de ayuda de cada empresa. Si no encontramos una fuente gubernamental o sin fines de lucro para un dato, dejamos el dato fuera.</p>
 <p>Cuando las fuentes no coinciden o los datos aún están cambiando, lo decimos en la página en lugar de elegir una.</p>` },
     { id: 'revisores', h: 'Nuestros revisores', icon: 'people', html: `<p>Estamos nombrando a un médico con experiencia en el final de la vida y a un abogado para revisar nuestras guías. Sus nombres aparecerán aquí y en cada página que revisen.</p>` },
     { id: 'acceso', h: 'Idiomas, accesibilidad y la app', icon: 'globe', html: `<ul>
@@ -149,7 +151,7 @@ ${infoCard('doc', 'Lenguaje claro', 'Frases cortas, palabras de todos los días,
 <li><strong>Compártalo</strong> con una familia que esté tomando estas decisiones, o con colegas que las acompañan.</li>
 <li><strong>Imprima y comparta las hojas.</strong> Son gratis para imprimir y compartir.</li>
 </ul>` },
-    { id: 'contacto', h: 'Contacto', icon: 'talk', html: `<p>La mejor forma de contactarnos es el <a href="/es/sugerencias/">formulario de sugerencias</a>. Su nombre y su correo son opcionales; añada su correo solo si quiere una respuesta. El formulario no se atiende para emergencias: si está en crisis, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://findahelpline.com">busque una línea de ayuda en su país</a>.</p>` },
+    { id: 'contacto', h: 'Contacto', icon: 'talk', html: `<p>La mejor forma de contactarnos es el <a href="/es/sugerencias/">formulario de sugerencias</a>. Su nombre y su correo son opcionales; añada su correo solo si quiere una respuesta. El formulario no se atiende para emergencias: si está en crisis, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://befrienders.org/find-support-now/">busque una línea de ayuda en su país</a>.</p>` },
     { id: 'preguntas', h: 'Preguntas frecuentes', icon: 'ask', html: `<h3>¿Esto es consejo médico o legal?</h3>
 <p>No. Es información para ayudarle a entender sus opciones y a hacer mejores preguntas. Hable con su médico y con un abogado sobre su situación.</p>
 <h3>¿End of Life Atlas apoya la muerte médicamente asistida?</h3>
@@ -176,7 +178,7 @@ const sugerencias = {
 <section class="section"><div class="wrap prose">
 <h1>Envíe una sugerencia</h1>
 <p class="lead" style="margin:20px 0">¿Vio un error, echa algo en falta o tiene una idea? Díganos aquí. Puede quedar en el anonimato: solo el mensaje es obligatorio.</p>
-<p class="small muted">Su mensaje llega en privado a la persona que lleva este sitio. Añada su correo solo si quiere una respuesta. Por favor, no incluya datos médicos ni nada que no quiera que se guarde. Este formulario no se atiende para emergencias: si está en crisis, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://findahelpline.com">busque una línea de ayuda</a>.</p>
+<p class="small muted">Su mensaje llega en privado a la persona que lleva este sitio. Añada su correo solo si quiere una respuesta. Por favor, no incluya datos médicos ni nada que no quiera que se guarde. Este formulario no se atiende para emergencias: si está en crisis, llame o envíe un mensaje de texto al 988 en EE. UU. (hay atención en español), o <a href="https://befrienders.org/find-support-now/">busque una línea de ayuda</a>.</p>
 ${formKey ? `<form class="form suggest-form" method="POST" action="https://api.web3forms.com/submit">
 <input type="hidden" name="access_key" value="${esc(formKey)}">
 <input type="hidden" name="subject" value="End of Life Atlas: una nueva sugerencia (español)">
@@ -223,8 +225,8 @@ const privacidad = {
 <p class="lead" style="margin:20px 0">Es un tema delicado, así que no recogemos nada sobre usted.</p>
 <ul>
 <li>No hay cuentas ni listas de correo. No usamos cookies de publicidad ni de rastreo.</li>
-${analyticsOn ? '<li><strong>Estadísticas de visitas:</strong> contamos las páginas vistas con <a href="https://www.goatcounter.com/">GoatCounter</a>, que no usa cookies, no recoge información personal y no le sigue por otros sitios. Nos dice cosas como qué páginas se leen y, de forma aproximada, de qué países vienen las visitas.</li>' : ''}
-<li><strong>Sugerencias:</strong> si usa el <a href="/es/sugerencias/">formulario de sugerencias</a>, su mensaje se envía por correo a la persona que lleva el sitio, a través de <a href="https://web3forms.com/">Web3Forms</a>, un servicio que convierte formularios en correos. Su nombre y su correo son opcionales.</li>
+${analyticsOn ? '<li><strong>Estadísticas de visitas:</strong> contamos las páginas vistas con GoatCounter, que no usa cookies, no recoge información personal y no le sigue por otros sitios. Nos dice cosas como qué páginas se leen y, de forma aproximada, de qué países vienen las visitas.</li>' : ''}
+<li><strong>Sugerencias:</strong> si usa el <a href="/es/sugerencias/">formulario de sugerencias</a>, su mensaje se envía por correo a la persona que lleva el sitio, a través de Web3Forms, un servicio que convierte formularios en correos. Su nombre y su correo son opcionales.</li>
 <li><strong>La app:</strong> si <a href="/es/app/">instala la app</a> o usa el sitio sin conexión, las páginas que abre se guardan solo en su dispositivo, para que funcionen sin conexión. No se nos envía nada.</li>
 <li>Las listas, el buscador de lugares y el asistente de preguntas funcionan en su navegador y no guardan nada. Las preguntas que escribe no se guardan ni se envían a ningún lugar.</li>
 <li>Como cualquier sitio web, el servicio que aloja el sitio (GitHub Pages) guarda registros técnicos habituales, como las direcciones IP, para que el sitio funcione y esté protegido, y las fuentes tipográficas se cargan desde Google Fonts, que también ve su dirección IP. No usamos esto para identificarle ni seguirle.</li>

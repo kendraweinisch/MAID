@@ -1,4 +1,4 @@
-import { esc, fmtDate, site } from './layout.mjs';
+import { esc, fmtDate, site, sourcesNote } from './layout.mjs';
 import { icons } from './icons.mjs';
 import { printCard, dlPanel, PRINT_SEO } from './printables.mjs';
 import { iconFor, linkCard, linkCards, dirCard, infoCard, cardifyLists } from './ui.mjs';
@@ -81,7 +81,7 @@ ${placeRows(list)}
 
 const sourceList = (sources) =>
   sources.length
-    ? `<h2 id="sources">Sources</h2><ul>${sources.map(([label, url]) => `<li><a href="${esc(url)}">${esc(label)}</a></li>`).join('')}</ul>`
+    ? `<h2 id="sources">Sources</h2>${sourcesNote(sources.map(([, u]) => u))}<ul>${sources.map(([label, url]) => `<li><a href="${esc(url)}">${esc(label)}</a></li>`).join('')}</ul>`
     : '';
 
 const relatedCards = (items) => linkCards(items);
@@ -132,16 +132,15 @@ const INLINE = {
     ['needs a marine licence from the Marine Management Organisation', 'https://www.gov.uk/burial-at-sea'],
     ['it was legal in about 28 states as of January 2026', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
     ['it was legal in 14 US states', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
-    ['A life-cycle study for DELA', 'https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies'],
   ],
   '/plan-ahead/wills-and-trusts/': [
-    ['about half of states accept a will written entirely in your own handwriting', 'https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html'],
-    ['Nine community property states', 'https://www.nerdwallet.com/estate-planning/learn/community-property'],
+    ['some states accept a will written entirely in your own handwriting', 'https://www.law.cornell.edu/wex/holographic_will'],
+    ['Nine community property states', 'https://www.irs.gov/publications/p555'],
     ['estates over $15 million in 2026', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
     ['12 states and the District of Columbia have one', 'https://taxfoundation.org/data/all/state/estate-inheritance-taxes/'],
     ['Kentucky, Maryland, Nebraska, New Jersey and Pennsylvania', 'https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/'],
-    ['a typed will must be signed in front of two witnesses who are present together', 'https://www.canadianlawyermag.com/practice-areas/trusts-and-estates/how-to-craft-valid-wills-in-canada/381456'],
-    ["doesn't need probate", 'https://canadalife.com/investing-saving/estate-planning/wills-101-what-is-will/types-of-wills.html'],
+    ['a formal will is signed in front of two witnesses', 'https://stepstojustice.ca/steps/wills-and-powers-of-attorney/1-decide-how-you-want-make-your-will/'],
+    ["doesn't need probate", 'https://www.quebec.ca/en/justice-and-civil-status/wills-estate/wills/forms-will/notarial-will'],
     ['Ontario charges $15 for every $1,000', 'https://www.ontario.ca/page/estate-administration-tax'],
     ['who must each clearly see you sign', 'https://www.gov.uk/make-will'],
     ['which costs £92 per document', 'https://www.gov.uk/power-of-attorney'],
@@ -154,10 +153,9 @@ const INLINE = {
   ],
   '/plan-ahead/property-abroad/': [
     ['through a bank trust called a ', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
-    ['Notaries cut their fees for wills, often by up to half', 'https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/'],
-    ['Wills are made before a notary, in Spanish, and can be limited to your Costa Rica assets', 'https://aglegal.com/costa-rica-wills-foreigners/'],
-    ['needs a clearance certificate from the Canada Revenue Agency', 'https://www.osullivanlaw.com/wp-content/uploads/2026/04/Advisory-11-Cross-border-Canada-U.S.-estate-administration-highlights.pdf'],
-    ['Ontario issues an ancillary grant and may require a bond', 'https://www.mondaq.com/canada/wills-intestacy-estate-planning/685076/cross-border-canada-us-estate-administration-highlights'],
+    ['notaries offer discounts of up to 50% on a will', 'https://www.gob.mx/testamento'],
+    ['a clearance certificate from the Canada Revenue Agency', 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html'],
+    ['Ontario issues a certificate of ancillary appointment', 'https://www.ontario.ca/page/estate-administration-tax'],
     ['UK inheritance tax applies to UK property', 'https://www.gov.uk/inheritance-tax'],
     ['Executors need a UK grant of probate', 'https://www.gov.uk/applying-for-probate'],
     ['a federal estate tax return is only required when the gross estate is over $15 million', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
@@ -186,7 +184,6 @@ const INLINE = {
     ['the FTC Funeral Rule', 'https://consumer.ftc.gov/articles/ftc-funeral-rule'],
   ],
   '/medical-aid-in-dying/switzerland/': [
-    ['Pegasos is reported at about CHF 10,000 all-in', 'https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578'],
   ],
 };
 
@@ -212,9 +209,9 @@ function addInlineSources(path, sections) {
 // its source, further down the same page.
 const GLANCE = {
   '/plan-ahead/': [['2 parts', 'An advance directive: your wishes, and who decides for you'], ['Free', 'State forms usually cost nothing, often no lawyer needed'], ['Every few years', 'Review it, and after any big change']],
-  '/plan-ahead/choices-for-the-body/': [['11', 'Options covered here, from burial to composting'], ['40 kg', 'CO₂e for natural burial, the lowest in the DELA study'], ['14 states', 'Allowed human composting as of January 2026']],
+  '/plan-ahead/choices-for-the-body/': [['11', 'Options covered here, from burial to composting'], ['~28 states', 'Allowed water cremation as of January 2026'], ['14 states', 'Allowed human composting as of January 2026']],
   '/plan-ahead/wills-and-trusts/': [['$15M', 'Federal estate tax starts above this in 2026'], ['12 + DC', 'US states with their own estate tax'], ['2 witnesses', 'Needed for a will in most US states']],
-  '/what-it-costs/': [['~25%', 'Of US Medicare spending on 65+ goes to the last year of life (2014)'], ['$355/day', 'US median for a private nursing home room (2025)'], ['$8,300', 'US median funeral with viewing and burial (2023)']],
+  '/what-it-costs/': [['~25%', 'Of US Medicare spending on 65+ goes to the last year of life (2014)'], ['100 days', 'The most nursing-home care Medicare pays for'], ['$8,300', 'US median funeral with viewing and burial (2023)']],
   '/after-a-death/': [['1 call', 'The hospice, or emergency services if unexpected'], ['No rush', 'There is usually time to sit and say goodbye'], ['Several', 'Certified death certificate copies to order']],
   '/serious-illness/': [['Any stage', 'When palliative care can start'], ['6 months', 'US hospice eligibility: life expectancy or less'], ['Reversible', 'You can leave hospice and resume treatment']],
 };
@@ -225,7 +222,7 @@ const SECTION_ICONS = {
   '/plan-ahead/': { directive: 'doc', proxy: 'people', steward: 'key', talk: 'talk', paperwork: 'check', wishes: 'tree', review: 'calendar' },
   '/plan-ahead/choices-for-the-body/': { overview: 'steps', traditional: 'burial', entombment: 'mausoleum', green: 'green', tree: 'tree', cremation: 'cremation', water: 'water', composting: 'compost', sea: 'sea', ashes: 'ashes', donation: 'donation', home: 'home', other: 'ask', greenest: 'green', choose: 'scale' },
   '/plan-ahead/wills-and-trusts/': { set: 'check', will: 'wills', valid: 'doc', spouses: 'people', trusts: 'shield', probate: 'steps', poa: 'hand', taxes: 'costs', digital: 'key', canada: 'globe', uk: 'globe', australia: 'globe', lawyer: 'scale', keep: 'calendar' },
-  '/plan-ahead/property-abroad/': { short: 'check', why: 'ask', mexico: 'globe', 'costa-rica': 'globe', canada: 'globe', uk: 'globe', europe: 'globe', taxes: 'costs', checklist: 'steps', after: 'afterdeath' },
+  '/plan-ahead/property-abroad/': { short: 'check', why: 'ask', mexico: 'globe', canada: 'globe', uk: 'globe', europe: 'globe', taxes: 'costs', checklist: 'steps', after: 'afterdeath' },
   '/plan-ahead/talking-with-a-parent/': { start: 'talk', what: 'ask', resist: 'hand', far: 'phone' },
   '/what-it-costs/': { short: 'check', medical: 'illness', hospice: 'bed', care: 'home', funeral: 'burial', maid: 'maid', lookup: 'help', save: 'shield' },
   '/last-weeks/signs-death-is-near/': { weeks: 'calendar', days: 'clock', hours: 'lastweeks', help: 'hand' },
@@ -308,7 +305,7 @@ ${s.html}
 const SEO_TITLES = {
   '/plan-ahead/': 'End-of-life planning: advance directive, living will and health care proxy',
   '/plan-ahead/wills-and-trusts/': 'Wills, trusts and probate: rules by US state, Canada, UK and Australia',
-  '/plan-ahead/property-abroad/': 'Wills for expats: property in Mexico, Costa Rica, Canada, the UK and Europe',
+  '/plan-ahead/property-abroad/': 'Wills for expats: property in Mexico, Canada, the UK and Europe',
   '/plan-ahead/talking-with-a-parent/': 'How to talk to aging parents about end-of-life wishes, near or far',
   '/plan-ahead/choices-for-the-body/': 'Green burial, human composting, aquamation, burial at sea: every option',
   '/serious-illness/': 'Serious illness: palliative care, hospice and POLST explained',
@@ -419,6 +416,7 @@ export function home(data) {
   return {
     path: '/',
     title: site.name,
+    crisis: true,
     description: 'Every part of the end of life, explained plainly: planning ahead, serious illness, the last weeks, what to do after a death, grief, and medical aid in dying.',
     body: `
 <section class="hero">
@@ -564,7 +562,7 @@ export const guides = [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
       ['/plan-ahead/choices-for-the-body/', 'Every choice for the body', 'Burial, cremation, sea, trees, composting and more.'],
       ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork', 'What each document does, state by state.'],
-      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Canada, the UK and Europe.'],
       ['/plan-ahead/talking-with-a-parent/', 'Talking with a parent', 'Near or far.'],
       ['/serious-illness/', 'Serious illness', 'If a diagnosis has already come.'],
     ],
@@ -618,16 +616,7 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
       { id: 'home', h: 'A home funeral', html: `<p>Whatever the final choice, a family can care for the body at home for a day or more before burial or cremation: washing, dressing and sitting with them. Most US states allow families to do this; some require a funeral director for certain steps. End-of-life doulas can help.</p>` },
       { id: 'other', h: 'Other choices people ask about', html: `<p><strong>Cryonics</strong> preserves a body or brain at very low temperatures in the hope that future science could revive it. It is very expensive, offered by only a few organizations, and there is no evidence yet that revival is possible.</p>` },
       { id: 'greenest', h: 'Which choice is the most environmentally friendly?', html: `<p><strong>Natural (green) burial is generally the lowest-impact choice,</strong> especially in a conservation burial ground where the land is protected for good.</p>
-<p>A life-cycle study for DELA, a Dutch funeral provider, compared the climate impact of each method per person:</p>
-<ul class="bars" aria-label="Climate impact of each method, per person, in kilograms of CO₂ equivalent">
-<li class="bar-best"><div class="bar-label"><span>Natural burial</span><strong>40 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:22%"></div></div></li>
-<li><div class="bar-label"><span>Electric cremation</span><strong>45 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:25%"></div></div></li>
-<li><div class="bar-label"><span>Human composting</span><strong>47 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:26%"></div></div></li>
-<li><div class="bar-label"><span>Water cremation (resomation)</span><strong>118 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:65%"></div></div></li>
-<li><div class="bar-label"><span>Traditional burial with a stone monument</span><strong>120 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:66%"></div></div></li>
-<li><div class="bar-label"><span>Gas cremation</span><strong>181 kg CO₂e</strong></div><div class="bar-track" aria-hidden="true"><div class="bar-fill" style="width:100%"></div></div></li>
-</ul>
-<p class="small muted">Source: <a href="https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies">Hedgehog, comparative life-cycle study for DELA</a> (Netherlands). The <a href="https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf">Green Burial Council</a> also finds flame cremation has the highest carbon footprint, and notes it releases mercury.</p>
+<p>A <a href="https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf">review by the Green Burial Council</a>, a nonprofit, finds that flame cremation has the highest carbon footprint of the common methods, and notes that it also releases mercury.</p>
 <p>The ranking depends on local conditions. An electric cremator run on clean power does far better than a gas one. Figures for newer methods like water cremation and human composting vary between studies, and many published claims come from the companies that offer them. A traditional burial's footprint also grows with embalming, a concrete vault and the land it uses.</p>
 <p><strong>Ways to lower the impact, whatever you choose:</strong></p>
 <ul>
@@ -650,7 +639,6 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
       ['Green Burial Council', 'https://www.greenburialcouncil.org/'],
       ['American Association for Anatomy: a discussion on body donation', 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
       ['Funeral Consumers Alliance', 'https://www.funerals.org/'],
-      ['Hedgehog: comparative life-cycle study for DELA', 'https://www.hhc.earth/knowledge-base/articles/client-case-dela-a-comparative-lca-study-on-various-methods-of-the-disposal-of-human-bodies'],
       ['Green Burial Council: environmental benefits and costs of disposition (PDF)', 'https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf'],
     ],
     related: [
@@ -682,7 +670,7 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
       { id: 'valid', h: 'Making a will valid: what differs by state', html: `<ul>
 <li><strong>Everywhere in the US:</strong> you must be an adult of sound mind, and the will must be in writing and signed.</li>
 <li><strong>Witnesses:</strong> most states require two adult witnesses, ideally people who inherit nothing under the will.</li>
-<li><strong>Handwritten wills:</strong> about half of states accept a will written entirely in your own handwriting and signed, even without witnesses. The rest do not.</li>
+<li><strong>Handwritten wills:</strong> some states accept a will written entirely in your own handwriting and signed, even without witnesses. Others do not, so check your state's rules before relying on one.</li>
 <li><strong>Notarized "self-proving" statement:</strong> most states let you add one, so witnesses don't have to be found later. It's worth doing.</li>
 <li><strong>Electronic wills</strong> are allowed in only a small number of states so far.</li>
 <li><strong>Louisiana is different.</strong> It follows a civil-law system with its own will formats and limited forced-heirship rules for young or disabled children.</li>
@@ -711,7 +699,7 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
 <p>When someone has died, see <a href="/after-a-death/digital-accounts/">closing their online accounts</a>.</p>` },
       { id: 'canada', h: 'In Canada', html: `<p>Wills and estates are governed by each province and territory, so the rules depend on where you live.</p>
 <ul>
-<li><strong>Making a valid will:</strong> a typed will must be signed in front of two witnesses who are present together. Most provinces also accept a will written entirely in your own handwriting and signed, without witnesses; British Columbia and Prince Edward Island generally do not, though a BC court can sometimes accept one.</li>
+<li><strong>Making a valid will:</strong> the rules are set by each province. In Ontario, for example, a formal will is signed in front of two witnesses, who also sign it, and a will written entirely in your own handwriting and signed needs no witnesses. Check your own province's rules.</li>
 <li><strong>Quebec is different.</strong> It follows a civil-law system. A will made before a notary (a notarial will) doesn't need probate; handwritten and witnessed wills do need to be verified by a court or notary.</li>
 <li><strong>Marriage:</strong> in some provinces getting married cancels an earlier will. In others, including Ontario (since 2022) and British Columbia, it doesn't. Check yours, and review your will when you marry or separate.</li>
 <li><strong>Probate fees vary a lot.</strong> Ontario charges $15 for every $1,000 of an estate's value above $50,000 (1.5%). Some provinces charge much less, and a Quebec notarial will avoids probate.</li>
@@ -748,10 +736,10 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
       ['Tax Foundation: state estate and inheritance taxes', 'https://taxfoundation.org/data/all/state/estate-inheritance-taxes/'],
       ['AARP: states with estate and inheritance taxes', 'https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/'],
       ['IRS: estate tax', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
-      ['Nolo: are handwritten wills valid?', 'https://www.alllaw.com/articles/nolo/wills-trusts/are-handwritten-holographic-wills-valid.html'],
-      ['NerdWallet: community property states', 'https://www.nerdwallet.com/estate-planning/learn/community-property'],
-      ['Canadian Lawyer: what makes a will valid in Canada', 'https://www.canadianlawyermag.com/practice-areas/trusts-and-estates/how-to-craft-valid-wills-in-canada/381456'],
-      ['Canada Life: types of wills, including Quebec', 'https://canadalife.com/investing-saving/estate-planning/wills-101-what-is-will/types-of-wills.html'],
+      ['Cornell Law School, Legal Information Institute: holographic will', 'https://www.law.cornell.edu/wex/holographic_will'],
+      ['IRS Publication 555: community property', 'https://www.irs.gov/publications/p555'],
+      ['Steps to Justice (CLEO, Ontario): how to make your will', 'https://stepstojustice.ca/steps/wills-and-powers-of-attorney/1-decide-how-you-want-make-your-will/'],
+      ['Québec.ca: notarial will', 'https://www.quebec.ca/en/justice-and-civil-status/wills-estate/wills/forms-will/notarial-will'],
       ['Ontario: Estate Administration Tax', 'https://www.ontario.ca/page/estate-administration-tax'],
       ['GOV.UK: making a will', 'https://www.gov.uk/make-will'],
       ['GOV.UK: lasting power of attorney', 'https://www.gov.uk/power-of-attorney'],
@@ -771,7 +759,7 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
     path: '/plan-ahead/property-abroad/',
     title: 'Wills when you own property abroad',
     eyebrow: 'Plan ahead',
-    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Costa Rica, Canada, the UK, Spain, Portugal, France and Italy.',
+    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Canada, the UK, Spain, Portugal, France and Italy.',
     lead: "If you own a home in another country, your will at home may not be enough. Here's what to check, with notes on the countries where expats most often own property.",
     sections: [
       { id: 'short', h: 'The short version', html: `<ul>
@@ -784,15 +772,11 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
 <li><strong>Trust property (<span lang="es">fideicomiso</span>).</strong> Foreigners usually hold property near the coast or borders (the "restricted zone") through a bank trust called a <span lang="es">fideicomiso</span>. You name substitute beneficiaries in the trust itself, and the trust, not your will, decides who receives that property. Keep those beneficiaries up to date.</li>
 <li><strong>A Mexican will.</strong> Expats are usually advised to make a Mexican will, a <em lang="es">testamento público abierto</em>, before a Mexican notary (<span lang="es">notario público</span>), in Spanish. It covers assets outside the trust, such as bank accounts and cars.</li>
 <li><strong>Using a US will.</strong> A US will can be valid in Mexico, but heirs usually have to settle it in the US first and then have it recognized in Mexico, which is slow and expensive.</li>
-<li><strong>Will Month.</strong> Every September is <em lang="es">Mes del Testamento</em> (Will Month). Notaries cut their fees for wills, often by up to half. Discounts and dates vary by state.</li></ul>` },
-      { id: 'costa-rica', h: 'Costa Rica', html: `<ul>
-<li>Wills are made before a notary, in Spanish, and can be limited to your Costa Rica assets.</li>
-<li>Property in your own name normally goes through Costa Rican probate, even with a will. When the heirs agree and none of them is a minor, a notary can handle it instead of a court.</li>
-<li>Some foreigners hold property through a Costa Rican company. That changes how it passes on, so get local advice before setting one up.</li></ul>` },
+<li><strong>Will Month.</strong> Every September is <em lang="es">Mes del Testamento</em> (Will Month), a national campaign run with the states: notaries offer discounts of up to 50% on a will, and free advice.</li></ul>` },
       { id: 'canada', h: 'Canada', html: `<ul>
 <li><strong>No inheritance tax, but capital gains.</strong> Canada has no inheritance or estate tax. Instead, death counts as selling your property at its market value, so capital gains tax may be due on a Canadian cottage or rental property on your final tax return.</li>
-<li><strong>Clearance before heirs are paid.</strong> The executor of a non-resident's estate usually needs a clearance certificate from the Canada Revenue Agency before handing Canadian property to heirs. If the property is sold, the buyer holds back part of the price until a separate certificate is issued.</li>
-<li><strong>Probate in the province.</strong> A US court's grant usually isn't enough on its own. The province where the property is issues its own grant, often only after US probate is finished. Rules and fees differ by province: Ontario issues an ancillary grant and may require a bond, and Quebec has a different legal system with notarial wills.</li>
+<li><strong>Clearance before heirs are paid.</strong> Before handing property to heirs, the executor can ask for a clearance certificate from the Canada Revenue Agency. It confirms the taxes owed have been paid, so the executor isn't personally liable for them later.</li>
+<li><strong>Probate in the province.</strong> A US court's grant usually isn't enough on its own. The province where the property is issues its own grant, often only after US probate is finished. Rules and fees differ by province: Ontario issues a certificate of ancillary appointment, and Quebec has a different legal system with notarial wills.</li>
 <li><strong>A Canadian will.</strong> Ask a Canadian lawyer whether a separate will for your Canadian property would make things simpler for your executor.</li></ul>` },
       { id: 'uk', h: 'United Kingdom', html: `<ul>
 <li><strong>UK inheritance tax applies to UK property,</strong> whatever your nationality or where you live. The standard rate is 40% on the value above the £325,000 threshold. Some gifts, such as to a spouse or a charity, can be exempt; ask how the rules apply to you.</li>
@@ -818,10 +802,9 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
     ],
     sources: [
       ['American Bar Association: foreign ownership of property in Mexico’s restricted zone (2026)', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
-      ['Vive USA: September 2026 Will Month in Mexico', 'https://www.viveusa.mx/en/negocios/cuanto-cuesta-hacer-un-testamento-en-septiembre-de-2026-y-que-descuentos-hay/'],
-      ['AG Legal: Costa Rica wills for foreign property owners', 'https://aglegal.com/costa-rica-wills-foreigners/'],
-      ['O’Sullivan Estate Lawyers: cross-border Canada–US estate administration (April 2026, PDF)', 'https://www.osullivanlaw.com/wp-content/uploads/2026/04/Advisory-11-Cross-border-Canada-U.S.-estate-administration-highlights.pdf'],
-      ['Mondaq: cross-border Canada–US estate administration', 'https://www.mondaq.com/canada/wills-intestacy-estate-planning/685076/cross-border-canada-us-estate-administration-highlights'],
+      ['Government of Mexico: Will Month (Spanish)', 'https://www.gob.mx/testamento'],
+      ['Canada Revenue Agency: apply for a clearance certificate', 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html'],
+      ['Ontario: Estate Administration Tax', 'https://www.ontario.ca/page/estate-administration-tax'],
       ['GOV.UK: how Inheritance Tax works', 'https://www.gov.uk/inheritance-tax'],
       ['GOV.UK: applying for probate', 'https://www.gov.uk/applying-for-probate'],
       ['IRS: estate tax (filing thresholds)', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
@@ -885,22 +868,12 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
 <li><strong>US, Medicare:</strong> hospice care is covered. You may pay up to $5 for each prescription for pain and symptom relief, and 5% of the Medicare-approved amount for inpatient respite care. Medicare doesn't pay room and board if you live in a nursing home or other facility.</li>
 <li><strong>UK:</strong> hospice care is free to patients. Most hospices are charities.</li>
 <li><strong>Canada:</strong> palliative care is covered by provincial health plans, though some care at home may cost extra.</li></ul>` },
-      { id: 'care', h: 'Care at home and in care homes', html: `<p>This is often the largest cost, and in the US, Medicare doesn't pay for long-term personal care. Medicaid may, for people with low income and savings. National median costs in 2025:</p>
-<div class="table-box" tabindex="0" role="region" aria-label="Long-term care costs"><table style="min-width:520px">
-<caption class="sr-only">US national median long-term care costs, 2025</caption>
-<thead><tr><th scope="col">Type of care</th><th scope="col">Median cost</th><th scope="col">Per year</th></tr></thead>
-<tbody>
-<tr><td>Nursing home, private room</td><td>$355 a day</td><td>$129,575</td></tr>
-<tr><td>Nursing home, shared room</td><td>$315 a day</td><td>$114,975</td></tr>
-<tr><td>Assisted living</td><td>$6,200 a month</td><td>$74,400</td></tr>
-<tr><td>Paid caregiver at home (44 hours a week)</td><td>$35 an hour</td><td>$80,080</td></tr>
-<tr><td>Adult day care (5 days a week)</td><td>$95 a day</td><td>$24,700</td></tr>
-</tbody></table></div>
-<p class="small muted">Source: CareScout 2025 Cost of Care Survey, released March 2, 2026. Look up your area with the <a href="https://www.carescout.com/cost-of-care">CareScout cost calculator</a>.</p>` },
+      { id: 'care', h: 'Care at home and in care homes', html: `<p>This is often the largest cost families pay themselves. In the US, <a href="https://acl.gov/ltc/costs-and-who-pays/who-pays-long-term-care">Medicare pays only for skilled or rehabilitative care</a>, and for at most 100 days in a nursing home. It doesn't pay for help with everyday tasks like bathing and dressing, which is most long-term care. Medicaid may, for people with low income and savings.</p>
+<p>Prices vary a great deal from place to place, so ask each provider for a written list of fees. Your local Area Agency on Aging, which you can find through the <a href="https://eldercare.acl.gov/">Eldercare Locator</a>, can help you find care and ways to pay for it.</p>` },
       { id: 'funeral', h: 'Funerals, burial and cremation', html: `<ul>
 <li><strong>Funeral with viewing and burial:</strong> about $8,300 median, or about $9,995 with a burial vault.</li>
 <li><strong>Funeral with viewing and cremation:</strong> about $6,280 median.</li></ul>
-<p class="small muted">Source: National Funeral Directors Association 2023 General Price List Study, as reported by <a href="https://www.kiplinger.com/retirement/estate-planning/the-cost-of-dying-burial-and-cremation-prices-by-state">Kiplinger</a>. These cover the funeral home only, not the cemetery plot, headstone, flowers or obituary.</p>
+<p class="small muted">Source: <a href="https://content.nfda.org/news/media-center/nfda-news-releases/id/8134/2023-nfda-general-price-list-study-shows-inflation-increasing-faster-than-the-cost-of-a-funeral">National Funeral Directors Association 2023 General Price List Study</a>. These cover the funeral home only, not the cemetery plot, headstone, flowers or obituary.</p>
 <p><strong>Direct cremation</strong> or <strong>direct burial</strong> (no viewing or service beforehand) usually costs far less, and a gathering can be held later anywhere. Cremation is now the most common choice in the US; the NFDA projected a 63.4% cremation rate for 2025. In the US, you have the right to itemized prices under the FTC Funeral Rule; see <a href="/after-a-death/#rights">your rights with funeral homes</a>.</p>` },
       { id: 'maid', h: 'Medical aid in dying', html: `<ul>
 <li><strong>US federal programs don't pay.</strong> A 1997 federal law bars federal funds from paying for it, so Medicare, the VA and the federal share of Medicaid don't cover the medication or the related doctor visits.</li>
@@ -911,9 +884,8 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
 ${dirCard('https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/', 'Dartmouth Atlas', 'US · hospitals', 'End-of-life care patterns by hospital (2017 data).')}
 ${dirCard('https://www.medicare.gov/care-compare/?providerType=Hospice', 'Medicare Care Compare', 'US · hospice', 'Quality ratings for hospices.')}
 ${dirCard('https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency', 'Hospital price transparency', 'US · hospitals', 'Every hospital must post its prices; not all comply.')}
-${dirCard('https://turquoise.health/', 'Turquoise Health', 'US · hospitals', 'Makes hospital price files searchable.')}
 ${dirCard('https://www.fairhealthconsumer.org/', 'FAIR Health Consumer', 'US · medical care', 'Typical costs of procedures in your area.')}
-${dirCard('https://www.carescout.com/cost-of-care', 'CareScout', 'US · care', 'Care-home and home-care costs by area.')}
+${dirCard('https://eldercare.acl.gov/', 'Eldercare Locator', 'US · care', 'Your local Area Agency on Aging, for help finding and paying for care.')}
 ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · funerals', 'Local groups, some of which survey funeral prices.')}
 </div>
 <p style="margin-top:18px"><a class="btn btn-quiet" href="/what-it-costs/database/">See the full cost database: every source, by what you want to find out</a></p>` },
@@ -929,8 +901,8 @@ ${dirCard('https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · fune
       ['KFF: Medicare spending at the end of life (2014 data)', 'https://www.kff.org/medicare/medicare-spending-at-the-end-of-life/'],
       ['Dartmouth Atlas: end-of-life care by hospital', 'https://www.dartmouthatlas.org/interactive-apps/data-by-hospital/medicare-reimbursements/'],
       ['Medicare: hospice care coverage', 'https://www.medicare.gov/coverage/hospice-care'],
-      ['CareScout 2025 Cost of Care Survey (Genworth press release, March 2026)', 'https://investor.genworth.com/news-events/press-releases/detail/1054'],
-      ['Kiplinger: the cost of dying (citing the NFDA 2023 General Price List Study)', 'https://www.kiplinger.com/retirement/estate-planning/the-cost-of-dying-burial-and-cremation-prices-by-state'],
+      ['Administration for Community Living: who pays for long-term care', 'https://acl.gov/ltc/costs-and-who-pays/who-pays-long-term-care'],
+      ['NFDA: 2023 General Price List Study', 'https://content.nfda.org/news/media-center/nfda-news-releases/id/8134/2023-nfda-general-price-list-study-shows-inflation-increasing-faster-than-the-cost-of-a-funeral'],
       ['NFDA statistics (cremation rate)', 'https://nfda.org/news/statistics'],
       ['US Code, 42 U.S.C. chapter 138: restriction on assisted suicide funding', 'https://www.law.cornell.edu/uscode/text/42/chapter-138'],
       ['CMS: hospital price transparency', 'https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency'],
@@ -1283,7 +1255,7 @@ ${linkCards([['/serious-illness/choices-near-the-end/', 'Every choice near the e
 <p>Free printable remembering books: <a href="/checklists/remembering-someone/">someone I love</a>, <a href="/checklists/remembering-grandparent/">my grandparent</a> and <a href="/checklists/remembering-pet/">my pet</a>.</p>` },
       { id: 'pets', h: 'When a pet dies', html: `<p>Losing a pet is a real loss, and grief for an animal can be as strong as for a person. For children, it's often their first experience of death; the same honest language helps.</p>` },
       { id: 'support', h: 'Where to find support', html: `<p>Hospices offer bereavement support to families, usually for about a year after a death, often for free. Grief groups, counselors and faith communities help too.</p>` },
-      { id: 'more-help', h: 'When to get more help', html: `<p>Talk to a doctor or counselor if grief stays so intense that you can't manage daily life for many months, or if you are drinking or using drugs to cope. If you are thinking about suicide, call or text <strong>988</strong> in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>` },
+      { id: 'more-help', h: 'When to get more help', html: `<p>Talk to a doctor or counselor if grief stays so intense that you can't manage daily life for many months, or if you are drinking or using drugs to cope. If you are thinking about suicide, call or text <strong>988</strong> in the US, or <a href="https://befrienders.org/find-support-now/">find a helpline in your country</a>.</p>` },
     ],
     sources: [
       ['National Institute on Aging: end of life', 'https://www.nia.nih.gov/health/end-of-life'],
@@ -1456,6 +1428,7 @@ ${residentsOnly ? `<p>If you don't live here, <a href="${MAID}/places/oregon/">O
 ${p.status === 'not-legal' ? `<p>Helping someone die can be a crime here, including traveling with them abroad. Read <a href="${MAID}/switzerland/">going to Switzerland</a> and talk to a lawyer first.</p>` : ''}
 <div class="notice"><strong>Details we're still verifying:</strong> waiting periods, how many clinicians must agree, self-administration rules, typical costs and insurance coverage. Until they're checked, confirm them with the official sources below or your doctor.</div>
 <h2>Sources</h2>
+${sourcesNote()}
 ${sources}
 <h2>Next steps</h2>
 ${linkCards([[`${MAID}/process/`, 'How the process works', 'The usual steps.'], ['/serious-illness/', 'Hospice and palliative care', 'Comfort care, whatever you decide.'], [`${MAID}/families/`, 'A guide for families', 'What to expect, and grief.'], ['/ask/', 'Ask a question', 'Answers from this site.']])}
@@ -1523,11 +1496,12 @@ export const maidPages = [
 <li>A review of your case, and an assessment by a Swiss doctor before anything is approved.</li>
 <li>Travel to Switzerland while you are still well enough to travel.</li>
 <li>Arrangements for afterward: cremation in Switzerland or bringing the body home.</li></ul>` },
-      { id: 'costs', h: 'Approximate costs', html: `<p>News reports put Dignitas at about CHF 7,500, or CHF 10,500 to 11,000 with funeral and administrative services, plus membership fees. Pegasos is reported at about CHF 10,000 all-in. Travel, accommodation and medical reports are extra. Confirm current fees with each organization; some reduce fees for people with little money.</p>` },
+      { id: 'costs', h: 'Approximate costs', html: `<p>Each organization sets its own fees, and the total usually runs to thousands of Swiss francs. Ask for the full current amount in writing: membership, the doctor's assessment, the cremation and the paperwork. Travel, accommodation and medical reports from home add to the cost. Ask, too, whether fees are reduced for people with little money.</p>` },
       { id: 'risk', h: 'Legal risk for family and friends', html: `<p>Your companions are covered by the law of the country they live in, not only Swiss law. In some countries, including England and Wales, helping someone travel to die can be investigated as assisting a suicide. Talk to a lawyer in your country before you plan the trip.</p>` },
     ],
     sources: [
-      ['Swissinfo: Pegasos', 'https://www.swissinfo.ch/eng/assisted-suicide/pegasos-association-rekindles-controversy-over-assisted-suicide-in-switzerland/90228578'],
+      ['Swiss Federal Office of Justice: the various forms of euthanasia', 'https://www.bj.admin.ch/en/the-various-forms-of-euthanasia'],
+      ['Swiss Criminal Code (Fedlex), article 115', 'https://www.fedlex.admin.ch/eli/cc/54/757_781_799/en'],
     ],
     related: [
       [`${MAID}/process/`, 'How the process works', 'The usual steps.'],
@@ -1552,7 +1526,6 @@ export const staticPages = [
 ${dirCard('https://www.medicare.gov/care-compare/?providerType=Hospice', 'Medicare Care Compare', 'US', 'Find hospices, with quality ratings.')}
 ${dirCard('https://www.hospiceuk.org/', 'Hospice UK', 'UK', 'Hospices and support across the UK.')}
 ${dirCard('https://www.virtualhospice.ca/', 'Canadian Virtual Hospice', 'Canada', 'Information and support from palliative care experts.')}
-${dirCard('https://www.ehospice.com/', 'ehospice', 'International', 'News and services in palliative care worldwide.')}
 </div>
 <h2>Funerals and burial</h2>
 <div class="cards cards-tight">
@@ -1583,7 +1556,7 @@ ${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', '
 <a class="ocard" href="/medical-aid-in-dying/">${iconFor('/medical-aid-in-dying/')}<strong>Our medical aid in dying section</strong><span class="muted small">Where it is legal, with official sources for each place.</span></a>
 </div>
 <h2>In a crisis</h2>
-<p>If you are thinking about suicide, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>
+<p>If you are thinking about suicide, call or text 988 in the US, or <a href="https://befrienders.org/find-support-now/">find a helpline in your country</a>.</p>
 </div></section>`,
   },
   guide({
@@ -1601,29 +1574,29 @@ ${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', '
     ],
     sections: [
       { id: 'founder', h: 'A note from the founder', html: `<div class="founder-note">
-<p>I built End of Life Atlas because I couldn't find one place that told the whole truth about the end of life.</p>
-<p>Anyone who has watched someone they love wither and die knows that most guides don't tell you what it's really like. They tell you what to do, or what to choose. I wanted something different: one place, for anyone in any country, that explains every option plainly, doesn't judge, and respects each person's right to die with dignity.</p>
+<p>I built End of Life Atlas to bring the trustworthy information about the end of life together in one place, without judgment or bias.</p>
+<p>Anyone who has watched someone they love wither and die knows how scattered that information is, and how rarely a guide tells you what it's really like. Many tell you what to do, or nudge you toward one choice. I wanted something different: one place, for anyone in any country, that gathers what governments, nonprofits and universities publish, explains every option plainly, and respects each person's right to die with dignity.</p>
 <p>I'm an expat, and I worry about my mom back in the United States. When you live far from the people you love, you can't just drive over and work things out. You need clear information about the rules where they are, and where you are. That's why this atlas covers more than one country, and why it will keep adding more.</p>
 <p>Whatever you're facing, and wherever you are, I hope you find what you need here, and that you feel respected while you look.</p>
 <p class="signature">KW</p>
 </div>` },
       { id: 'covers', h: 'What the atlas covers', html: `<p>Every stage of the end of life, in the order people meet them:</p>
 <ul>
-<li><strong>Planning ahead:</strong> advance directives and <a href="/plan-ahead/advance-directives/">every state's official form</a>, choosing a health care proxy, <a href="/plan-ahead/wills-and-trusts/">wills, trusts and the paperwork</a>, <a href="/plan-ahead/property-abroad/">property abroad</a>, <a href="/plan-ahead/talking-with-a-parent/">talking with a parent</a> and <a href="/plan-ahead/choices-for-the-body/">every choice for the body</a>.</li>
-<li><strong>Serious illness:</strong> palliative care, hospice, medical orders such as POLST, and <a href="/serious-illness/choices-near-the-end/">every choice near the end of life</a>.</li>
-<li><strong>The last weeks:</strong> an honest account of what dying can be like, <a href="/last-weeks/signs-death-is-near/">the signs that death is near</a>, easing suffering and saying goodbye.</li>
-<li><strong>Medical aid in dying:</strong> <a href="/medical-aid-in-dying/">where it is legal</a>, place by place, how the process works, guidance for families, and going to Switzerland.</li>
-<li><strong>After a death:</strong> the first 24 hours, death certificates, funerals and your rights, <a href="/after-a-death/digital-accounts/">closing online accounts</a> and the estate.</li>
-<li><strong>Grief:</strong> what's normal, helping children, losing a pet, and when to get more help.</li>
-<li><strong>Costs:</strong> <a href="/what-it-costs/">what dying costs</a>, with sources, and a <a href="/what-it-costs/database/">guide to public cost databases</a>.</li>
+<li><strong><a href="/plan-ahead/">Planning ahead</a>:</strong> <a href="/plan-ahead/advance-directives/">advance directives and every state's official form</a>, <a href="/plan-ahead/#proxy">choosing a health care proxy</a>, <a href="/plan-ahead/wills-and-trusts/">wills, trusts and the paperwork</a>, <a href="/plan-ahead/property-abroad/">property abroad</a>, <a href="/plan-ahead/talking-with-a-parent/">talking with a parent</a> and <a href="/plan-ahead/choices-for-the-body/">every choice for the body</a>.</li>
+<li><strong><a href="/serious-illness/">Serious illness</a>:</strong> <a href="/serious-illness/#palliative">palliative care</a>, <a href="/serious-illness/hospice-vs-palliative-care/">hospice</a>, <a href="/serious-illness/#polst">medical orders such as POLST</a>, and <a href="/serious-illness/choices-near-the-end/">every choice near the end of life</a>.</li>
+<li><strong><a href="/last-weeks/">The last weeks</a>:</strong> <a href="/last-weeks/#honest">an honest account of what dying can be like</a>, <a href="/last-weeks/signs-death-is-near/">the signs that death is near</a>, <a href="/last-weeks/#comfort">easing suffering</a> and <a href="/last-weeks/#goodbye">saying goodbye</a>.</li>
+<li><strong><a href="/medical-aid-in-dying/">Medical aid in dying</a>:</strong> <a href="/medical-aid-in-dying/">where it is legal</a>, place by place, <a href="/medical-aid-in-dying/process/">how the process works</a>, <a href="/medical-aid-in-dying/families/">guidance for families</a> and <a href="/medical-aid-in-dying/switzerland/">going to Switzerland</a>.</li>
+<li><strong><a href="/after-a-death/">After a death</a>:</strong> <a href="/checklists/after-a-death/">the first 24 hours</a>, <a href="/after-a-death/death-certificates/">death certificates</a>, <a href="/after-a-death/#rights">funerals and your rights</a>, <a href="/after-a-death/digital-accounts/">closing online accounts</a> and <a href="/after-a-death/#probate">the estate</a>.</li>
+<li><strong><a href="/grief/">Grief</a>:</strong> <a href="/grief/#normal">what's normal</a>, <a href="/grief/#children">helping children</a>, <a href="/grief/#pets">losing a pet</a> and <a href="/grief/#more-help">when to get more help</a>.</li>
+<li><strong><a href="/what-it-costs/">Costs</a>:</strong> <a href="/what-it-costs/">what dying costs</a>, with sources, and a <a href="/what-it-costs/database/">guide to public cost databases</a>.</li>
 </ul>
 <p>Two step-by-step paths tie it together: <a href="/for-myself/">planning for yourself</a> and <a href="/for-someone-i-love/">planning for someone you love</a>.</p>` },
       { id: 'for', h: 'Who it is for', html: `<ul>
-<li><strong>Anyone planning their own end of life,</strong> whether they are well or already ill.</li>
-<li><strong>Families and caregivers</strong> looking after a parent, partner, child or friend.</li>
-<li><strong>People who live far away</strong> from the person they're worried about, including across borders.</li>
-<li><strong>People who have just lost someone</strong> and need to know what to do next.</li>
-<li><strong>Professionals</strong> such as social workers, nurses, chaplains and doulas, who want a plain, free resource to share with families.</li>
+<li><strong><a href="/for-myself/">Anyone planning their own end of life</a>,</strong> whether they are well or already ill.</li>
+<li><strong><a href="/for-someone-i-love/">Families and caregivers</a></strong> looking after a parent, partner, child or friend.</li>
+<li><strong><a href="/plan-ahead/talking-with-a-parent/#far">People who live far away</a></strong> from the person they're worried about, including <a href="/plan-ahead/property-abroad/">across borders</a>.</li>
+<li><strong><a href="/checklists/after-a-death/">People who have just lost someone</a></strong> and need to know what to do next.</li>
+<li><strong><a href="/checklists/">Professionals</a></strong> such as social workers, nurses, chaplains and doulas, who want a plain, free resource to share with families.</li>
 </ul>` },
       { id: 'principles', h: 'What we believe', html: `<div class="cards cards-tight">
 ${infoCard('plan', 'One place for all of it', 'From advance directives to grief, including the topics other sites avoid.')}
@@ -1635,27 +1608,30 @@ ${infoCard('doc', 'Plain language', 'Short sentences, everyday words, and the le
 </div>` },
       { id: 'not', h: "What we don't do", html: `<ul>
 <li><strong>We don't give medical or legal advice.</strong> The atlas explains your options; your doctor and a lawyer can tell you what applies to you.</li>
-<li><strong>We don't sell anything,</strong> take referral fees, run ads or rank providers.</li>
+<li><strong>We don't sell anything,</strong> take referral fees, run ads, link to businesses or rank providers.</li>
 <li><strong>We don't take sides.</strong> Every full treatment, comfort care only and medical aid in dying, where it is legal, are all described the same way.</li>
 <li><strong>We cover legal options only.</strong></li>
 <li><strong>We don't collect your data.</strong> No accounts, no email lists and no tracking cookies. See <a href="/privacy/">privacy</a>.</li>
 </ul>` },
-      { id: 'funding', h: "How we're funded", html: `<p><strong>End of Life Atlas is a voluntary site, made only to share information.</strong> It has no business model and needs no funding, so there is no one to please except the people reading it, and no reason to favor any option, provider or point of view.</p>
-<p>There is no advertising, no sponsorship, no referral fees and nothing for sale. The guides, printables and app are free. We have no ties to the organizations we link to.</p>` },
+      { id: 'funding', h: "How we're funded", html: `<p><strong>End of Life Atlas is a nonprofit project, and it receives no funding of any kind.</strong></p>
+<p>There is no advertising, no sponsorship, no affiliate links, no referral fees and nothing for sale. The guides, printables and app are free to everyone.</p>
+<p>We have no ties to the government and nonprofit organizations we link to, and we don't link to private businesses. The one exception is a company's own help page on closing a person's account, because only the company can explain its own process. We don't collect or sell your personal information.</p>
+<p>With no one paying for it, the atlas answers only to the people who read it, and has no reason to favor any option, provider or point of view.</p>` },
       { id: 'editorial', h: 'How we check facts', html: `<ul>
-<li>Facts come from official sources or named reports, linked on the sentence they support and listed at the end of each page.</li>
+<li>Facts come from governments, nonprofits and universities, linked on the sentence they support and listed at the end of each page. See <a href="#evidence">where our facts come from</a>.</li>
 <li>Anything we haven't confirmed is marked "to be verified."</li>
 <li>Every month we check the whole site: every outside link, the status of every law we cover, and the key figures (costs, thresholds and fees). We correct anything out of date and record the date. Last check: ${fmtDate(site.lastScan)}.</li>
 <li>Each guide shows when it was written or last revised, and each place page shows when its law was last verified.</li>
 <li>When we find a mistake, we fix it and update the page's date.</li>
 </ul>
 <p>Spotted an error or something out of date? <a href="/suggestions/">Send a suggestion</a>; you can stay anonymous.</p>` },
-      { id: 'evidence', h: 'Where our facts come from', html: `<p>In order of preference:</p>
+      { id: 'evidence', h: 'Where our facts come from', html: `<p><strong>Every source on this site is a government, a nonprofit or a university.</strong> In the US, that means .gov, .org and .edu websites. Official bodies in other countries often use other web addresses, such as the NHS (nhs.uk), the Swiss government (admin.ch) or the Government of Canada (canada.ca).</p>
+<p>In order of preference:</p>
 <ol class="mini-steps">
 <li>Governments, regulators and the text of laws.</li>
-<li>Established organizations, such as national health institutes, medical bodies and nonprofits.</li>
-<li>Reputable news reporting, when nothing official exists yet.</li>
+<li>Nonprofits and universities: medical and professional bodies, research institutes, charities and legal-aid groups.</li>
 </ol>
+<p>We don't use businesses, sales sites or news reports as sources. The one exception is the guide to <a href="/after-a-death/digital-accounts/">closing online accounts</a>, which links to each company's own help pages. If we can't find a government or nonprofit source for a fact, we leave the fact out.</p>
 <p>Where sources disagree or the facts are still changing, we say so on the page rather than pick one.</p>` },
       { id: 'reviewers', h: 'Our reviewers', html: `<p>We're appointing a physician experienced in end-of-life care and an attorney to review our guides. Their names will appear here and on each page they review.</p>` },
       { id: 'access', h: 'Languages, accessibility and the app', html: `<ul>
@@ -1669,7 +1645,7 @@ ${infoCard('doc', 'Plain language', 'Short sentences, everyday words, and the le
 <li><strong>Share it</strong> with a family facing these decisions, or with colleagues who support them.</li>
 <li><strong>Print and share the printables.</strong> They are free to print and share.</li>
 </ul>` },
-      { id: 'contact', h: 'Contact us', html: `<p>The best way to reach us is the <a href="/suggestions/">suggestions form</a>. Your name and email are optional; add your email only if you'd like a reply. The form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline in your country</a>.</p>` },
+      { id: 'contact', h: 'Contact us', html: `<p>The best way to reach us is the <a href="/suggestions/">suggestions form</a>. Your name and email are optional; add your email only if you'd like a reply. The form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://befrienders.org/find-support-now/">find a helpline in your country</a>.</p>` },
       { id: 'faq', h: 'Questions people ask', html: `<h3>Is this medical or legal advice?</h3>
 <p>No. It is information to help you understand your options and ask better questions. Talk to your doctor and a lawyer about your own situation.</p>
 <h3>Does End of Life Atlas support medical aid in dying?</h3>
@@ -1701,7 +1677,7 @@ ${infoCard('doc', 'Plain language', 'Short sentences, everyday words, and the le
 <section class="section"><div class="wrap prose">
 <h1>Send a suggestion</h1>
 <p class="lead" style="margin:20px 0">Spotted an error, missing something, or have an idea? Tell us here. You can stay anonymous: only the message is required.</p>
-<p class="small muted">Your message goes privately to the person who runs this site. Add your email only if you would like a reply. Please don't include medical details or anything you wouldn't want stored. This form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline</a>.</p>
+<p class="small muted">Your message goes privately to the person who runs this site. Add your email only if you would like a reply. Please don't include medical details or anything you wouldn't want stored. This form isn't monitored for emergencies: if you are in crisis, call or text 988 in the US, or <a href="https://befrienders.org/find-support-now/">find a helpline</a>.</p>
 ${formKey ? `<form class="form suggest-form" method="POST" action="https://api.web3forms.com/submit">
 <input type="hidden" name="access_key" value="${esc(formKey)}">
 <input type="hidden" name="subject" value="End of Life Atlas: a new suggestion">
@@ -1745,8 +1721,8 @@ ${formKey ? `<form class="form suggest-form" method="POST" action="https://api.w
 <p class="lead" style="margin:20px 0">This is a sensitive subject, so we don't collect anything about you.</p>
 <ul>
 <li>There are no accounts and no email lists. We use no advertising or tracking cookies.</li>
-${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views with <a href="https://www.goatcounter.com/">GoatCounter</a>, which uses no cookies, does not collect personal information and does not track you across other sites. It tells us things like which pages are read and roughly which countries visitors come from.</li>' : ''}
-<li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, your message is sent by email to the person who runs the site, through <a href="https://web3forms.com/">Web3Forms</a>, a form-to-email service. Your name and email are optional.</li>
+${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views with GoatCounter, which uses no cookies, does not collect personal information and does not track you across other sites. It tells us things like which pages are read and roughly which countries visitors come from.</li>' : ''}
+<li><strong>Suggestions:</strong> if you use the <a href="/suggestions/">suggestions form</a>, your message is sent by email to the person who runs the site, through Web3Forms, a form-to-email service. Your name and email are optional.</li>
 <li><strong>The app:</strong> if you <a href="/app/">install the app</a> or use the site offline, pages you open are saved on your device only, so they work without a connection. Nothing is sent to us.</li>
 <li>Checklists, the place picker and the Ask assistant run in your browser and save nothing. Questions you type into Ask are not stored or sent anywhere.</li>
 <li>Like any website, the site's host (GitHub Pages) keeps standard technical logs, such as IP addresses, to run and protect the site, and the fonts are loaded from Google Fonts, which also sees your IP address. We don't use these to identify or track you.</li>
@@ -1791,7 +1767,7 @@ ${analyticsOn ? '<li><strong>Visitor statistics:</strong> we count page views wi
 <p class="eyebrow">Ask the Atlas</p>
 <h1>Ask a question</h1>
 <p class="lead" style="margin:20px 0">Type a question in your own words. Answers come only from this site's guides, with a link to read more.</p>
-<p class="small muted">Private: your questions stay in your browser and are not stored or sent anywhere. This is information, not medical or legal advice. If you are in crisis, call or text 988 in the US, or <a href="https://findahelpline.com">find a helpline</a>.</p>
+<p class="small muted">Private: your questions stay in your browser and are not stored or sent anywhere. This is information, not medical or legal advice. If you are in crisis, call or text 988 in the US, or <a href="https://befrienders.org/find-support-now/">find a helpline</a>.</p>
 <form id="ask-form" class="form ask-form" role="search" aria-label="Ask the Atlas">
 <div class="field"><label for="ask-input">Your question</label><input id="ask-input" name="q" type="text" autocomplete="off" required></div>
 <button class="btn" type="submit">Ask</button>

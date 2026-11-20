@@ -30,6 +30,9 @@ material.
 - No invented facts. Every new fact needs a source, linked on the sentence it
   supports (`INLINE` in `src/pages.mjs`) and in the page's sources.
 - Verify every outside link before adding it.
+- Sources are governments, nonprofits and universities only. No businesses,
+  sales sites or news. The one exception: companies' own help pages on the
+  online accounts pages. If a fact has no such source, leave it out.
 
 ## Design
 

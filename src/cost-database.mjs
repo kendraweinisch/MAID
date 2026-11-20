@@ -21,7 +21,6 @@ const TASKS = [
       ['https://www.fairhealthconsumer.org/', 'FAIR Health Consumer', 'US · free', 'Cost estimates for thousands of medical, dental and facility services, based on insurance and Medicare claims, by zip code.'],
       ['https://www.medicare.gov/procedure-price-lookup/', 'Medicare Procedure Price Lookup', 'US · Medicare', 'What Medicare pays and what you may owe for outpatient procedures, in hospital departments and surgical centers.'],
       ['https://www.cms.gov/priorities/key-initiatives/hospital-price-transparency', 'Hospital price transparency (CMS)', 'US · hospitals', 'Every US hospital must post its prices, including negotiated rates. Not all comply.'],
-      ['https://turquoise.health/', 'Turquoise Health', 'US · hospitals', 'Makes the hospitals\' posted price files searchable.'],
     ],
   },
   {
@@ -53,9 +52,10 @@ const TASKS = [
     h: 'Look up the cost of long-term care',
     icon: 'home',
     intro: 'Paid care at home, assisted living and nursing homes are often the largest costs families pay themselves.',
-    steps: ['Look up the median cost in the person\'s area.', 'Check what Medicaid or other programs cover where they live.', 'Ask each provider for a written list of fees.'],
+    steps: ['Ask two or three providers near the person for a written list of fees.', 'Check what Medicare, Medicaid or other programs cover where they live.', 'Ask the local Area Agency on Aging about help with costs.'],
     cards: [
-      ['https://www.carescout.com/cost-of-care', 'CareScout cost of care', 'US · free', 'Median costs of home care, adult day care, assisted living and nursing homes, by area.'],
+      ['https://acl.gov/ltc/costs-and-who-pays/who-pays-long-term-care', 'Who pays for long-term care (ACL)', 'US · government', 'What Medicare, Medicaid, insurance and savings each pay for, from the Administration for Community Living.'],
+      ['https://eldercare.acl.gov/', 'Eldercare Locator', 'US · government', 'Find your local Area Agency on Aging, for help finding care and paying for it.'],
     ],
   },
   {
@@ -66,8 +66,8 @@ const TASKS = [
     steps: ['Call two or three funeral homes and ask for their itemized prices.', 'Check whether a local consumer group has surveyed prices near you.', 'Compare with national figures.'],
     cards: [
       ['https://www.funerals.org/', 'Funeral Consumers Alliance', 'US · nonprofit', 'Consumer advice and local groups, some of which survey funeral prices.'],
-      ['https://nfda.org/news/statistics', 'NFDA statistics', 'US · industry', 'National median funeral prices and cremation rates from the funeral directors\' association.'],
-      ['https://www.sunlife.co.uk/funeral-costs/', 'SunLife Cost of Dying report', 'UK · annual', 'The average cost of a funeral in the UK, published each year.'],
+      ['https://nfda.org/news/statistics', 'NFDA statistics', 'US · association', 'National median funeral prices and cremation rates from the funeral directors\' association.'],
+      ['https://www.moneyhelper.org.uk/en/family-and-care/death-and-bereavement/how-much-does-a-funeral-cost', 'MoneyHelper: how much does a funeral cost?', 'UK · government-backed', 'Typical UK funeral costs, and where to get help paying, from the government-backed MoneyHelper service.'],
     ],
     after: 'Your rights when buying a funeral in the US: <a href="/after-a-death/#rights">the FTC Funeral Rule</a>.',
   },
