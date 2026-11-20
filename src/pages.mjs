@@ -428,7 +428,7 @@ export function home(data) {
 <div class="plate-title">
 <p class="eyebrow">An atlas for the end of life</p>
 <h1>Every part of the end of life, explained.</h1>
-<p class="lead">Planning ahead, serious illness, the last weeks, what to do after a death, and grief. What to know, what to ask, and what the rules are where you live.</p>
+<p class="lead">One place for trustworthy end-of-life information, drawn only from governments, nonprofits and universities. No businesses, no ads and nothing for sale. <a href="/about/#evidence">How we choose sources</a>.</p>
 <div class="actions"><a class="btn" href="/for-myself/">I'm planning for myself</a><a class="btn btn-quiet" href="/for-someone-i-love/">I'm planning for someone I love</a></div>
 <p class="small" style="margin:14px 0 0">Has someone just died? <a href="/checklists/after-a-death/">The first 24 hours</a>.</p>
 <p class="small" style="margin:6px 0 0">Or <a href="/ask/">ask a question</a> in your own words.</p>

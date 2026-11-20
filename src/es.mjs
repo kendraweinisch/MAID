@@ -659,7 +659,7 @@ const inicio = {
 <div class="plate-title">
 <p class="eyebrow">Un atlas para el final de la vida</p>
 <h1>El final de la vida, explicado.</h1>
-<p class="lead">Planificar con tiempo, los cuidados, los últimos días, qué hacer después de una muerte y el duelo. Qué saber, qué preguntar y cuáles son las reglas donde usted vive.</p>
+<p class="lead">Un solo lugar con información confiable sobre el final de la vida, tomada solo de gobiernos, organizaciones sin fines de lucro y universidades. Sin empresas, sin anuncios y sin nada a la venta. <a href="/es/acerca/#fuentes-de-datos">Cómo elegimos las fuentes</a>.</p>
 <div class="actions"><a class="btn" href="/es/para-mi/">Planifico para mí</a><a class="btn btn-quiet" href="/es/para-un-ser-querido/">Planifico para un ser querido</a></div>
 <p class="small" style="margin:14px 0 0">¿Alguien acaba de morir? <a href="/es/primeras-24-horas/">Las primeras 24 horas</a>.</p>
 <p class="small" style="margin:6px 0 0">O <a href="/es/preguntar/">haga una pregunta</a> con sus propias palabras.</p>
