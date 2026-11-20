@@ -154,6 +154,8 @@ const INLINE = {
   '/plan-ahead/property-abroad/': [
     ['through a bank trust called a ', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
     ['notaries offer discounts of up to 50% on a will', 'https://www.gob.mx/testamento'],
+    ['can be made before a Costa Rican notary', 'https://www.tse.go.cr/pdf/normativa/codigonotarial.pdf'],
+    ['only if none of the heirs or other people with an interest is a minor', 'https://www.tse.go.cr/pdf/normativa/codigonotarial.pdf'],
     ['a clearance certificate from the Canada Revenue Agency', 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html'],
     ['Ontario issues a certificate of ancillary appointment', 'https://www.ontario.ca/page/estate-administration-tax'],
     ['UK inheritance tax applies to UK property', 'https://www.gov.uk/inheritance-tax'],
@@ -222,7 +224,7 @@ const SECTION_ICONS = {
   '/plan-ahead/': { directive: 'doc', proxy: 'people', steward: 'key', talk: 'talk', paperwork: 'check', wishes: 'tree', review: 'calendar' },
   '/plan-ahead/choices-for-the-body/': { overview: 'steps', traditional: 'burial', entombment: 'mausoleum', green: 'green', tree: 'tree', cremation: 'cremation', water: 'water', composting: 'compost', sea: 'sea', ashes: 'ashes', donation: 'donation', home: 'home', other: 'ask', greenest: 'green', choose: 'scale' },
   '/plan-ahead/wills-and-trusts/': { set: 'check', will: 'wills', valid: 'doc', spouses: 'people', trusts: 'shield', probate: 'steps', poa: 'hand', taxes: 'costs', digital: 'key', canada: 'globe', uk: 'globe', australia: 'globe', lawyer: 'scale', keep: 'calendar' },
-  '/plan-ahead/property-abroad/': { short: 'check', why: 'ask', mexico: 'globe', canada: 'globe', uk: 'globe', europe: 'globe', taxes: 'costs', checklist: 'steps', after: 'afterdeath' },
+  '/plan-ahead/property-abroad/': { short: 'check', why: 'ask', mexico: 'globe', 'costa-rica': 'globe', canada: 'globe', uk: 'globe', europe: 'globe', taxes: 'costs', checklist: 'steps', after: 'afterdeath' },
   '/plan-ahead/talking-with-a-parent/': { start: 'talk', what: 'ask', resist: 'hand', far: 'phone' },
   '/what-it-costs/': { short: 'check', medical: 'illness', hospice: 'bed', care: 'home', funeral: 'burial', maid: 'maid', lookup: 'help', save: 'shield' },
   '/last-weeks/signs-death-is-near/': { weeks: 'calendar', days: 'clock', hours: 'lastweeks', help: 'hand' },
@@ -305,7 +307,7 @@ ${s.html}
 const SEO_TITLES = {
   '/plan-ahead/': 'End-of-life planning: advance directive, living will and health care proxy',
   '/plan-ahead/wills-and-trusts/': 'Wills, trusts and probate: rules by US state, Canada, UK and Australia',
-  '/plan-ahead/property-abroad/': 'Wills for expats: property in Mexico, Canada, the UK and Europe',
+  '/plan-ahead/property-abroad/': 'Wills for expats: property in Mexico, Costa Rica, Canada, the UK and Europe',
   '/plan-ahead/talking-with-a-parent/': 'How to talk to aging parents about end-of-life wishes, near or far',
   '/plan-ahead/choices-for-the-body/': 'Green burial, human composting, aquamation, burial at sea: every option',
   '/serious-illness/': 'Serious illness: palliative care, hospice and POLST explained',
@@ -562,7 +564,7 @@ export const guides = [
       ['/checklists/plan-ahead/', 'Plan-ahead worksheet', 'Printable, no account needed.'],
       ['/plan-ahead/choices-for-the-body/', 'Every choice for the body', 'Burial, cremation, sea, trees, composting and more.'],
       ['/plan-ahead/wills-and-trusts/', 'Wills, trusts and the paperwork', 'What each document does, state by state.'],
-      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Canada, the UK and Europe.'],
+      ['/plan-ahead/property-abroad/', 'Property abroad', 'Wills for homes in Mexico, Costa Rica, Canada, the UK and Europe.'],
       ['/plan-ahead/talking-with-a-parent/', 'Talking with a parent', 'Near or far.'],
       ['/serious-illness/', 'Serious illness', 'If a diagnosis has already come.'],
     ],
@@ -759,7 +761,7 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
     path: '/plan-ahead/property-abroad/',
     title: 'Wills when you own property abroad',
     eyebrow: 'Plan ahead',
-    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Canada, the UK, Spain, Portugal, France and Italy.',
+    description: 'Wills and inheritance for people who own a home in another country, including Mexico, Costa Rica, Canada, the UK, Spain, Portugal, France and Italy.',
     lead: "If you own a home in another country, your will at home may not be enough. Here's what to check, with notes on the countries where expats most often own property.",
     sections: [
       { id: 'short', h: 'The short version', html: `<ul>
@@ -773,6 +775,11 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
 <li><strong>A Mexican will.</strong> Expats are usually advised to make a Mexican will, a <em lang="es">testamento público abierto</em>, before a Mexican notary (<span lang="es">notario público</span>), in Spanish. It covers assets outside the trust, such as bank accounts and cars.</li>
 <li><strong>Using a US will.</strong> A US will can be valid in Mexico, but heirs usually have to settle it in the US first and then have it recognized in Mexico, which is slow and expensive.</li>
 <li><strong>Will Month.</strong> Every September is <em lang="es">Mes del Testamento</em> (Will Month), a national campaign run with the states: notaries offer discounts of up to 50% on a will, and free advice.</li></ul>` },
+      { id: 'costa-rica', h: 'Costa Rica', html: `<ul>
+<li><strong>A will before a notary.</strong> A will can be made before a Costa Rican notary (<span lang="es">notario público</span>). If you don't speak Spanish, the law requires interpreters, so ask the notary to arrange them.</li>
+<li><strong>A sealed will.</strong> You can also hand a notary your will in a sealed envelope (a <em lang="es">testamento cerrado</em>). You, the notary and two witnesses sign the record, and the envelope is returned to you.</li>
+<li><strong>Settling the estate.</strong> A notary can settle the estate instead of a court, with or without a will, but only if none of the heirs or other people with an interest is a minor or legally incapacitated. If anyone asks the notary to stop, objects in writing, or a dispute arises, the notary must pass the case to the court.</li>
+<li><strong>Get local advice</strong> from a Costa Rican notary or lawyer about how your property there is held and who would inherit it.</li></ul>` },
       { id: 'canada', h: 'Canada', html: `<ul>
 <li><strong>No inheritance tax, but capital gains.</strong> Canada has no inheritance or estate tax. Instead, death counts as selling your property at its market value, so capital gains tax may be due on a Canadian cottage or rental property on your final tax return.</li>
 <li><strong>Clearance before heirs are paid.</strong> Before handing property to heirs, the executor can ask for a clearance certificate from the Canada Revenue Agency. It confirms the taxes owed have been paid, so the executor isn't personally liable for them later.</li>
@@ -803,6 +810,7 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
     sources: [
       ['American Bar Association: foreign ownership of property in Mexico’s restricted zone (2026)', 'https://www.americanbar.org/groups/real_property_trust_estate/resources/probate-property/2026-may-june/legal-ownership-real-property-mexican-restricted-zone-by-foreign-investors/'],
       ['Government of Mexico: Will Month (Spanish)', 'https://www.gob.mx/testamento'],
+      ['Costa Rica Notarial Code, published by the Supreme Electoral Tribunal (PDF, Spanish)', 'https://www.tse.go.cr/pdf/normativa/codigonotarial.pdf'],
       ['Canada Revenue Agency: apply for a clearance certificate', 'https://www.canada.ca/en/revenue-agency/services/tax/individuals/life-events/doing-taxes-someone-died/clearance-certificate.html'],
       ['Ontario: Estate Administration Tax', 'https://www.ontario.ca/page/estate-administration-tax'],
       ['GOV.UK: how Inheritance Tax works', 'https://www.gov.uk/inheritance-tax'],
