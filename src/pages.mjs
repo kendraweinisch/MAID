@@ -127,6 +127,12 @@ const INLINE = {
     ["a legal document that says what medical care you want if you can't speak for yourself", 'https://www.nia.nih.gov/health/advance-care-planning/advance-care-planning-advance-directives-health-care'],
   ],
   '/plan-ahead/choices-for-the-body/': [
+    ['needs written approval from the local board of health', 'https://www.mass.gov/info-details/information-for-local-boards-of-health-on-home-burials-and-green-burials'],
+    ['reviews and approves private burial grounds', 'https://portal.ct.gov/dph/programs/health-and-the-environment/environmental-engineering-program/disposition-of-human-remains'],
+    ['state law says little about burial on private property', 'https://dec.alaska.gov/eh/solid-waste/how-do-i-dispose-of/burial-on-private-property'],
+    ['a burial on your own land is legal', 'https://www.eastherts.gov.uk/environmental-health/home-burials'],
+    ['at least 250 metres from any well', 'https://www.netregs.org.uk/households/private-burials/'],
+    ['NC State Extension explains', 'https://content.ces.ncsu.edu/grave-matters-a-brief-on-access-and-maintenance-rights-to-grave-sites-on-private-land'],
     ['Anatomists recommend a university medical school or a state anatomical program', 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
     ['The EPA must be told within 30 days', 'https://www.epa.gov/ocean-dumping/burial-sea'],
     ['needs a marine licence from the Marine Management Organisation', 'https://www.gov.uk/burial-at-sea'],
@@ -222,7 +228,7 @@ const GLANCE = {
 // An icon for each section of a guide (falls back to a section number).
 const SECTION_ICONS = {
   '/plan-ahead/': { directive: 'doc', proxy: 'people', steward: 'key', talk: 'talk', paperwork: 'check', wishes: 'tree', review: 'calendar' },
-  '/plan-ahead/choices-for-the-body/': { overview: 'steps', traditional: 'burial', entombment: 'mausoleum', green: 'green', tree: 'tree', cremation: 'cremation', water: 'water', composting: 'compost', sea: 'sea', ashes: 'ashes', donation: 'donation', home: 'home', other: 'ask', greenest: 'green', choose: 'scale' },
+  '/plan-ahead/choices-for-the-body/': { overview: 'steps', traditional: 'burial', entombment: 'mausoleum', green: 'green', tree: 'tree', cremation: 'cremation', water: 'water', composting: 'compost', sea: 'sea', ashes: 'ashes', donation: 'donation', home: 'home', backyard: 'home', other: 'ask', greenest: 'green', choose: 'scale' },
   '/plan-ahead/wills-and-trusts/': { set: 'check', will: 'wills', valid: 'doc', spouses: 'people', trusts: 'shield', probate: 'steps', poa: 'hand', taxes: 'costs', digital: 'key', canada: 'globe', uk: 'globe', australia: 'globe', lawyer: 'scale', keep: 'calendar' },
   '/plan-ahead/property-abroad/': { short: 'check', why: 'ask', mexico: 'globe', 'costa-rica': 'globe', canada: 'globe', uk: 'globe', europe: 'globe', taxes: 'costs', checklist: 'steps', after: 'afterdeath' },
   '/plan-ahead/talking-with-a-parent/': { start: 'talk', what: 'ask', resist: 'hand', far: 'phone' },
@@ -616,6 +622,13 @@ ${dirCard('https://www.organtissuedonation.ca/', 'Organ and tissue donation in C
 ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register on the Australian Organ Donor Register.')}
 </div>` },
       { id: 'home', h: 'A home funeral', html: `<p>Whatever the final choice, a family can care for the body at home for a day or more before burial or cremation: washing, dressing and sitting with them. Most US states allow families to do this; some require a funeral director for certain steps. End-of-life doulas can help.</p>` },
+      { id: 'backyard', h: 'Can I be buried in my own backyard?', html: `<p>Sometimes. It depends on where you live, and local rules often matter as much as national or state law. Ask before you plan it, not after a death.</p>
+<ul>
+<li><strong>United States:</strong> each state sets its own rules, and counties and towns often add zoning and health rules. In Massachusetts, a home burial needs written approval from the local board of health and the local government, and the state recommends keeping a grave at least 300 feet from a private well. In Connecticut, the Department of Public Health reviews and approves private burial grounds. In Alaska, state law says little about burial on private property, so check the local rules.</li>
+<li><strong>England:</strong> a burial on your own land is legal if the death has been registered and the registrar has issued the certificate for burial, the freeholder agrees, nothing in the property's deeds forbids it, and the landowner keeps a burial register. The Environment Agency must be satisfied that the grave is far enough from water, such as at least 50 metres from a well, borehole or spring.</li>
+<li><strong>Scotland and Northern Ireland:</strong> talk to your local council and the police in advance. The grave should be at least 250 metres from any well, spring or borehole used for drinking water. Mark the grave clearly and keep a record of where it is.</li>
+<li><strong>Elsewhere:</strong> ask your local council, health department or a funeral director what applies where you live.</li></ul>
+<p><strong>Think about the future, too.</strong> A grave stays with the land when the land is sold, so East Herts Council advises recording the burial on the property's deeds for future buyers. Family graves can end up on land the family no longer owns; NC State Extension explains what rights families may have to visit and care for them.</p>` },
       { id: 'other', h: 'Other choices people ask about', html: `<p><strong>Cryonics</strong> preserves a body or brain at very low temperatures in the hope that future science could revive it. It is very expensive, offered by only a few organizations, and there is no evidence yet that revival is possible.</p>` },
       { id: 'greenest', h: 'Which choice is the most environmentally friendly?', html: `<p><strong>Natural (green) burial is generally the lowest-impact choice,</strong> especially in a conservation burial ground where the land is protected for good.</p>
 <p>A <a href="https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf">review by the Green Burial Council</a>, a nonprofit, finds that flame cremation has the highest carbon footprint of the common methods, and notes that it also releases mercury.</p>
@@ -639,6 +652,12 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
       ['GOV.UK: burial at sea', 'https://www.gov.uk/burial-at-sea'],
       ['Montana Legislature: background paper on natural organic reduction and alkaline hydrolysis (January 2026, PDF)', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
       ['Green Burial Council', 'https://www.greenburialcouncil.org/'],
+      ['Massachusetts: home burials and green burials, for local boards of health', 'https://www.mass.gov/info-details/information-for-local-boards-of-health-on-home-burials-and-green-burials'],
+      ['Connecticut Department of Public Health: private burial grounds and disposition of human remains', 'https://portal.ct.gov/dph/programs/health-and-the-environment/environmental-engineering-program/disposition-of-human-remains'],
+      ['Alaska Department of Environmental Conservation: burial on private property', 'https://dec.alaska.gov/eh/solid-waste/how-do-i-dispose-of/burial-on-private-property'],
+      ['East Herts Council (England): home burials', 'https://www.eastherts.gov.uk/environmental-health/home-burials'],
+      ['NetRegs (SEPA and NIEA): private burials in Scotland and Northern Ireland', 'https://www.netregs.org.uk/households/private-burials/'],
+      ['NC State Extension: access and maintenance rights to grave sites on private land', 'https://content.ces.ncsu.edu/grave-matters-a-brief-on-access-and-maintenance-rights-to-grave-sites-on-private-land'],
       ['American Association for Anatomy: a discussion on body donation', 'https://anatomy.org/AAA/About-AAA/What-Is-Anatomy/Body-Donation-Discussion.aspx'],
       ['Funeral Consumers Alliance', 'https://www.funerals.org/'],
       ['Green Burial Council: environmental benefits and costs of disposition (PDF)', 'https://www.greenburialcouncil.org/wp-content/uploads/2025/10/The-Potential-Environmental-Benefits-and-Costs-of-Disposition-Revised-9.30.24-1.pdf'],
