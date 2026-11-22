@@ -1603,7 +1603,7 @@ ${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', '
       { id: 'founder', h: 'A note from the founder', html: `<div class="founder-note">
 <p>I built End of Life Atlas to bring the trustworthy information about the end of life together in one place, without judgment or bias.</p>
 <p>Anyone who has watched someone they love wither and die knows how scattered that information is, and how rarely a guide tells you what it's really like. Many tell you what to do, or nudge you toward one choice. I wanted something different: one place, for anyone in any country, that gathers what governments, nonprofits and universities publish, explains every option plainly, and respects each person's right to die with dignity.</p>
-<p>I'm an expat, and I worry about my mom back in the United States. When you live far from the people you love, you can't just drive over and work things out. You need clear information about the rules where they are, and where you are. That's why this atlas covers more than one country, and why it will keep adding more.</p>
+<p>I'm an expat, and I worry about my parents back in the United States. When you live far from the people you love, you can't just drive over and work things out. You need clear information about the rules where they are, and where you are. That's why this atlas covers more than one country, and why it will keep adding more.</p>
 <p>Whatever you're facing, and wherever you are, I hope you find what you need here, and that you feel respected while you look.</p>
 <p class="signature">KW</p>
 </div>` },
