@@ -81,7 +81,7 @@ const acerca = esGuide({
     { id: 'fundadora', h: 'Una nota de quien lo creó', icon: 'self', html: `<div class="founder-note">
 <p>Creé End of Life Atlas para reunir en un solo lugar la información confiable sobre el final de la vida, sin juicios ni sesgos.</p>
 <p>Quien ha visto a alguien que quiere consumirse y morir sabe lo dispersa que está esa información, y qué pocas guías cuentan cómo es de verdad. Muchas te dicen qué hacer, o te empujan hacia una opción. Yo quería algo distinto: un solo lugar, para cualquier persona en cualquier país, que reúna lo que publican los gobiernos, las organizaciones sin fines de lucro y las universidades, explique cada opción con claridad y respete el derecho de cada persona a morir con dignidad.</p>
-<p>Vivo en el extranjero, y me preocupo por mi madre en Estados Unidos. Cuando vives lejos de las personas que quieres, no puedes ir en coche a resolver las cosas. Necesitas información clara sobre las reglas de donde están ellas y de donde estás tú. Por eso este atlas cubre más de un país, y por eso seguirá añadiendo más.</p>
+<p>Vivo en el extranjero, y me preocupo por mis padres en Estados Unidos. Cuando vives lejos de las personas que quieres, no puedes ir en coche a resolver las cosas. Necesitas información clara sobre las reglas de donde están ellos y de donde estás tú. Por eso este atlas cubre más de un país, y por eso seguirá añadiendo más.</p>
 <p>Sea lo que sea lo que está afrontando, y esté donde esté, espero que encuentre aquí lo que necesita, y que se sienta respetado mientras lo busca.</p>
 <p class="signature">KW</p>
 </div>` },
