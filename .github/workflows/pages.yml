@@ -19,11 +19,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Served at https://kendraweinisch.github.io/MAID/ until eolatlas.org is connected.
-      # After connecting the domain, set the repository variable BASE_PATH to "/"
-      # and SITE_PUBLIC_URL to "https://eolatlas.org".
-      BASE_PATH: ${{ vars.BASE_PATH || '/MAID' }}
-      SITE_PUBLIC_URL: ${{ vars.SITE_PUBLIC_URL || 'https://kendraweinisch.github.io/MAID' }}
+      # Served at https://eolatlas.org (custom domain set in Settings > Pages).
+      BASE_PATH: ${{ vars.BASE_PATH || '/' }}
+      SITE_PUBLIC_URL: ${{ vars.SITE_PUBLIC_URL || 'https://eolatlas.org' }}
       # Set the repository variable SITE_INDEXABLE to "true" at launch.
       SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
       # GoatCounter analytics code (the part before .goatcounter.com).

@@ -62,24 +62,26 @@ information carried by color alone. The public statement is `/accessibility/`.
 
 1. In the repo: **Settings > Pages > Build and deployment > Source: GitHub Actions**.
 2. Re-run the latest "Deploy to GitHub Pages" workflow (**Actions** tab), or merge any change.
-3. The site appears at https://kendraweinisch.github.io/MAID/
+3. The site appears at https://eolatlas.org (the old https://kendraweinisch.github.io/MAID/ address forwards there).
 
 Settings live in **Settings > Secrets and variables > Actions > Variables**:
 
 | Variable | Default | What it does |
 |---|---|---|
-| `BASE_PATH` | `/MAID` | Sub-folder the site is served from. Set to `/` once eolatlas.org is connected. |
-| `SITE_PUBLIC_URL` | `https://kendraweinisch.github.io/MAID` | The site's public address (used after a suggestion is sent). Set to `https://eolatlas.org` once connected. |
+| `BASE_PATH` | `/` | Sub-folder the site is served from. Only needed if the site moves back under a sub-folder, such as `/MAID`. |
+| `SITE_PUBLIC_URL` | `https://eolatlas.org` | The site's public address (used after a suggestion is sent). |
 | `FORMS_ACCESS_KEY` | the site's Web3Forms key | Web3Forms access key for the suggestions form (public by design). To change where suggestions go, get a new key at web3forms.com and set this variable. |
 | `GOATCOUNTER_CODE` | `eolatlas` | GoatCounter analytics code. |
 | `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
 
-### Connecting eolatlas.org
+### eolatlas.org (connected November 2026)
+
+The domain is registered at Namecheap. To set it up again:
 
 1. Buy the domain.
 2. **Settings > Pages > Custom domain**: enter `eolatlas.org`, then tick **Enforce HTTPS** once it's offered.
 3. At your domain registrar, add the DNS records GitHub shows (four `A` records for the bare domain, and a `CNAME` for `www` pointing to `kendraweinisch.github.io`).
-4. Set `BASE_PATH` to `/` and `SITE_PUBLIC_URL` to `https://eolatlas.org`, then re-run the workflow.
+4. Re-run the workflow. `BASE_PATH` and `SITE_PUBLIC_URL` already default to the domain.
 
 ### Netlify (the previous host)
 
