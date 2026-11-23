@@ -60,6 +60,7 @@
     nursing: 'nursing home care', 'care home': 'nursing home care', hospice: 'hospice palliative',
     backyard: 'backyard burial own land', 'own land': 'backyard burial own land', 'home burial': 'backyard burial own land', garden: 'backyard burial own land',
     movie: 'movies pill how long medical aid dying', movies: 'movies pill how long medical aid dying', pill: 'pill movies medical aid dying', 'how long': 'how long minutes hours',
+    'pet trust': 'pets pet trust caregiver will', 'my dog': 'pets pet trust caregiver will', 'my cat': 'pets pet trust caregiver will', 'pets after': 'pets pet trust caregiver will',
     pain: 'pain comfort suffering', grief: 'grief grieving', grieving: 'grief grieving', funeral: 'funeral burial cremation'
   };
 
@@ -73,6 +74,7 @@
     testamento: 'testamento testamentos albacea', herencia: 'herencia sucesion testamento', mexico: 'mexico fideicomiso notario', fideicomiso: 'fideicomiso', costo: 'cuesta costos precio', precio: 'cuesta costos precio', cuesta: 'cuesta costos', funeral: 'funeral funeraria entierro cremacion', imprimir: 'imprimir lista hoja', hoja: 'hoja imprimir',
     patio: 'patio enterrar terreno', jardin: 'patio enterrar terreno', terreno: 'patio enterrar terreno', finca: 'patio enterrar terreno',
     pelicula: 'peliculas pastilla cuanto tarda muerte asistida', peliculas: 'peliculas pastilla cuanto tarda muerte asistida', pastilla: 'pastilla peliculas muerte asistida', tarda: 'cuanto tarda minutos horas',
+    'fideicomiso para mascotas': 'mascotas fideicomiso cuidar testamento', 'mis mascotas': 'mascotas fideicomiso cuidar testamento', 'mi perro': 'mascotas cuidar testamento', 'mi gato': 'mascotas cuidar testamento',
     duelo: 'duelo', luto: 'duelo', eutanasia: 'eutanasia muerte asistida', 'suicidio asistido': 'suicidio asistido muerte', suiza: 'suiza dignitas pegasos', 'muerte digna': 'muerte digna asistida', dolor: 'dolor alivio'
   };
   if (ES) SYNONYMS = SYNONYMS_ES;
