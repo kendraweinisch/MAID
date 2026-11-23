@@ -169,9 +169,22 @@ const proceso = esGuide({
 <li class="stop"><span class="stop-n" aria-hidden="true">4</span><div class="stop-card"><h3>Solicitud por escrito</h3><p>Un formulario firmado, normalmente con testigos, y luego la receta.</p></div></li>
 <li class="stop"><span class="stop-n" aria-hidden="true">5</span><div class="stop-card"><h3>Decidir si y cuándo</h3><p>Tener la receta no significa que deba usarla.</p></div></li>
 </ol>` },
+    { id: 'peliculas', h: '¿Es como en las películas?', icon: 'clock', html: `<p>No del todo. En las películas, alguien se toma una pastilla y muere en paz en unos segundos. La muerte médicamente asistida real suele ser más lenta, y cambia de una persona a otra.</p>
+<ul>
+<li><strong>No suele ser una sola pastilla.</strong> En Oregón, los médicos suelen recetar una combinación de varios medicamentos (diazepam, digoxina, morfina, amitriptilina y fenobarbital), que la propia persona toma.</li>
+<li><strong>El sueño llega pronto.</strong> En Oregón, las personas ${enLink('https://www.oregon.gov/oha/PH/PROVIDERPARTNERRESOURCES/EVALUATIONRESEARCH/DEATHWITHDIGNITYACT/Documents/year28.pdf', 'perdieron el conocimiento una mediana de 5 minutos después de tomar el medicamento')}.</li>
+<li><strong>La muerte suele tardar más.</strong> En 2025, la mediana entre tomar el medicamento y la muerte fue de 46 minutos. Fue de 3 minutos a 123 horas, es decir, algo más de cinco días.</li>
+<li><strong>Los problemas son poco comunes, pero ocurren.</strong> De 3.691 muertes registradas en Oregón desde 1998, en 66 hubo dificultad para tragar o se devolvió el medicamento, en 5 hubo convulsiones, y 9 personas recuperaron el conocimiento. Las complicaciones solo se registran cuando había un profesional de la salud presente, y muchos registros no dicen nada al respecto.</li>
+<li><strong>Donde un profesional administra el medicamento,</strong> la persona no tiene que tragarlo. En 2024, ${enLink('https://www.canada.ca/en/health-canada/services/publications/health-system-services/annual-report-medical-assistance-dying-2024.html', 'todos los casos de asistencia médica para morir en Canadá los administró un profesional')}.</li>
+</ul>
+<p>Si piensa estar presente, pregunte al profesional que receta qué esperar, cuánto puede tardar y a quién llamar si algo no sale como estaba previsto. Cuente con la posibilidad de horas, no de minutos. Vea también la <a href="${MAID_ES}/familias/">orientación para familias</a>.</p>` },
     { id: 'pronto', h: 'Por qué importa empezar pronto', icon: 'clock', html: `<p>Toda persona que lo pide debe poder tomar y comunicar su propia decisión en cada paso. Si la enfermedad le quita esa capacidad, el proceso se detiene. Empezar la conversación pronto mantiene la opción abierta, aunque nunca la use.</p>` },
     { id: 'si-no', h: 'Si su médico no quiere participar', icon: 'help', html: `<p>Los médicos y los hospicios pueden negarse. Pida que le deriven a uno que sí participe. Los equipos de hospicio y los grupos locales que apoyan la muerte médicamente asistida suelen saber qué profesionales participan donde usted vive.</p>` },
     { id: 'hospicio', h: 'Junto con el hospicio', icon: 'bed', html: `<p>Muchas personas que piden la muerte médicamente asistida también están en un hospicio. Los <a href="/es/cuidados-paliativos-y-hospicio/">cuidados paliativos y el hospicio</a> siguen disponibles decida lo que decida.</p>` },
+  ],
+  sources: [
+    ['Autoridad de Salud de Oregón: datos de 2025 de la Ley de Muerte con Dignidad (PDF, en inglés)', 'https://www.oregon.gov/oha/PH/PROVIDERPARTNERRESOURCES/EVALUATIONRESEARCH/DEATHWITHDIGNITYACT/Documents/year28.pdf'],
+    ['Salud Canadá: sexto informe anual sobre la asistencia médica para morir (2024, en inglés)', 'https://www.canada.ca/en/health-canada/services/publications/health-system-services/annual-report-medical-assistance-dying-2024.html'],
   ],
   related: [
     [`${MAID_ES}/`, 'Dónde es legal', 'Todos los lugares que cubrimos.', 'maid'],
