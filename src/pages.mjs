@@ -191,6 +191,10 @@ const INLINE = {
   '/after-a-death/': [
     ['the FTC Funeral Rule', 'https://consumer.ftc.gov/articles/ftc-funeral-rule'],
   ],
+  '/medical-aid-in-dying/process/': [
+    ['a median of 5 minutes after taking the medication', 'https://www.oregon.gov/oha/PH/PROVIDERPARTNERRESOURCES/EVALUATIONRESEARCH/DEATHWITHDIGNITYACT/Documents/year28.pdf'],
+    ['every case of medical assistance in dying in Canada was given by a practitioner', 'https://www.canada.ca/en/health-canada/services/publications/health-system-services/annual-report-medical-assistance-dying-2024.html'],
+  ],
   '/medical-aid-in-dying/switzerland/': [
   ],
 };
@@ -241,7 +245,7 @@ const SECTION_ICONS = {
   '/serious-illness/': { palliative: 'hand', hospice: 'bed', polst: 'doc', where: 'home', ask: 'ask', caregivers: 'people', choices: 'scale' },
   '/last-weeks/': { honest: 'lastweeks', comfort: 'hand', dignity: 'shield', doulas: 'people', goodbye: 'loved', prepare: 'check' },
   '/after-a-death/': { 'first-hours': 'phone', certificates: 'doc', options: 'burial', rights: 'shield', 'first-month': 'calendar', probate: 'wills' },
-  '/medical-aid-in-dying/process/': { steps: 'steps', early: 'clock', decline: 'help', hospice: 'bed' },
+  '/medical-aid-in-dying/process/': { steps: 'steps', movies: 'clock', early: 'clock', decline: 'help', hospice: 'bed' },
   '/medical-aid-in-dying/families/': { talking: 'talk', day: 'calendar', insurance: 'doc', grief: 'grief' },
   '/medical-aid-in-dying/switzerland/': { why: 'scale', involves: 'steps', costs: 'costs', risk: 'shield' },
   '/about/': { founder: 'self', covers: 'steps', for: 'people', principles: 'scale', not: 'shield', funding: 'costs', editorial: 'check', evidence: 'doc', reviewers: 'people', access: 'globe', help: 'hand', contact: 'talk', faq: 'ask' },
@@ -1482,9 +1486,22 @@ export const maidPages = [
 <li class="stop"><span class="stop-n" aria-hidden="true">4</span><div class="stop-card"><h3>Written request</h3><p>A signed form, usually with witnesses, then the prescription.</p></div></li>
 <li class="stop"><span class="stop-n" aria-hidden="true">5</span><div class="stop-card"><h3>Decide if and when</h3><p>Having the prescription doesn't mean you must use it.</p></div></li>
 </ol>` },
+      { id: 'movies', h: 'Is it like in the movies?', html: `<p>Not quite. In films, someone swallows a pill and dies peacefully within seconds. Real medical aid in dying is usually slower, and it varies from person to person.</p>
+<ul>
+<li><strong>It isn't usually one pill.</strong> In Oregon, doctors most often prescribe a combination of several medicines (diazepam, digoxin, morphine, amitriptyline and phenobarbital), which the person takes themselves.</li>
+<li><strong>Sleep comes quickly.</strong> In Oregon, people became unconscious a median of 5 minutes after taking the medication.</li>
+<li><strong>Death usually takes longer.</strong> In 2025, the median time from taking the medication to death was 46 minutes. It ranged from 3 minutes to 123 hours, which is just over five days.</li>
+<li><strong>Problems are uncommon, but they happen.</strong> Of 3,691 deaths reported in Oregon since 1998, 66 involved difficulty swallowing or bringing the medication back up, 5 involved seizures, and 9 people regained consciousness. Complications are recorded only when a health care provider was there, and many records don't say either way.</li>
+<li><strong>Where a clinician gives the medication,</strong> the person doesn't have to swallow it. In 2024, every case of medical assistance in dying in Canada was given by a practitioner.</li>
+</ul>
+<p>If you plan to be there, ask the prescribing clinician what to expect, how long it might take, and who to call if something doesn't go as planned. Plan for the possibility of hours, not minutes. See also <a href="/medical-aid-in-dying/families/">guidance for families</a>.</p>` },
       { id: 'early', h: 'Why starting early matters', html: `<p>Everyone who asks must be able to make and communicate their own decision at every step. If illness takes that ability away, the process stops. Starting the conversation early keeps the option open, even if you never use it.</p>` },
       { id: 'decline', h: "If your doctor won't take part", html: `<p>Doctors and hospices can decline. Ask for a referral to one who does. Hospice teams and local aid-in-dying advocacy groups often know which clinicians take part where you live.</p>` },
       { id: 'hospice', h: 'Alongside hospice', html: `<p>Many people who ask for medical aid in dying are also in hospice. <a href="/serious-illness/">Hospice and palliative care</a> remain available whatever you decide.</p>` },
+    ],
+    sources: [
+      ['Oregon Health Authority: Death with Dignity Act 2025 data summary (PDF)', 'https://www.oregon.gov/oha/PH/PROVIDERPARTNERRESOURCES/EVALUATIONRESEARCH/DEATHWITHDIGNITYACT/Documents/year28.pdf'],
+      ['Health Canada: sixth annual report on medical assistance in dying (2024)', 'https://www.canada.ca/en/health-canada/services/publications/health-system-services/annual-report-medical-assistance-dying-2024.html'],
     ],
     related: [
       [`${MAID}/`, 'Where it is legal', 'Every place we cover.'],
