@@ -180,11 +180,28 @@ const ES_FOOTER = `<footer class="site-footer">
 </div>
 </footer>`;
 
+// Google shows about 155 to 160 characters of a description. Keep whole
+// sentences where possible.
+function metaDesc(d = '') {
+  if (d.length <= 160) return d;
+  const cut = d.slice(0, 160);
+  const end = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('? '));
+  if (end >= 90) return cut.slice(0, end + 1);
+  return cut.slice(0, 157).replace(/[\s,;:]+\S*$/, '') + '…';
+}
+
 export function layout(page) {
   const { path, title, description, body, crisis = false, seoTitle } = page;
   const es = path.startsWith('/es/');
   const t = es ? ES_UI : EN_UI;
-  const fullTitle = path === '/' ? `${site.name}: ${site.tagline}` : path === '/es/' ? `${site.name}: ${ES_UI.tagline}` : `${seoTitle || title} | ${site.name}`;
+  // Google shows about 60 characters of a title: lead with the words people
+  // search for, and add the site name only when it still fits.
+  const baseTitle = seoTitle || title;
+  const branded = `${baseTitle} | ${site.name}`;
+  const fullTitle = path === '/' ? `${site.name}: free end-of-life planning and grief guide`
+    : path === '/es/' ? `${site.name}: guía gratuita sobre el final de la vida`
+    : branded.length <= 60 ? branded : baseTitle;
+  const metaDescription = metaDesc(description);
   const enPath = es ? EN_PAIRS[path] : path;
   const esPath = es ? path : ES_PAIRS[path];
   const alternates = enPath && esPath
@@ -202,11 +219,11 @@ export function layout(page) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(fullTitle)}</title>
-<meta name="description" content="${esc(description)}">
+<meta name="description" content="${esc(metaDescription)}">
 <link rel="canonical" href="${site.url}${path}">
 ${alternates}
 <meta property="og:title" content="${esc(fullTitle)}">
-<meta property="og:description" content="${esc(description)}">
+<meta property="og:description" content="${esc(metaDescription)}">
 <meta property="og:url" content="${site.url}${path}">
 <meta property="og:site_name" content="${site.name}">
 <meta property="og:type" content="website">

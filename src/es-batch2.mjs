@@ -9,7 +9,7 @@ const MAID_ES = '/es/muerte-medicamente-asistida';
 export const enfermedad = esGuide({
   path: '/es/enfermedad-grave/',
   title: 'Enfermedad grave',
-  seoTitle: 'Enfermedad grave: cuidados paliativos, hospicio y POLST, explicados',
+  seoTitle: 'Enfermedad grave: cuidados paliativos, hospicio y POLST',
   eyebrow: 'Etapa 2',
   icon: 'illness',
   description: 'Cuidados paliativos, hospicio, formularios POLST, los cuidados en casa y las preguntas que hacer después de un diagnóstico grave.',
@@ -80,7 +80,7 @@ export const ultimas = esGuide({
 export const opciones = esGuide({
   path: '/es/opciones-cerca-del-final/',
   title: 'Opciones cerca del final de la vida',
-  seoTitle: 'Opciones al final de la vida: tratamiento, hospicio, dejar un tratamiento, POLST y muerte asistida',
+  seoTitle: 'Opciones al final de la vida: tratamiento, hospicio y POLST',
   eyebrow: 'Enfermedad grave',
   icon: 'scale',
   description: 'Todas las opciones cerca del final de la vida: todos los tratamientos, solo cuidados de alivio, dejar un tratamiento, la RCP y las órdenes médicas, la sedación, dejar de comer y beber, la muerte médicamente asistida y dónde estar.',
@@ -122,7 +122,7 @@ export const opciones = esGuide({
 export const certificados = esGuide({
   path: '/es/certificados-de-defuncion/',
   title: '¿Cuántos certificados de defunción necesita?',
-  seoTitle: '¿Cuántos certificados de defunción necesito? Quién los pide y cómo obtenerlos',
+  seoTitle: '¿Cuántos certificados de defunción necesito?',
   eyebrow: 'Después de una muerte',
   icon: 'doc',
   description: 'Cuántas copias certificadas del certificado de defunción pedir, quién las necesita, cómo pedirlas y qué hacer si la muerte ocurrió en el extranjero.',
@@ -150,7 +150,7 @@ export const certificados = esGuide({
 export const hablar = esGuide({
   path: '/es/hablar-con-un-padre/',
   title: 'Hablar con un padre, de cerca o de lejos',
-  seoTitle: 'Cómo hablar con padres mayores sobre sus deseos al final de la vida, de cerca o de lejos',
+  seoTitle: 'Cómo hablar con sus padres sobre el final de la vida',
   eyebrow: 'Planificar',
   icon: 'talk',
   description: 'Cómo empezar la conversación con un padre o una madre sobre el final de la vida, qué preguntar, qué hacer si no quiere hablar, y cómo ayudar cuando vive lejos.',

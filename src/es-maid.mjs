@@ -30,7 +30,7 @@ function hub() {
   return {
     path: `${MAID_ES}/`,
     title: 'Muerte médicamente asistida',
-    seoTitle: 'Eutanasia, suicidio asistido y muerte médicamente asistida: dónde es legal',
+    seoTitle: 'Eutanasia y suicidio asistido: dónde es legal',
     article: { modified: site.lastScan },
     crisis: true,
     faq: [
@@ -116,7 +116,7 @@ function placePageEs(p) {
   return {
     path: `${MAID_ES}/lugares/${p.slug}/`,
     title: `Muerte médicamente asistida en ${e.name}`,
-    seoTitle: `${term(p)} en ${e.name}: ¿es legal?`,
+    seoTitle: p.region === 'us' ? `Suicidio asistido en ${e.name}: la ley de muerte asistida` : `${term(p)} en ${e.name}: ¿es legal?`,
     article: { modified: p.verified || site.lastScan },
     crisis: true,
     description: `${term(p)} en ${e.name}: ${e.statusLabel}. ${e.summary}`,

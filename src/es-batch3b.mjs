@@ -32,7 +32,7 @@ const barra = (name, v, best) => `<li${best ? ' class="bar-best"' : ''}><div cla
 export const cuerpo = esGuide({
   path: CUERPO,
   title: 'Todas las opciones para el cuerpo',
-  seoTitle: 'Entierro ecológico, compostaje humano, cremación con agua, entierro en el mar: todas las opciones',
+  seoTitle: 'Entierro ecológico, compostaje humano y cremación con agua',
   eyebrow: 'Planificar',
   icon: 'tree',
   description: 'Todas las opciones para el cuerpo después de la muerte: entierro tradicional, mausoleos, entierro ecológico, bajo un árbol, cremación, cremación con agua, compostaje humano, entierro en el mar, las cenizas y la donación.',
@@ -240,7 +240,7 @@ const totalFuentes = TAREAS.reduce((n, t) => n + t.cards.length, 0);
 export const baseDatos = esGuide({
   path: '/es/base-de-datos-de-costos/',
   title: 'Base de datos de costos: dónde consultar precios reales',
-  seoTitle: 'Bases de datos de costos de salud y funerales: dónde consultar los precios del final de la vida',
+  seoTitle: 'Bases de datos de costos médicos y de funerales',
   eyebrow: 'Base de datos de costos',
   icon: 'costs',
   description: `${totalFuentes} bases de datos y herramientas públicas y gratuitas para consultar costos de hospitales, hospicios, cuidados a largo plazo y funerales, según lo que quiera saber.`,

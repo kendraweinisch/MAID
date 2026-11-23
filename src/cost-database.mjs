@@ -128,7 +128,7 @@ ${t.after ? `<p class="small" style="margin-top:14px">${t.after}</p>` : ''}`
 const dbPage = {
   path: `${DB}/`,
   title: 'Cost database: where to look up real prices',
-  seoTitle: 'Healthcare and funeral cost databases: where to look up end-of-life prices',
+  seoTitle: 'Hospital, care and funeral cost databases: where to look',
   description: `${total} free public databases and tools for looking up hospital, hospice, long-term care and funeral costs, organized by what you want to find out.`,
   body: `
 <section class="page-hero">

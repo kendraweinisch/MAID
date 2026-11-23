@@ -265,6 +265,7 @@ export function printablesIndex(existing) {
   return {
     path: '/checklists/',
     title: 'Free printables',
+    seoTitle: 'Free end-of-life checklists and planners to print',
     description: 'Free printable end-of-life worksheets, checklists and children\'s remembering books. No account, no email.',
     body: `
 <section class="section"><div class="wrap">

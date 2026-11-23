@@ -295,7 +295,7 @@ export const ES_BINDER = [
 const indice = {
   path: `${P}/`,
   title: 'Hojas gratuitas para imprimir',
-  seoTitle: 'Hojas y listas gratuitas para imprimir sobre el final de la vida',
+  seoTitle: 'Listas gratuitas para imprimir sobre el final de la vida',
   description: 'Hojas, listas y libros para recordar gratuitos para imprimir sobre el final de la vida. Sin cuenta ni correo.',
   body: `
 <section class="section"><div class="wrap">

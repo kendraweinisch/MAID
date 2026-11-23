@@ -57,7 +57,7 @@ function statePage(s) {
     path,
     title,
     stateForm: true,
-    seoTitle: `${s.name} advance directive and living will forms (free, official)`,
+    seoTitle: `${s.name} advance directive and living will form (free)`,
     description: `Free ${s.name} advance directive forms: the official state form or the law that sets it out, a free state-specific form, and how to make it valid.`,
     article: { modified: data.verified },
     body: `${hero('Advance directives by state', esc(title), `Where to get a free ${esc(s.name)} form for your medical wishes and the person who speaks for you, and what to do once it's filled in.`)}
@@ -97,7 +97,7 @@ function hub() {
   return {
     path: `${AD}/`,
     title: 'Advance directive forms by state',
-    seoTitle: 'Free advance directive and living will forms for every US state',
+    seoTitle: 'Free advance directive and living will forms, every state',
     description: 'Free advance directive and living will forms for all 50 US states and DC: the official state form or the law that sets it out, plus a free state-specific form.',
     article: { modified: data.verified },
     faq: [
