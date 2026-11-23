@@ -22,8 +22,9 @@ jobs:
       # Served at https://eolatlas.org (custom domain set in Settings > Pages).
       BASE_PATH: ${{ vars.BASE_PATH || '/' }}
       SITE_PUBLIC_URL: ${{ vars.SITE_PUBLIC_URL || 'https://eolatlas.org' }}
-      # Set the repository variable SITE_INDEXABLE to "true" at launch.
-      SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'false' }}
+      # Search engines may index the site. Set the repository variable
+      # SITE_INDEXABLE to "false" to ask them to stay away.
+      SITE_INDEXABLE: ${{ vars.SITE_INDEXABLE || 'true' }}
       # GoatCounter analytics code (the part before .goatcounter.com).
       GOATCOUNTER_CODE: ${{ vars.GOATCOUNTER_CODE || 'eolatlas' }}
       # Web3Forms access key for the suggestions form (public by design, not a secret).
