@@ -140,6 +140,10 @@ const INLINE = {
     ['it was legal in 14 US states', 'https://archive.legmt.gov/content/Committees/Interim/2025-2026/EAIC/January_20_2026/HJ27_BackgroundPaper.pdf'],
   ],
   '/plan-ahead/wills-and-trusts/': [
+    ['All 50 US states and the District of Columbia have a pet trust law', 'https://www.aspca.org/pet-care/pet-planning/pet-trust-laws'],
+    ['a trustee holds money for your pets', 'https://www.aspca.org/pet-care/pet-planning/pet-trust-primer'],
+    ['Canine Care Card service', 'https://www.dogstrust.org.uk/care-card'],
+    ['provides lifelong care for pets who outlive their owners', 'https://www.cinnamon.org.uk/'],
     ['some states accept a will written entirely in your own handwriting', 'https://www.law.cornell.edu/wex/holographic_will'],
     ['Nine community property states', 'https://www.irs.gov/publications/p555'],
     ['estates over $15 million in 2026', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
@@ -233,7 +237,7 @@ const GLANCE = {
 const SECTION_ICONS = {
   '/plan-ahead/': { directive: 'doc', proxy: 'people', steward: 'key', talk: 'talk', paperwork: 'check', wishes: 'tree', review: 'calendar' },
   '/plan-ahead/choices-for-the-body/': { overview: 'steps', traditional: 'burial', entombment: 'mausoleum', green: 'green', tree: 'tree', cremation: 'cremation', water: 'water', composting: 'compost', sea: 'sea', ashes: 'ashes', donation: 'donation', home: 'home', backyard: 'home', other: 'ask', greenest: 'green', choose: 'scale' },
-  '/plan-ahead/wills-and-trusts/': { set: 'check', will: 'wills', valid: 'doc', spouses: 'people', trusts: 'shield', probate: 'steps', poa: 'hand', taxes: 'costs', digital: 'key', canada: 'globe', uk: 'globe', australia: 'globe', lawyer: 'scale', keep: 'calendar' },
+  '/plan-ahead/wills-and-trusts/': { set: 'check', will: 'wills', valid: 'doc', spouses: 'people', trusts: 'shield', probate: 'steps', poa: 'hand', taxes: 'costs', digital: 'key', pets: 'paw', canada: 'globe', uk: 'globe', australia: 'globe', lawyer: 'scale', keep: 'calendar' },
   '/plan-ahead/property-abroad/': { short: 'check', why: 'ask', mexico: 'globe', 'costa-rica': 'globe', canada: 'globe', uk: 'globe', europe: 'globe', taxes: 'costs', checklist: 'steps', after: 'afterdeath' },
   '/plan-ahead/talking-with-a-parent/': { start: 'talk', what: 'ask', resist: 'hand', far: 'phone' },
   '/what-it-costs/': { short: 'check', medical: 'illness', hospice: 'bed', care: 'home', funeral: 'burial', maid: 'maid', lookup: 'help', save: 'shield' },
@@ -724,6 +728,16 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
 <li><strong>State inheritance tax</strong> (paid by the person who inherits): Kentucky, Maryland, Nebraska, New Jersey and Pennsylvania. Spouses are usually exempt, and often children too. Maryland has both taxes.</li></ul>` },
       { id: 'digital', h: 'Your digital life', html: `<p>Many accounts let you name someone now: <a href="https://support.apple.com/en-us/102631">Apple Legacy Contact</a>, <a href="https://support.google.com/accounts/answer/3036546">Google Inactive Account Manager</a> and <a href="https://www.facebook.com/help/1568013990080948">Facebook legacy contact</a>. A password manager with emergency access helps too. Never write passwords in your will, which can become a public record.</p>
 <p>When someone has died, see <a href="/after-a-death/digital-accounts/">closing their online accounts</a>.</p>` },
+      { id: 'pets', h: 'Planning for your pets', html: `<p>Your pets may outlive you. A simple plan means they go straight to someone who knows them, instead of waiting while your family works out what to do.</p>
+<ul>
+<li><strong>Choose a caregiver, and a backup.</strong> Ask them first, and tell your family who it is.</li>
+<li><strong>Write down what they need:</strong> food, medicines, health problems, the vet's name and number, and their habits. Keep it with your other papers, and give a copy to the caregiver.</li>
+<li><strong>Put it in your will, or set up a pet trust.</strong> All 50 US states and the District of Columbia have a pet trust law. In a pet trust, a trustee holds money for your pets' care and pays it to the caregiver you name, and your instructions can be enforced. Some states limit how much money a pet trust can hold.</li>
+<li><strong>Plan for the first days.</strong> Make sure a neighbor or friend who can get into your home knows how to reach your caregiver, so no animal is left alone after a death or an emergency.</li>
+<li><strong>In the UK,</strong> Dogs Trust's Canine Care Card service will care for and rehome your dog if you die, become ill or move into a care home; you name a Dog Guardian to tell them. The Cinnamon Trust, a charity for older people, people who are terminally ill and their pets, provides lifelong care for pets who outlive their owners.</li>
+<li><strong>Elsewhere,</strong> ask local animal welfare charities whether they offer a similar service.</li>
+</ul>
+<p>If a pet dies, see <a href="/grief/#pets">grief: losing a pet</a>.</p>` },
       { id: 'canada', h: 'In Canada', html: `<p>Wills and estates are governed by each province and territory, so the rules depend on where you live.</p>
 <ul>
 <li><strong>Making a valid will:</strong> the rules are set by each province. In Ontario, for example, a formal will is signed in front of two witnesses, who also sign it, and a will written entirely in your own handwriting and signed needs no witnesses. Check your own province's rules.</li>
@@ -763,6 +777,10 @@ ${dirCard('https://www.donatelife.gov.au/', 'DonateLife', 'Australia', 'Register
       ['Tax Foundation: state estate and inheritance taxes', 'https://taxfoundation.org/data/all/state/estate-inheritance-taxes/'],
       ['AARP: states with estate and inheritance taxes', 'https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/'],
       ['IRS: estate tax', 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
+      ['ASPCA: pet trust laws by state', 'https://www.aspca.org/pet-care/pet-planning/pet-trust-laws'],
+      ['ASPCA: pet trust primer', 'https://www.aspca.org/pet-care/pet-planning/pet-trust-primer'],
+      ['Dogs Trust (UK): Canine Care Card', 'https://www.dogstrust.org.uk/care-card'],
+      ['The Cinnamon Trust (UK)', 'https://www.cinnamon.org.uk/'],
       ['Cornell Law School, Legal Information Institute: holographic will', 'https://www.law.cornell.edu/wex/holographic_will'],
       ['IRS Publication 555: community property', 'https://www.irs.gov/publications/p555'],
       ['Steps to Justice (CLEO, Ontario): how to make your will', 'https://stepstojustice.ca/steps/wills-and-powers-of-attorney/1-decide-how-you-want-make-your-will/'],

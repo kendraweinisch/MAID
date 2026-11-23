@@ -57,6 +57,16 @@ export const testamentos = esGuide({
 <li><strong>Impuesto estatal sobre la herencia</strong> (lo paga quien hereda): ${L('https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/', 'Kentucky, Maryland, Nebraska, Nueva Jersey y Pensilvania')}. El cónyuge suele estar exento, y a menudo también los hijos. Maryland tiene los dos impuestos.</li></ul>` },
     { id: 'digital', h: 'Su vida digital', icon: 'key', html: `<p>Muchas cuentas le permiten nombrar a alguien ahora: el <a href="https://support.apple.com/es-us/102631">contacto de legado de Apple</a>, el <a href="https://support.google.com/accounts/answer/3036546?hl=es">Administrador de cuentas inactivas de Google</a> y el <a href="https://www.facebook.com/help/1568013990080948">contacto de legado de Facebook</a>. Un gestor de contraseñas con acceso de emergencia también ayuda. Nunca escriba contraseñas en su testamento, que puede volverse un documento público.</p>
 <p>Cuando alguien ha muerto, vea <a href="/es/cuentas-en-linea/">cerrar sus cuentas en línea</a>.</p>` },
+    { id: 'mascotas', h: 'Planificar para sus mascotas', icon: 'paw', html: `<p>Sus mascotas pueden vivir más que usted. Un plan sencillo hace que vayan directamente con alguien que las conoce, en lugar de esperar mientras su familia decide qué hacer.</p>
+<ul>
+<li><strong>Elija a una persona que las cuide, y a una suplente.</strong> Pregúnteles primero, y dígale a su familia quién es.</li>
+<li><strong>Escriba lo que necesitan:</strong> la comida, los medicamentos, los problemas de salud, el nombre y el teléfono del veterinario, y sus costumbres. Guárdelo con sus otros papeles y dé una copia a quien las vaya a cuidar.</li>
+<li><strong>Inclúyalo en su testamento, o cree un fideicomiso para mascotas.</strong> ${L('https://www.aspca.org/pet-care/pet-planning/pet-trust-laws', 'Los 50 estados de EE. UU. y el Distrito de Columbia tienen una ley de fideicomisos para mascotas')}. En un fideicomiso para mascotas, ${L('https://www.aspca.org/pet-care/pet-planning/pet-trust-primer', 'un fiduciario guarda dinero para el cuidado de sus mascotas')} y se lo paga a la persona que usted nombra, y sus instrucciones se pueden hacer cumplir. Algunos estados limitan cuánto dinero puede tener un fideicomiso para mascotas.</li>
+<li><strong>Planifique los primeros días.</strong> Asegúrese de que un vecino o un amigo que pueda entrar en su casa sepa cómo contactar a quien cuidará de sus mascotas, para que ningún animal se quede solo después de una muerte o una emergencia.</li>
+<li><strong>En el Reino Unido,</strong> el ${L('https://www.dogstrust.org.uk/care-card', 'servicio Canine Care Card de Dogs Trust')} cuida y busca un nuevo hogar para su perro si usted muere, enferma o se muda a una residencia; usted nombra a una persona (Dog Guardian) que les avise. ${L('https://www.cinnamon.org.uk/', 'The Cinnamon Trust')}, una organización benéfica para personas mayores, personas con enfermedades terminales y sus mascotas, cuida de por vida a las mascotas que sobreviven a sus dueños.</li>
+<li><strong>En otros lugares,</strong> pregunte a las organizaciones locales de protección animal si ofrecen un servicio parecido.</li>
+</ul>
+<p>Si muere una mascota, vea <a href="/es/duelo/#mascota">el duelo: la pérdida de una mascota</a>.</p>` },
     { id: 'canada', h: 'En Canadá', icon: 'globe', html: `<p>Los testamentos y las sucesiones dependen de cada provincia y territorio, así que las reglas dependen de dónde vive.</p>
 <ul>
 <li><strong>Un testamento válido:</strong> las reglas las fija cada provincia. En Ontario, por ejemplo, ${L('https://stepstojustice.ca/steps/wills-and-powers-of-attorney/1-decide-how-you-want-make-your-will/', 'un testamento formal se firma ante dos testigos')}, que también lo firman, y un testamento escrito por completo a mano y firmado no necesita testigos. Revise las reglas de su provincia.</li>
@@ -96,6 +106,10 @@ export const testamentos = esGuide({
     ['Tax Foundation: impuestos estatales sobre el patrimonio y la herencia' + EN, 'https://taxfoundation.org/data/all/state/estate-inheritance-taxes/'],
     ['AARP: estados con impuestos sobre el patrimonio y la herencia' + EN, 'https://www.aarp.org/money/retirement/states-with-estate-inheritance-taxes/'],
     ['IRS: impuesto sobre el patrimonio' + EN, 'https://www.irs.gov/businesses/small-businesses-self-employed/estate-tax'],
+    ['ASPCA: leyes de fideicomisos para mascotas por estado' + EN, 'https://www.aspca.org/pet-care/pet-planning/pet-trust-laws'],
+    ['ASPCA: guía de fideicomisos para mascotas' + EN, 'https://www.aspca.org/pet-care/pet-planning/pet-trust-primer'],
+    ['Dogs Trust (Reino Unido): Canine Care Card' + EN, 'https://www.dogstrust.org.uk/care-card'],
+    ['The Cinnamon Trust (Reino Unido)' + EN, 'https://www.cinnamon.org.uk/'],
     ['Facultad de Derecho de Cornell, Legal Information Institute: testamento ológrafo' + EN, 'https://www.law.cornell.edu/wex/holographic_will'],
     ['IRS, Publicación 555: bienes gananciales' + EN, 'https://www.irs.gov/publications/p555'],
     ['Steps to Justice (CLEO, Ontario): cómo hacer su testamento' + EN, 'https://stepstojustice.ca/steps/wills-and-powers-of-attorney/1-decide-how-you-want-make-your-will/'],
