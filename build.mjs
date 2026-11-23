@@ -71,7 +71,7 @@ await cp('public', out, { recursive: true });
 await writeFile(join(out, 'es-printables.json'), JSON.stringify(ES_PRINTABLES.map(({ slug, path }) => ({ slug, path }))));
 await writeFile(join(out, 'es-binder.json'), JSON.stringify(ES_BINDER.flatMap(([, l]) => l.map(([slug]) => slug))));
 
-const urls = pages.filter((p) => !['/thanks/', '/offline/', '/es/sin-conexion/'].includes(p.path)).map((p) => `<url><loc>${site.url}${p.path}</loc></url>`).join('\n');
+const urls = pages.filter((p) => !['/thanks/', '/offline/', '/es/sin-conexion/'].includes(p.path)).map((p) => `<url><loc>${site.url}${p.path}</loc>${p.article && /^\d{4}-\d{2}-\d{2}$/.test(p.article.modified || '') ? `<lastmod>${p.article.modified}</lastmod>` : ''}</url>`).join('\n');
 await writeFile(join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 
 // Offline support: a service worker that saves the key pages on first visit

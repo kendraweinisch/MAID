@@ -9,7 +9,7 @@ const EN = ' (en inglés)';
 export const testamentos = esGuide({
   path: '/es/testamentos-y-fideicomisos/',
   title: 'Testamentos, fideicomisos y papeles',
-  seoTitle: 'Testamentos, fideicomisos y sucesión: reglas por estado de EE. UU., Canadá, Reino Unido y Australia',
+  seoTitle: 'Testamentos, fideicomisos y sucesión: reglas por estado',
   eyebrow: 'Planificar',
   icon: 'wills',
   description: 'Qué hace cada documento (testamento, poderes, fideicomiso, beneficiarios) y cómo cambian las reglas entre los estados de EE. UU., Canadá, el Reino Unido y Australia.',
@@ -119,7 +119,7 @@ export const testamentos = esGuide({
 export const extranjero = esGuide({
   path: '/es/propiedades-en-el-extranjero/',
   title: 'Testamentos cuando tiene propiedades en el extranjero',
-  seoTitle: 'Testamentos para expatriados: propiedades en México, Costa Rica, Canadá, el Reino Unido y Europa',
+  seoTitle: 'Testamentos para propiedades en México, Costa Rica y más',
   eyebrow: 'Planificar',
   icon: 'globe',
   description: 'Qué revisar si tiene una casa en otro país: testamentos locales, fideicomisos en México, Costa Rica, Canadá, el Reino Unido, España, Portugal, Francia e Italia, y los impuestos.',

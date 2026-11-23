@@ -165,6 +165,7 @@ const stateCards = ad.states
 const directivas = {
   path: '/es/directivas-anticipadas/',
   title: 'Directivas anticipadas por estado',
+  seoTitle: 'Directivas anticipadas y testamento vital por estado, gratis',
   description: 'Formularios gratuitos de directiva anticipada y testamento vital para los 50 estados de EE. UU. y DC: el formulario oficial del estado o la ley que lo establece, y un formulario gratuito para cada estado.',
   article: { modified: ad.verified },
   faq: [
@@ -215,6 +216,7 @@ ${sourcesNoteEs()}
 const paliativos = esGuide({
   path: '/es/cuidados-paliativos-y-hospicio/',
   title: 'Cuidados paliativos y hospicio',
+  seoTitle: 'Cuidados paliativos y hospicio: ¿cuál es la diferencia?',
   description: 'La diferencia entre cuidados paliativos y hospicio: cuándo empieza cada uno, si se puede seguir con el tratamiento, quién paga y dónde se recibe.',
   eyebrow: 'Enfermedad grave',
   icon: 'illness',
@@ -248,6 +250,7 @@ const paliativos = esGuide({
 const senales = esGuide({
   path: '/es/senales-de-que-la-muerte-esta-cerca/',
   title: 'Señales de que la muerte está cerca',
+  seoTitle: 'Señales de que la muerte está cerca: semanas, días y horas',
   description: 'Las señales comunes de que la muerte está a semanas, días u horas, qué significan y cómo mantener a la persona cómoda.',
   eyebrow: 'Las últimas semanas',
   icon: 'lastweeks',
@@ -492,7 +495,7 @@ ${FILAS.map((n) => `<tr><td>${n || '<span class="sr-only">Otro servicio</span>'}
 const primeras24 = {
   path: '/es/primeras-24-horas/',
   title: 'Después de una muerte: las primeras 24 horas',
-  seoTitle: 'Qué hacer cuando alguien muere: lista de las primeras 24 horas (para imprimir)',
+  seoTitle: 'Qué hacer cuando alguien muere: las primeras 24 horas',
   description: 'Una lista para imprimir para el primer día después de una muerte: a quién llamar y qué puede esperar.',
   body: `
 <section class="section">

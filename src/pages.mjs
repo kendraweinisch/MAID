@@ -311,22 +311,24 @@ ${s.html}
 // A guide page: hero, "on this page" list, sections, sources and related links.
 // Search-friendly page titles: the words people actually search, kept accurate.
 const SEO_TITLES = {
-  '/plan-ahead/': 'End-of-life planning: advance directive, living will and health care proxy',
-  '/plan-ahead/wills-and-trusts/': 'Wills, trusts and probate: rules by US state, Canada, UK and Australia',
-  '/plan-ahead/property-abroad/': 'Wills for expats: property in Mexico, Costa Rica, Canada, the UK and Europe',
-  '/plan-ahead/talking-with-a-parent/': 'How to talk to aging parents about end-of-life wishes, near or far',
-  '/plan-ahead/choices-for-the-body/': 'Green burial, human composting, aquamation, burial at sea: every option',
-  '/serious-illness/': 'Serious illness: palliative care, hospice and POLST explained',
+  '/plan-ahead/': 'End-of-life planning: living will, advance directive, proxy',
+  '/plan-ahead/wills-and-trusts/': 'Wills, trusts and probate: rules by US state, Canada and UK',
+  '/plan-ahead/property-abroad/': 'Wills for property abroad: Mexico, Costa Rica, Canada, UK',
+  '/plan-ahead/talking-with-a-parent/': 'How to talk to aging parents about end-of-life wishes',
+  '/plan-ahead/choices-for-the-body/': 'Green burial, human composting, aquamation: every option',
+  '/serious-illness/': 'Serious illness: palliative care, hospice and POLST',
   '/last-weeks/': 'The last weeks of life: what dying is really like',
-  '/after-a-death/': 'What to do when someone dies: the first hours, funeral and estate',
-  '/grief/': "Grief: what's normal, helping a grieving child, and pet loss",
-  '/what-it-costs/': 'How much does dying cost? Hospice, care homes and funeral costs',
-  '/after-a-death/digital-accounts/': 'How to close a deceased person\'s Facebook, Instagram, Gmail, iCloud and other accounts',
-  '/serious-illness/choices-near-the-end/': 'End-of-life choices: treatment, hospice, stopping treatment, POLST and medical aid in dying',
-  '/about/': 'About End of Life Atlas: who we are, how we check facts and how we are funded',
-  '/medical-aid-in-dying/process/': 'How medical aid in dying (assisted suicide) works: steps and waiting periods',
-  '/medical-aid-in-dying/families/': 'Medical aid in dying and euthanasia: a guide for families',
-  '/medical-aid-in-dying/switzerland/': 'Assisted suicide in Switzerland for foreigners: how it works and costs',
+  '/after-a-death/': 'What to do when someone dies: first hours to the estate',
+  '/grief/': 'Grief: what is normal, helping a child, and pet loss',
+  '/what-it-costs/': 'How much does dying cost? Hospice, care and funerals',
+  '/after-a-death/digital-accounts/': "Deceased person's Facebook, Gmail, iCloud: how to close them",
+  '/serious-illness/choices-near-the-end/': 'End-of-life choices: stopping treatment, hospice and POLST',
+  '/about/': 'About End of Life Atlas: who we are and how we check facts',
+  '/medical-aid-in-dying/process/': 'How medical aid in dying works: steps and waiting periods',
+  '/medical-aid-in-dying/families/': 'Medical aid in dying: a guide for families',
+  '/medical-aid-in-dying/switzerland/': 'Assisted suicide in Switzerland for foreigners: how it works',
+  '/last-weeks/signs-death-is-near/': 'Signs death is near: the last weeks, days and hours',
+  '/serious-illness/hospice-vs-palliative-care/': 'Hospice vs palliative care: what is the difference?',
 };
 
 // "At a glance": a few key figures or facts from the page, as big cards.
@@ -1351,7 +1353,7 @@ export function maidHub(data) {
   return {
     path: `${MAID}/`,
     title: 'Medical aid in dying',
-    seoTitle: 'Euthanasia, assisted suicide and medical aid in dying: where it is legal',
+    seoTitle: 'Assisted suicide and medical aid in dying: where it is legal',
     article: { modified: site.lastScan },
     faq: [["What is the difference between euthanasia and assisted suicide?", "In euthanasia, a doctor or nurse gives the medication, usually by injection. In assisted suicide, also called medical aid in dying or self-administered assisted dying, the person takes the medication themselves. Some countries allow both; US states allow only the second."], ["Is euthanasia legal in the United States?", "No. No US state allows a clinician to give the medication. In the states with medical aid in dying laws, an eligible adult with a terminal illness can be prescribed medication that they take themselves."], ["Where is euthanasia legal?", "Euthanasia (a clinician giving the medication) is allowed in places including Canada, the Netherlands, Belgium, Spain and New Zealand. Switzerland allows assisted suicide but not euthanasia. Check each place's page for its current status."], ["Why are there so many names for it?", "Different laws, countries and groups use different words: medical aid in dying, assisted dying, assisted suicide, euthanasia, MAID, death with dignity and voluntary assisted dying. Some people feel the word suicide doesn't fit someone who is already dying; others use it plainly. This site uses the term each law uses."]],
     crisis: true,
@@ -1433,7 +1435,7 @@ export function placePage(p) {
   return {
     path: `${MAID}/places/${p.slug}/`,
     title: `Medical aid in dying in ${p.name}`,
-    seoTitle: `${placeTerm(p)} in ${placeName(p)}: is it legal?`,
+    seoTitle: p.region === 'us' ? `Assisted suicide in ${placeName(p)}: medical aid in dying law` : `${placeTerm(p)} in ${placeName(p)}: is it legal?`,
     article: { modified: p.verified || site.lastScan },
     crisis: true,
     description: `${placeTerm(p)} in ${placeName(p)}: ${p.statusLabel}. ${p.summary}`,

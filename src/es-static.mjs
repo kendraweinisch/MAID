@@ -65,7 +65,7 @@ ${dirCard('https://wfrtds.org/', 'World Federation of Right to Die Societies', '
 const acerca = esGuide({
   path: '/es/acerca/',
   title: 'Sobre nosotros',
-  seoTitle: 'Sobre End of Life Atlas: quiénes somos, cómo verificamos los datos y cómo nos financiamos',
+  seoTitle: 'Sobre End of Life Atlas: quiénes somos y cómo verificamos',
   eyebrow: 'Sobre End of Life Atlas',
   icon: 'scale',
   reviewed: '2026-11-19',
@@ -286,7 +286,7 @@ function statePage(s) {
   return {
     path,
     title: `Directiva anticipada en ${name}`,
-    seoTitle: `Formularios de directiva anticipada y testamento vital de ${name} (gratis, oficiales)`,
+    seoTitle: `Directiva anticipada (testamento vital) de ${name}`,
     description: `Formularios gratuitos de directiva anticipada de ${name}: el formulario oficial del estado o la ley que lo establece, un formulario gratuito para el estado y cómo hacerlo válido.`,
     article: { modified: ad.verified },
     stateForm: true,
