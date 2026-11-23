@@ -72,7 +72,7 @@ Settings live in **Settings > Secrets and variables > Actions > Variables**:
 | `SITE_PUBLIC_URL` | `https://eolatlas.org` | The site's public address (used after a suggestion is sent). |
 | `FORMS_ACCESS_KEY` | the site's Web3Forms key | Web3Forms access key for the suggestions form (public by design). To change where suggestions go, get a new key at web3forms.com and set this variable. |
 | `GOATCOUNTER_CODE` | `eolatlas` | GoatCounter analytics code. |
-| `SITE_INDEXABLE` | `false` | Set to `true` at launch so search engines can index the site. |
+| `SITE_INDEXABLE` | `true` | Lets search engines index the site (robots.txt and sitemap). Set to `false` to ask them to stay away. |
 
 ### eolatlas.org (connected November 2026)
 
@@ -91,14 +91,14 @@ unlink its repository.
 
 ## Before launch
 
-- [ ] Register eolatlas.org (and eolatlas.com, if you want it, to redirect)
+- [x] Register eolatlas.org (and eolatlas.com, if you want it, to redirect)
 - [ ] Appoint and name a physician and an attorney reviewer (`/about/#reviewers`)
 - [ ] Verify the per-place details (waiting periods, clinicians, costs, insurance)
 - [ ] Add sources for Belgium and Spain; confirm Delaware's effective date
 - [x] Suggestions form: Web3Forms key added (in `.github/workflows/pages.yml`)
 - [ ] Analytics: confirm the GoatCounter account for `eolatlas` (or set `GOATCOUNTER_CODE`)
 - [ ] Lawyer review of the whole site, especially the Switzerland and property-abroad pages
-- [ ] Turn on search indexing
+- [x] Turn on search indexing (then submit the sitemap in Google Search Console)
 
 ## Other files
 
