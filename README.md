@@ -83,12 +83,6 @@ The domain is registered at Namecheap. To set it up again:
 3. At your domain registrar, add the DNS records GitHub shows (four `A` records for the bare domain, and a `CNAME` for `www` pointing to `kendraweinisch.github.io`).
 4. Re-run the workflow. `BASE_PATH` and `SITE_PUBLIC_URL` already default to the domain.
 
-### Netlify (the previous host)
-
-`netlify.toml` still works if you ever move back. Netlify Forms are no longer
-used. To stop Netlify building on every merge, remove the site in Netlify or
-unlink its repository.
-
 ## Before launch
 
 - [x] Register eolatlas.org (and eolatlas.com, if you want it, to redirect)
