@@ -336,6 +336,7 @@ function carpeta() {
 <div class="binder-for print-only">
 <p>Esta carpeta es de: ${blank}</p>
 <p>Si está leyendo esto porque no puedo hablar por mí o porque he muerto, empiece por la hoja de planificación. Mi directiva anticipada está guardada en: ${blank}</p>
+<p>Mis mascotas, y a quién llamar para que las cuide: ${blank} (más detalles en el recuadro «Mis mascotas» de la hoja de planificación)</p>
 <p>Empezada el: ${blank} Última actualización: ${blank}</p>
 </div>
 </div>

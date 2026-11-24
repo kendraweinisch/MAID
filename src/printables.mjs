@@ -370,6 +370,7 @@ export function binderPage() {
 <div class="binder-for print-only">
 <p>This binder belongs to: <span class="blank" aria-hidden="true"></span></p>
 <p>If you are reading this because I can't speak for myself or have died, start with the plan-ahead worksheet. My advance directive is kept: <span class="blank" aria-hidden="true"></span></p>
+<p>My pets, and who to call to care for them: <span class="blank" aria-hidden="true"></span> (more in the "My pets" box of the plan-ahead worksheet)</p>
 <p>Started on: <span class="blank" aria-hidden="true"></span> Last updated: <span class="blank" aria-hidden="true"></span></p>
 </div>
 </div>
