@@ -478,6 +478,16 @@ ${dlPanelEs('lista-cuentas-en-linea')}
 ${FILAS.map((n) => `<tr><td>${n || '<span class="sr-only">Otro servicio</span>'}</td><td></td><td></td><td></td><td><span class="tick" aria-hidden="true"></span></td></tr>`).join('\n')}
 </tbody></table></div>
 </div>
+<h2>Sus mascotas</h2>
+<ul class="check">
+<li>Quién cuida ahora de las mascotas: ${blankEs}</li>
+<li>Actualicé el registro del microchip con el nombre y los datos de contacto de quien las cuida ahora. Registro: ${blankEs}</li>
+<li>Transferí o cancelé el seguro de las mascotas. Aseguradora y número de póliza: ${blankEs}</li>
+<li>La cuenta en línea o la app del veterinario: ${blankEs}</li>
+<li>Cancelé los pedidos periódicos de comida o medicamentos, o los pasé a quien las cuida ahora: ${blankEs}</li>
+<li>Actualicé la licencia o el registro de las mascotas en el ayuntamiento o la ciudad: ${blankEs}</li>
+<li>Las cuentas de redes sociales de las propias mascotas, si las tienen: ${blankEs}</li>
+</ul>
 <h2>Suscripciones para cancelar</h2>
 <ul class="check">
 <li>Servicios de streaming: ${blankEs}</li>

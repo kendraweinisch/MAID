@@ -321,6 +321,16 @@ export const onlineAccounts = page({
 ${ACCOUNT_ROWS.map((name) => `<tr><td>${name || '<span class="sr-only">Another service</span>'}</td><td></td><td></td><td></td><td><span class="tick" aria-hidden="true"></span></td></tr>`).join('\n')}
 </tbody></table></div>
 </div>
+<h2>Their pets</h2>
+<ul class="check">
+<li>Who is caring for the pets now: ${blank}</li>
+<li>Microchip registration updated with the new caregiver's name and contact details. Registry: ${blank}</li>
+<li>Pet insurance transferred or cancelled. Insurer and policy number: ${blank}</li>
+<li>The vet's online account or app: ${blank}</li>
+<li>Repeat orders of pet food or medicine cancelled, or moved to the new caregiver: ${blank}</li>
+<li>Pet licence or registration with the city or council updated: ${blank}</li>
+<li>The pets' own social media accounts, if any: ${blank}</li>
+</ul>
 <h2>Subscriptions to cancel</h2>
 <ul class="check">
 <li>Streaming services: ${blank}</li>
