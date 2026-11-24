@@ -526,7 +526,14 @@ ${dlPanelEs('primeras-24-horas')}
 <li>Avise a la familia y a los amigos cercanos, o pida a alguien que lo haga.</li>
 <li>Elija una funeraria o un proveedor de cremación. Pida la lista de precios detallada.</li>
 <li>Busque si hay deseos por escrito sobre el cuerpo y el funeral.</li>
-<li>Organice el cuidado de los niños y las mascotas, y asegure la casa.</li>
+<li>Organice el cuidado de los niños, y asegure la casa.</li>
+</ul>
+<h2>Las mascotas</h2>
+<ul class="check">
+<li>Asegúrese de que las mascotas tengan comida, agua y estén seguras. Si no puede quedarse, pida a un vecino o a un amigo que las vigile.</li>
+<li>Busque si hay deseos por escrito sobre quién debe cuidarlas: la hoja de planificación, el testamento o una nota.</li>
+<li>Llame a la persona nombrada para cuidarlas, o al servicio de cuidado en el que estén registradas.</li>
+<li>Busque su comida, sus medicamentos y el nombre y el teléfono del veterinario, y déselos a quien se lleve a las mascotas.</li>
 </ul>
 <h2>Esto puede esperar unos días</h2>
 <ul class="check">

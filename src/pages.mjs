@@ -1360,7 +1360,8 @@ export const checklists = [
     lead: 'Very little is urgent. Do these in order, and leave the rest for later.',
     groups: [
       { h: 'Right away', items: ['Expected death with hospice: call the hospice. Unexpected death: call your local emergency number (911 in the US and Canada, 999 in the UK, 112 in the EU).', 'Take a moment. There is usually no rush to move the body.', 'Call one person to be with you.'] },
-      { h: 'Within the day', items: ['Tell close family and friends, or ask someone to do it.', 'Choose a funeral home or cremation provider. Ask for the itemized price list.', 'Look for written wishes about the body and the funeral.', 'Arrange care for children and pets, and secure the home.'] },
+      { h: 'Within the day', items: ['Tell close family and friends, or ask someone to do it.', 'Choose a funeral home or cremation provider. Ask for the itemized price list.', 'Look for written wishes about the body and the funeral.', 'Arrange care for children, and secure the home.'] },
+      { h: 'Pets', items: ['Make sure any pets are fed, have water and are safe. If you can\'t stay, ask a neighbor or friend to check on them.', 'Look for written wishes about who should care for them: the plan-ahead worksheet, the will, or a note.', 'Call the person named to care for them, or the care scheme they are registered with.', 'Find their food, medicines and the vet\'s name and number, and give them to whoever takes the pets.'] },
       { h: 'This can wait a few days', items: ['Order certified copies of the death certificate.', 'Find the will and contact the executor.', 'Notify the social security or pension agency, employers, banks and insurers.', 'Plan the service. It can happen weeks later.'] },
     ],
     note: 'If you are struggling, you do not have to do this alone. Ask a friend, a family member or the hospice team for help.',
