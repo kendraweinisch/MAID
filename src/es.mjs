@@ -716,7 +716,8 @@ ${linkCards([
     ['/es/testamentos-y-fideicomisos/', 'Testamentos y fideicomisos', 'Qué hace cada documento, por estado y país.', 'wills'],
     ['/es/opciones-para-el-cuerpo/', 'Opciones para el cuerpo', 'Del entierro al compostaje humano.', 'tree'],
     ['/es/lo-que-cuesta/', 'Lo que cuesta', 'Cuidados, hospicio y funerales, con fuentes.', 'costs'],
-    ['/es/imprimibles/', 'Hojas para imprimir', 'Doce hojas y una carpeta, gratis.', 'printer'],
+    ['/es/imprimibles/', 'Hojas para imprimir', 'Doce hojas gratuitas para imprimir.', 'printer'],
+    ['/es/imprimibles/carpeta/', 'La carpeta completa', 'Todas las hojas en un solo PDF, gratis.', 'printer'],
     ['/es/preguntar/', 'Haga una pregunta', 'Respuestas de las páginas en español de este sitio.', 'ask'],
   ], 'cards')}
 </div>

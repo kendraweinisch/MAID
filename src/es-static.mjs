@@ -74,7 +74,7 @@ const acerca = esGuide({
   glance: [
     [String(ABOUT_COUNTS.places), 'Lugares cubiertos sobre la muerte médicamente asistida, con fuentes oficiales'],
     [String(ABOUT_COUNTS.states), 'Páginas de directivas anticipadas de los estados de EE. UU., con los formularios oficiales'],
-    [String(ABOUT_COUNTS.printables), 'Hojas gratuitas para imprimir, más una carpeta con todas'],
+    [String(ABOUT_COUNTS.printables), 'Hojas gratuitas para imprimir, más <a href="/es/imprimibles/carpeta/">una carpeta con todas</a>'],
     ['2', 'Idiomas: español e inglés'],
   ],
   sections: [
@@ -144,7 +144,7 @@ ${infoCard('doc', 'Lenguaje claro', 'Frases cortas, palabras de todos los días,
 <li><strong>Español e inglés:</strong> cada página está en los dos idiomas. Use el botón <a href="/" hreflang="en" lang="en">English</a> en la parte de arriba de cualquier página. Las traducciones al español están pendientes de revisión por un hablante nativo.</li>
 <li><strong>Accesible:</strong> buscamos cumplir las WCAG 2.2 AA y comprobamos cada página antes de cada actualización. Vea <a href="/es/accesibilidad/">accesibilidad</a>.</li>
 <li><strong>Funciona sin conexión:</strong> <a href="/es/app/">instale la app</a> y las guías clave funcionan sin señal.</li>
-<li><strong>Se imprime bien:</strong> cada hoja para imprimir viene en PDF, y la carpeta las reúne todas.</li>
+<li><strong>Se imprime bien:</strong> cada hoja para imprimir viene en PDF, y <a href="/es/imprimibles/carpeta/">la carpeta</a> las reúne todas.</li>
 </ul>` },
     { id: 'ayudar', h: 'Cómo puede ayudar', icon: 'hand', html: `<ul>
 <li><strong>Díganos qué falta o qué está mal.</strong> Las correcciones, los datos desactualizados y las fuentes que deberíamos conocer ayudan. <a href="/es/sugerencias/">Envíe una sugerencia</a>.</li>

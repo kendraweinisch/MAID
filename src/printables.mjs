@@ -271,7 +271,7 @@ export function printablesIndex(existing) {
 <section class="section"><div class="wrap">
 <h1>Free printables</h1>
 <p class="lead" style="margin:20px 0 40px">Worksheets, checklists and remembering books. Free, no account, no email. Print them, fill them in by hand, and keep them where your family can find them.</p>
-<div class="card binder-promo"><p class="tag">Everything at once</p><h2 style="margin-top:4px"><a href="/checklists/binder/">The End of Life Atlas binder</a></h2><p class="muted">All twelve printables in one PDF, with a cover and contents page. Print it once and keep it in a binder.</p><p><a class="btn btn-small" href="/printables/binder.pdf" download>Download the binder (PDF)</a> <a class="small" href="/checklists/binder/">What's in it</a></p></div>
+<div class="card binder-promo"><p class="tag">Everything at once</p><h2 style="margin-top:4px"><a href="/checklists/binder/">The End of Life Atlas binder</a></h2><p class="muted">All twelve printables in one PDF, with a cover and contents page. Print it once and keep it somewhere safe.</p><p><a class="btn btn-small" href="/printables/binder.pdf" download>Download the binder (PDF)</a> <a class="small" href="/checklists/binder/">What's in it</a></p></div>
 ${groups.map(([h, list]) => `<h2>${h}</h2>${cards(list)}`).join('\n')}
 </div></section>`,
   };
